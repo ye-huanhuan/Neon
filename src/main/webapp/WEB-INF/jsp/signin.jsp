@@ -15,7 +15,7 @@
   <div class="container aside-xxl"> <a class="navbar-brand block" href="#">Notebook</a>
     <section class="panel panel-default bg-white m-t-lg">
       <header class="panel-heading text-center"> <strong>登录</strong> </header>
-      <form action="index.html" class="panel-body wrapper-lg">
+      <form action="loginAction.action" class="panel-body wrapper-lg" method="post">
         <div class="form-group">
           <label class="control-label">账户</label>
           <input type="text" placeholder="User" class="form-control input-lg">
@@ -29,7 +29,7 @@
             <input type="checkbox">
             记住密码 </label>
         </div>
-        <a href="Signup.html" class="pull-right m-t-xs"><small>忘记密码?</small></a>
+        <a href="jsp/signup.jsp" class="pull-right m-t-xs"><small>忘记密码?</small></a>
         <button type="submit" class="btn btn-primary">登录</button>
       </form>
     </section>

@@ -99,13 +99,20 @@
         <artifactId>hibernate-core</artifactId>  
         <version>4.1.7.Final</version>  
     </dependency>  
-    <!-- mysql数据库驱动 -->  
+    <!-- mysql数据库驱动
     <dependency>  
         <groupId>mysql</groupId>  
         <artifactId>mysql-connector-java</artifactId>  
         <version>5.1.21</version>  
-    </dependency>  
-  
+    </dependency>   -->  
+  	
+  	<!-- 达梦数据库驱动 -->
+  	<dependency>
+  		<groupId>com.dm</groupId>
+  		<artifactId>Dm7JdbcDriver</artifactId>
+  		<version>1.7</version>
+  	</dependency>
+  	
   <!-- c3p0 -->
 	<dependency>
 	    <groupId>com.mchange</groupId>

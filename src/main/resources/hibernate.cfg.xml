@@ -6,7 +6,7 @@
 <session-factory>
 	<!-- 1,数据库连接信息 -->
 	<property name="dialect"><!--方言  -->
-		org.hibernate.dialect.MySQL5InnoDBDialect
+		org.hibernate.dialect.DmDialect
 	</property>
 
 	<!-- 2,其他配置 -->
@@ -16,6 +16,8 @@
 	<!-- 3,导入映射文件 -->
 	<!-- <mapping class="com.yh.scams.domain.Admin" /> -->
 	<mapping resource="com/neon/domain/User.hbm.xml" />
-
+	<mapping resource="com/neon/domain/Role.hbm.xml" />
+	<mapping resource="com/neon/domain/Limite.hbm.xml" />
+	
 </session-factory>
 </hibernate-configuration>

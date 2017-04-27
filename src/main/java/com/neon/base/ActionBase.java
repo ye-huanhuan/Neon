@@ -4,6 +4,8 @@ import java.lang.reflect.ParameterizedType;
 
 import javax.annotation.Resource;
 
+import com.neon.service.LimiteService;
+import com.neon.service.RoleService;
 import com.neon.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -32,6 +34,13 @@ public abstract class ActionBase<T> extends ActionSupport implements ModelDriven
 	
 	//--------------------Service实例的声明------------------------------------------------------------
 	@Resource
-	public UserService userservice;
+	public UserService userService;
+	
+	@Resource
+	public RoleService roleService;
+	
+	@Resource
+	public LimiteService limiteService;
+	
 	
 }

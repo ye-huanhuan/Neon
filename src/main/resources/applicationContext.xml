@@ -32,8 +32,7 @@
 					<property name="driverClass" value="${driverClass}"></property>
 					<property name="user" value="${user}"></property>
 					<property name="password" value="${password}"></property>
-					<!-- 其他配置
-					初始化获取三个连接，取值应该在minPoolSize和maxPoolSize之间 -->
+					<!-- 其他配置初始化获取三个连接，取值应该在minPoolSize和maxPoolSize之间 -->
 					<property name="initialPoolSize" value="3"></property>
 					<!-- 连接池中保留的最小连接数 -->
 					<property name="maxPoolSize" value="3"></property>
@@ -41,7 +40,7 @@
 					<property name="minPoolSize" value="15"></property>
 					<!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数 -->
 					<property name="acquireIncrement" value="3"></property>
-				<!-- 	控制数据源加载的数量，若maxStatements和maxStatementsPerConnection均为0，则缓存被关闭 -->
+					<!-- 控制数据源加载的数量，若maxStatements和maxStatementsPerConnection均为0，则缓存被关闭 -->
 					<property name="maxStatements" value="8"></property>
 					<!-- maxStatementsPerConnection定义了连接池中的单个连接所拥有的最大缓存statements数。 -->
 					<property name="maxStatementsPerConnection" value="5"></property>

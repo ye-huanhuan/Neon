@@ -15,27 +15,27 @@
   <div class="container aside-xxl"> <a class="navbar-brand block" href="#">Notebook</a>
     <section class="panel panel-default m-t-lg bg-white">
       <header class="panel-heading text-center"> <strong>注册</strong> </header>
-      <form action="index.html" class="panel-body wrapper-lg">
+      <form action="log_toSignUp.action" class="panel-body wrapper-lg" method="post">
         <div class="form-group">
           <label class="control-label">名字：</label>
-          <input type="text" placeholder="Name" class="form-control input-lg">
+          <input type="text" placeholder="Name" name="username" class="form-control input-lg">
         </div>
         <div class="form-group">
           <label class="control-label">邮箱：</label>
-          <input type="email" placeholder="test@example.com" class="form-control input-lg">
+          <input type="email" placeholder="test@example.com" name="email" class="form-control input-lg">
         </div>
         <div class="form-group">
           <label class="control-label">密码：</label>
-          <input type="password" id="inputPassword" placeholder="Password" class="form-control input-lg">
+          <input type="password" id="inputPassword" placeholder="Password" name="password" class="form-control input-lg">
         </div>
         <div class="checkbox">
           <label>
             <input type="checkbox">
             接受 <a href="#">这些条款</a> </label>
         </div>
-        <button type="submit" class="btn btn-primary">注册</button>
+       <!-- <button type="submit" class="btn btn-primary">注册</button> -->
         <div class="line line-dashed"></div>
-        <a href="signin.html" class="btn btn-default btn-block">登录</a>
+        <button type="submit" class="btn btn-default btn-block">注册</button>
       </form>
     </section>
   </div>

@@ -12,8 +12,14 @@ import com.opensymphony.xwork2.ActionContext;
 public class TestAction extends ActionBase<User>{
 
 	public String hello(){   
-		User user = userservice.getById(1L);
+		User user = userService.getById(1L);
 		ActionContext.getContext().put("user", user);
 		return "hello";
+	}
+	public String index(){
+//		User user = userservice.getById(1L);
+		ActionContext.getContext().getSession().put("user", 19);
+		System.out.println("执行了");
+		return "success";
 	}
 }

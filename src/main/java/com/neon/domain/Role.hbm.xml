@@ -3,14 +3,11 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
  
 <hibernate-mapping package="com.neon.domain">
-		<class name="User" table="User">
+		<class name="Role" table="Role">
 			<id name="id">
 				<generator class="native"></generator>
 			</id>
-			<property name="username"></property>
-			<property name="password"></property>
-			<property name="email"></property>
-
+			<property name="roleName"></property>
 	</class>
 
 </hibernate-mapping>
