@@ -158,6 +158,16 @@
             <artifactId>mail</artifactId>  
             <version>1.4.7</version>  
 </dependency>  
+
+	<!-- jcaptcha -->
+
+    <dependency>
+      <groupId>com.octo.captcha</groupId>
+      <artifactId>jcaptcha-api</artifactId>
+      <version>1.0</version>
+    </dependency>
+   
+    
      
   </dependencies>  
   <build>

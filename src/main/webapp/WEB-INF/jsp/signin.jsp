@@ -30,12 +30,15 @@
       <header class="panel-heading text-center"> <strong style="font-size: 20px">登录</strong> </header>
       <form action="log_login.action" class="panel-body wrapper-lg" method="post">
         <div class="form-group">
-          <label class="control-label">账户</label>
+          <label class="control-label" style="font-size: 16px">账户</label>
           <input type="text" name="username" value="<%=username %>" placeholder="User" class="form-control input-lg">
         </div>
         <div class="form-group">
-          <label class="control-label">密码</label>
+          <label class="control-label" style="font-size: 16px">密码</label>
           <input type="password" name="password" value="<%=password %>" id="inputPassword" placeholder="Password" class="form-control input-lg">
+        </div>
+        <div class="form-group">
+        <img src="jcaptcha.jpg" /> <input type="text" name="jcaptcha" value="" />
         </div>
         <div class="checkbox">
           <label>

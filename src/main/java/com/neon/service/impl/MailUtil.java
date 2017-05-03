@@ -164,7 +164,7 @@ public class MailUtil {
 //        mailFromList.add(info);  
   
   
-        boolean r = MailUtil.send("test", MailInfo.MailType.HTML, "<a href='http://localhost:8081/Neon/'>返回登录</a>", "hiw2012@163.com", "", "");  
+        boolean r = MailUtil.send("test", MailInfo.MailType.HTML, "<a href='http://localhost:8080/Neon/'>返回登录</a>", "hiw2012@163.com", "", "");  
         logger.info(r);  
     }  
 }

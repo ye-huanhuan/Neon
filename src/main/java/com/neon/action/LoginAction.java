@@ -42,6 +42,10 @@ public class LoginAction extends ActionBase<User>{
 		}
 		
 		
+	//jcaptcha
+		String userCaptchaResponse = request.getParameter("jcaptcha");
+		boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
+		
 		return "login";
 	}
 	
