@@ -25,6 +25,8 @@ public class LoginAction extends ActionBase<User>{
 		if("isRemember".equals(request.getParameter("remember"))){
 			Cookie c1 = new Cookie("username", model.getUsername());
 			Cookie c2 = new Cookie("password",model.getPassword());
+			c1.setMaxAge(60*60*24*3);
+			c2.setMaxAge(60*60*24*3);
 			response.addCookie(c1);;
 			response.addCookie(c2);
 		}else{

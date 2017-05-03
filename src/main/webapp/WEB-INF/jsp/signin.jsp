@@ -22,11 +22,12 @@
 			password = c.getValue();
 		}
 	}
+	
 %>
 <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
   <div class="container aside-xxl"> <a class="navbar-brand block" href="#">Notebook</a>
     <section class="panel panel-default bg-white m-t-lg">
-      <header class="panel-heading text-center"> <strong>登录</strong> </header>
+      <header class="panel-heading text-center"> <strong style="font-size: 20px">登录</strong> </header>
       <form action="log_login.action" class="panel-body wrapper-lg" method="post">
         <div class="form-group">
           <label class="control-label">账户</label>
