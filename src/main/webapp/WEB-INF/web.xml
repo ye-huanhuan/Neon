@@ -48,4 +48,5 @@
         <servlet-name>jcaptcha</servlet-name>
         <url-pattern>/jcaptcha.jpg</url-pattern>
     </servlet-mapping>
+
 </web-app>

@@ -151,7 +151,24 @@
         <artifactId>servlet-api</artifactId>  
         <version>2.5</version>  
         <scope>provided</scope>  
-    </dependency>  
+    </dependency> 
+    <!-- javamail -->
+    <dependency>  
+            <groupId>javax.mail</groupId>  
+            <artifactId>mail</artifactId>  
+            <version>1.4.7</version>  
+</dependency>  
+
+	<!-- jcaptcha -->
+
+    <dependency>
+      <groupId>com.octo.captcha</groupId>
+      <artifactId>jcaptcha-api</artifactId>
+      <version>1.0</version>
+    </dependency>
+   
+    
+     
   </dependencies>  
   <build>
     <finalName>Neon</finalName>

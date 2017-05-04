@@ -13,23 +13,39 @@
 
 </head>
 <body>
+<%
+	String username = "";
+	String password = "";
+	Cookie[] cookies = request.getCookies();
+	for(Cookie c : cookies){
+		if("username".equals(c.getName())){
+			username = c.getValue();
+		}else if("password".equals(c.getName())){
+			password = c.getValue();
+		}
+	}
+	
+%>
 <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
   <div class="container aside-xxl"> <a class="navbar-brand block" href="#">Notebook</a>
     <section class="panel panel-default bg-white m-t-lg">
-      <header class="panel-heading text-center"> <strong>登录</strong> </header>
-      <form action="loginAction.action" class="panel-body wrapper-lg" method="post">
+      <header class="panel-heading text-center"> <strong style="font-size: 20px">登录</strong> </header>
+      <form action="log_login.action" class="panel-body wrapper-lg" method="post">
         <div class="form-group">
-          <label class="control-label">账户</label>
-          <input type="text" placeholder="User" class="form-control input-lg">
+          <label class="control-label" style="font-size: 16px">账户</label>
+          <input type="text" name="username" value="<%=username %>" placeholder="User" class="form-control input-lg">
         </div>
         <div class="form-group">
-          <label class="control-label">密码</label>
-          <input type="password" id="inputPassword" placeholder="Password" class="form-control input-lg">
+          <label class="control-label" style="font-size: 16px">密码</label>
+          <input type="password" name="password" value="<%=password %>" id="inputPassword" placeholder="Password" class="form-control input-lg">
+        </div>
+        <div class="form-group">
+        <img src="jcaptcha.jpg" /> <input type="text" name="jcaptcha" value="" />
         </div>
         
         <div class="checkbox">
           <label>
-            <input type="checkbox">
+            <input type="checkbox" name="remember" value="isRemember">
             记住密码 </label>
         </div>
         <a href="jsp/signup.jsp" class="pull-right m-t-xs"><small>忘记密码?</small></a>
