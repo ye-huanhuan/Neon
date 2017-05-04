@@ -2,17 +2,22 @@ package com.neon.service.impl;
 
  
 
-import org.apache.commons.logging.Log;  
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Properties;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.neon.domain.MailInfo;
-
-import javax.mail.*;  
-import javax.mail.internet.InternetAddress;  
-import javax.mail.internet.MimeBodyPart;  
-import javax.mail.internet.MimeMessage;  
-import javax.mail.internet.MimeMultipart;  
-import java.util.*;  
+import com.neon.domain.MailInfo;  
   
 /** 
  * file MailUtil 
