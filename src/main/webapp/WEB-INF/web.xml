@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>Neon</display-name>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>jcaptcha.jsp</welcome-file>
     <!--<welcome-file>index.jsp</welcome-file>  -->
     
   </welcome-file-list>
@@ -29,4 +29,23 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  
+  <servlet>
+        <servlet-name>verifyCode</servlet-name>
+        <servlet-class>com.neon.action.VerifyCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>verifyCode</servlet-name>
+        <url-pattern>/verifyCode/submit.do</url-pattern>
+    </servlet-mapping>
+    <!-- jcaptcha配置 https://jcaptcha.atlassian.net/wiki/display/general/Simple+Servlet+Integration+documentation -->
+    <servlet>
+        <servlet-name>jcaptcha</servlet-name>
+        <servlet-class>com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>jcaptcha</servlet-name>
+        <url-pattern>/jcaptcha.jpg</url-pattern>
+    </servlet-mapping>
 </web-app>

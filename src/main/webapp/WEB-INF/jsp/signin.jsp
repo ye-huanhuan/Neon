@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="bg-dark">
 <head>
@@ -9,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
 <link rel="stylesheet" href="css/font.css" type="text/css" cache="false" />
+
 </head>
 <body>
 <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
@@ -24,6 +26,7 @@
           <label class="control-label">密码</label>
           <input type="password" id="inputPassword" placeholder="Password" class="form-control input-lg">
         </div>
+        
         <div class="checkbox">
           <label>
             <input type="checkbox">
