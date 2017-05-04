@@ -30,7 +30,7 @@
   <div class="container aside-xxl"> <a class="navbar-brand block" href="#">Notebook</a>
     <section class="panel panel-default bg-white m-t-lg">
       <header class="panel-heading text-center"> <strong style="font-size: 20px">登录</strong> </header>
-      <form action="log_login.action" class="panel-body wrapper-lg" method="post">
+      <form action="log_toLogin.action" class="panel-body wrapper-lg" method="post">
         <div class="form-group">
           <label class="control-label" style="font-size: 16px">账户</label>
           <input type="text" name="username" value="<%=username %>" placeholder="User" class="form-control input-lg">
@@ -40,7 +40,8 @@
           <input type="password" name="password" value="<%=password %>" id="inputPassword" placeholder="Password" class="form-control input-lg">
         </div>
         <div class="form-group">
-        <img src="jcaptcha.jpg" /> <input type="text" name="jcaptcha" value="" />
+        <label class="control-label" style="font-size: 16px">验证码</label>
+        <input class="form-control input-lg" type="text" name="jcaptcha" value="" placeholder="Verification"/><img src="jcaptcha.jpg"/>
         </div>
         
         <div class="checkbox">

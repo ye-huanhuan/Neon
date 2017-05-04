@@ -23,7 +23,7 @@ import com.neon.domain.MailInfo;
  * file MailUtil 
  * 使用JAVA mail进行邮件发送的工具类 
  * 
- * @author ds 
+ *  
  * @version 1.0 2015 
  *          date 15-3-9 
  */  

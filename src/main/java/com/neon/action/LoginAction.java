@@ -19,7 +19,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Scope("prototype")
 public class LoginAction extends ActionBase<User>{
 	
-	public String login(){
+	public String toLogin(){
 		Cookie[] cookies ;
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -42,15 +42,18 @@ public class LoginAction extends ActionBase<User>{
 			}
 		}
 		
-		
 	//jcaptcha
 		String userCaptchaResponse = request.getParameter("jcaptcha");
 		boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
 		
-		return "login";
+		if(captchaPassed){
+			return "success";
+		}else{
+			return "login";
+		}
 	}
 	
-	public String toLogin(){
+	public String login(){
 		return "login";
 		
 	}
