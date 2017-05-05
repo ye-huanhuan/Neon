@@ -15,7 +15,7 @@ import org.springframework.stereotype.Controller;
 import com.neon.base.ActionBase;
 import com.neon.domain.MailInfo;
 import com.neon.domain.User;
-import com.neon.service.impl.MailUtil;
+import com.neon.util.MailUtil;
 import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
 import com.opensymphony.xwork2.ActionContext;
 
