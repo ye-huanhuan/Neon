@@ -1,5 +1,7 @@
-﻿<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="bg-dark">
 <head>
@@ -9,33 +11,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
 <link rel="stylesheet" href="css/font.css" type="text/css" cache="false" />
+
 </head>
+
 <body>
-<section id="content" class="m-t-lg wrapper-md animated fadeInDown">
+<section id="content" class="m-t-lg wrapper-md animated fadeInUp">
   <div class="container aside-xxl"> <a class="navbar-brand block" href="#">Notebook</a>
-    <section class="panel panel-default m-t-lg bg-white">
-      <header class="panel-heading text-center"> <strong>注册</strong> </header>
-      <form action="log_toSignUp.action" class="panel-body wrapper-lg" method="post">
+    <section class="panel panel-default bg-white m-t-lg">
+      <header class="panel-heading text-center"> <strong style="font-size: 20px">找回密码</strong> </header>
+      <form action="log_toPasswordBack.action" class="panel-body wrapper-lg" method="post">
+      	<s:fielderror fieldName="sendMessage" cssStyle="color:red;font-size:16px"></s:fielderror>
         <div class="form-group">
-          <label class="control-label">名字：</label>
-          <input type="text" placeholder="Name" name="username" class="form-control input-lg">
+          <label class="control-label" style="font-size: 16px">邮箱</label><br>
+          <input type="text" name="email" placeholder="Email"  class="form-control input-lg" style="width: 70%;display: inline-block;">&nbsp;<font size="4">@163.com</font>
         </div>
-        <div class="form-group">
-          <label class="control-label">邮箱：</label>
-          <input type="email" placeholder="test@example.com" name="email" class="form-control input-lg">
-        </div>
-        <div class="form-group">
-          <label class="control-label">密码：</label>
-          <input type="password" id="inputPassword" placeholder="Password" name="password" class="form-control input-lg">
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox">
-            接受 <a href="#">这些条款</a> </label>
-        </div>
-       <!-- <button type="submit" class="btn btn-primary">注册</button> -->
-        <div class="line line-dashed"></div>
-        <button type="submit" class="btn btn-default btn-block">注册</button>
+        
+        <button type="submit" class="btn btn-primary">重置密码</button>
       </form>
     </section>
   </div>
