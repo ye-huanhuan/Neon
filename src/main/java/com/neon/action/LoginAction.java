@@ -1,7 +1,5 @@
 package com.neon.action;
 
-import java.util.Map;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,9 +44,12 @@ public class LoginAction extends ActionBase<User>{
 		String userCaptchaResponse = request.getParameter("jcaptcha");
 		boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
 		
-		if(captchaPassed){
+		if(captchaPassed && userService.login(model.getUsername(),model.getPassword())){
+			User user = userService.findUserByUsername(model.getUsername());
+			ActionContext.getContext().getSession().put("user", user);
 			return "success";
 		}else{
+			addFieldError("loginerror", "用户名或密码或验证码错误");
 			return "login";
 		}
 	}

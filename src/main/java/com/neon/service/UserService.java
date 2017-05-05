@@ -7,5 +7,9 @@ import com.neon.domain.User;
 public interface UserService extends DaoSupport<User>{
 
 	boolean isNull(String username, String password);
+
+	boolean login(String username, String password);
+
+	User findUserByUsername(String username);
 	
 }

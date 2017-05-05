@@ -26,7 +26,7 @@
   <header class="bg-dark dk header navbar navbar-fixed-top-xs">
     <div class="navbar-header aside-md"> <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a> <a href="#" class="navbar-brand" data-toggle="fullscreen"><img src="images/logo.png" class="m-r-sm">Notebook</a> <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user"> <i class="fa fa-cog"></i> </a> </div>
     <ul class="nav navbar-nav navbar-right hidden-xs nav-user">
-      <li class="dropdown"> <a href="" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb-sm avatar pull-left"> <img src="images/avatar.jpg"> </span> 叶欢欢 <b class="caret"></b> </a>
+      <li class="dropdown"> <a href="" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb-sm avatar pull-left"> <img src="images/avatar.jpg"> </span> ${user.username } <b class="caret"></b> </a>
         <ul class="dropdown-menu animated fadeInRight">
           <span class="arrow top"></span>
           <li> <a href="">设置</a> </li>
@@ -140,7 +140,6 @@
 <script src="js/app.v2.js"></script><script src="js/charts/easypiechart/jquery.easy-pie-chart.js" cache="false"></script> <script src="js/charts/sparkline/jquery.sparkline.min.js" cache="false"></script> <script src="js/charts/flot/jquery.flot.min.js" cache="false"></script> <script src="js/charts/flot/jquery.flot.tooltip.min.js" cache="false"></script> <script src="js/charts/flot/jquery.flot.resize.js" cache="false"></script> <script src="js/charts/flot/jquery.flot.grow.js" cache="false"></script> <script src="js/charts/flot/demo.js" cache="false"></script> <script src="js/calendar/bootstrap_calendar.js" cache="false"></script> <script src="js/calendar/demo.js" cache="false"></script> <script src="js/sortable/jquery.sortable.js" cache="false"></script>
 
 <script>
-var a =${user}
 Highcharts.setOptions({
     lang:{
        contextButtonTitle:"图表导出菜单",
@@ -207,7 +206,7 @@ Highcharts.setOptions({
         },
         series: [{
             name: '进项金额',
-            data: [a, 15, 16, 15, 11, 13, 17, 13, 13, 16, 14, 12]
+            data: [16, 15, 16, 15, 11, 13, 17, 13, 13, 16, 14, 12]
         }, {
             name: '销项金额',
             data: [15, 16, 18, 11, 13, 17, 19, 13, 16, 18, 15, 17]

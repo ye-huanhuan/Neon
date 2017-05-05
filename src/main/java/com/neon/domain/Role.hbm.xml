@@ -8,6 +8,15 @@
 				<generator class="native"></generator>
 			</id>
 			<property name="roleName"></property>
+			<set name="users" inverse="true">        
+        		<key column="roleId"/>  
+        		<one-to-many class="com.neon.domain.User"/>  
+    		</set> 
+    		
+    		<set name="limites" table="RL">
+                   <key column="rId"/>
+                   <many-to-many class="com.neon.domain.Limite" column="lId"/>
+           </set>
 	</class>
 
 </hibernate-mapping>

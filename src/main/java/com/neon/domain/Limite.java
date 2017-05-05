@@ -1,9 +1,12 @@
 package com.neon.domain;
 
+import java.util.Set;
+
 public class Limite {
 	private long id;
 	private String limiteName;
 	private String actionName;
+	private Set<Role> roles;
 	public long getId() {
 		return id;
 	}
@@ -22,6 +25,12 @@ public class Limite {
 	}
 	public void setActionName(String actionName) {
 		this.actionName = actionName;
+	}
+	public Set<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 	
 	

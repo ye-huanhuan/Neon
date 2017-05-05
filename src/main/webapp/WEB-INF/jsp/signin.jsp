@@ -1,6 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    
+    <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="bg-dark">
 <head>
@@ -32,6 +32,7 @@
       <header class="panel-heading text-center"> <strong style="font-size: 20px">登录</strong> </header>
       <form action="log_toLogin.action" class="panel-body wrapper-lg" method="post">
         <div class="form-group">
+          <s:fielderror fieldName="loginerror" cssStyle="color:red;font-size:16px"></s:fielderror>
           <label class="control-label" style="font-size: 16px">账户</label>
           <input type="text" name="username" value="<%=username %>" placeholder="User" class="form-control input-lg">
         </div>
