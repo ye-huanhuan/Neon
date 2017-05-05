@@ -24,8 +24,10 @@
 		<result>/WEB-INF/jsp/index.jsp</result>
 		<result name="login">/WEB-INF/jsp/signin.jsp</result>
 		<result name="signUp">/WEB-INF/jsp/signup.jsp</result>
+		<result name="passwordBack">/WEB-INF/jsp/passwordBack.jsp</result>
+		<result name="sendSuccess">/WEB-INF/jsp/passwordBack.jsp</result>
 	</action>
-	
+
 	
 	</package>
 

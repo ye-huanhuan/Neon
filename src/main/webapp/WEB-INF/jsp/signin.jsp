@@ -42,15 +42,15 @@
         </div>
         <div class="form-group">
         <label class="control-label" style="font-size: 16px">验证码</label>
-        <input class="form-control input-lg" type="text" name="jcaptcha" value="" placeholder="Verification"/><img src="jcaptcha.jpg"/>
+        <input class="form-control input-lg" type="text" name="jcaptcha" value="" placeholder="Verification"/><img id="imgCode" alt="验证图片" src="jcaptcha.jpg" onclick="this.src='jcaptcha.jpg?now=' + new Date().getTime()"/>
         </div>
         
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="remember" value="isRemember">
+            <input type="checkbox" checked="checked" name="remember" value="isRemember">
             记住密码 </label>
         </div>
-        <a href="jsp/signup.jsp" class="pull-right m-t-xs"><small>忘记密码?</small></a>
+        <a href="log_passwordBack.action" class="pull-right m-t-xs"><small>忘记密码?</small></a>
         <button type="submit" class="btn btn-primary">登录</button>
       </form>
     </section>

@@ -41,9 +41,27 @@ public class MailUtil {
     /** 
      * 邮件发送发生异常后重复发送的次数 
      */  
-    private static Integer exceptionCount = 5;  
+    private static Integer exceptionCount = 5;
+    
+    
   
-    /** 
+    public static Log getLogger() {
+		return logger;
+	}
+
+	public static void setLogger(Log logger) {
+		MailUtil.logger = logger;
+	}
+
+	public static List<MailInfo> getMailFromList() {
+		return mailFromList;
+	}
+
+	public static void setMailFromList(List<MailInfo> mailFromList) {
+		MailUtil.mailFromList = mailFromList;
+	}
+
+	/** 
      * 初始化发送方信息 
      * 
      * @param list 发送方列表 
