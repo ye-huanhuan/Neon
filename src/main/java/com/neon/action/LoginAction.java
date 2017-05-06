@@ -50,6 +50,7 @@ public class LoginAction extends ActionBase<User>{
 	//jcaptcha
 		String userCaptchaResponse = request.getParameter("jcaptcha");
 		boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
+		System.out.println(captchaPassed);
 		if(captchaPassed && userService.login(model.getUsername(),model.getPassword())){
 			User user = userService.findUserByUsername(model.getUsername());
 			ActionContext.getContext().getSession().put("user", user);
@@ -86,7 +87,7 @@ public class LoginAction extends ActionBase<User>{
 	    String hostName = "smtp.163.com";  
 	    info = new MailInfo(hostName, "13244237736@163.com", "ye7536830875");  
 	    MailUtil.getMailFromList().add(info);  
-	    boolean r = MailUtil.send("重置密码", MailInfo.MailType.HTML, "<h3>新密码为:"+sb.toString()+"</h3>"+"<a href='http://localhost:8080/Neon/'>返回登录</a>", email, "", "");  
+	    boolean r = MailUtil.send("重置密码", MailInfo.MailType.HTML, "<h3>新密码为:"+sb.toString()+"</h3>"+"<a href='http://192.168.0.159:8081/Neon/'>返回登录</a>", email, "", "");  
 	    MailUtil.getLogger().info(r);
 	    if(r){
 	    	addFieldError("sendMessage", "发送成功请及时查收！");
