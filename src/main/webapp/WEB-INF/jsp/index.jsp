@@ -95,7 +95,7 @@
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">季度分析表</header>
                   <div class="panel-body">
-                    <div id="container_top" style="min-width:400px;height:400px"></div>
+                    <div id="container_top" style="width:100%;height:400px"></div>
                   </div>
                   <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">

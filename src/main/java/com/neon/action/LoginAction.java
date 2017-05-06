@@ -24,7 +24,7 @@ import com.opensymphony.xwork2.ActionContext;
 public class LoginAction extends ActionBase<User>{
 	
 	public String toLogin(){
-		System.out.println(1);
+		//记住密码
 		Cookie[] cookies ;
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -39,6 +39,7 @@ public class LoginAction extends ActionBase<User>{
 			cookies = request.getCookies();
 			for(Cookie c : cookies){
 				if("username".equals(c.getName())){
+					System.out.println("移除用户名");
 					c.setMaxAge(0);
 				}else if("password".equals(c.getName())){
 					c.setMaxAge(0);
