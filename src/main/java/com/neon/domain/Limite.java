@@ -7,6 +7,16 @@ public class Limite {
 	private String limiteName;
 	private String actionName;
 	private Set<Role> roles;
+	
+	public Limite() {}
+	
+	public Limite(String limiteName, String actionName , Set<Role> roles) {
+		super();
+		this.limiteName = limiteName;
+		this.actionName = actionName;
+		this.roles = roles;
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -32,6 +42,6 @@ public class Limite {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
+
 	
 }

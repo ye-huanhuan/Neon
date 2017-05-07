@@ -8,6 +8,15 @@ public class Role {
 	private Set<Limite> limites;
 	private Set<User> users;
 	
+	public Role() {}
+	
+	public Role(String roleName, Set<Limite> limites, Set<User> users) {
+		super();
+		this.roleName = roleName;
+		this.limites = limites;
+		this.users = users;
+	}
+	
 	public Set<User> getUsers() {
 		return users;
 	}

@@ -6,8 +6,6 @@ import java.util.Random;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -16,6 +14,7 @@ import com.neon.base.ActionBase;
 import com.neon.domain.MailInfo;
 import com.neon.domain.User;
 import com.neon.util.MailUtil;
+import com.neon.util.Md5;
 import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
 import com.opensymphony.xwork2.ActionContext;
 
@@ -78,8 +77,12 @@ public class LoginAction extends ActionBase<User>{
 	    StringBuffer sb = new StringBuffer();     
 	    for (int i = 0; i < 6; i++) {     
 	        int number = random.nextInt(base.length());     
-	        sb.append(base.charAt(number));     
+	        sb.append(base.charAt(number));  
 	    }
+	    //重置密码
+	    User user = userService.findUserByUsername(model.getEmail());
+	    user.setPassword(Md5.getMD5(sb.toString()));
+	    userService.update(user);
 		//发送邮件	
 	    Map<String,Object> session  = ActionContext.getContext().getSession();
 		HttpServletRequest request = ServletActionContext.getRequest();
