@@ -21,10 +21,16 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 	
 	@Test
 	public void testH(){
-		User user = new User();
+		/*User user = new User();
 		user.setUsername("yh");
 		user.setPassword(Md5.getMD5("yh"));
 		user.setEmail("hiw2012@163.com");
-		userService.save(user);
+		userService.save(user);*/
+		
+		User user2 = new User();
+		user2.setUsername("yhh");
+		user2.setPassword(Md5.getMD5("yhh"));
+		user2.setEmail("13244237736@163.com");
+		userService.save(user2);
 	}
 }

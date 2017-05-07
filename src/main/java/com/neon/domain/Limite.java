@@ -6,6 +6,8 @@ public class Limite {
 	private long id;
 	private String limiteName;
 	private String actionName;
+	private Limite parent;
+	private Set<Limite> children;
 	private Set<Role> roles;
 	
 	public Limite() {}
@@ -42,6 +44,23 @@ public class Limite {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
+	public Limite getParent() {
+		return parent;
+	}
+
+	public Set<Limite> getChildren() {
+		return children;
+	}
+
+	public void setParent(Limite parent) {
+		this.parent = parent;
+	}
+
+	public void setChildren(Set<Limite> children) {
+		this.children = children;
+	}
+
 
 	
 }

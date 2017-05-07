@@ -1,7 +1,10 @@
 package com.neon.action;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +16,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.neon.base.ActionBase;
+import com.neon.domain.Limite;
 import com.neon.domain.MailInfo;
 import com.neon.domain.User;
 import com.neon.service.impl.MailUtil;
@@ -22,8 +26,8 @@ import com.opensymphony.xwork2.ActionContext;
 
 @Controller
 @Scope("prototype")
-public class LoginAction extends ActionBase<User>{
-	
+public class LoginAction extends ActionBase<User> {
+
 	public String toLogin(){
 		System.out.println(1);
 		Cookie[] cookies ;
@@ -54,52 +58,61 @@ public class LoginAction extends ActionBase<User>{
 		if(captchaPassed && userService.login(model.getUsername(),model.getPassword())){
 			User user = userService.findUserByUsername(model.getUsername());
 			ActionContext.getContext().getSession().put("user", user);
+			
+			Set<Limite> limites = roleService.getById(user.getRole().getId()).getLimites();
+			List<Limite> tops = limiteService.findTopLimite(limites);
+			for(Limite li : tops){
+				System.out.println(li.getLimiteName());
+			}
+			ActionContext.getContext().getSession().put("tops", tops);
 			return "success";
 		}else{
 			addFieldError("loginerror", "用户名或密码或验证码错误");
 			return "login";
 		}
 	}
-	
-	public String login(){
+
+	public String login() {
 		return "login";
-		
+
 	}
-	
-	public String passwordBack(){
+
+	public String passwordBack() {
 		return "passwordBack";
 	}
-	
-	public String toPasswordBack(){
-		//产生一个长度为6的字符串
-		String base = "abcdefghijklmnopqrstuvwxyz0123456789";     
-	    Random random = new Random();     
-	    StringBuffer sb = new StringBuffer();     
-	    for (int i = 0; i < 6; i++) {     
-	        int number = random.nextInt(base.length());     
-	        sb.append(base.charAt(number));  
-	    }
-	    //重置密码
-	    User user = userService.findUserByUsername(model.getEmail());
-	    user.setPassword(Md5.getMD5(sb.toString()));
-	    userService.update(user);
-		//发送邮件	
-	    Map<String,Object> session  = ActionContext.getContext().getSession();
+
+	public String toPasswordBack() {
+		// 产生一个长度为6的字符串
+		String base = "abcdefghijklmnopqrstuvwxyz0123456789";
+		Random random = new Random();
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < 6; i++) {
+			int number = random.nextInt(base.length());
+			sb.append(base.charAt(number));
+		}
+		// 重置密码
+		User user = userService.findUserByUsername(model.getEmail());
+		user.setPassword(Md5.getMD5(sb.toString()));
+		userService.update(user);
+		// 发送邮件
+		Map<String, Object> session = ActionContext.getContext().getSession();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String email = request.getParameter("email") + "@163.com";
-		MailInfo info;  
-	    String hostName = "smtp.163.com";  
-	    info = new MailInfo(hostName, "13244237736@163.com", "ye7536830875");  
-	    MailUtil.getMailFromList().add(info);  
-	    boolean r = MailUtil.send("重置密码", MailInfo.MailType.HTML, "<h3>新密码为:"+sb.toString()+"</h3>"+"<a href='http://localhost:8080/Neon/'>返回登录</a>", email, "", "");  
-	    MailUtil.getLogger().info(r);
-	    if(r){
-	    	addFieldError("sendMessage", "发送成功请及时查收！");
-	    	return "sendSuccess";
-	    }else{
-	    	addFieldError("sendMessage", "发送失败请输入正确的邮箱！");
-	    	return "sendFail";
-	    }
-	    
+		MailInfo info;
+		String hostName = "smtp.163.com";
+		info = new MailInfo(hostName, "13244237736@163.com", "ye7536830875");
+		MailUtil.getMailFromList().add(info);
+		boolean r = MailUtil.send("重置密码", MailInfo.MailType.HTML,
+				"<h3>新密码为:" + sb.toString() + "</h3>" + "<a href='http://localhost:8080/Neon/'>返回登录</a>", email, "",
+				"");
+		MailUtil.getLogger().info(r);
+		if (r) {
+			addFieldError("sendMessage", "发送成功请及时查收！");
+			return "sendSuccess";
+		} else {
+			addFieldError("sendMessage", "发送失败请输入正确的邮箱！");
+			return "sendFail";
+		}
+
 	}
 }

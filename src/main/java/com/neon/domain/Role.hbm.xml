@@ -8,7 +8,7 @@
 				<generator class="native"></generator>
 			</id>
 			<property name="roleName"></property>
-			<set name="users" inverse="true">        
+			<set name="users">        
         		<key column="roleId"/>  
         		<one-to-many class="com.neon.domain.User"/>  
     		</set> 

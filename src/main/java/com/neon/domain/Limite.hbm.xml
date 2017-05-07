@@ -13,7 +13,15 @@
 			<set name="roles" table="RL">
                    <key column="lId"/>
                    <many-to-many class="com.neon.domain.Role" column="rId"/>
-           </set>
+          	</set>
+           
+           	<many-to-one name="parent" class="com.neon.domain.Limite" column="pId"/>
+           	
+           	<set name="children">        
+        		<key column="pId"/>  
+        		<one-to-many class="com.neon.domain.Limite"/>  
+    		</set> 
+           
 	</class>
 
 </hibernate-mapping>
