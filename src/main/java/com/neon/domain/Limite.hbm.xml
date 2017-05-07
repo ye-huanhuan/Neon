@@ -9,11 +9,7 @@
 			</id>
 			<property name="limiteName"></property>
 			<property name="actionName"></property>
-			
-			<set name="roles" table="RL">
-                   <key column="lId"/>
-                   <many-to-many class="com.neon.domain.Role" column="rId"/>
-           </set>
+
 	</class>
 
 </hibernate-mapping>
