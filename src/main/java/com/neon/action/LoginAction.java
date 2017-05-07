@@ -9,8 +9,6 @@ import java.util.Set;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -19,7 +17,7 @@ import com.neon.base.ActionBase;
 import com.neon.domain.Limite;
 import com.neon.domain.MailInfo;
 import com.neon.domain.User;
-import com.neon.service.impl.MailUtil;
+import com.neon.util.MailUtil;
 import com.neon.util.Md5;
 import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
 import com.opensymphony.xwork2.ActionContext;
@@ -29,7 +27,7 @@ import com.opensymphony.xwork2.ActionContext;
 public class LoginAction extends ActionBase<User> {
 
 	public String toLogin(){
-		System.out.println(1);
+		//记住密码
 		Cookie[] cookies ;
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -44,6 +42,7 @@ public class LoginAction extends ActionBase<User> {
 			cookies = request.getCookies();
 			for(Cookie c : cookies){
 				if("username".equals(c.getName())){
+					System.out.println("移除用户名");
 					c.setMaxAge(0);
 				}else if("password".equals(c.getName())){
 					c.setMaxAge(0);
@@ -55,6 +54,7 @@ public class LoginAction extends ActionBase<User> {
 	//jcaptcha
 		String userCaptchaResponse = request.getParameter("jcaptcha");
 		boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
+		System.out.println(captchaPassed);
 		if(captchaPassed && userService.login(model.getUsername(),model.getPassword())){
 			User user = userService.findUserByUsername(model.getUsername());
 			ActionContext.getContext().getSession().put("user", user);
@@ -113,6 +113,6 @@ public class LoginAction extends ActionBase<User> {
 			addFieldError("sendMessage", "发送失败请输入正确的邮箱！");
 			return "sendFail";
 		}
-
+	    
 	}
 }

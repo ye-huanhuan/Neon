@@ -79,6 +79,43 @@
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
               <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
             </ul>
+            <div class="row">
+              <div class="col-md-8" style="width: 100%">
+                <section class="panel panel-default">
+                  <header class="panel-heading font-bold" style="font-size: 16px">季度分析表</header>
+                  <div class="panel-body">
+                    <div id="container_top" style="width:100%;height:500px"></div>
+                  </div>
+                  <footer class="panel-footer bg-white no-padder">
+                    <div class="row text-center no-gutter">
+                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
+                        这是2017年进销项分析报告
+                      </div>
+                    </div>
+                  </footer>
+                </section>
+              </div>
+              <div class="col-md-8">
+                <section class="panel panel-default">
+                  <header class="panel-heading font-bold">Statistics</header>
+                  <div class="panel-body">
+                    <div id="container_bootom" style="height:210px"></div>
+                  </div>
+                  <footer class="panel-footer bg-white no-padder">
+                    <div class="row text-center no-gutter">
+                      <div class="col-xs-3 b-r b-light"> <span class="h4 font-bold m-t block">5,860</span> <small class="text-muted m-b block">Orders</small> </div>
+                      <div class="col-xs-3 b-r b-light"> <span class="h4 font-bold m-t block">10,450</span> <small class="text-muted m-b block">Sellings</small> </div>
+                      <div class="col-xs-3 b-r b-light"> <span class="h4 font-bold m-t block">21,230</span> <small class="text-muted m-b block">Items</small> </div>
+                      <div class="col-xs-3"> <span class="h4 font-bold m-t block">7,230</span> <small class="text-muted m-b block">Customers</small> </div>
+                    </div>
+                  </footer>
+                </section>
+              </div>
+
+            </div>
+
+
+            </div>
           </section>
         </section>
         <a href="" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a> </section>
