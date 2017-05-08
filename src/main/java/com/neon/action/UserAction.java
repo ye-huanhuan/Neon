@@ -25,13 +25,19 @@ public class UserAction extends ActionBase<User>{
 	
 	public String toSetUp(){
 		User user = (User) ActionContext.getContext().getSession().get("user");
-		if(model.getPassword() != ""){
+		if(model.getPassword() != null && !model.getPassword().equals("")){
 			user.setPassword(Md5.getMD5(model.getPassword()));
 		}
-		user.setEmail(model.getEmail());
-		user.setUsername(model.getUsername());
+		if(model.getEmail() != null && !model.getEmail().equals("")){
+			user.setEmail(model.getEmail());
+		}
+		if(model.getUsername() != null && !model.getUsername().equals("")){
+			user.setUsername(model.getUsername());
+		}
+		
 		userService.update(user);
-		return "setUp";
+		
+		return "toSetUp";
 	}
 	
 	

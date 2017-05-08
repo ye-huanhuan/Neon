@@ -97,16 +97,20 @@
                 document.getElementById("submit").disabled = true;
             }
         }
+        
+        //保存成功
+        function updateSuccess(){
+        	alert("修改成功！");
+        }
     </script>
 </head>
 <body>
 
 <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
     <div class="container aside-xxl"> <a class="navbar-brand block" href="#" style="font-size: 24px">账号中心</a>
-
+	
         <section class="panel panel-default bg-white m-t-lg" style="width: 670px;">
-
-            <form id="form" action="user_toSetUp.action" class="panel-body wrapper-lg" style="width: auto">
+            <form id="form" action="user_toSetUp.action" method="post" class="panel-body wrapper-lg" style="width: auto">
                 <div class="form-group">
                     <label class="control-label" style="display: inline-block;font-size: 16px">账户</label>
                     <input type="text" placeholder="User" class="form-control input-lg" readonly="readonly" value="<s:property value="username"/>" style="display: inline-block;width: 70%;margin-left: 30px;">
@@ -130,7 +134,7 @@
                 </div>
                 <div id="confirmPassword" class="form-group">
                 </div>
-                <button type="submit" id="submit" class="btn btn-primary">保存</button>
+                <button type="submit" id="submit" onclick="updateSuccess()" class="btn btn-primary">保存</button>
                 <button type="reset" class="btn btn-primary" style="margin-left: 20px" onclick="deleteIserted()">取消</button>
             </form>
 
