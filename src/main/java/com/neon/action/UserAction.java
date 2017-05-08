@@ -25,7 +25,9 @@ public class UserAction extends ActionBase<User>{
 	
 	public String toSetUp(){
 		User user = (User) ActionContext.getContext().getSession().get("user");
-		user.setPassword(Md5.getMD5(model.getPassword()));
+		if(model.getPassword() != ""){
+			user.setPassword(Md5.getMD5(model.getPassword()));
+		}
 		user.setEmail(model.getEmail());
 		user.setUsername(model.getUsername());
 		userService.update(user);
