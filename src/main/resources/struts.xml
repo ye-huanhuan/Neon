@@ -31,7 +31,7 @@
 	 
 	<!-- ==============用户部分======================================= -->
 	<action name="user_*" class="userAction" method="{1}">
-		 <result name="setup">WEB-INF/jsp/setup.jsp</result> 
+		 <result name="setUp">WEB-INF/jsp/person.jsp</result> 
 	</action>
 	
 	<!-- ==============主页部分======================================= -->

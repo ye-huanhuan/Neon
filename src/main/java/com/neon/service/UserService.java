@@ -9,6 +9,10 @@ public interface UserService extends DaoSupport<User>{
 	boolean isNull(String username, String password);
 
 	boolean login(String username, String password);
+	
+	
+	
+	User findUserByEmail(String email);
 
 	User findUserByUsername(String username);
 	

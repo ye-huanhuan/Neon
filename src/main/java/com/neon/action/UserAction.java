@@ -30,4 +30,6 @@ public class UserAction extends ActionBase<User>{
 		userService.update(user);
 		return "setUp";
 	}
+	
+	
 }

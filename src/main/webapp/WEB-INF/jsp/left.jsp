@@ -17,22 +17,8 @@
 </head>
 <body>
 <ul class="nav">
-                  <%-- 
-                  <li > <a href="layout-c.html" > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>分析</span> </a>
-                    <ul class="nav lt">
-                      <li > <a href="analyze_analyze.action" > <i class="fa fa-angle-right"></i> <span>分析</span> </a> </li>
-                      <li > <a href="#" > <i class="fa fa-angle-right"></i> <span>Right nav</span> </a> </li>
-                      <li > <a href="#" > <i class="fa fa-angle-right"></i> <span>H-Layout</span> </a> </li>
-                    </ul>
-                  </li>
-                  <li > <a href="#" > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>发票</span> </a>
-                    <ul class="nav lt">
-                      <li > <a href="invoice_invoice.action" > <i class="fa fa-angle-right"></i> <span>录入</span> </a> </li>
-                      <li > <a href="#" > <i class="fa fa-angle-right"></i> <span>Right nav</span> </a> </li>
-                      <li > <a href="#" > <i class="fa fa-angle-right"></i> <span>H-Layout</span> </a> </li>
-                    </ul>
-                  </li> --%>
-                  <li><!-- class="active" --> <a href="home_index.action" class="active"> <i class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>首页</span> </a> </li>
+                 
+                  <li> <a href="home_index.action" class="active"> <i class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>首页</span> </a> </li>
                   <s:iterator value="#session.tops">
                   	<li > <a href=${actionName } > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>${limiteName }</span> </a>
 	                    <ul class="nav lt">

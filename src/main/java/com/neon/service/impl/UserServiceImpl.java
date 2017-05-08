@@ -38,7 +38,16 @@ public class UserServiceImpl extends DaoSupportImpl<User> implements UserService
 	}
 
 	@Override
+	public User findUserByEmail(String email) {
+		return (User) getSession().createQuery(//
+				"FROM User user WHERE user.email=?")
+				.setParameter(0, email)
+				.uniqueResult();
+	}
+
+	@Override
 	public User findUserByUsername(String username) {
+		// TODO Auto-generated method stub
 		return (User) getSession().createQuery(//
 				"FROM User user WHERE user.username=?")
 				.setParameter(0, username)

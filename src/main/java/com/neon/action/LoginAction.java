@@ -91,7 +91,8 @@ public class LoginAction extends ActionBase<User> {
 			sb.append(base.charAt(number));
 		}
 		// 重置密码
-		User user = userService.findUserByUsername(model.getEmail());
+		User user = userService.findUserByEmail(model.getEmail()+"@163.com");
+		System.out.println(user);
 		user.setPassword(Md5.getMD5(sb.toString()));
 		userService.update(user);
 		// 发送邮件

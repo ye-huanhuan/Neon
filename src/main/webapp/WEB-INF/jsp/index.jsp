@@ -15,11 +15,11 @@
   <header class="bg-dark dk header navbar navbar-fixed-top-xs">
     <div class="navbar-header aside-md"> <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a> <a href="" class="navbar-brand" data-toggle="fullscreen"><img src="images/logo.png" class="m-r-sm">Notebook</a> <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user"> <i class="fa fa-cog"></i> </a> </div>
     <ul class="nav navbar-nav navbar-right hidden-xs nav-user">
-      <li class="dropdown"> <a href="" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb-sm avatar pull-left"> <img src="images/avatar.jpg"> </span> John.Smith <b class="caret"></b> </a>
+      <li class="dropdown"> <a href="" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb-sm avatar pull-left"> <img src="images/avatar.jpg"> </span> ${user.username } <b class="caret"></b> </a>
         <ul class="dropdown-menu animated fadeInRight">
           <span class="arrow top"></span>
-          <li> <a href="">Settings</a> </li>
-          <li> <a href="signin.html" data-toggle="ajaxModal" >Logout</a> </li>
+          <li> <a href="user_setUp.action">设置</a> </li>
+          <li> <a href="signin.html" data-toggle="ajaxModal" >退出</a> </li>
         </ul>
       </li>
     </ul>
@@ -32,45 +32,11 @@
             <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333">
               <nav class="nav-primary hidden-xs">
              <%@ include file="left.jsp" %>
-             <!--    <ul class="nav">
-                  <li > <a href="index.html" class="active"> <i class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>用户</span> </a> </li>
-                  <li > <a href="layout-c.html" > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>分析</span> </a>
-                    <ul class="nav lt">
-                      <li > <a href="layout-c.html" > <i class="fa fa-angle-right"></i> <span>Color option</span> </a> </li>
-                      <li > <a href="layout-c.html" > <i class="fa fa-angle-right"></i> <span>Right nav</span> </a> </li>
-                      <li > <a href="layout-c.html" > <i class="fa fa-angle-right"></i> <span>H-Layout</span> </a> </li>
-                    </ul>
-                  </li>
-                  <li class="active"> <a href="notebook.html" > <i class="fa fa-pencil icon"> <b class="bg-info"></b> </i> <span>用户</span> </a> </li>
-                </ul> -->
+             
               </nav>
             </div>
           </section>
-          <footer class="footer lt hidden-xs b-t b-dark">
-            <div id="chat" class="dropup">
-              <section class="dropdown-menu on aside-md m-l-n">
-                <section class="panel bg-white">
-                  <header class="panel-heading b-b b-light">Active chats</header>
-                  <div class="panel-body animated fadeInRight">
-                    <p class="text-sm">No active chats.</p>
-                    <p><a href="" class="btn btn-sm btn-default">Start a chat</a></p>
-                  </div>
-                </section>
-              </section>
-            </div>
-            <div id="invite" class="dropup">
-              <section class="dropdown-menu on aside-md m-l-n">
-                <section class="panel bg-white">
-                  <header class="panel-heading b-b b-light"> John <i class="fa fa-circle text-success"></i> </header>
-                  <div class="panel-body animated fadeInRight">
-                    <p class="text-sm">No contacts in your lists.</p>
-                    <p><a href="" class="btn btn-sm btn-facebook"><i class="fa fa-fw fa-facebook"></i> Invite from Facebook</a></p>
-                  </div>
-                </section>
-              </section>
-            </div>
-            <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon"> <i class="fa fa-angle-left text"></i> <i class="fa fa-angle-right text-active"></i> </a>
-          </footer>
+          
         </section>
       </aside>
       <section id="content">

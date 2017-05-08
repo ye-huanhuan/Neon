@@ -43,17 +43,7 @@
             <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333">
               <nav class="nav-primary hidden-xs">
               <%@ include file="left.jsp" %>
-                <%-- <ul class="nav">
-                  <li class="active"> <a href="index.html" class="active"> <i class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>首页</span> </a> </li>
-                  <li > <a href="layout-c.html" > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>分析</span> </a>
-                    <ul class="nav lt">
-                      <li > <a href="home_index.action" > <i class="fa fa-angle-right"></i> <span>分析</span> </a> </li>
-                      <li > <a href="layout-c.html" > <i class="fa fa-angle-right"></i> <span>Right nav</span> </a> </li>
-                      <li > <a href="layout-c.html" > <i class="fa fa-angle-right"></i> <span>H-Layout</span> </a> </li>
-                    </ul>
-                  </li>
-                  <li > <a href="notebook.html" > <i class="fa fa-pencil icon"> <b class="bg-info"></b> </i> <span>用户</span> </a> </li>
-                </ul> --%>
+                
               </nav>
             </div>
           </section>
