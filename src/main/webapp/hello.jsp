@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>hello world !</h1>
+<h1>hello world </h1>
 
 
 <a href="/WEB-INF/jsp/layout.jsp">访问jsp</a>
