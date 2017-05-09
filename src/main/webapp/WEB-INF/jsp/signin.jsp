@@ -33,6 +33,7 @@
       <form action="log_toLogin.action" class="panel-body wrapper-lg" method="post">
         <div class="form-group">
           <s:fielderror fieldName="loginerror" cssStyle="color:red;font-size:16px"></s:fielderror>
+          <s:fielderror fieldName="lognameEorror" cssStyle="color:red;font-size:16px"></s:fielderror>
           <label class="control-label" style="font-size: 16px">账户</label>
           <input type="text" name="username" value="<%=username %>" placeholder="User" class="form-control input-lg">
         </div>
