@@ -54,20 +54,20 @@ public class LoginAction extends ActionBase<User> {
 	//jcaptcha
 		String userCaptchaResponse = request.getParameter("jcaptcha");
 		boolean captchaPassed = SimpleImageCaptchaServlet.validateResponse(request, userCaptchaResponse);
-		System.out.println(captchaPassed);
+		if(model.getUsername() == "" || userService.findUserByUsername(model.getUsername()) == null){
+			addFieldError("lognameEorror", "该用户不存在");
+			return "login";
+		}
 		if(captchaPassed && userService.login(model.getUsername(),model.getPassword())){
 			User user = userService.findUserByUsername(model.getUsername());
 			ActionContext.getContext().getSession().put("user", user);
 			
 			Set<Limite> limites = roleService.getById(user.getRole().getId()).getLimites();
 			List<Limite> tops = limiteService.findTopLimite(limites);
-			for(Limite li : tops){
-				System.out.println(li.getLimiteName());
-			}
 			ActionContext.getContext().getSession().put("tops", tops);
 			return "success";
 		}else{
-			addFieldError("loginerror", "用户名或密码或验证码错误");
+			addFieldError("loginerror", "密码或验证码错误");
 			return "login";
 		}
 	}

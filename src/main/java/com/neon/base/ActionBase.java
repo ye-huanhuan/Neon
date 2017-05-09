@@ -4,6 +4,7 @@ import java.lang.reflect.ParameterizedType;
 
 import javax.annotation.Resource;
 
+import com.neon.service.InputService;
 import com.neon.service.LimiteService;
 import com.neon.service.RoleService;
 import com.neon.service.UserService;
@@ -41,6 +42,9 @@ public abstract class ActionBase<T> extends ActionSupport implements ModelDriven
 	
 	@Resource
 	public LimiteService limiteService;
+	
+	@Resource
+	public InputService inputService;
 	
 	
 }
