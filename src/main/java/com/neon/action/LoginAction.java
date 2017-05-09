@@ -76,6 +76,7 @@ public class LoginAction extends ActionBase<User> {
 		return "login";
 
 	}
+
 	
 	public String logout() throws Exception{
 		ActionContext.getContext().getSession().remove("user");
