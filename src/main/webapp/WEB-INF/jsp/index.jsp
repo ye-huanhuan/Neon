@@ -33,7 +33,7 @@
         <section class="vbox">
           <section class="scrollable padder">
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
-              <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+              <li><a href="home_index.action"><i class="fa fa-home"></i> Home</a></li>
             </ul>
             <div class="row">
               <div class="col-md-8" style="width: 100%">

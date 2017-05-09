@@ -32,7 +32,7 @@
 	<!-- ==============用户部分======================================= -->
 	<action name="user_*" class="userAction" method="{1}">
 		 <result name="setUp">WEB-INF/jsp/person.jsp</result>
-		 <result name="toSetUp" type="redirect">user_setUp.action</result> 
+		 <result name="toSetUp">WEB-INF/jsp/index.jsp</result> 
 	</action>
 	
 	<!-- ==============主页部分======================================= -->
