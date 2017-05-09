@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" 
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	<!-- 配置为开发模式 -->
+	<constant name = "struts.devMode" value = "true"/>
+	<!-- 把扩展名配置为action -->
+	<constant name = "struts.action.extension" value = "action"/> 
+	<!-- 吧主题配置为simple -->
+	<constant name = "struts.ui.theme" value = "simple"/>
+	
+	<package name="default" namespace="/" extends="struts-default">
+		
+
+	<action name="test_*" class="testAction" method="{1}">
+		 <result name="success">WEB-INF/jsp/index.jsp</result> 
+		<result name="hello">/hello.jsp</result>
+	</action>
+	
+	<!-- ==============发票部分======================================= -->
+	<action name="invoice_*" class="invoiceAction" method="{1}">
+		 <result name="invoice">WEB-INF/jsp/notebook.jsp</result> 
+	</action>
+	
+	<!-- ==============分析部分======================================= -->
+	<action name="analyze_*" class="analyzeAction" method="{1}">
+		 <result name="analyze">WEB-INF/jsp/analyze.jsp</result> 
+	</action>
+	 
+	<!-- ==============用户部分======================================= -->
+	<action name="user_*" class="userAction" method="{1}">
+		 <result name="setUp">WEB-INF/jsp/person.jsp</result>
+		 <result name="toSetUp" type="redirect">user_setUp.action</result> 
+	</action>
+	
+	<!-- ==============主页部分======================================= -->
+	<action name="home_*" class="homeAction" method="{1}">
+		 <result name="index">WEB-INF/jsp/index.jsp</result> 
+	</action> 
+	
+	<!-- ==============登录部分======================================= -->
+	<action name="log_*" class="loginAction" method="{1}">
+		<result>/WEB-INF/jsp/index.jsp</result>
+		<result name="login">/WEB-INF/jsp/signin.jsp</result>
+		<result name="signUp">/WEB-INF/jsp/signup.jsp</result>
+		<result name="passwordBack">/WEB-INF/jsp/passwordBack.jsp</result>
+		<result name="sendSuccess">/WEB-INF/jsp/passwordBack.jsp</result>
+	</action>
+
+	
+	</package>
+
+</struts>

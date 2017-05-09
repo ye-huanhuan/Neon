@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+ 
+<hibernate-mapping package="com.neon.domain">
+		<class name="Limite" table="Limite">
+			<id name="id">
+				<generator class="native"></generator>
+			</id>
+			<property name="limiteName"></property>
+			<property name="actionName"></property>
+			
+			<set name="roles" table="RL">
+                   <key column="lId"/>
+                   <many-to-many class="com.neon.domain.Role" column="rId"/>
+          	</set>
+           
+           	<many-to-one name="parent" class="com.neon.domain.Limite" column="pId"/>
+           	
+           	<set name="children">        
+        		<key column="pId"/>  
+        		<one-to-many class="com.neon.domain.Limite"/>  
+    		</set> 
+           
+	</class>
+
+</hibernate-mapping>
