@@ -13,7 +13,7 @@ import com.neon.domain.Input;
 public class AnalyzeAction extends ActionBase<Input>{
 
 	public String analyze(){
-		/*List<Double> totlemoney = inputService.getInputTotleMoneyWithMonth();
+	/*	List<Double> totlemoney = inputService.getInputTotleMoneyWithMonth();
 		for(Double money : totlemoney){
 			System.out.println(money);
 		}*/
