@@ -14,13 +14,30 @@
 <link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
 <script src="js/app.v2.js"></script>
 <style type="text/css">
-	#wrap-range{
+	#wrap-range,#wrap-product,#wrap-month{
 		margin-left: 15px;
+		margin-top: 5px;
+		
 	}
 	#range{
-		margin-left: 180px;
-		margin-bottom: 10px
+		width : 25%;
+		margin-left: 30px;
+		margin-top: 5px;
+		display: inline-block;
 	}
+	#product,#month{
+		display: inline-block;
+		margin-left: 10px;
+	}
+	#year{
+		display: inline-block;
+		margin-left: 30px;
+	}
+	.year,.product,.month{
+		width: 25px;
+		text-align: left;
+	}
+	
 </style>
 
 <!-- highchart所需要的库 -->    
@@ -66,14 +83,22 @@
               <li class="active">分析</li>
             </ul>
             <div class="row">
+            	<!-- 按月进销总和统计 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">季度分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 16px">进销总和分析表</header>
                   <!-- 滑动条 -->
 				  <div id="wrap-range">
 				  <font>进销项差值合理的范围:<font id="demo"></font></font>
 				  <div id="range">
 				  <input type="hidden" class="range-slider"  value="-1,1"/>
+				  </div>
+				  <div id="year">
+				  <font>年份:</font>
+				  <input class="year" type="radio" name="year"><font class="yearFont">2014</font>
+				  <input class="year" type="radio" name="year"><font class="yearFont">2015</font>
+				  <input class="year" type="radio" name="year"><font class="yearFont">2016</font>
+				  <input class="year" type="radio" name="year"><font class="yearFont">2017</font>
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -82,24 +107,66 @@
                   <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">
                       <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        这是2017年进销项分析报告
+                        进销项总和分析报告
                       </div>
                     </div>
                   </footer>
                 </section>
               </div>
-              <div class="col-md-8">
+              <!-- 按月同一产品统计 -->
+              <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold">Statistics</header>
+                  <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
+                  <div id="wrap-product">
+				  <font>产品:</font>
+				  <div id="product">
+				  <input class="product" type="radio" name="product">鸡肉罐头
+				  <input class="product" type="radio" name="product">鱼肉罐头
+				  <input class="product" type="radio" name="product">猪肉罐头
+				  </div>
+				  <div id="year">
+				  <font>年份:</font>
+				  <input class="year" type="radio" name="year"><font class="yearFont">2014</font>
+				  <input class="year" type="radio" name="year"><font class="yearFont">2015</font>
+				  <input class="year" type="radio" name="year"><font class="yearFont">2016</font>
+				  <input class="year" type="radio" name="year"><font class="yearFont">2017</font>
+				  </div>
+				  </div>
                   <div class="panel-body">
-                    <div id="container_bootom" style="height:210px"></div>
+                    <div id="container_product" style="min-width:400px;height:400px"></div>
+                  </div>
+                  <footer class="panel-footer bg-white no-padder">
+                   <div class="row text-center no-gutter">
+                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
+                        	这是产品分析表
+                      </div>
+                    </div>
+                  </footer>
+                   
+                </section>
+              </div>
+              <!-- 同一时间产品销项 -->
+              <div class="col-md-8" style="width: 100%">
+                <section class="panel panel-default">
+                  <header class="panel-heading font-bold" style="font-size: 16px">产品销量分析表</header>
+                  
+				  <div id="wrap_month">
+				  
+				  <div id="month">
+				  <font>月份:</font>
+				  <input class="month" type="radio" name="month">三月
+				  <input class="month" type="radio" name="month">四月
+				  <input class="month" type="radio" name="month">五月
+				  </div>
+				  </div>
+                  <div class="panel-body">
+                    <div id="monthOutProduct" style="min-width:400px;height:400px"></div>
                   </div>
                   <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">
-                      <div class="col-xs-3 b-r b-light"> <span class="h4 font-bold m-t block">5,860</span> <small class="text-muted m-b block">Orders</small> </div>
-                      <div class="col-xs-3 b-r b-light"> <span class="h4 font-bold m-t block">10,450</span> <small class="text-muted m-b block">Sellings</small> </div>
-                      <div class="col-xs-3 b-r b-light"> <span class="h4 font-bold m-t block">21,230</span> <small class="text-muted m-b block">Items</small> </div>
-                      <div class="col-xs-3"> <span class="h4 font-bold m-t block">7,230</span> <small class="text-muted m-b block">Customers</small> </div>
+                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
+                        	这是本月的产品销量图
+                      </div>
                     </div>
                   </footer>
                 </section>
@@ -117,9 +184,12 @@
 </section>
  
       
-<script src="js/sumInOut.js"></script>
+<script src="js/sumInOutMonth.js"></script>
 <script src="js/highcharts.js"></script>
 <script src="js/initRange.js"></script>
+
+<script src="js/productOutMonth.js"></script>
+<script src="js/monthOutProduct.js"></script>
 
 
 
