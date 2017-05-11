@@ -8,14 +8,14 @@
 	%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
 </head>
 <body>
-<<<<<<< HEAD
-<h1>hello world </h1>
-=======
+<script type="text/javascript">
+	var a = ${user }
+	alert(a);
+</script>
 <h1>hello world !!</h1>
->>>>>>> 9b38e41a22afeadfebfc3d47a55cd56a71c23140
-
 
 <a href="/WEB-INF/jsp/layout.jsp">访问jsp</a>
 </body>

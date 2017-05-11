@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
 <link rel="stylesheet" href="js\calendar/bootstrap_calendar.css" type="text/css" cache="false" />
+
 </head>
 <body>
 <section class="vbox">
@@ -40,6 +41,7 @@
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">季度分析表</header>
                   <div class="panel-body">
+                  	
                     <div id="container_top" style="width:100%;height:500px"></div>
                   </div>
                   <footer class="panel-footer bg-white no-padder">

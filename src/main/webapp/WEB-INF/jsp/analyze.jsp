@@ -11,11 +11,31 @@
 <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
 <link rel="stylesheet" href="js\calendar/bootstrap_calendar.css" type="text/css" cache="false" />
 
-  <link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
-  <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
-  <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
-  <script src="https://img.hcharts.cn/highcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
-  <script src="https://img.hcharts.cn/highcharts/themes/dark-unica.js"></script>
+<link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
+<script src="js/app.v2.js"></script>
+<style type="text/css">
+	#wrap-range{
+		margin-left: 15px;
+	}
+	#range{
+		margin-left: 180px;
+		margin-bottom: 10px
+	}
+</style>
+
+<!-- highchart所需要的库 -->    
+<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+<script src="https://img.hcharts.cn/highcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+<script src="https://img.hcharts.cn/highcharts/themes/dark-unica.js"></script>
+<script src="http://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+
+<!-- 导入jRange -->
+<link rel="stylesheet" href="css/jquery.range.css">
+    <script src="http://www.youhutong.com/static/js/jquery.js"></script>
+    <script src="js/jquery.range.js"></script>
+  
+
 </head>
 <body>
 <script type="text/javascript">
@@ -32,35 +52,10 @@
             <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333">
               <nav class="nav-primary hidden-xs">
               <%@ include file="left.jsp" %>
-                
               </nav>
             </div>
           </section>
-          <footer class="footer lt hidden-xs b-t b-dark">
-            <div id="chat" class="dropup">
-              <section class="dropdown-menu on aside-md m-l-n">
-                <section class="panel bg-white">
-                  <header class="panel-heading b-b b-light">Active chats</header>
-                  <div class="panel-body animated fadeInRight">
-                    <p class="text-sm">No active chats.</p>
-                    <p><a href="" class="btn btn-sm btn-default">Start a chat</a></p>
-                  </div>
-                </section>
-              </section>
-            </div>
-            <div id="invite" class="dropup">
-              <section class="dropdown-menu on aside-md m-l-n">
-                <section class="panel bg-white">
-                  <header class="panel-heading b-b b-light"> John <i class="fa fa-circle text-success"></i> </header>
-                  <div class="panel-body animated fadeInRight">
-                    <p class="text-sm">No contacts in your lists.</p>
-                    <p><a href="" class="btn btn-sm btn-facebook"><i class="fa fa-fw fa-facebook"></i> Invite from Facebook</a></p>
-                  </div>
-                </section>
-              </section>
-            </div>
-            <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon"> <i class="fa fa-angle-left text"></i> <i class="fa fa-angle-right text-active"></i> </a>
-          </footer>
+          
         </section>
       </aside>
       <section id="content">
@@ -74,6 +69,13 @@
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">季度分析表</header>
+                  <!-- 滑动条 -->
+				  <div id="wrap-range">
+				  <font>进销项差值合理的范围:<font id="demo"></font></font>
+				  <div id="range">
+				  <input type="hidden" class="range-slider"  value="-1,1"/>
+				  </div>
+				  </div>
                   <div class="panel-body">
                     <div id="container_top" style="min-width:400px;height:400px"></div>
                   </div>
@@ -102,10 +104,7 @@
                   </footer>
                 </section>
               </div>
-
             </div>
-
-
             </div>
           </section>
         </section>
@@ -116,84 +115,14 @@
     </section>
   </section>
 </section>
+ 
+      
+<script src="js/sumInOut.js"></script>
+<script src="js/highcharts.js"></script>
+<script src="js/initRange.js"></script>
 
-<script src="js/app.v2.js"></script><script src="js/charts/easypiechart/jquery.easy-pie-chart.js" cache="false"></script> <script src="js/charts/sparkline/jquery.sparkline.min.js" cache="false"></script> <script src="js/charts/flot/jquery.flot.min.js" cache="false"></script> <script src="js/charts/flot/jquery.flot.tooltip.min.js" cache="false"></script> <script src="js/charts/flot/jquery.flot.resize.js" cache="false"></script> <script src="js/charts/flot/jquery.flot.grow.js" cache="false"></script> <script src="js/charts/flot/demo.js" cache="false"></script> <script src="js/calendar/bootstrap_calendar.js" cache="false"></script> <script src="js/calendar/demo.js" cache="false"></script> <script src="js/sortable/jquery.sortable.js" cache="false"></script>
 
-<script>
-Highcharts.setOptions({
-    lang:{
-       contextButtonTitle:"图表导出菜单",
-       decimalPoint:".",
-       downloadJPEG:"下载JPEG图片",
-       downloadPDF:"下载PDF文件",
-       downloadPNG:"下载PNG文件",
-       downloadSVG:"下载SVG文件",
-       drillUpText:"返回 {series.name}",
-       loading:"加载中",
-       months:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
-       noData:"没有数据",
-       numericSymbols: [ "千" , "兆" , "G" , "T" , "P" , "E"],
-       printChart:"打印图表",
-       resetZoom:"恢复缩放",
-       resetZoomTitle:"恢复图表",
-       shortMonths: [ "Jan" , "Feb" , "Mar" , "Apr" , "May" , "Jun" , "Jul" , "Aug" , "Sep" , "Oct" , "Nov" , "Dec"],
-       thousandsSep:",",
-       weekdays: ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六","星期天"]
-    }
-}); 
-	//运用构造函数式
-    var chart = new Highcharts.Chart('container_top', {
-    	
-        title: {
 
-            text: '季度分析表',
-
-            x: -20
-
-        },
-
-        subtitle: {
-
-            text: '数据来源: 财务部',
-
-            x: -20
-        },
-        xAxis: {
-            categories: ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'],
-            title: {
-                text: '月份/月'
-            }
-        },
-        yAxis: {
-            title: {
-                text: '金额/万元'
-            },
-            plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
-            }]
-        },
-        tooltip: {
-        	//数据后缀
-            valueSuffix: '万'
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle',
-            borderWidth: 0
-        },
-        series: [{
-            name: '进项金额',
-            data: [16, 15, 16, 15, 11, 13, 17, 13, 13, 16, 14, 12]
-        }, {
-            name: '销项金额',
-            data: [15, 16, 18, 11, 13, 17, 19, 13, 16, 18, 15, 17]
-        }
-        ]
-    });
-</script>
 
 </body>
 </html>
