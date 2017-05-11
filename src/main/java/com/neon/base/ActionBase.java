@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import com.neon.service.InputService;
 import com.neon.service.LimiteService;
+import com.neon.service.OutputService;
 import com.neon.service.RoleService;
 import com.neon.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -45,6 +46,9 @@ public abstract class ActionBase<T> extends ActionSupport implements ModelDriven
 	
 	@Resource
 	public InputService inputService;
+	
+	@Resource
+	public OutputService outputService;
 	
 	
 }
