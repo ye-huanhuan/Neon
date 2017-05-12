@@ -11,14 +11,14 @@ import com.opensymphony.xwork2.ActionContext;
 @Scope("prototype")
 public class TestAction extends ActionBase<User>{
 
-	public String hello(){   
-		User user = userService.getById(1L);
-		ActionContext.getContext().put("user", user);
+	public String hello(){
+		System.out.println("我执行了");
+		ActionContext.getContext().put("user", "yhh");
 		return "hello";
 	}
 	public String index(){
 //		User user = userservice.getById(1L);
-		ActionContext.getContext().getSession().put("user", 19);
+		ActionContext.getContext().getSession().put("user", "yhh");
 		System.out.println("执行了");
 		return "success";
 	}

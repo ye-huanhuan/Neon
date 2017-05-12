@@ -73,6 +73,7 @@ public class LoginAction extends ActionBase<User> {
 	}
 
 	public String login() {
+		
 		return "login";
 
 	}

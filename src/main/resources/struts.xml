@@ -15,7 +15,7 @@
 		
 
 	<action name="test_*" class="testAction" method="{1}">
-		 <result name="success">/WEB-INF/jsp/signin.jsp</result> 
+		<result name="success">WEB-INF/jsp/index.jsp</result> 
 		<result name="hello">hello.jsp</result>
 	</action>
 	

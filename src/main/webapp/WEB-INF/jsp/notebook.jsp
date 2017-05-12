@@ -24,31 +24,6 @@
               </nav>
             </div>
           </section>
-          <footer class="footer lt hidden-xs b-t b-dark">
-            <div id="chat" class="dropup">
-              <section class="dropdown-menu on aside-md m-l-n">
-                <section class="panel bg-white">
-                  <header class="panel-heading b-b b-light">Active chats</header>
-                  <div class="panel-body animated fadeInRight">
-                    <p class="text-sm">No active chats.</p>
-                    <p><a href="" class="btn btn-sm btn-default">Start a chat</a></p>
-                  </div>
-                </section>
-              </section>
-            </div>
-            <div id="invite" class="dropup">
-              <section class="dropdown-menu on aside-md m-l-n">
-                <section class="panel bg-white">
-                  <header class="panel-heading b-b b-light"> John <i class="fa fa-circle text-success"></i> </header>
-                  <div class="panel-body animated fadeInRight">
-                    <p class="text-sm">No contacts in your lists.</p>
-                    <p><a href="" class="btn btn-sm btn-facebook"><i class="fa fa-fw fa-facebook"></i> Invite from Facebook</a></p>
-                  </div>
-                </section>
-              </section>
-            </div>
-            <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon"> <i class="fa fa-angle-left text"></i> <i class="fa fa-angle-right text-active"></i> </a>
-          </footer>
         </section>
       </aside>
       <section id="content">
@@ -58,12 +33,15 @@
               <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
               <li class="active">发票</li>
             </ul>
+         <form action="" method="get">
+            <font>进销销项合理差值：</font>
+        	<input type="text" name="Dvalue" value="" >
+        	<input type="submit" value="保存">
+       	 </form>
           </section>
         </section>
-        <a href="" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a> </section>
-      <aside class="bg-light lter b-l aside-md hide" id="notes">
-        <div class="wrapper">Notification</div>
-      </aside>
+        
+              
     </section>
   </section>
 </section>
