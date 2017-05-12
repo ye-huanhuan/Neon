@@ -22,7 +22,13 @@
                 <artifactId>javassist</artifactId>  
             </exclusion>  
         </exclusions>  
-    </dependency>  
+    </dependency> 
+    <!-- struts2支持json -->
+     <dependency>  
+    <groupId>org.apache.struts</groupId>  
+    <artifactId>struts2-json-plugin</artifactId>  
+    <version>2.3.16</version>  
+</dependency>
     <!-- convention-plugin插件，使用了这个插件之后，就可以采用注解的方式配置Action -->  
     <dependency>  
         <groupId>org.apache.struts</groupId>  
