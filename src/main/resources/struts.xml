@@ -4,6 +4,8 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 	
 <struts>
+	
+	
 	<!-- 配置为开发模式 -->
 	<constant name = "struts.devMode" value = "true"/>
 	<!-- 把扩展名配置为action -->
@@ -12,11 +14,19 @@
 	<constant name = "struts.ui.theme" value = "simple"/>
 	
 	<package name="default" namespace="/" extends="struts-default">
-		
+	
+	<!-- 定义一个json类型 -->
+	<result-types>
+    <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+    </result-types>
 
 	<action name="test_*" class="testAction" method="{1}">
-		<result name="success">WEB-INF/jsp/index.jsp</result> 
+
+		
 		<result name="hello">hello.jsp</result>
+		<result type="json">
+			<param name="root">result</param>
+		</result>
 	</action>
 	
 	<!-- ==============发票部分======================================= -->

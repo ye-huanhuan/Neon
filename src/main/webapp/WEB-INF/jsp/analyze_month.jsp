@@ -5,7 +5,7 @@
 <html lang="en" class="app">
 <head>
 <meta charset="utf-8" />
-<title>Notebook | Web Application</title>
+<title>Neon</title>
 <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
@@ -25,13 +25,13 @@
 		margin-top: 5px;
 		display: inline-block;
 	}
-	#product,#month{
+	#month{
 		display: inline-block;
-		margin-left: 10px;
+		margin-left: 15px;
 	}
 	#year{
 		display: inline-block;
-		margin-left: 30px;
+		
 	}
 	.year,.product,.month{
 		width: 25px;
@@ -40,12 +40,14 @@
 	
 </style>
 
+
 <!-- highchart所需要的库 -->    
 <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
 <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
 <script src="https://img.hcharts.cn/highcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
 <script src="https://img.hcharts.cn/highcharts/themes/dark-unica.js"></script>
 <script src="http://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+
 
 <!-- 导入jRange -->
 <link rel="stylesheet" href="css/jquery.range.css">
@@ -95,10 +97,10 @@
 				  </div>
 				  <div id="year">
 				  <font>年份:</font>
-				  <input class="year" type="radio" name="year"><font class="yearFont">2014</font>
-				  <input class="year" type="radio" name="year"><font class="yearFont">2015</font>
-				  <input class="year" type="radio" name="year"><font class="yearFont">2016</font>
-				  <input class="year" type="radio" name="year"><font class="yearFont">2017</font>
+				  
+				  <input id="year-2015" class="year" type="radio" name="year" value="2015">2015
+				  <input id="year-2016" class="year" type="radio" name="year" value="2016">2016
+				  <input id="year-2017" class="year" type="radio" name="year" value="2017">2017
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -118,15 +120,9 @@
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
                   <div id="wrap-product">
-				  <font>产品:</font>
-				  <div id="product">
-				  <input class="product" type="radio" name="product">鸡肉罐头
-				  <input class="product" type="radio" name="product">鱼肉罐头
-				  <input class="product" type="radio" name="product">猪肉罐头
-				  </div>
 				  <div id="year">
 				  <font>年份:</font>
-				  <input class="year" type="radio" name="year"><font class="yearFont">2014</font>
+				  
 				  <input class="year" type="radio" name="year"><font class="yearFont">2015</font>
 				  <input class="year" type="radio" name="year"><font class="yearFont">2016</font>
 				  <input class="year" type="radio" name="year"><font class="yearFont">2017</font>
@@ -184,10 +180,10 @@
 </section>
  
       
-<script src="js/sumInOutMonth.js"></script>
+
 <script src="js/highcharts.js"></script>
 <script src="js/initRange.js"></script>
-
+<script src="js/sumInOutMonth.js"></script>
 <script src="js/productOutMonth.js"></script>
 <script src="js/monthOutProduct.js"></script>
 
