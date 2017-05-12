@@ -1,8 +1,8 @@
 package com.neon.action;
 
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -16,10 +16,11 @@ import com.neon.domain.Input;
 @Controller
 @Scope("prototype")
 public class AnalyzeAction extends ActionBase<Input>{
-
+	private int year;
+	private Map<String,Object> result = new HashMap<String,Object>(); 
 	//准备月份分析数据
 	public String month(){
-		
+		System.out.println(year);
 		//第一张表的数据
 		Date date = new Date();
 		//今年
@@ -30,6 +31,10 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Double[] input_totlemoney_month_array = (Double[]) input_totlemoney_month.toArray(new Double[input_totlemoney_month.size()]);
 		Double[] output_totlemoney_month_array = (Double[]) output_totlemoney_month.toArray(new Double[output_totlemoney_month.size()]);
 		Double[] dvalue_array = (Double[]) dvalue.toArray(new Double[dvalue.size()]);
+		result.put("data_difference",dvalue_array);
+ 		result.put("data_input", input_totlemoney_month_array);
+ 		result.put("data_output", output_totlemoney_month_array);
+		
 		System.out.println(input_totlemoney_month);
 		System.out.println(output_totlemoney_month);
 		System.out.println(dvalue);
@@ -48,7 +53,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		}
 		
 		
-		return "month";
+		return "success";
 	}
 	
 	//准备季度分析数据
@@ -65,4 +70,21 @@ public class AnalyzeAction extends ActionBase<Input>{
 	public String tax(){
 		return "tax";
 	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public Map<String, Object> getResult() {
+		return result;
+	}
+
+	public void setResult(Map<String, Object> result) {
+		this.result = result;
+	}
+	
 }
