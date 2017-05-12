@@ -1,6 +1,7 @@
 package com.neon.action;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,6 @@ import com.opensymphony.xwork2.ActionContext;
 @Scope("prototype")
 public class TestAction extends ActionBase<User>{
 	private Map<String,Object> result = new HashMap<String,Object>();
-	Map<String,Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
 	private int year;
 	public String hello(){
 		System.out.println("我执行了");
@@ -33,12 +33,19 @@ public class TestAction extends ActionBase<User>{
 	
 	public String testJson(){
 		System.out.println(year);
+		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year);
+		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(year);
+		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);
+		Double[] input_totlemoney_month_array = (Double[]) input_totlemoney_month.toArray(new Double[input_totlemoney_month.size()]);
+		Double[] output_totlemoney_month_array = (Double[]) output_totlemoney_month.toArray(new Double[output_totlemoney_month.size()]);
+		Double[] dvalue_array = (Double[]) dvalue.toArray(new Double[dvalue.size()]);
 		int[] data_difference = {1,2,-1,4,1,3,-1,-4,6,4,-5,-2};
-		int[] data_input = { 15, 16, 15, 11, 13, 17, 13, 13, 16, 14, 12, 16};
+		double[] data_input = { 15, 16, 15, 11, 13, 17, 13, 13, 16, 14, 12, 16};
 		int[] data_output = { 16, 18, 11, 13, 17, 19, 13, 16, 18, 15, 17, 13 };
- 		result.put("data_difference",data_difference);
+ 		result.put("data_difference",input_totlemoney_month_array);
  		result.put("data_input", data_input);
- 		result.put("data_output", data_output);
+ 		result.put("data_output", output_totlemoney_month_array);
+ 		System.out.println(data_difference);
 //		result.put("2",-2);
 //		result.put("3",2);
 //		result.put("4",-1);

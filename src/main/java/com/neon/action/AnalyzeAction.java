@@ -16,10 +16,18 @@ import com.neon.domain.Input;
 @Controller
 @Scope("prototype")
 public class AnalyzeAction extends ActionBase<Input>{
+
 	private int year;
 	private Map<String,Object> result = new HashMap<String,Object>(); 
 	//准备月份分析数据
+	
 	public String month(){
+		return "month";
+	}
+
+	
+	public String month_1(){
+		
 		System.out.println(year);
 		//第一张表的数据
 		Date date = new Date();
@@ -31,27 +39,40 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Double[] input_totlemoney_month_array = (Double[]) input_totlemoney_month.toArray(new Double[input_totlemoney_month.size()]);
 		Double[] output_totlemoney_month_array = (Double[]) output_totlemoney_month.toArray(new Double[output_totlemoney_month.size()]);
 		Double[] dvalue_array = (Double[]) dvalue.toArray(new Double[dvalue.size()]);
+//		int[] data_difference = {1,2,-1,4,1,3,-1,-4,6,4,-5,-2};
+		int[] data_input = { 15, 16, 15, 11, 13, 17, 13, 13, 16, 14, 12, 16};
 		result.put("data_difference",dvalue_array);
- 		result.put("data_input", input_totlemoney_month_array);
+ 		result.put("data_input", data_input);
  		result.put("data_output", output_totlemoney_month_array);
 		
 		System.out.println(input_totlemoney_month);
 		System.out.println(output_totlemoney_month);
 		System.out.println(dvalue);
 		
+		
+		
+		return "month";
+	}
+	
+	public String month_2(){
 		//第二张表的数据
+		int year = 2017;
 		Map<String, List<Double>> output_everyGoodsTotleMoney_year = outputService.getEveryGoodsgetOutputTotleMoneyWithYear(year);
 		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney_year.entrySet()){
 			System.out.println(map.getKey()+" "+map.getValue());
 		}
+		return "month";
+	}
+	
+	public String month_3(){
 		
 		//第三张表的数据
 		int month = 1;
+		int year = 2017;
 		Map<String, Double> output_percent_month = outputService.getThisMonthOutputGoodsPercent(month, year);
 		for(Map.Entry<String, Double> map :output_percent_month.entrySet()){
 			System.out.println(map.getKey()+" "+map.getValue());
 		}
-		
 		
 		return "success";
 	}
