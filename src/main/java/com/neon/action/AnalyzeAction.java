@@ -16,9 +16,13 @@ import com.neon.domain.Input;
 @Controller
 @Scope("prototype")
 public class AnalyzeAction extends ActionBase<Input>{
+	
+	public String month(){
+		return "month";
+	}
 
 	//准备月份分析数据
-	public String month(){
+	public String month_1(){
 		
 		//第一张表的数据
 		Date date = new Date();
@@ -34,20 +38,30 @@ public class AnalyzeAction extends ActionBase<Input>{
 		System.out.println(output_totlemoney_month);
 		System.out.println(dvalue);
 		
+		
+		
+		return "month";
+	}
+	
+	public String month_2(){
 		//第二张表的数据
+		int year = 2017;
 		Map<String, List<Double>> output_everyGoodsTotleMoney_year = outputService.getEveryGoodsgetOutputTotleMoneyWithYear(year);
 		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney_year.entrySet()){
 			System.out.println(map.getKey()+" "+map.getValue());
 		}
+		return "month";
+	}
+	
+	public String month_3(){
 		
 		//第三张表的数据
 		int month = 1;
+		int year = 2017;
 		Map<String, Double> output_percent_month = outputService.getThisMonthOutputGoodsPercent(month, year);
 		for(Map.Entry<String, Double> map :output_percent_month.entrySet()){
 			System.out.println(map.getKey()+" "+map.getValue());
 		}
-		
-		
 		return "month";
 	}
 	
