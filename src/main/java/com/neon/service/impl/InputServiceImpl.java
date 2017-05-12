@@ -17,22 +17,21 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 	public List<Double> getInputTotleMoneyWithMonth(int year) {
 		List<Double> list = new ArrayList<>();
 		for(int month = 1 ; month <= 6 ; month++ ){
-			List<Input> inputs = getInputDataByMonth(month);
-			double d = 0;
+			List<Input> inputs = getInputDataByMonth(month,year);
+			double d = 0.0;
 			for(Input inp : inputs){
-				System.out.println(inp.getItem());
 				d += inp.getMoney();
 			}
-			System.out.println(d);
 			list.add(d);
 		}
 		return list;
 	}
 	
-	public List<Input> getInputDataByMonth(int month){
+	public List<Input> getInputDataByMonth(int month,int year){
 		return getSession().createQuery(//
-				"FROM Input input WHERE input.month=?")
+				"FROM Input input WHERE input.month=? AND input.year=?")
 				.setParameter(0, month)
+				.setParameter(1, year)
 				.list();
 	}
 

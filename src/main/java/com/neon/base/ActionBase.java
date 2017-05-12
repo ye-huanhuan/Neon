@@ -4,6 +4,7 @@ import java.lang.reflect.ParameterizedType;
 
 import javax.annotation.Resource;
 
+import com.neon.service.DvalueService;
 import com.neon.service.InputService;
 import com.neon.service.LimiteService;
 import com.neon.service.OutputService;
@@ -49,6 +50,9 @@ public abstract class ActionBase<T> extends ActionSupport implements ModelDriven
 	
 	@Resource
 	public OutputService outputService;
+	
+	@Resource
+	public DvalueService dvalueService;
 	
 	
 }
