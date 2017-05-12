@@ -21,8 +21,8 @@
     </result-types>
 
 	<action name="test_*" class="testAction" method="{1}">
-	
-		 <!-- <result name="success">WEB-INF/jsp/index.jsp</result>  -->
+
+		
 		<result name="hello">hello.jsp</result>
 		<result type="json">
 			<param name="root">result</param>
@@ -36,7 +36,7 @@
 	
 	<!-- ==============分析部分======================================= -->
 	<action name="analyze_*" class="analyzeAction" method="{1}">
-		 <result name="analyze">WEB-INF/jsp/analyze.jsp</result> 
+		 <result name="{1}">WEB-INF/jsp/analyze_{1}.jsp</result> 
 	</action>
 	 
 	<!-- ==============用户部分======================================= -->

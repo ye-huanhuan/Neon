@@ -19,6 +19,8 @@
 	<mapping resource="com/neon/domain/Role.hbm.xml" />
 	<mapping resource="com/neon/domain/Limite.hbm.xml" />
 	<mapping resource="com/neon/domain/Input.hbm.xml" />
+	<mapping resource="com/neon/domain/Output.hbm.xml" />
+	<mapping resource="com/neon/domain/Dvalue.hbm.xml" />
 	
 </session-factory>
 </hibernate-configuration>
