@@ -12,12 +12,14 @@ import org.springframework.stereotype.Controller;
 
 import com.neon.base.ActionBase;
 import com.neon.domain.Input;
+import com.neon.util.ListToArray;
 
 @Controller
 @Scope("prototype")
 public class AnalyzeAction extends ActionBase<Input>{
 	
 	public String month(){
+		
 		return "month";
 	}
 
@@ -34,6 +36,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Double[] input_totlemoney_month_array = (Double[]) input_totlemoney_month.toArray(new Double[input_totlemoney_month.size()]);
 		Double[] output_totlemoney_month_array = (Double[]) output_totlemoney_month.toArray(new Double[output_totlemoney_month.size()]);
 		Double[] dvalue_array = (Double[]) dvalue.toArray(new Double[dvalue.size()]);
+		double[] test = ListToArray.getDoubleArray(input_totlemoney_month);
 		System.out.println(input_totlemoney_month);
 		System.out.println(output_totlemoney_month);
 		System.out.println(dvalue);

@@ -35,7 +35,7 @@
             </ul>
          <form action="" method="get">
             <font>进销销项合理差值：</font>
-        	<input type="text" name="Dvalue" value="" >
+            <s:textfield name="Dvalue"></s:textfield>
         	<input type="submit" value="保存">
        	 </form>
           </section>
