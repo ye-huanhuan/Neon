@@ -7,6 +7,7 @@ var data_difference;
 var data_input;
 var data_output;
 var chart;
+var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7','#058DC7'];
 $(function () {
      chart = new Highcharts.Chart('container_top', {
     	
@@ -49,12 +50,15 @@ $(function () {
             verticalAlign: 'middle',
             borderWidth: 0
         },
+        
         series: [
 			{
+				
+				colorByPoint: true,	
    		 		type: 'column',
     			name: '进销差值',
     			data: [-3, 1, 2, -4, 2, 4, 2, 0, -3, 2, 1, 5],
-				
+    			colors: columnColor,
 				},
              {
 			type: 'spline',
@@ -74,15 +78,13 @@ $(function () {
     	    data: {year:$("#year-2016").val()},
     	    type: "post",        //type：(string)请求方式，POST或GET
     	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-//    	    url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
-    	    url: "test_testJson.action",
+    	    url: "test_testJson.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
     	    success: function (msg) {
-    	    	alert(msg);
+    	    	
     	        var obj = eval(msg);
     	        data_difference = obj["data_difference"];
     	        data_input = obj["data_input"];
     	        data_output = obj["data_output"];
-//    	        newdate = [obj["1"],obj["2"],obj["3"],obj["4"],obj["5"],obj["6"],obj["7"],obj["8"],obj["9"],obj["10"],obj["11"],obj["12"]];
     	        alert(data_difference);
     	        chart.series[0].setData(data_difference);
     	        chart.series[1].setData(data_input);
@@ -172,15 +174,36 @@ $(function () {
     });
 });
 
-$(function () {
-//得到range的值
-$(".range-slider").change(function(){
+//改变超出范围的颜色
+function change(){
 	var aa = $(".range-slider").val();
 	var subaa = aa.split(",");
 	var min = subaa[0];
 	var max = subaa[1];
-	document.getElementById("demo").innerHTML= aa;
+	for(var i=0;i<data_difference.length;i++){
+		if(data_difference[i]>max || data_difference[i]<min){
+			columnColor[i] = '#FF0000';
+		}else{
+			columnColor[i] = '#058DC7';
+		}
+	}
+	chart.series[0].update({
+		colors: columnColor,
 	
 });
+}
+
+//使用jrange
+$('.range-slider').jRange({
+    from: -3,
+    to: 5,
+    step: 0.2,
+    scale: [-3,-1,1,3,5],
+    format: '%s',
+    width: 300,
+    showLabels: true,
+    isRange : true,
+    ondragend : change,
 });
+
 

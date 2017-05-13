@@ -20,7 +20,7 @@
 		
 	}
 	#range{
-		width : 25%;
+		width : 350px;
 		margin-left: 30px;
 		margin-top: 5px;
 		display: inline-block;
@@ -95,6 +95,7 @@
 				  <div id="range">
 				  <input type="hidden" class="range-slider"  value="-1,1"/>
 				  </div>
+				  
 				  <div id="year">
 				  <font>年份:</font>
 				  
@@ -182,7 +183,6 @@
       
 
 <script src="js/highcharts.js"></script>
-<script src="js/initRange.js"></script>
 <script src="js/sumInOutMonth.js"></script>
 <script src="js/productOutMonth.js"></script>
 <script src="js/monthOutProduct.js"></script>

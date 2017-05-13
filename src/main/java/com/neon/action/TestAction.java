@@ -4,14 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.catalina.connector.Request;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.neon.base.ActionBase;
 import com.neon.domain.User;
+import com.neon.util.ListToArray;
 import com.opensymphony.xwork2.ActionContext;
 
 @Controller
@@ -36,15 +35,13 @@ public class TestAction extends ActionBase<User>{
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year);
 		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(year);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);
-		Double[] input_totlemoney_month_array = (Double[]) input_totlemoney_month.toArray(new Double[input_totlemoney_month.size()]);
-		Double[] output_totlemoney_month_array = (Double[]) output_totlemoney_month.toArray(new Double[output_totlemoney_month.size()]);
-		Double[] dvalue_array = (Double[]) dvalue.toArray(new Double[dvalue.size()]);
 		int[] data_difference = {1,2,-1,4,1,3,-1,-4,6,4,-5,-2};
-		double[] data_input = { 15, 16, 15, 11, 13, 17, 13, 13, 16, 14, 12, 16};
+		double[] data_input = { 15.5, 16, 15.3, 11, 13, 17, 13, 13, 16, 14, 12, 16};
 		int[] data_output = { 16, 18, 11, 13, 17, 19, 13, 16, 18, 15, 17, 13 };
- 		result.put("data_difference",input_totlemoney_month_array);
- 		result.put("data_input", data_input);
- 		result.put("data_output", output_totlemoney_month_array);
+		double[] test = ListToArray.getDoubleArray(output_totlemoney_month);
+		result.put("data_difference", data_difference);
+		result.put("data_input", data_input);
+ 		result.put("data_output", data_output);
  		System.out.println(data_difference);
 //		result.put("2",-2);
 //		result.put("3",2);
