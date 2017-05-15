@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.catalina.connector.Request;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -19,7 +17,6 @@ import com.opensymphony.xwork2.ActionContext;
 @Scope("prototype")
 public class TestAction extends ActionBase<User>{
 	private Map<String,Object> result = new HashMap<String,Object>();
-	Map<String,Object> request = (Map<String, Object>) ActionContext.getContext().get("request");
 	private int year;
 	public String hello(){
 		System.out.println("我执行了");
@@ -35,15 +32,18 @@ public class TestAction extends ActionBase<User>{
 	
 	public String testJson(){
 		System.out.println(year);
-		year = 2017;
+
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year);
-		double[] test = ListToArray.getDoubleArray(input_totlemoney_month);
 		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(year);
-		double[] test1 = ListToArray.getDoubleArray(output_totlemoney_month);
+		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);
 		int[] data_difference = {1,2,-1,4,1,3,-1,-4,6,4,-5,-2};
- 		result.put("data_difference",data_difference);
- 		result.put("data_input", test);
- 		result.put("data_output", test1);
+		double[] data_input = { 15.5, 16, 15.3, 11, 13, 17, 13, 13, 16, 14, 12, 16};
+		int[] data_output = { 16, 18, 11, 13, 17, 19, 13, 16, 18, 15, 17, 13 };
+		double[] test = ListToArray.getDoubleArray(output_totlemoney_month);
+		result.put("data_difference", data_difference);
+		result.put("data_input", data_input);
+ 		result.put("data_output", data_output);
+ 		System.out.println(data_difference);
 //		result.put("2",-2);
 //		result.put("3",2);
 //		result.put("4",-1);

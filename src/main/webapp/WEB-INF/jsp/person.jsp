@@ -5,19 +5,19 @@
 <html lang="en" class="bg-dark">
 <head>
     <meta charset="utf-8" />
-    <title>Notebook | Web Application</title>
+    <title>Neon</title>
     <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
     <script >
     function insertUser() {
         document.getElementById('newUser').innerHTML="<label id='font1' class='control-label' style='display: inline-block;font-size: 16px;'>新账号</label>"+
-        "<input id='inputUser' type='text' name='username'  onBlur='validateUser()' placeholder='newUser' class='form-control input-lg' value='<s:property value='username'/>' style='display: inline-block;width: 70%;margin-left: 18px;'>"+
+        "<input id='inputUser' type='text' name='username'  oninput='validateUser()' placeholder='newUser' class='form-control input-lg' value='<s:property value='username'/>' style='display: inline-block;width: 70%;margin-left: 18px;'>"+
         "<span id='tishi1' style='margin-left: 10px'></span>"
     }
     function insertEmail() {
         document.getElementById('newEmail').innerHTML="<label id='font2' class='control-label' style='display: inline-block;font-size: 16px;'>新邮箱</label>"+
-            "<input id='inputEmail' type='text' name='email' onBlur='validateEmail()' placeholder='newEmail' class='form-control input-lg' value='<s:property value='email'/>' style='display: inline-block;width: 70%;margin-left: 18px;'>"+
+            "<input id='inputEmail' type='text' name='email' oninput='validateEmail()' placeholder='newEmail' class='form-control input-lg' value='<s:property value='email'/>' style='display: inline-block;width: 70%;margin-left: 18px;'>"+
             "<span id='tishi2' style='margin-left: 10px'></span>"
 
     }
@@ -25,7 +25,7 @@
         document.getElementById('newPassword').innerHTML="<label id='font3' class='control-label' style='display: inline-block;font-size: 16px;'>新密码</label>"+
             "<input id='inputPassword' type='password' name='password' placeholder='newPassword' class='form-control input-lg' style='display: inline-block;width: 70%;margin-left: 18px;'></br>";
         document.getElementById("confirmPassword").innerHTML="<label id='font4' class='control-label' style='display: inline-block;font-size: 16px;'>确认密码</label>"+
-        "<input id='inputConfirmPassword' type='password' onBlur='validate()' placeholder='confirmPassword' class='form-control input-lg' style='display: inline-block;width: 70%;margin-left: 2px;'>"+
+        "<input id='inputConfirmPassword' type='password' oninput='validate()' placeholder='confirmPassword' class='form-control input-lg' style='display: inline-block;width: 70%;margin-left: 2px;'>"+
         "<span id='tishi3' style='margin-left: 10px'></span>"
     }
 
@@ -86,15 +86,30 @@
         if(user == "") {
             document.getElementById("tishi1").innerHTML="<font color='red'>用户名不能为空</font>";
             document.getElementById("submit").disabled = true;
+        }else{
+        	document.getElementById("tishi1").innerHTML="<font color='red'></font>";
+            document.getElementById("submit").disabled = false;
         }
         
     }
     function validateEmail() {
     	var email = document.getElementById("inputEmail").value;
-    	
+    	var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
     	if(email == ""){
             document.getElementById("tishi2").innerHTML="<font color='red'>邮箱不能为空</font>";
             document.getElementById("submit").disabled = true;
+        }else{
+        	document.getElementById("tishi2").innerHTML="<font color='red'></font>";
+            document.getElementById("submit").disabled = false;
+          //验证邮箱格式
+        	    if(re.test(email)){
+        	    	document.getElementById("tishi2").innerHTML="<font color='red'></font>";
+                    document.getElementById("submit").disabled = false;
+        	    }else{
+        	    	document.getElementById("tishi2").innerHTML="<font color='red'>邮箱格式不对</font>";
+                    document.getElementById("submit").disabled = true;
+        	    }
+        
         }
     }
     

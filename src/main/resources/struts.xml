@@ -32,11 +32,16 @@
 	<!-- ==============发票部分======================================= -->
 	<action name="invoice_*" class="dvalueAction" method="{1}">
 		 <result name="setDvalue">WEB-INF/jsp/notebook.jsp</result> 
+
 	</action>
 	
 	<!-- ==============分析部分======================================= -->
 	<action name="analyze_*" class="analyzeAction" method="{1}">
-		 <result name="{1}">WEB-INF/jsp/analyze_{1}.jsp</result> 
+		<result name="{1}">WEB-INF/jsp/analyze_{1}.jsp</result>
+		 <result type="json">
+		 <param name="root">result</param>
+		 </result> 
+		 
 	</action>
 	 
 	<!-- ==============用户部分======================================= -->
