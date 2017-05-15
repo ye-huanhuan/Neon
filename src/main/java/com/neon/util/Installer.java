@@ -1,6 +1,5 @@
 package com.neon.util;
 
-import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -12,32 +11,36 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.neon.domain.Limite;
-import com.neon.domain.Role;
-import com.neon.domain.User;
 
 @Component
 public class Installer {
 	
-/*	@Resource
+	@Resource
 	private SessionFactory sessionFactory;
 	
 	@Transactional
 	public void install(){
 		Session session = sessionFactory.getCurrentSession();
 		
-		Role role1 = new Role();
-		role1.setRoleName("");
-		
-		Role role2 = new Role();
-		role2.setRoleName("");
 		
 		//==============添加权限============================
-		Set<Role> roles1 = null;
-		Set<Limite> limites1 = null;
-		roles1.add(role1);
-		roles1.add(role2);
-		Limite limite = new Limite("首页","", roles1);
-		session.save(limite);
+		Limite limite1 , limite2 , limite3;
+		limite1 = new Limite();
+		/*limite1.setLimiteName("首页");
+		limite1.setActionName("home_index.action");*/
+		session.save(limite1);
+		/*limite2 = new Limite("分析", "#"	, null);
+		limite3 = new Limite("设置数据", "#", null);
+		
+		session.save(limite2);
+		session.save(limite3);*/
+		
+		/*session.save(new Limite("月份分析", "analyze_month.action", limite2));
+		session.save(new Limite("季度份分析", "analyze_quarter.action", limite2));
+		session.save(new Limite("年份分析", "analyze_year.action", limite2));
+		session.save(new Limite("税收分析", "analyze_tax.action", limite2));
+		
+		session.save(new Limite("设置数据", "invoice_setDvalue.action", limite3));*/
 		
 		//==============================================
 	}
@@ -46,6 +49,6 @@ public class Installer {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		Installer installer = (Installer) ac.getBean("installer");
 		installer.install();
-	}*/
+	}
 
 }

@@ -17,6 +17,7 @@ import com.neon.base.ActionBase;
 import com.neon.domain.Limite;
 import com.neon.domain.MailInfo;
 import com.neon.domain.User;
+import com.neon.util.ListToArray;
 import com.neon.util.MailUtil;
 import com.neon.util.Md5;
 import com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet;
@@ -61,10 +62,6 @@ public class LoginAction extends ActionBase<User> {
 		if(captchaPassed && userService.login(model.getUsername(),model.getPassword())){
 			User user = userService.findUserByUsername(model.getUsername());
 			ActionContext.getContext().getSession().put("user", user);
-			
-			Set<Limite> limites = roleService.getById(user.getRole().getId()).getLimites();
-			List<Limite> tops = limiteService.findTopLimite(limites);
-			ActionContext.getContext().getSession().put("tops", tops);
 			return "success";
 		}else{
 			addFieldError("loginerror", "密码或验证码错误");

@@ -11,7 +11,7 @@
 			<property name="password"></property>
 			<property name="email"></property>
 			
-			<many-to-one name="role" column="roleId"/>
+			<many-to-one name="role" column="roleId" lazy="false"/>
 
 	</class>
 

@@ -21,7 +21,7 @@ public interface OutputService extends DaoSupport<Output>{
 		Map<String, List<Double>> getEveryGoodsgetOutputTotleMoneyWithYear(int year);
 		
 		//该年某个月的商品销售的所占的百分比
-		Map<String, Double> getThisMonthOutputGoodsPercent(int month , int year);
+		Map<String, Double> getThisMonthOutputGoodsTotleMoney(int month , int year);
 
 		//得到差值
 		List<Double> getDvalue(List<Double> input_totlemoney_month, List<Double> output_totlemoney_month);

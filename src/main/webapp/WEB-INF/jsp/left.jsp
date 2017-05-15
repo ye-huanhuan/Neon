@@ -19,7 +19,7 @@
 <ul class="nav">
                  
                   <li> <a href="home_index.action" class="active"> <i class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>首页</span> </a> </li>
-                  <s:iterator value="#session.tops">
+                  <s:iterator value="#application.topLimites">
                   	<li > <a href=${actionName } > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>${limiteName }</span> </a>
 	                    <ul class="nav lt">
 	                    	<s:iterator value="children">

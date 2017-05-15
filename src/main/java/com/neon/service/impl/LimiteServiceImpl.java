@@ -15,7 +15,7 @@ import com.neon.service.LimiteService;
 public class LimiteServiceImpl extends DaoSupportImpl<Limite> implements LimiteService{
 
 	@Override
-	public List<Limite> findTopLimite(Set<Limite> limites) {
+	public List<Limite> findTopLimite(List<Limite> limites) {
 		// TODO Auto-generated method stub
 		List<Limite> tops = new ArrayList<>();
 		for(Limite lim : limites){
@@ -25,5 +25,13 @@ public class LimiteServiceImpl extends DaoSupportImpl<Limite> implements LimiteS
 		}
 		return tops;
 	}
+
+	@Override
+	public List<Limite> findTopList() {
+		return getSession().createQuery(//
+				"FROM Limite limite	WHERE limite.parent IS NULL")
+				.list();
+	}
+
 
 }

@@ -14,12 +14,12 @@ import com.opensymphony.xwork2.ActionContext;
 @Scope("prototype")
 public class DvalueAction extends ActionBase<Dvalue>{
 
-	public String setDavalue(){
+	public String setDvalue(){
 		//准备回显数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dvalue = dvalueService.getById(id);
 		ActionContext.getContext().getValueStack().push(dvalue);
-		return "setDavalue";
+		return "setDvalue";
 	}
 	
 	public String toSetDvalue(){
@@ -27,6 +27,7 @@ public class DvalueAction extends ActionBase<Dvalue>{
 		dvalue.setDdvalue(model.getDdvalue());
 		Date date = new Date();
 		dvalue.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date).toString());
+		dvalueService.save(dvalue);
 		return "setDvalue";
 	}
 }

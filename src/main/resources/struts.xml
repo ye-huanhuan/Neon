@@ -30,8 +30,8 @@
 	</action>
 	
 	<!-- ==============发票部分======================================= -->
-	<action name="invoice_*" class="invoiceAction" method="{1}">
-		 <result name="invoice">WEB-INF/jsp/notebook.jsp</result> 
+	<action name="invoice_*" class="dvalueAction" method="{1}">
+		 <result name="setDvalue">WEB-INF/jsp/notebook.jsp</result> 
 	</action>
 	
 	<!-- ==============分析部分======================================= -->
