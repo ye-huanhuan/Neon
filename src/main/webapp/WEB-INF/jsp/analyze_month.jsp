@@ -80,12 +80,12 @@
             	<!-- 按月进销总和统计 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">进销总和分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 16px">进销项分析表</header>
                   <!-- 滑动条 -->
 				  <div id="wrap-range">
 				  <font>进销项差值合理的范围:<font id="demo"></font></font>
 				  <div id="range">
-				  <input type="hidden" class="range-slider"  value="-1,1"/>
+				  <input id="rangeValue" type="hidden" class="range-slider"  value="-10,30"/>
 				  </div>
 				  
 				  <div id="year">
@@ -116,9 +116,9 @@
 				  <div id="year">
 				  <font>年份:</font>
 				  
-				  <input class="year" type="radio" name="year"><font class="yearFont">2015</font>
-				  <input class="year" type="radio" name="year"><font class="yearFont">2016</font>
-				  <input class="year" type="radio" name="year"><font class="yearFont">2017</font>
+				  <input id="second_year2015" class="year" type="radio" name="year"><font class="yearFont">2015</font>
+				  <input id="second_year2016" class="year" type="radio" name="year"><font class="yearFont">2016</font>
+				  <input id="second_year2017" class="year" type="radio" name="year"><font class="yearFont">2017</font>
 				  </div>
 				  </div>
                   <div class="panel-body">

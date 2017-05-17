@@ -8,7 +8,7 @@ var chart = new Highcharts.Chart('container_third',{
             plotShadow: false
         },
         title: {
-            text: '五月产品销量'
+            text: '五月销项产品'
         },
         tooltip: {
             headerFormat: '{series.name}<br>',

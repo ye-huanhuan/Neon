@@ -7,19 +7,16 @@ var data_difference;
 var data_input;
 var data_output;
 var chart;
+
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7','#058DC7'];
 $(function () {
      chart = new Highcharts.Chart('container_top', {
-    	
         title: {
-            text: '季度分析表',
+            text: '月份分析表',
             x: -20
         },
-
         subtitle: {
-
             text: '数据来源: 财务部',
-
             x: -20
         },
         xAxis: {
@@ -57,7 +54,6 @@ $(function () {
 				colorByPoint: true,	
    		 		type: 'column',
     			name: '进销差值',
-    			data: [-3, 1, 2, -4, 2, 4, 2, 0, -3, 2, 1, 5],
     			colors: columnColor,
 				},
              {
@@ -72,20 +68,21 @@ $(function () {
         ]
    });
    //初始化highchart
-     $("#year-2016").attr("checked","checked");
+     $("#year-2017").attr("checked","checked");
      $.ajax({
     	    async: true,
-    	    data: {year:$("#year-2016").val()},
+    	    data: {y:$("#year-2017").val()},
     	    type: "post",        //type：(string)请求方式，POST或GET
     	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-    	    url: "test_testJson.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+    	    url: "analyze_month_1.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
     	    success: function (msg) {
-    	    	
     	        var obj = eval(msg);
     	        data_difference = obj["data_difference"];
     	        data_input = obj["data_input"];
     	        data_output = obj["data_output"];
-    	        alert(data_difference);
+    	        var rangeValue = obj["dvalue_double"];
+    	        $("#rangeValue").val(rangeValue);
+    	        change();
     	        chart.series[0].setData(data_difference);
     	        chart.series[1].setData(data_input);
     	        chart.series[2].setData(data_output);
@@ -98,7 +95,7 @@ $(function () {
     	alert("hello");
         $.ajax({
             async: true,
-            data: {year:$("#year-2016").val()},
+            data: {y:$("#year-2016").val()},
             type: "post",        //type：(string)请求方式，POST或GET
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
 //            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
@@ -125,7 +122,7 @@ $(function () {
     	
         $.ajax({
             async: true,
-            data: {year:$("#year-2017").val()},
+            data: {y:$("#year-2017").val()},
             type: "post",        //type：(string)请求方式，POST或GET
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
 //            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
@@ -152,7 +149,7 @@ $(function () {
     	
         $.ajax({
             async: true,
-            data: {year:$("#year-2015").val()},
+            data: {y:$("#year-2015").val()},
             type: "post",        //type：(string)请求方式，POST或GET
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
 //            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
@@ -195,10 +192,10 @@ function change(){
 
 //使用jrange
 $('.range-slider').jRange({
-    from: -3,
-    to: 5,
-    step: 0.2,
-    scale: [-3,-1,1,3,5],
+    from: -20,
+    to: 60,
+    step: 2,
+    scale: [-20,0,20,40,60],
     format: '%s',
     width: 300,
     showLabels: true,
