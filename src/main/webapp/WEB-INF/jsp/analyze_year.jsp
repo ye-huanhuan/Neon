@@ -140,7 +140,7 @@
               <!-- 同一时间产品销项 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">产品销量分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
                   
 				  <div id="wrap_month">
 				  

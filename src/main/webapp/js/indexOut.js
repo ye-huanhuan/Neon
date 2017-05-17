@@ -1,5 +1,5 @@
 /**
- * 
+ * 首页销项数据
  */
 $(document).ready(function() {
         var chart = {
