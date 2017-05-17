@@ -1,5 +1,5 @@
 /**
- * 月份进销项总和对比
+ * 季度进销项总和对比
  */
 	//运用构造函数式
 
@@ -7,7 +7,7 @@ var data_difference;
 var data_input;
 var data_output;
 var chart;
-var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7','#058DC7'];
+var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7'];
 $(function () {
      chart = new Highcharts.Chart('container_top', {
     	
@@ -23,9 +23,9 @@ $(function () {
             x: -20
         },
         xAxis: {
-            categories: ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'],
+            categories: ['第一季度', '第二季度', '第三季度', '第四季度'],
             title: {
-                text: '月份/月',
+                text: '季度/季度',
                 align: 'high',
             }
         },
@@ -57,7 +57,7 @@ $(function () {
 				colorByPoint: true,	
    		 		type: 'column',
     			name: '进销差值',
-    			data: [-3, 1, 2, -4, 2, 4, 2, 0, -3, 2, 1, 5],
+    			data: [-3, 1, 2, -4],
     			colors: columnColor,
 				},
              {

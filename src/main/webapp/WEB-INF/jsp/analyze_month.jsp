@@ -41,14 +41,6 @@
 </style>
 
 
-<!-- highchart所需要的库 -->    
-<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
-<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
-<script src="https://img.hcharts.cn/highcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
-<script src="https://img.hcharts.cn/highcharts/themes/dark-unica.js"></script>
-<script src="http://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-
-
 <!-- 导入jRange -->
 <link rel="stylesheet" href="css/jquery.range.css">
     <script src="http://www.youhutong.com/static/js/jquery.js"></script>
@@ -130,7 +122,7 @@
 				  </div>
 				  </div>
                   <div class="panel-body">
-                    <div id="container_product" style="min-width:400px;height:400px"></div>
+                    <div id="container_second" style="min-width:400px;height:400px"></div>
                   </div>
                   <footer class="panel-footer bg-white no-padder">
                    <div class="row text-center no-gutter">
@@ -157,7 +149,7 @@
 				  </div>
 				  </div>
                   <div class="panel-body">
-                    <div id="monthOutProduct" style="min-width:400px;height:400px"></div>
+                    <div id="container_third" style="min-width:400px;height:400px"></div>
                   </div>
                   <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">
