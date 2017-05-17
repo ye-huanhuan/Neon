@@ -35,12 +35,16 @@ public class Role {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
+
 	public Set<Limite> getLimites() {
 		return limites;
 	}
+
 	public void setLimites(Set<Limite> limites) {
 		this.limites = limites;
 	}
+
+
 	
 	
 }

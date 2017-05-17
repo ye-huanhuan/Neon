@@ -8,6 +8,8 @@ import com.neon.domain.Limite;
 
 public interface LimiteService extends DaoSupport<Limite>{
 
-	List<Limite> findTopLimite(Set<Limite> limites);
+	List<Limite> findTopLimite(List<Limite> limites);
+
+	List<Limite> findTopList();
 
 }

@@ -13,6 +13,8 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext*.xml</param-value>
   </context-param>
+  
+  
   <filter>
     <filter-name>OpenSessionInViewFilter</filter-name>
     <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
@@ -40,5 +42,10 @@
         <servlet-name>jcaptcha</servlet-name>
         <url-pattern>/jcaptcha.jpg</url-pattern>
     </servlet-mapping>
+    
+    <!--用来初始化的监听器  配在spring监听器的后面   -->
+  <listener>
+  	<listener-class>com.neon.util.InitListener</listener-class>
+  </listener>
 
 </web-app>

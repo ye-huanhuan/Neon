@@ -32,6 +32,7 @@ public class TestAction extends ActionBase<User>{
 	
 	public String testJson(){
 		System.out.println(year);
+
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year);
 		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(year);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);

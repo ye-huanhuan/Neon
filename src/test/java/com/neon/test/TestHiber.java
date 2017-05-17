@@ -1,10 +1,6 @@
 package com.neon.test;
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -14,9 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.neon.domain.User;
+import com.neon.service.LimiteService;
 import com.neon.service.UserService;
-import com.neon.util.Md5;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
 @ContextConfiguration(locations = "classpath:applicationContext.xml")  
@@ -24,6 +19,11 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 	
 	@Resource
 	private UserService userService;
+	
+	@Resource
+	private LimiteService limiteService;
+	
+	
 
 	@Test
 	public void testH(){
@@ -63,6 +63,7 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		user2.setPassword(Md5.getMD5("yhh"));
 		user2.setEmail("13244237736@163.com");
 		userService.save(user2);*/
+		
 
 	}
 	

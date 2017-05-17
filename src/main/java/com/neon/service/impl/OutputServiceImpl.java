@@ -70,12 +70,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 
 
 	@Override
-	public Map<String, Double> getThisMonthOutputGoodsPercent(int month , int year) {
+	public Map<String, Double> getThisMonthOutputGoodsTotleMoney(int month , int year) {
 		Map<String, Double> map = new HashMap<>();
 		List<String> items = getThisMonthGoodsItem(month , year);
-		Double totleMoney = getThisMonthTotleMoney(month , year);
 		for(String item : items){
-			Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, Constant.scale);
+			Double percent = getThisItemTotleMoney(item , month , year);
 			map.put(item, percent);
 		}
 		return map;

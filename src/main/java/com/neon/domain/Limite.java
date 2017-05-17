@@ -3,7 +3,7 @@ package com.neon.domain;
 import java.util.Set;
 
 public class Limite {
-	private long id;
+	private Long id;
 	private String limiteName;
 	private String actionName;
 	private Limite parent;
@@ -12,18 +12,11 @@ public class Limite {
 	
 	public Limite() {}
 	
-	public Limite(String limiteName, String actionName , Set<Role> roles) {
+	public Limite(String limiteName, String actionName , Limite parent) {
 		super();
 		this.limiteName = limiteName;
 		this.actionName = actionName;
-		this.roles = roles;
-	}
-	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
+		this.parent = parent;
 	}
 	
 	public String getLimiteName() {
@@ -38,29 +31,38 @@ public class Limite {
 	public void setActionName(String actionName) {
 		this.actionName = actionName;
 	}
-	public Set<Role> getRoles() {
-		return roles;
-	}
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-
+	
 	public Limite getParent() {
 		return parent;
-	}
-
-	public Set<Limite> getChildren() {
-		return children;
 	}
 
 	public void setParent(Limite parent) {
 		this.parent = parent;
 	}
 
+
+	public Set<Limite> getChildren() {
+		return children;
+	}
+
 	public void setChildren(Set<Limite> children) {
 		this.children = children;
 	}
 
+	public Set<Role> getRoles() {
+		return roles;
+	}
 
-	
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 }

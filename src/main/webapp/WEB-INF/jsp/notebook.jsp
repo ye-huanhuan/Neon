@@ -33,9 +33,9 @@
               <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
               <li class="active">发票</li>
             </ul>
-         <form action="" method="get">
+         <form action="invoice_toSetDvalue.action" method="get">
             <font>进销销项合理差值：</font>
-            <s:textfield name="Dvalue"></s:textfield>
+            <s:textfield name="ddvalue"></s:textfield>
         	<input type="submit" value="保存">
        	 </form>
           </section>
