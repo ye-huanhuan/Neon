@@ -10,8 +10,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.neon.domain.Limite;
 import com.neon.service.LimiteService;
 import com.neon.service.UserService;
+import com.neon.util.Constant;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
 @ContextConfiguration(locations = "classpath:applicationContext.xml")  
@@ -64,6 +66,13 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		user2.setEmail("13244237736@163.com");
 		userService.save(user2);*/
 		
+		/*Limite limite = new Limite();
+		limite.setActionName("#");
+		limite.setLimiteName("首页");
+		limite.setParent(null);
+		limiteService.save(limite);*/
+		
+		System.out.println(Constant.YEAR);
 
 	}
 	
