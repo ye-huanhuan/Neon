@@ -1,7 +1,8 @@
 /**
  *  同一个月不同产品的销量
  */
-var chart = new Highcharts.Chart('container_third',{
+$(function () {
+var chart2 = new Highcharts.Chart('container_third',{
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
@@ -41,3 +42,19 @@ var chart = new Highcharts.Chart('container_third',{
             ]
         }]
     });
+$("#month5").attr("checked","checked");
+$.ajax({
+    async: true,
+    data: {m:$("#month5").val()},
+    type: "post",        //type：(string)请求方式，POST或GET
+    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+    url: "analyze_month_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+    success: function (msg) {
+    	alert("hello");
+        var obj = eval(msg);
+        var a = obj["test"];
+        
+        chart2.series[0].setData(a);
+    }
+});
+});

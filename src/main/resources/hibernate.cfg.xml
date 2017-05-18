@@ -10,7 +10,7 @@
 	</property>
 
 	<!-- 2,其他配置 -->
-	<property name="show_sql">true</property>
+	<property name="show_sql">false</property>
 	<property name="hbm2ddl.auto">update</property>
 
 	<!-- 3,导入映射文件 -->

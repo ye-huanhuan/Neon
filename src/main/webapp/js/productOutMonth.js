@@ -1,11 +1,11 @@
+
 /**
  *  每个产品的月销售量
  */
-//var data1 = [2.5, 8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6];
-//var data2 = [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5];
-//var data3 =[27.0, 25.0, 33.0, 30.0, 38.0, 17.0, 18.0, 17.0, 14.3, 9.0, 18.0, 29.0];
+ var productName = {};
+var chart1;
 $(function () {
-var chart = new Highcharts.Chart('container_second', {
+chart1 = new Highcharts.Chart('container_second', {
     title: {
         text: '产品分析表',
         x: -20
@@ -37,34 +37,88 @@ var chart = new Highcharts.Chart('container_second', {
         verticalAlign: 'middle',
         borderWidth: 0
     },
-    series: [{
-        name: '猪肉罐头',
-       
-    }, {
-        name: '鸡肉罐头',
-        //data: [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
-    }, {
-        name: '鱼肉罐头',
-       // data: [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
-    }, ]
+    series: [{},{},{}],	
 });
+$("#second_year2017").attr("checked","checked");
   //初始化highchart
     $.ajax({
    	    async: true,
-   	    data: {y:$("#second_year2017").val()},
+   	    data: {y2:$("#second_year2017").val()},
    	    type: "post",        //type：(string)请求方式，POST或GET
    	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-   	    url: "test_testJson.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+   	    url: "analyze_month_2.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
    	    success: function (msg) {
-   	    	alert("hello w");
-   	        var obj = eval(msg);
-   	        var data_productDmonth = obj["data_output"];
-   	        alert(data_productDmonth);
-   	        
-   	        
-//   	        chart.series[0].setData(data_difference);
-//   	        chart.series[1].setData(data_input);
-//   	        chart.series[2].setData(data_output);
+   	    	var obj = eval(msg);
+   	    	productName = obj["productName"];
+   	    	
+   	    	for(var i=0;i<chart1.series.length;i++){
+   	    		if(i>=productName.length){
+   	    		 chart1.series[i].hide();
+   	    		}
+   	    		chart1.series[i].update({
+   	    	 		name: productName[i],
+   	    	 		data: obj["productVlaue"][i],
+   	    	 }); 
+   	    		
+   	    	}
+	        
    	    }
+    });
+});
+//发送异步请求2017年数据
+$(function () {
+    $("#second_year2017").click(function () {
+        $.ajax({
+            async: true,
+            data: {y2:$("#year-2017").val()},
+            type: "post",        //type：(string)请求方式，POST或GET
+            dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+//            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+            url: "analyze_month_2.action",
+            success: function (msg) {
+            	var obj = eval(msg);
+       	    	for(var i=0;i<chart1.series.length;i++){
+       	    		chart1.series[i].setData(obj["productVlaue"][i]);
+       	    	}
+            }
+        });
+    });
+});
+//发送异步请求2016年数据
+$(function () {
+    $("#second_year2016").click(function () {
+        $.ajax({
+            async: true,
+            data: {y2:$("#year-2016").val()},
+            type: "post",        //type：(string)请求方式，POST或GET
+            dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+//            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+            url: "analyze_month_2.action",
+            success: function (msg) {
+            	var obj = eval(msg);
+       	    	for(var i=0;i<chart1.series.length;i++){
+       	    		chart1.series[i].setData(obj["productVlaue"][i]);
+       	    	}
+            }
+        });
+    });
+});
+//发送异步请求2015年数据
+$(function () {
+    $("#second_year2015").click(function () {
+        $.ajax({
+            async: true,
+            data: {y2:$("#year-2015").val()},
+            type: "post",        //type：(string)请求方式，POST或GET
+            dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+//            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+            url: "analyze_month_2.action",
+            success: function (msg) {
+            	var obj = eval(msg);
+       	    	for(var i=0;i<chart1.series.length;i++){
+       	    		chart1.series[i].setData(obj["productVlaue"][i]);
+       	    	}
+            }
+        });
     });
 });

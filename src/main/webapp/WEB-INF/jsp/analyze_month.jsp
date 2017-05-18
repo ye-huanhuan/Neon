@@ -13,6 +13,7 @@
 
 <link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
 <script src="js/app.v2.js"></script>
+
 <style type="text/css">
 	#wrap-range,#wrap-product,#wrap-month{
 		margin-left: 15px;
@@ -33,7 +34,7 @@
 		display: inline-block;
 		
 	}
-	.year,.product,.month{
+	.year,.product,.month,.second_year{
 		width: 25px;
 		text-align: left;
 	}
@@ -116,9 +117,9 @@
 				  <div id="year">
 				  <font>年份:</font>
 				  
-				  <input id="second_year2015" class="year" type="radio" name="year"><font class="yearFont">2015</font>
-				  <input id="second_year2016" class="year" type="radio" name="year"><font class="yearFont">2016</font>
-				  <input id="second_year2017" class="year" type="radio" name="year"><font class="yearFont">2017</font>
+				  <input id="second_year2015" class="second_year" type="radio" name="second_year" value="2015"><font class="yearFont">2015</font>
+				  <input id="second_year2016" class="second_year" type="radio" name="second_year" value="2016"><font class="yearFont">2016</font>
+				  <input id="second_year2017" class="sevond_year" type="radio" name="second_year" value="2017"><font class="yearFont">2017</font>
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -143,9 +144,9 @@
 				  
 				  <div id="month">
 				  <font>月份:</font>
-				  <input class="month" type="radio" name="month">三月
-				  <input class="month" type="radio" name="month">四月
-				  <input class="month" type="radio" name="month">五月
+				  <input id="month3" class="month" type="radio" name="month" value="3">三月
+				  <input id="month4" class="month" type="radio" name="month" value="4">四月
+				  <input id="month5" class="month" type="radio" name="month" value="5">五月
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -176,83 +177,71 @@
 
 <script src="js/highcharts.js"></script>
 <script src="js/sumInOutMonth.js"></script>
-<!--<script src="js/productOutMonth.js"></script>-->
-<script src="js/monthOutProduct.js"></script>
-
-<script>
-
+<script src="js/productOutMonth.js"></script>
+<!--<script src="js/monthOutProduct.js"></script>-->
+<script src="js/json_parse.js"></script>
+<script> 
 /**
- *  每个产品的月销售量
+ *  同一个月不同产品的销量
  */
-//var data1 = [2.5, 8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6];
-//var data2 = [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5];
-//var data3 =[27.0, 25.0, 33.0, 30.0, 38.0, 17.0, 18.0, 17.0, 14.3, 9.0, 18.0, 29.0];
 $(function () {
-var chart1 = new Highcharts.Chart('container_second', {
-    title: {
-        text: '产品分析表',
-        x: -20
-    },
-    subtitle: {
-        text: '数据来源: Neon.com',
-        x: -20
-    },
-    xAxis: {
-        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
-    },
-    yAxis: {
-        title: {
-            text: '金额/万元',
-            align: 'high',
+var chart2 = new Highcharts.Chart('container_third',{
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
         },
-        plotLines: [{
-            value: 0,
-            width: 1,
-            color: '#808080'
+        title: {
+            text: '五月销项产品'
+        },
+        tooltip: {
+            headerFormat: '{series.name}<br>',
+            pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '产品销量',
+            data: [
+                ['猪肉罐头',   40.2],
+                ['鸡肉罐头',   10.8],
+                {
+                    name: '鱼肉罐头',
+                    y: 48.5,
+                    sliced: true,
+                    selected: true
+                },
+               
+                ['其他',   0.5]
+            ]
         }]
-    },
-    tooltip: {
-        valueSuffix: '万元'
-    },
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle',
-        borderWidth: 0
-    },
-    series: [{
-        name: '猪肉罐头',
-       
-    }, {
-        name: '鸡肉罐头',
-        data: [9, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
-    }, {
-        name: '鱼肉罐头',
-       // data: [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
-    }, ]
-});
-  //初始化highchart
-    $.ajax({
-   	    async: true,
-   	    data: {y:$("#second_year2017").val()},
-   	    type: "post",        //type：(string)请求方式，POST或GET
-   	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-   	    url: "analyze_month_2.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
-   	    success: function (msg) {
-   	    	alert("hello w");
-   	        var obj = eval(msg);
-//   	        var data_productDmonth = obj["data_output"];
-//   	        alert(data_productDmonth);
-   	        
-   	        
-//   	        chart.series[0].setData(data_difference);
-   	        chart1.series[1].setData(data_productDmonth);
-//   	        chart.series[2].setData(data_output);
-   	    }
     });
+$("#month5").attr("checked","checked");
+$.ajax({
+    async: true,
+    //data: {m:$("#month5").val()},
+    type: "post",        //type：(string)请求方式，POST或GET
+    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+    url: "analyze_month_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+    success: function (msg) {
+    	alert("h2");
+        var obj = eval(msg);
+        var a = obj["test"];
+        alert(a);
+        chart2.series[0].setData(a);
+    }
 });
-</script>
-
+});
+ </script>
 
 </body>
 </html>
