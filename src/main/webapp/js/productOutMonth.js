@@ -39,13 +39,13 @@ var chart = new Highcharts.Chart('container_second', {
     },
     series: [{
         name: '猪肉罐头',
-        data:　[8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
+       
     }, {
         name: '鸡肉罐头',
-        data: [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
+        //data: [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
     }, {
         name: '鱼肉罐头',
-        data: [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
+       // data: [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
     }, ]
 });
   //初始化highchart
@@ -54,12 +54,12 @@ var chart = new Highcharts.Chart('container_second', {
    	    data: {y:$("#second_year2017").val()},
    	    type: "post",        //type：(string)请求方式，POST或GET
    	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-   	    url: "analyze_month_2.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+   	    url: "test_testJson.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
    	    success: function (msg) {
-   	    	alert(msg);
+   	    	alert("hello w");
    	        var obj = eval(msg);
-   	        var data_productDmonth = obj["data_product"];
-   	        
+   	        var data_productDmonth = obj["data_output"];
+   	        alert(data_productDmonth);
    	        
    	        
 //   	        chart.series[0].setData(data_difference);

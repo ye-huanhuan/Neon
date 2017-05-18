@@ -29,8 +29,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 
 	
 	public String month_1(){
-		
-
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
@@ -54,6 +52,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 	
 	public String month_2(){
 		//第二张表的数据   output_everyGoodsTotleMoney_year
+		System.out.println("month2");
 		Map<String, List<Double>> output_everyGoodsTotleMoney = outputService.getEveryGoodsgetOutputTotleMoneyWithYear(2017);
 		Map<String , double[]> output_everyGoodsTotleMoney_year = new HashMap<>();
 		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney.entrySet()){
