@@ -48,7 +48,9 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 		// TODO Auto-generated method stub
 		double d = 0.0;
 		List<Double> list = new ArrayList<>();
+
 		for(int month=1; month<=Constant.MONTH;month++){
+
 			List<Input> inputs = getInputDataByMonth(month,year);
 			for(Input inp :inputs){
 				d = Arith.add(d, inp.getMoney());
@@ -62,16 +64,14 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 	}
 
 	@Override
-	public Map<Integer, Double> getInputTotleMoneyWithYear() {
+	public List<Double> getInputTotleMoneyWithYear() {
 		// TODO Auto-generated method stub
-		Map<Integer,Double> map=new HashMap<Integer,Double>();
-		List<Integer> syear = getInputYear();
-		for(Integer year : syear){
+		List<Double> list = new ArrayList<>();
+		for(int year = Constant.YEAR ; year >= Constant.YEAR - 6 ; year--){
 			Double money =  getInputMoneyWithYear(year);
-			map.put(year, money);
+			list.add(money);
 		}
-		
-		return map ; 
+		return list; 
 	}
 	
 	private List<Integer> getInputYear(){
@@ -82,7 +82,8 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 
 	public double getInputMoneyWithYear(int year) {
 		double d = 0.0;
-		for(int month = 1 ; month <= Constant.MONTH; month++ ){
+
+		for(int month = 1 ; month <= Constant.MONTH ; month++ ){
 			List<Input> inputs = getInputDataByMonth(month,year);
 			for(Input inp :inputs ){
 				d = Arith.add(d, inp.getMoney());	

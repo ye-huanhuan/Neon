@@ -5,16 +5,16 @@
 <hibernate-mapping package="com.neon.domain">
 		<class name="Limite" table="Limite">
 			
-			<id name="id">
+				<id name="id">
 				<generator class="native"></generator>
 			</id>
 			<property name="limiteName"></property>
 			<property name="actionName"></property>
 			
-			<set name="roles" table="RL" lazy="false">
+			<!-- <set name="roles" table="RL" lazy="false">
                    <key column="lId"/>
                    <many-to-many class="com.neon.domain.Role" column="rId"/>
-          	</set>
+          	</set> -->
            
            	<many-to-one name="parent" class="com.neon.domain.Limite" column="pId"/>
            	
@@ -22,7 +22,6 @@
         		<key column="pId"/>  
         		<one-to-many class="com.neon.domain.Limite"/>  
     		</set> 
-           
 	</class>
 
 </hibernate-mapping>

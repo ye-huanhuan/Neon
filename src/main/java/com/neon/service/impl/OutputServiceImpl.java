@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
-import org.w3c.dom.ls.LSInput;
 
 import com.neon.base.DaoSupportImpl;
 import com.neon.domain.Output;
@@ -67,6 +66,28 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		}
 		return maps;
 	}
+	
+	@Override
+	public Map<String, List<Double>> getEveryGoodsgetOutputQuarterTotleMoneyWithYear(int year) {
+		Map<String, List<Double>> maps = new HashMap<>();
+		List<String> items = getEveryGoodsItem();
+		Double money = 0.0;
+		for(String item : items){
+			List<Double> moneys = new ArrayList<>();
+			for(int month = 1 ; month <= Constant.MONTH ; month++){
+				if(month%3 == 0){
+					moneys.add(money);
+					money = 0.0;
+				}
+				List<Output> outputs = getOutputsWithMonthAndYearAndItem(month , year ,item);
+				for(Output output : outputs){
+					money = Arith.add(money, output.getMoney());
+				}
+			}
+			maps.put(item, moneys);
+		}
+		return maps;
+	}
 
 
 	@Override
@@ -79,10 +100,50 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		}
 		return map;
 	}
-
-
-
-
+	
+	@Override
+	public Map<String, Double> getThisQuarterOutputGoodsTotleMoney(int quarter, int year) {
+		Map<String, Double> map = new HashMap<>();
+		switch(quarter){
+		case 1 : 
+			for(int month = 1 ; month <= 3 ; month++){
+				List<String> items = getThisMonthGoodsItem(month , year);
+				for(String item : items){
+					Double percent = getThisItemTotleMoney(item , month , year);
+					map.put(item, percent);
+				}
+			};
+		case 2 :
+			for(int month = 4 ; month <= 6 ; month++){
+				List<String> items = getThisMonthGoodsItem(month , year);
+				for(String item : items){
+					Double percent = getThisItemTotleMoney(item , month , year);
+					map.put(item, percent);
+				}
+			};
+			
+		case 3 :
+			for(int month = 7 ; month <= 9 ; month++){
+				List<String> items = getThisMonthGoodsItem(month , year);
+				for(String item : items){
+					Double percent = getThisItemTotleMoney(item , month , year);
+					map.put(item, percent);
+				}
+			};
+			
+		case 4 :
+			for(int month = 10 ; month <= 12 ; month++){
+				List<String> items = getThisMonthGoodsItem(month , year);
+				for(String item : items){
+					Double percent = getThisItemTotleMoney(item , month , year);
+					map.put(item, percent);
+				}
+			};
+		}
+		
+		return map;
+	}
+		
 	@Override
 	public List<Double> getDvalue(List<Double> input_totlemoney_month, List<Double> output_totlemoney_month) {
 		List<Double> dvalue = new ArrayList<>();
@@ -94,14 +155,56 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 
 
 	@Override
-	public Map<Integer, Double> getOutputTotleMoneyWithYear() {
-		Map<Integer, Double> map = new HashMap<>();
-		List<Integer> years = getOutputYear();
-		for(Integer year : years){
-			Double money = getOutputTotleMoneyWithThisYear(year);
-			map.put(year, money);
+	public Map<String, List<Double>> getRecentYearsOutputGoodsTotleMoney() {
+		Map<String, List<Double>> maps = new HashMap<>();
+		List<String> items = getEveryGoodsItem();
+		Double money = 0.0;
+		for(String item : items){
+			List<Double> moneys = new ArrayList<>();
+			for(int year = Constant.YEAR ; year >= Constant.YEAR - 6 ; year--){
+				List<Output> outputs = getOutputsWithYearAndItem(year ,item);
+				for(Output output : outputs){
+					money = Arith.add(money, output.getMoney());
+				}
+			}
+			maps.put(item, moneys);
 		}
-		return map;
+		return maps;
+	}
+	
+	
+	@Override
+	public Map<String, Double> getThisYearOutputGoodsTotleMoney(int year) {
+		
+		Map<String, Double> maps = new HashMap<>();
+		List<String> items = getEveryGoodsItem();
+		Double money = 0.0;
+		for(String item : items){
+				List<Output> outputs = getOutputsWithYearAndItem(year ,item);
+				for(Output output : outputs){
+					money = Arith.add(money, output.getMoney());
+			}
+			maps.put(item, money);
+		}
+		return maps;
+	}
+	
+	@Override
+	public List<Double> getOutputTotleMoneyWithYear() {
+		List<Double> list = new ArrayList<>();
+		for(int year = Constant.YEAR ; year >= Constant.YEAR - 6 ; year--){
+			Double money =  getOutputTotleMoneyWithThisYear(year);
+			list.add(money);
+		}
+		return list;
+	}
+	
+	private List<Output> getOutputsWithYearAndItem(int year , String item){
+		return getSession().createQuery(//
+				"FROM Output output WHERE output.year=? AND output.item=?")
+				.setParameter(1, year)
+				.setParameter(2, item)
+				.list();
 	}
 
 	private Double getOutputTotleMoneyWithThisYear(Integer year) {
@@ -182,11 +285,6 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				.setParameter(2, item)
 				.list();
 	}
-
-
-
-
-	
 
 
 }

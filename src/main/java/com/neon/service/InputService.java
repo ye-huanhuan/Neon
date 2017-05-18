@@ -15,6 +15,6 @@ public interface InputService extends DaoSupport<Input>{
 	List<Double> getInputTotleMoneyWithQuarter(int year);
 	
 	//每年进项的总钱数  key为 年份  value为 该年的进项总钱数
-	Map<Integer, Double> getInputTotleMoneyWithYear();
+	List <Double> getInputTotleMoneyWithYear();
 	
 }
