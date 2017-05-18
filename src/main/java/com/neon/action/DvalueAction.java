@@ -24,7 +24,8 @@ public class DvalueAction extends ActionBase<Dvalue>{
 	
 	public String toSetDvalue(){
 		Dvalue dvalue = new Dvalue();
-		dvalue.setDdvalue(model.getDdvalue());
+		dvalue.setPdvalue(model.getPdvalue());
+		dvalue.setNdvalue(dvalue.getNdvalue());
 		Date date = new Date();
 		dvalue.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date).toString());
 		dvalueService.save(dvalue);

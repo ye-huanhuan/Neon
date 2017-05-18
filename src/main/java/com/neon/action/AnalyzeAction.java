@@ -23,18 +23,16 @@ public class AnalyzeAction extends ActionBase<Input>{
 	//准备月份分析数据
 	
 	public String month(){
-		
 		return "month";
 	}
 
-	
 	public String month_1(){
 		
-
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
-		double dvalue_double = dva.getDdvalue();
+		double pdvalue_double = dva.getPdvalue();
+		double ndvalue_double = dva.getNdvalue();
 		
 		System.out.println(y);
 
@@ -85,7 +83,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
-		double dvalue_double = dva.getDdvalue();
+		double pdvalue_double = dva.getPdvalue();
+		double ndvalue_double = dva.getNdvalue();
 				
 		System.out.println(y);
 		
@@ -135,7 +134,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
-		double dvalue_double = dva.getDdvalue();
+		double pdvalue_double = dva.getPdvalue();
+		double ndvalue_double = dva.getNdvalue();
 						
 		System.out.println(y);
 				
