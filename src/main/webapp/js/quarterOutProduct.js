@@ -1,6 +1,7 @@
 /**
- *  同一个月不同产品的销量
+ * 同一个季度不同商品的出售情况
  */
+
 var chart = new Highcharts.Chart('container_third',{
         chart: {
             plotBackgroundColor: null,
@@ -8,7 +9,7 @@ var chart = new Highcharts.Chart('container_third',{
             plotShadow: false
         },
         title: {
-            text: '五月销项产品'
+            text: '五月产品销量'
         },
         tooltip: {
             headerFormat: '{series.name}<br>',
@@ -28,11 +29,11 @@ var chart = new Highcharts.Chart('container_third',{
             type: 'pie',
             name: '产品销量',
             data: [
-                ['猪肉罐头',   40.2],
+                ['猪肉罐头',   50.2],
                 ['鸡肉罐头',   10.8],
                 {
                     name: '鱼肉罐头',
-                    y: 48.5,
+                    y: 38.5,
                     sliced: true,
                     selected: true
                 },

@@ -94,9 +94,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	public Map<String, Double> getThisMonthOutputGoodsTotleMoney(int month , int year) {
 		Map<String, Double> map = new HashMap<>();
 		List<String> items = getThisMonthGoodsItem(month , year);
+		Double totleMoney = getThisMonthTotleMoney(month , year);
 		for(String item : items){
-			Double percent = getThisItemTotleMoney(item , month , year);
-			map.put(item, percent);
+			System.out.println("1");
+			Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney , 4);
+			map.put(item, percent*100);
 		}
 		return map;
 	}

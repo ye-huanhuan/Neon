@@ -17,4 +17,12 @@ public class DvalueServiceImpl extends DaoSupportImpl<Dvalue> implements DvalueS
 				.uniqueResult();
 	}
 
+	@Override
+	public double[] getPdvalueAndNdvalue(Dvalue dva) {
+		double[] pAndNdvalue = new double[2];
+		pAndNdvalue[0] = dva.getPdvalue();
+		pAndNdvalue[1] = dva.getNdvalue();
+		return pAndNdvalue;
+	}
+
 }

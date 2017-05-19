@@ -8,11 +8,15 @@
 <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
 <link rel="stylesheet" href="js\calendar/bootstrap_calendar.css" type="text/css" cache="false" />
 
-  <link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
-  <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
-  <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
-  <script src="https://img.hcharts.cn/highcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
-  <script src="https://img.hcharts.cn/highcharts/themes/dark-unica.js"></script>
+<!-- highchart所需要的库 -->    
+<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+<script src="https://img.hcharts.cn/highcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+<script src="https://img.hcharts.cn/highcharts/themes/dark-unica.js"></script>
+<!--<script src="http://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>-->
+
+<link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
+  
 <title>Insert title here</title>
 </head>
 <body>

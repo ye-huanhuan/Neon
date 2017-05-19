@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.neon.base.ActionBase;
-import com.neon.domain.Limite;
 import com.neon.domain.MailInfo;
 import com.neon.domain.User;
 import com.neon.util.ListToArray;

@@ -10,8 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.neon.domain.Limite;
-import com.neon.service.LimiteService;
+import com.neon.domain.Privilege;
+import com.neon.service.PrivilegeService;
 import com.neon.service.UserService;
 import com.neon.util.Constant;
 
@@ -22,9 +22,9 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 	@Resource
 	private UserService userService;
 	
-	@Resource
-	private LimiteService limiteService;
 	
+	@Resource
+	private PrivilegeService privilegeService;
 	
 
 	@Test
@@ -66,14 +66,13 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		user2.setEmail("13244237736@163.com");
 		userService.save(user2);*/
 		
-		/*Limite limite = new Limite();
-		limite.setActionName("#");
-		limite.setLimiteName("首页");
-		limite.setParent(null);
-		limiteService.save(limite);*/
 		
-		System.out.println(Constant.YEAR);
-
+		/*Privilege pri = new Privilege();
+		pri.setActionName("#");
+		pri.setLimiteName("首页");
+		pri.setParent(null);
+		
+		privilegeService.save(pri);*/
 	}
 	
 }

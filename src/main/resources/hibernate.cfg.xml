@@ -17,10 +17,10 @@
 	<!-- <mapping class="com.yh.scams.domain.Admin" /> -->
 	<mapping resource="com/neon/domain/User.hbm.xml" />
 	<mapping resource="com/neon/domain/Role.hbm.xml" />
-	<mapping resource="com/neon/domain/Limite.hbm.xml" />
 	<mapping resource="com/neon/domain/Input.hbm.xml" />
 	<mapping resource="com/neon/domain/Output.hbm.xml" />
 	<mapping resource="com/neon/domain/Dvalue.hbm.xml" />
+	<mapping resource="com/neon/domain/Privilege.hbm.xml" />
 	
 </session-factory>
 </hibernate-configuration>

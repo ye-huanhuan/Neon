@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 import com.neon.service.DvalueService;
 import com.neon.service.InputService;
-import com.neon.service.LimiteService;
 import com.neon.service.OutputService;
 import com.neon.service.RoleService;
 import com.neon.service.UserService;
@@ -41,9 +40,6 @@ public abstract class ActionBase<T> extends ActionSupport implements ModelDriven
 	
 	@Resource
 	public RoleService roleService;
-	
-	@Resource
-	public LimiteService limiteService;
 	
 	@Resource
 	public InputService inputService;

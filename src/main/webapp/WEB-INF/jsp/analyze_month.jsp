@@ -41,14 +41,6 @@
 </style>
 
 
-<!-- highchart所需要的库 -->    
-<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
-<script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
-<script src="https://img.hcharts.cn/highcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
-<script src="https://img.hcharts.cn/highcharts/themes/dark-unica.js"></script>
-<script src="http://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-
-
 <!-- 导入jRange -->
 <link rel="stylesheet" href="css/jquery.range.css">
     <script src="http://www.youhutong.com/static/js/jquery.js"></script>
@@ -88,12 +80,12 @@
             	<!-- 按月进销总和统计 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">进销总和分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 16px">进销项分析表</header>
                   <!-- 滑动条 -->
 				  <div id="wrap-range">
 				  <font>进销项差值合理的范围:<font id="demo"></font></font>
 				  <div id="range">
-				  <input type="hidden" class="range-slider"  value="-1,1"/>
+				  <input id="rangeValue" type="hidden" class="range-slider"  value="-10,30"/>
 				  </div>
 				  
 				  <div id="year">
@@ -124,13 +116,13 @@
 				  <div id="year">
 				  <font>年份:</font>
 				  
-				  <input class="year" type="radio" name="year"><font class="yearFont">2015</font>
-				  <input class="year" type="radio" name="year"><font class="yearFont">2016</font>
-				  <input class="year" type="radio" name="year"><font class="yearFont">2017</font>
+				  <input id="second_year2015" class="year" type="radio" name="year"><font class="yearFont">2015</font>
+				  <input id="second_year2016" class="year" type="radio" name="year"><font class="yearFont">2016</font>
+				  <input id="second_year2017" class="year" type="radio" name="year"><font class="yearFont">2017</font>
 				  </div>
 				  </div>
                   <div class="panel-body">
-                    <div id="container_product" style="min-width:400px;height:400px"></div>
+                    <div id="container_second" style="min-width:400px;height:400px"></div>
                   </div>
                   <footer class="panel-footer bg-white no-padder">
                    <div class="row text-center no-gutter">
@@ -145,7 +137,7 @@
               <!-- 同一时间产品销项 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">产品销量分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
                   
 				  <div id="wrap_month">
 				  
@@ -157,7 +149,7 @@
 				  </div>
 				  </div>
                   <div class="panel-body">
-                    <div id="monthOutProduct" style="min-width:400px;height:400px"></div>
+                    <div id="container_third" style="min-width:400px;height:400px"></div>
                   </div>
                   <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">
@@ -184,10 +176,82 @@
 
 <script src="js/highcharts.js"></script>
 <script src="js/sumInOutMonth.js"></script>
-<script src="js/productOutMonth.js"></script>
+<!--<script src="js/productOutMonth.js"></script>-->
 <script src="js/monthOutProduct.js"></script>
 
+<script>
 
+/**
+ *  每个产品的月销售量
+ */
+//var data1 = [2.5, 8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6];
+//var data2 = [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5];
+//var data3 =[27.0, 25.0, 33.0, 30.0, 38.0, 17.0, 18.0, 17.0, 14.3, 9.0, 18.0, 29.0];
+$(function () {
+var chart1 = new Highcharts.Chart('container_second', {
+    title: {
+        text: '产品分析表',
+        x: -20
+    },
+    subtitle: {
+        text: '数据来源: Neon.com',
+        x: -20
+    },
+    xAxis: {
+        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+    },
+    yAxis: {
+        title: {
+            text: '金额/万元',
+            align: 'high',
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: '万元'
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+    },
+    series: [{
+        name: '猪肉罐头',
+       
+    }, {
+        name: '鸡肉罐头',
+        data: [9, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
+    }, {
+        name: '鱼肉罐头',
+       // data: [8, 0.8, 0.4, 0.3, 10.0, 5.0, 7.8, 5.1, 3.1, 2.0, 8.6, 2.5],
+    }, ]
+});
+  //初始化highchart
+    $.ajax({
+   	    async: true,
+   	    data: {y:$("#second_year2017").val()},
+   	    type: "post",        //type：(string)请求方式，POST或GET
+   	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+   	    url: "analyze_month_2.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+   	    success: function (msg) {
+   	    	alert("hello w");
+   	        var obj = eval(msg);
+//   	        var data_productDmonth = obj["data_output"];
+//   	        alert(data_productDmonth);
+   	        
+   	        
+//   	        chart.series[0].setData(data_difference);
+   	        chart1.series[1].setData(data_productDmonth);
+//   	        chart.series[2].setData(data_output);
+   	    }
+    });
+});
+</script>
 
 
 </body>

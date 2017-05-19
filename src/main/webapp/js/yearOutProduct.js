@@ -1,5 +1,5 @@
 /**
- *  同一个月不同产品的销量
+ *  同一年不同产品的销量
  */
 var chart = new Highcharts.Chart('container_third',{
         chart: {
@@ -8,7 +8,7 @@ var chart = new Highcharts.Chart('container_third',{
             plotShadow: false
         },
         title: {
-            text: '五月销项产品'
+            text: '2015产品销量'
         },
         tooltip: {
             headerFormat: '{series.name}<br>',

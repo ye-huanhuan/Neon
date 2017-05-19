@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * 
- * @author 昊仔很忙
+ * @author 杨昊
  *
  */
 public interface DaoSupport<T>{
