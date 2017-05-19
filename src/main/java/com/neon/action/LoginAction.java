@@ -64,6 +64,7 @@ public class LoginAction extends ActionBase<User> {
 			return "success";
 		}else{
 			addFieldError("loginerror", "密码或验证码错误");
+			System.out.println("gg");
 			return "login";
 		}
 	}

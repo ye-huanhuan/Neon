@@ -86,7 +86,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 				System.out.println(output_percent_month_array[i][j]);
 			}
 		}
-		System.out.println();
 		return "month";
 
 	}
@@ -172,7 +171,14 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Map<String, List<Double>> output_everyGoodsTotleMoney = outputService.getRecentYearsOutputGoodsTotleMoney();
 		Map<String , double[]> output_everyGoodsTotleMoney_year = new HashMap<>();
 		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney.entrySet()){
-			output_everyGoodsTotleMoney_year.put(map.getKey(), ListToArray.getDoubleArray(map.getValue()));
+			output_everyGoodsTotleMoney_year.put(map.getKey(), ListToArray.getDoubleArray2(map.getValue()));
+		}
+		
+		for(Entry<String, double[]> map :output_everyGoodsTotleMoney_year.entrySet()){
+			System.out.println(map.getKey());
+			for(double d : map.getValue()){
+				System.out.println(d);
+			}
 		}
 		return "quarter";
 	}
@@ -180,6 +186,11 @@ public class AnalyzeAction extends ActionBase<Input>{
 	public String year_3(){
 		Map<String, Double> output_percent_year = outputService.getThisYearOutputGoodsTotleMoney(y);
 		String output_percent_year_array[][] = ListToArray.getString2Array(output_percent_year);
+		for(int i = 0 ; i <= output_percent_year.size() ; i++){
+			for(int j = 0 ; j< 2 ; j++){
+				System.out.println(output_percent_year_array[i][j]);
+			}
+		}
 		return "year";
 	}
 	

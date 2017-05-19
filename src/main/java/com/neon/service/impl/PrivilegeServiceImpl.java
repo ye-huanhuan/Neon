@@ -1,5 +1,7 @@
 package com.neon.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.neon.base.DaoSupportImpl;
@@ -13,9 +15,8 @@ public class PrivilegeServiceImpl extends DaoSupportImpl<Privilege> implements P
 		Long[] ids = new Long[privilegeItems_1.length];
 		for(int i = 0 ; i < privilegeItems_1.length ; i++){
 			ids[i] = getIdByItem(privilegeItems_1[i]);
-			System.out.println(getIdByItem(privilegeItems_1[i]));
 		}
-		return null;
+		return ids;
 	}
 
 	private Long getIdByItem(String string) {
@@ -23,6 +24,21 @@ public class PrivilegeServiceImpl extends DaoSupportImpl<Privilege> implements P
 				"SELECT id FROM Privilege p WHERE p.limiteName=?")
 				.setParameter(0, string)
 				.uniqueResult();
+	}
+
+	@Override
+	public List<Privilege> findTopList() {
+		return getSession().createQuery(//
+				"FROM Privilege p WHERE p.parent IS NULL")
+				.list();
+	}
+
+	@Override
+	public List<Privilege> getTop2List(Privilege p) {
+		return getSession().createQuery(//
+				"FROM Privilege p WHERE p.parent=?")
+				.setParameter(0, p)
+				.list();
 	}
 
 }

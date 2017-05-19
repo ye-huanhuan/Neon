@@ -66,7 +66,7 @@ public class DaoSupportImpl<T> implements DaoSupport<T>{
 
 	@Override
 	public List<T> getByIds(Long[] ids) {
-		if(ids == null && ids.length == 0){
+		if(ids == null || ids.length == 0){
 			return Collections.EMPTY_LIST;
 		}else{
 		return getSession().createQuery(//

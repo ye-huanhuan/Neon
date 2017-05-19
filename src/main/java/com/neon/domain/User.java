@@ -18,6 +18,25 @@ public class User {
 		this.role = role;
 	}
 	
+	//验证是否具有权限
+	public boolean hasPrivilegeByName(String name){
+		for(Privilege p : role.getPrivileges()){
+			if(p.getLimiteName().equals(name)){
+				return true;
+			}
+		}
+		System.out.println("2");
+		return false;
+	}
+	
+	public boolean isPrivilege(String name){
+			if("分析".equals(name)){
+				return true;
+			}
+		System.out.println("1");
+		return false;
+	}
+	
 	public Long getId() {
 		return id;
 	}

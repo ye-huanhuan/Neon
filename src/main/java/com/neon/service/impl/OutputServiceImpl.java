@@ -96,7 +96,6 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		List<String> items = getThisMonthGoodsItem(month , year);
 		Double totleMoney = getThisMonthTotleMoney(month , year);
 		for(String item : items){
-			System.out.println("1");
 			Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney , 4);
 			map.put(item, percent*100);
 		}
@@ -106,39 +105,44 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	@Override
 	public Map<String, Double> getThisQuarterOutputGoodsTotleMoney(int quarter, int year) {
 		Map<String, Double> map = new HashMap<>();
+		double totleMoney = 0.0;
 		switch(quarter){
 		case 1 : 
+			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
 			for(int month = 1 ; month <= 3 ; month++){
 				List<String> items = getThisMonthGoodsItem(month , year);
 				for(String item : items){
-					Double percent = getThisItemTotleMoney(item , month , year);
-					map.put(item, percent);
+					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 2);
+					map.put(item, percent*100);
 				}
 			};
 		case 2 :
+			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(4 , year) , getThisMonthTotleMoney(5 , year)),getThisMonthTotleMoney(6 , year));
 			for(int month = 4 ; month <= 6 ; month++){
 				List<String> items = getThisMonthGoodsItem(month , year);
 				for(String item : items){
-					Double percent = getThisItemTotleMoney(item , month , year);
-					map.put(item, percent);
+					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 2);
+					map.put(item, percent*100);
 				}
 			};
 			
 		case 3 :
+			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(7 , year) , getThisMonthTotleMoney(8 , year)),getThisMonthTotleMoney(9 , year));
 			for(int month = 7 ; month <= 9 ; month++){
 				List<String> items = getThisMonthGoodsItem(month , year);
 				for(String item : items){
-					Double percent = getThisItemTotleMoney(item , month , year);
-					map.put(item, percent);
+					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 2);
+					map.put(item, percent*100);
 				}
 			};
 			
 		case 4 :
+			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(10 , year) , getThisMonthTotleMoney(11 , year)),getThisMonthTotleMoney(12 , year));
 			for(int month = 10 ; month <= 12 ; month++){
 				List<String> items = getThisMonthGoodsItem(month , year);
 				for(String item : items){
-					Double percent = getThisItemTotleMoney(item , month , year);
-					map.put(item, percent);
+					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 2);
+					map.put(item, percent*100);
 				}
 			};
 		}
@@ -160,17 +164,20 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	public Map<String, List<Double>> getRecentYearsOutputGoodsTotleMoney() {
 		Map<String, List<Double>> maps = new HashMap<>();
 		List<String> items = getEveryGoodsItem();
-		Double money = 0.0;
 		for(String item : items){
 			List<Double> moneys = new ArrayList<>();
-			for(int year = Constant.YEAR ; year >= Constant.YEAR - 6 ; year--){
+			for(int year = Constant.YEAR ; year > Constant.YEAR - 6 ; year--){
+				Double money = 0.0;
 				List<Output> outputs = getOutputsWithYearAndItem(year ,item);
 				for(Output output : outputs){
 					money = Arith.add(money, output.getMoney());
 				}
+				moneys.add(money);
 			}
 			maps.put(item, moneys);
+			
 		}
+		
 		return maps;
 	}
 	
@@ -180,13 +187,20 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		
 		Map<String, Double> maps = new HashMap<>();
 		List<String> items = getEveryGoodsItem();
+		Double totleMoney = 0.0;
+		List<Output> outputs_year = getOutputsWithYear(year);
+		for(Output o : outputs_year){
+			System.out.println(o.getItem());
+			totleMoney = Arith.add(totleMoney, o.getMoney());
+		}
 		Double money = 0.0;
 		for(String item : items){
 				List<Output> outputs = getOutputsWithYearAndItem(year ,item);
 				for(Output output : outputs){
 					money = Arith.add(money, output.getMoney());
 			}
-			maps.put(item, money);
+			Double persent = Arith.div(money, totleMoney, 2);
+			maps.put(item, persent);
 		}
 		return maps;
 	}
@@ -204,8 +218,8 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	private List<Output> getOutputsWithYearAndItem(int year , String item){
 		return getSession().createQuery(//
 				"FROM Output output WHERE output.year=? AND output.item=?")
-				.setParameter(1, year)
-				.setParameter(2, item)
+				.setParameter(0, year)
+				.setParameter(1, item)
 				.list();
 	}
 

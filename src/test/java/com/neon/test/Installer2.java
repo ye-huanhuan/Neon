@@ -18,6 +18,7 @@ import com.neon.domain.User;
 import com.neon.service.PrivilegeService;
 import com.neon.service.RoleService;
 import com.neon.service.UserService;
+import com.neon.util.Md5;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)  
@@ -45,6 +46,7 @@ public class Installer2 extends AbstractJUnit4SpringContextTests{
 		List<Privilege> privileges_1 =  privilegeService.getByIds(ids_1);
 		List<Privilege> privileges_2 =  privilegeService.getByIds(ids_2);
 		
+		
 		Role role_1 = new Role();
 		role_1.setRoleName("accounting");
 		role_1.setPrivileges(new HashSet<>(privileges_1));
@@ -58,14 +60,14 @@ public class Installer2 extends AbstractJUnit4SpringContextTests{
 		User user_1 = new User();
 		user_1.setUsername("yh");
 		user_1.setEmail("hiw2012@163.com");
-		user_1.setPassword("yh");
+		user_1.setPassword(Md5.getMD5("yh"));
 		user_1.setRole(role_1);
 		userService.save(user_1);
 		
 		User user_2 = new User();
 		user_2.setUsername("yhh");
 		user_2.setEmail("hiw2012@163.com");
-		user_2.setPassword("yhh");
+		user_2.setPassword(Md5.getMD5("yhh"));
 		user_2.setRole(role_2);
 		userService.save(user_2);
 		
