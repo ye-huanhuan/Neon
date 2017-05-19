@@ -81,7 +81,8 @@ $(function () {
     	        data_input = obj["data_input"];
     	        data_output = obj["data_output"];
     	        var rangeValue = obj["dvalue_double"];
-    	        $("#rangeValue").val(rangeValue);
+    	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
+    	        $('#rangeValue').jRange('setValue', initValue);
     	        change();
     	        chart.series[0].setData(data_difference);
     	        chart.series[1].setData(data_input);

@@ -1,7 +1,7 @@
 /**
  *  每个产品的月销售量
  */
-var chart = new Highcharts.Chart('container_second', {
+var chart1 = new Highcharts.Chart('container_second', {
     title: {
         text: '产品分析表',
         x: -20

@@ -1,15 +1,15 @@
 /**
  * 同一个季度不同商品的出售情况
  */
-
-var chart = new Highcharts.Chart('container_third',{
+ $(function () {
+var chart2 = new Highcharts.Chart('container_third',{
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false
         },
         title: {
-            text: '五月产品销量'
+            text: '第二季度产品销售情况'
         },
         tooltip: {
             headerFormat: '{series.name}<br>',
@@ -42,3 +42,137 @@ var chart = new Highcharts.Chart('container_third',{
             ]
         }]
     });
+$("#third_quarter_1").attr("checked","checked");
+$.ajax({
+    async: true,
+    data: {quarter_quarter_3:$("#third_quarter_1").val()},
+    type: "post",        //type：(string)请求方式，POST或GET
+    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+    url: "analyze_quarter_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+    success: function (msg) {
+        var obj = eval(msg);
+        var a = obj["data_out_quarter_3"];
+       for(var i=0;i<a.length;i++)
+       {
+           for(var j=0;j<a[i].length;j++)
+           {
+               //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
+               if(j==1){
+            	   a[i][j] = Number(a[i][j]);
+               }
+               
+               }
+           }
+        chart2.series[0].setData(a);
+    }
+});
+ });    
+//发送异步请求第一季度数据
+
+     $("#third_quarter_1").click(function () {
+     	alert("m4");
+         $.ajax({
+             async: true,
+             data: {quarter_quarter_3:$("#third_quarter_1").val()},
+             type: "post",        //type：(string)请求方式，POST或GET
+             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+             url: "analyze_quarter_3.action",
+             success: function (msg) {
+                 var obj = eval(msg);
+                 var a = obj["data_out_quarter_3"];
+                 for(var i=0;i<a.length;i++)
+                 {
+                     for(var j=0;j<a[i].length;j++)
+                     {
+                         //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
+                         if(j==1){
+                      	   a[i][j] = Number(a[i][j]);
+                         }
+                         }
+                     }
+                  chart2.series[0].setData(a);
+             }
+         });
+ });
+//发送异步请求第二季度数据
+
+     $("#third_quarter_2").click(function () {
+     	alert("m4");
+         $.ajax({
+             async: true,
+             data: {quarter_quarter_3:$("#third_quarter_2").val()},
+             type: "post",        //type：(string)请求方式，POST或GET
+             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+             url: "analyze_quarter_3.action",
+             success: function (msg) {
+                 var obj = eval(msg);
+                 var a = obj["data_out_quarter_3"];
+                 for(var i=0;i<a.length;i++)
+                 {
+                     for(var j=0;j<a[i].length;j++)
+                     {
+                         //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
+                         if(j==1){
+                      	   a[i][j] = Number(a[i][j]);
+                         }
+                         }
+                     }
+                  chart2.series[0].setData(a);
+             }
+         });
+     });
+
+//发送异步请求第三季度数据
+ 
+     $("#third_quarter_3").click(function () {
+     	alert("m4");
+         $.ajax({
+             async: true,
+             data: {quarter_quarter_3:$("#third_quarter_3").val()},
+             type: "post",        //type：(string)请求方式，POST或GET
+             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+             url: "analyze_quarter_3.action",
+             success: function (msg) {
+                 var obj = eval(msg);
+                 var a = obj["data_out_quarter_3"];
+                 for(var i=0;i<a.length;i++)
+                 {
+                     for(var j=0;j<a[i].length;j++)
+                     {
+                         //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
+                         if(j==1){
+                      	   a[i][j] = Number(a[i][j]);
+                         }
+                         }
+                     }
+                  chart2.series[0].setData(a);
+             }
+         });
+     });
+
+//发送异步请求第四季度数据
+
+     $("#third_quarter_4").click(function () {
+         $.ajax({
+             async: true,
+             data: {quarter_quarter_3:$("#third_quarter_4").val()},
+             type: "post",        //type：(string)请求方式，POST或GET
+             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+             url: "analyze_quarter_3.action",
+             success: function (msg) {
+                 var obj = eval(msg);
+                 var a = obj["data_out_quarter_3"];
+                 for(var i=0;i<a.length;i++)
+                 {
+                     for(var j=0;j<a[i].length;j++)
+                     {
+                         //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
+                         if(j==1){
+                      	   a[i][j] = Number(a[i][j]);
+                         }
+                         }
+                     }
+                  chart2.series[0].setData(a);
+             }
+         });
+ });

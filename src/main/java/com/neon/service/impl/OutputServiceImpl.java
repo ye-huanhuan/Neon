@@ -94,9 +94,10 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	public Map<String, Double> getThisMonthOutputGoodsTotleMoney(int month , int year) {
 		Map<String, Double> map = new HashMap<>();
 		List<String> items = getThisMonthGoodsItem(month , year);
+		Double totleMoney = getThisMonthTotleMoney(month , year);
 		for(String item : items){
-			Double percent = getThisItemTotleMoney(item , month , year);
-			map.put(item, percent);
+			Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney , 4);
+			map.put(item, percent*100);
 		}
 		return map;
 	}
@@ -202,8 +203,8 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	private List<Output> getOutputsWithYearAndItem(int year , String item){
 		return getSession().createQuery(//
 				"FROM Output output WHERE output.year=? AND output.item=?")
-				.setParameter(1, year)
-				.setParameter(2, item)
+				.setParameter(0, year)
+				.setParameter(1, item)
 				.list();
 	}
 
