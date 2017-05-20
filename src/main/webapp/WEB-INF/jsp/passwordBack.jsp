@@ -6,7 +6,7 @@
 <html lang="en" class="bg-dark">
 <head>
 <meta charset="utf-8" />
-<title>Notebook | Web Application</title>
+<title>Neon</title>
 <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
@@ -16,7 +16,7 @@
 
 <body>
 <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
-  <div class="container aside-xxl"> <a class="navbar-brand block" href="#">Notebook</a>
+  <div class="container aside-xxl"> <a class="navbar-brand block" href="#">Neon</a>
     <section class="panel panel-default bg-white m-t-lg">
       <header class="panel-heading text-center"> <strong style="font-size: 20px">找回密码</strong> </header>
       <form action="log_toPasswordBack.action" class="panel-body wrapper-lg" method="post">
