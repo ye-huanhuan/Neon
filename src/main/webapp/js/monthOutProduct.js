@@ -1,15 +1,16 @@
 /**
  *  同一个月不同产品的销量
  */
+ var chart2;
 $(function () {
-var chart2 = new Highcharts.Chart('container_third',{
+chart2 = new Highcharts.Chart('container_third',{
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false
         },
         title: {
-            text: '五月销项产品'
+            text: '五月销项产品',
         },
         tooltip: {
             headerFormat: '{series.name}<br>',
@@ -51,12 +52,11 @@ $.ajax({
     url: "analyze_month_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
     success: function (msg) {
         var obj = eval(msg);
-        var a = obj["test"];
+        var a = obj["data_output_month_3"];
        for(var i=0;i<a.length;i++)
        {
            for(var j=0;j<a[i].length;j++)
            {
-               //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                if(j==1){
             	   a[i][j] = Number(a[i][j]);
                }
@@ -64,13 +64,15 @@ $.ajax({
                }
            }
         chart2.series[0].setData(a);
+        chart2.title.update({
+     		text: '五月产品销售情况',
+     });
     }
 });
 });
 //发送异步请求四月数据
 $(function () {
     $("#month4").click(function () {
-    	alert("m4");
         $.ajax({
             async: true,
             data: {m:$("#month4").val()},
@@ -79,7 +81,7 @@ $(function () {
             url: "analyze_month_3.action",
             success: function (msg) {
                 var obj = eval(msg);
-                var a = obj["test"];
+                var a = obj["data_output_month_3"];
                 for(var i=0;i<a.length;i++)
                 {
                     for(var j=0;j<a[i].length;j++)
@@ -91,6 +93,9 @@ $(function () {
                         }
                     }
                  chart2.series[0].setData(a);
+                 chart2.title.update({
+              		text: '四月产品销售情况',
+              });
             }
         });
     });
@@ -98,7 +103,6 @@ $(function () {
 //发送异步请求三月数据
 $(function () {
     $("#month3").click(function () {
-    	alert("m3");
         $.ajax({
             async: true,
             data: {m:$("#month3").val()},
@@ -107,7 +111,7 @@ $(function () {
             url: "analyze_month_3.action",
             success: function (msg) {
                 var obj = eval(msg);
-                var a = obj["test"];
+                var a = obj["data_output_month_3"];
                 for(var i=0;i<a.length;i++)
                 {
                     for(var j=0;j<a[i].length;j++)
@@ -119,6 +123,10 @@ $(function () {
                         }
                     }
                  chart2.series[0].setData(a);
+                 chart2.title.update({
+             		text: '三月产品销售情况',
+             	
+             });
             }
         });
     });

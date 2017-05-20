@@ -4,21 +4,32 @@ package com.neon.domain;
 public class Dvalue {
 
 	private Long id;
-	private Double ddvalue;
+	private Double pdvalue;//利润
+	private Double ndvalue;//亏损
 	private String date;
 	public Long getId() {
 		return id;
-	}
-	public Double getDdvalue() {
-		return ddvalue;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public void setDdvalue(Double ddvalue) {
-		this.ddvalue = ddvalue;
+	public Double getPdvalue() {
+		return pdvalue;
 	}
+
+	public Double getNdvalue() {
+		return ndvalue;
+	}
+
+	public void setPdvalue(Double pdvalue) {
+		this.pdvalue = pdvalue;
+	}
+
+	public void setNdvalue(Double ndvalue) {
+		this.ndvalue = ndvalue;
+	}
+
 	public String getDate() {
 		return date;
 	}

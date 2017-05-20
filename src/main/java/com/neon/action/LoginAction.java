@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.neon.base.ActionBase;
-import com.neon.domain.Limite;
 import com.neon.domain.MailInfo;
 import com.neon.domain.User;
 import com.neon.util.ListToArray;
@@ -65,6 +64,7 @@ public class LoginAction extends ActionBase<User> {
 			return "success";
 		}else{
 			addFieldError("loginerror", "密码或验证码错误");
+			System.out.println("gg");
 			return "login";
 		}
 	}

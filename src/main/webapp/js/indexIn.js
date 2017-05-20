@@ -1,12 +1,12 @@
-/*
- * 首页销项数据
+/**
+ * 首页进项数据
  */
 $(document).ready(function() {
         var chart = {
             zoomType: 'x'
         };
         var title = {
-            text: '2015年1月1日至今每日的销项总额'
+            text: '2015年1月1日至今每日的进项总额'
         };
         var subtitle = {
             text: '拖动x轴能缩放图表'
@@ -27,7 +27,7 @@ $(document).ready(function() {
         };
         var yAxis = {
             title: {
-                text: '销项税',
+                text: '进项税',
                 align: 'high',
             }
         };
@@ -44,9 +44,9 @@ $(document).ready(function() {
                 day: '%Y-%m-%d',
                 week: '%m-%d',
                 month: '%Y-%m',
-                year: '%Y',
+                year: '%Y'
             },
-        	valueSuffix: '万',
+            valueSuffix: '万',
         };
         var plotOptions = {
             area: {
@@ -71,7 +71,7 @@ $(document).ready(function() {
         };
         var series= [{
             type: 'area',
-            name: '销项税',
+            name: '进项税',
             pointInterval: 24 * 3600 * 1000,
             pointStart: Date.UTC(2015, 0, 1),
             data: [
@@ -199,6 +199,6 @@ $(document).ready(function() {
         json.series = series;
         json.plotOptions = plotOptions;
 
-        $('#container_top').highcharts(json);
+        $('#container_second').highcharts(json);
 
     });

@@ -15,15 +15,24 @@
        marginBottom: 25
      },
      title: {
-       text: '每天的分布情况',
+       text: '产品分析表',
        x: -20 //center
      },
+     subtitle: {
+         text: '数据来源: 财务部',
+         x: -20
+     },
      xAxis: {
-       categories: ['2012', '2013', '2014', '2015','2016','2017']
+       categories: ['2012', '2013', '2014', '2015','2016','2017'],
+       title: {
+           text: '年份/年',
+           align: 'high',
+       },
      },
      yAxis: {
        title: {
-         text: 'Y轴'
+         text: '金额/万元',
+       	 align: 'high',
        },
        plotLines: [{
          value: 0,
@@ -32,9 +41,7 @@
        }]
      },
      tooltip: {
-       formatter: function() {
-         return '<b>'+ this.series.name +'</b><br/>' + this.x +': '+ this.y ;
-       }
+       valueSuffix: '万元',
      },
      legend: {
        layout: 'vertical',
@@ -57,7 +64,6 @@
   	    	var obj = eval(msg);
   	    	productName = obj["productName"];
   	    	productValue = obj["productVlaue"];
-  	    	alert(productName.length);
   	    	for(var i=0;i<productName.length;i++){
 	        options.series[i] = new Object();
 	        options.series[i].name = productName[i];
@@ -68,4 +74,3 @@
    });
    
 });
- 

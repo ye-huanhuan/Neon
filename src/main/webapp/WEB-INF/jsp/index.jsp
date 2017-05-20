@@ -42,7 +42,7 @@
             <!-- 近年销项数据 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">季度分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 16px">实时分析表</header>
                   <div class="panel-body">
                     <div id="container_top" style="min-width:400px;height:500px"></div>
                   </div>
@@ -58,7 +58,7 @@
               <!-- 近年进项数据 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">季度分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 16px">实时分析表</header>
                   <div class="panel-body">
                     <div id="container_second" style="min-width:400px;height:500px"></div>
                   </div>
@@ -86,8 +86,8 @@
     </section>
   </section>
 </section>
-
-<script src="js/indexOut.js"></script>
+<script src= "js/indexOut.js"></script>
+<script src= "js/indexIn.js"></script>
 <script src="js/highcharts.js"></script>
 </body>
 </html>

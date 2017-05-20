@@ -10,7 +10,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.neon.domain.Limite;
+import com.neon.domain.Privilege;
+import com.neon.service.PrivilegeService;
+
 
 @Component
 public class Installer {
@@ -24,25 +26,25 @@ public class Installer {
 		
 		
 		//==============添加权限============================
-		Limite limite1 , limite2 , limite3;
-		limite1 = new Limite();
-		/*limite1.setLimiteName("首页");
-		limite1.setActionName("home_index.action");*/
-		session.save(limite1);
-		/*limite2 = new Limite("分析", "#"	, null);
-		limite3 = new Limite("设置数据", "#", null);
+		Privilege  privilege2 , privilege3;
+		//privilege1 = new Privilege("首页","#",null);
+		//session.save(privilege1);
 		
-		session.save(limite2);
-		session.save(limite3);*/
+		privilege2 = new Privilege("分析","#",null);
+		session.save(privilege2);
 		
-		/*session.save(new Limite("月份分析", "analyze_month.action", limite2));
-		session.save(new Limite("季度份分析", "analyze_quarter.action", limite2));
-		session.save(new Limite("年份分析", "analyze_year.action", limite2));
-		session.save(new Limite("税收分析", "analyze_tax.action", limite2));
+		privilege3 = new Privilege("设置","#",null);
+		session.save(privilege3);
 		
-		session.save(new Limite("设置数据", "invoice_setDvalue.action", limite3));*/
+		session.save(new Privilege("月份分析","analyze_month.action",privilege2));
+		session.save(new Privilege("季度分析","analyze_quarter.action",privilege2));
+		session.save(new Privilege("年度分析","analyze_year.action",privilege2));
+		session.save(new Privilege("税收分析","analyze_tax.action",privilege2));
+		
+		session.save(new Privilege("设置数据","invoice_setDvalue.action",privilege3));
 		
 		//==============================================
+		
 	}
 
 	public static void main(String[] args) {
