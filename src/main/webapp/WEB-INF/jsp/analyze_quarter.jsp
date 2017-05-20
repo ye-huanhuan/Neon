@@ -173,7 +173,7 @@
       
 
 <script src="js/highcharts.js"></script>
-<script src="js/sumInOutQuarter.js"></script>
+<script src="js/sumInOutQuarter.js?ver=1"></script>
 <script src="js/productOutQuarter.js"></script>
 <!--<script src="js/quarterOutProduct.js"></script>-->
 <!--
@@ -402,12 +402,21 @@ $('.range-slider').jRange({
             plotBorderWidth: null,
             plotShadow: false
         },
+        //去除右下角水印
+        credits: {
+			enabled:false
+		},
         title: {
-            text: '第二季度产品销售情况'
+            text: '第一季度产品销售情况',
+            x: -20,
         },
         tooltip: {
             headerFormat: '{series.name}<br>',
             pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        subtitle: {
+            text: '数据来源: 财务部',
+            x: -20,
         },
         plotOptions: {
             pie: {
@@ -458,6 +467,9 @@ $.ajax({
                }
            }
         chart2.series[0].setData(a);
+        chart2.title.update({
+     		text: '第一季度产品销售情况',
+     });
     }
 });
  });    
@@ -485,6 +497,9 @@ $.ajax({
                          }
                      }
                   chart2.series[0].setData(a);
+                  chart2.title.update({
+               		text: '第一季度产品销售情况',
+               });
              }
          });
      });
@@ -513,6 +528,9 @@ $.ajax({
                          }
                      }
                   chart2.series[0].setData(a);
+                  chart2.title.update({
+               		text: '第二季度产品销售情况',
+               });
              }
          });
      });
@@ -541,6 +559,9 @@ $.ajax({
                          }
                      }
                   chart2.series[0].setData(a);
+                  chart2.title.update({
+               		text: '第三季度产品销售情况',
+               });
              }
          });
      });
@@ -568,6 +589,9 @@ $.ajax({
                          }
                      }
                   chart2.series[0].setData(a);
+                  chart2.title.update({
+               		text: '第四季度产品销售情况',
+               });
              }
          });
      });

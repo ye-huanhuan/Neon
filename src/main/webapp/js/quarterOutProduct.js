@@ -8,6 +8,9 @@ var chart2 = new Highcharts.Chart('container_third',{
             plotBorderWidth: null,
             plotShadow: false
         },
+        credits: {
+			enabled:false
+		},
         title: {
             text: '第二季度产品销售情况'
         },
@@ -56,7 +59,6 @@ $.ajax({
        {
            for(var j=0;j<a[i].length;j++)
            {
-               //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                if(j==1){
             	   a[i][j] = Number(a[i][j]);
                }

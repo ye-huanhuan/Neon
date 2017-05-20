@@ -4,13 +4,21 @@
  var chart2;
 $(function () {
 chart2 = new Highcharts.Chart('container_third',{
-        chart: {
+		credits: {
+			enabled:false
+		},
+		chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false
         },
         title: {
             text: '五月销项产品',
+            x: -20,
+        },
+        subtitle: {
+            text: '数据来源: 财务部',
+            x: -20,
         },
         tooltip: {
             headerFormat: '{series.name}<br>',

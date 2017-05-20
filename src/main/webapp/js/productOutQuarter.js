@@ -7,6 +7,9 @@
  var options;
  $(function () {
    options = {
+	credits: {
+		enabled:false
+	},	   
      chart: {
        renderTo: 'container_second',
        type: 'line',
@@ -27,6 +30,12 @@
            text: '年份/年',
            align: 'high',
        },
+       labels: {
+           style: {
+               fontSize:'14px',
+               fontFamily:'微软雅黑'
+           }
+       }
      },
      yAxis: {
        title: {
@@ -37,7 +46,14 @@
          value: 0,
          width: 1,
          color: '#808080'
-       }]
+       }],
+       //修改y轴值字体的大小
+       labels: {
+           style: {
+               fontSize:'14px',
+               fontFamily:'微软雅黑'
+           }
+       }
      },
      tooltip: {
        valueSuffix: '万元',

@@ -179,6 +179,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 //		for(double d:output_totlemoney_year_array){
 //			System.out.println(d);
 //		}
+		System.out.println("长度："+input_totlemoney_year_array.length);
 		result2.put("data_difference_year", dvalue_array);
 		result2.put("data_input_year", input_totlemoney_year_array);
 		result2.put("data_output_year", output_totlemoney_year_array);

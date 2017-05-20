@@ -10,7 +10,9 @@ var chart;
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7'];
 $(function () {
      chart = new Highcharts.Chart('container_top', {
-    	
+    	 credits: {
+             enabled:false
+		},
         title: {
             text: '季度分析表',
             x: -20
@@ -27,6 +29,12 @@ $(function () {
             title: {
                 text: '季度/季度',
                 align: 'high',
+            },
+            labels: {
+                style: {
+                    fontSize:'14px',
+                    fontFamily:'微软雅黑'
+                }
             }
         },
         yAxis: {
@@ -38,7 +46,13 @@ $(function () {
                 value: 0,
                 width: 1,
                 color: '#808080'
-            }]
+            }],
+            labels: {
+                style: {
+                    fontSize:'14px',
+                    fontFamily:'微软雅黑'
+                }
+            }
         },
         tooltip: {
         	//数据后缀

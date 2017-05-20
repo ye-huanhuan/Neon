@@ -13,6 +13,9 @@
        marginRight: 130,
        marginBottom: 25
      },
+     credits: {
+ 		enabled:false
+ 	},
      title: {
        text: '产品分析表',
        x: -20 //center
@@ -27,6 +30,12 @@
            text: '月份/月',
            align: 'high',
        },
+       labels: {
+           style: {
+               fontSize:'14px',
+               fontFamily:'微软雅黑'
+           }
+       }
      },
      yAxis: {
        title: {
@@ -37,7 +46,13 @@
          value: 0,
          width: 1,
          color: '#808080'
-       }]
+       }],
+       labels: {
+           style: {
+               fontSize:'14px',
+               fontFamily:'微软雅黑'
+           }
+       }
      },
      tooltip: {
        valueSuffix: '万元',
