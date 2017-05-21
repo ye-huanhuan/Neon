@@ -1,3 +1,5 @@
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
+<%@page import="com.neon.domain.User"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@taglib prefix="s" uri="/struts-tags"%>
@@ -25,31 +27,31 @@
                   <li> <a href="home_index.action" class="active"> <i class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>首页</span> </a> </li>
                   <s:iterator value="#application.topPrivileges">
                    <s:if test="#session.user.hasPrivilegeByName(LimiteName)">
-                   		<%-- <s:if test="#session.user.isPrivilege(LimiteName)">
-                  			<li > <a href=${actionName } > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>${limiteName }</span> </a>
-	                    	<ul class="nav lt">
-	                    
-	                    	<s:iterator value="topPrivilege_2">
-	                      		<li > <a href=${actionName } > <i class="fa fa-angle-right"></i> <span>${limiteName }</span> </a> </li>
-	                    	</s:iterator>
-	                    </s:if>
-	                    <s:else> --%>
-	                    
 	                    	<li > <a href=${actionName } > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>${limiteName }</span> </a>
 	                    	<ul class="nav lt">
-	                    	<%-- <s:if test="#session.user.isPrivilege(LimiteName)">
-	                    	<s:iterator value="topPrivilege_2">
-	                    	</s:if>
-	                    	<s:else> --%>
 	                    	
-	                    	<s:iterator value="children">
-	                    	<%-- </s:else> --%>
-	                      		<li > <a href=${actionName } > <i class="fa fa-angle-right"></i> <span>${limiteName }</span> </a> </li>
+	                    	<s:if test="#session.user.isPrivilege(LimiteName)"> 
+	                    	<s:iterator value="#application.topPrivilege_2">
+	                    	<li > <a href=${actionName } > <i class="fa fa-angle-right"></i> <span>${limiteName }</span> </a> </li>
 	                    	</s:iterator>
-	                    <%-- </s:else> --%>
+	                    	
+	                    	</s:if>  
+        					<s:elseif test="#session.user.isNotPrivilege(LimiteName)"> 
+	                    	<s:iterator value="children">
+	                    	<li > <a href=${actionName } > <i class="fa fa-angle-right"></i> <span>${limiteName }</span> </a> </li>
+	                    	</s:iterator>
+	                    	
+	                    	</s:elseif>
+	                    	
+	                      		
 	                    	</ul>
                     		</li>
                    </s:if>
+                   
+                    
+        		 
+        		
+        
                   </s:iterator>
        </ul>
 </body>
