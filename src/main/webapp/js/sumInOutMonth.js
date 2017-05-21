@@ -7,14 +7,54 @@ var data_difference;
 var data_input;
 var data_output;
 var chart;
+function calculate(){
+	var num_effe_input = 0,num_effe_output = 0;
+    var sum_effe_input = 0,sum_effe_output = 0;
+    var aver_input = 0,aver_output = 0;
+    var variance_input = 0;variance_output = 0;
+    for(d in data_input){
+    	if(data_input[d] > 0){
+    		num_effe_input ++;
+    		sum_effe_input += data_input[d];
+    	}
+    }
+    if(num_effe_input != 0){
+    	aver_input = (sum_effe_input/num_effe_input).toFixed(2);
+    }
+    
+    for(d in data_output){
+    	if(data_output[d] > 0){
+    		num_effe_output ++;
+    		sum_effe_output += data_output[d];
+    	}
+    }
+    if(num_effe_output != 0){
+    	aver_output = (sum_effe_output/num_effe_output).toFixed(2);
+    }
+    for(d in data_input){
+    	if(data_input[d] > 0){
+    		variance_input += Math.pow((data_input[d]-aver_input),2);
+    	}
+    }
+    for(d in data_output){
+    	if(data_output[d] > 0){
+    		variance_output += (Math.pow((data_output[d]-aver_output),2));
+    	}
+    }
+    variance_output = variance_output.toFixed(2);
+    $("#aver_input").text(aver_input);
+    $("#aver_output").text(aver_output);
+    $("#variance_input").text(variance_input);
+    $("#variance_output").text(variance_output);
+}
 
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7','#058DC7'];
 $(function () {
      chart = new Highcharts.Chart('container_top', {
     	 credits: {
              enabled:false
-		},
-    	 title: {
+		},	 
+        title: {
             text: '月份分析表',
             x: -20
         },
@@ -90,25 +130,12 @@ $(function () {
     	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
     	    url: "analyze_month_1.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
     	    success: function (msg) {
-    	    	
     	        var obj = eval(msg);
     	        data_difference = obj["data_difference"];
     	        data_input = obj["data_input"];
     	        data_output = obj["data_output"];
+    	        calculate();
     	        var rangeValue = obj["dvalue_double"];
-    	        var num_effe_input = 0,num_effe_output = 0;
-    	        var sum_effe_input = 0,sum_effe_output = 0;
-    	        var aver_input = 0,aver_output = 0;
-    	        for(d in data_input){
-    	        	if(data_input[d] > 0){
-    	        		num_effe_input ++;
-    	        		sum_effe_input += data_input[d];
-    	        	}
-    	        }
-    	        aver_input = sum_effe_input/num_effe_input;
-    	        $("#aver_input").text(aver_input);
-    	        alert("平均值："+aver_input);
-    	        //设置range的初始值
     	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
     	        $('#rangeValue').jRange('setValue', initValue);
     	        change();
@@ -121,7 +148,6 @@ $(function () {
 //发送异步请求2016年数据
 $(function () {
     $("#year-2016").click(function () {
-    	alert("hello");
         $.ajax({
             async: true,
             data: {y:$("#year-2016").val()},
@@ -130,14 +156,11 @@ $(function () {
 //            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
             url: "analyze_month_1.action",
             success: function (msg) {
-            	
-            	alert(msg);
                 var obj = eval(msg);
                 data_difference = obj["data_difference"];
                 data_input = obj["data_input"];
                 data_output = obj["data_output"];
-//                newdate = [obj["1"],obj["2"],obj["3"],obj["4"],obj["5"],obj["6"],obj["7"],obj["8"],obj["9"],obj["10"],obj["11"],obj["12"]];
-                alert(data_difference);
+                calculate();
                 chart.series[0].setData(data_difference);
                 chart.series[1].setData(data_input);
                 chart.series[2].setData(data_output);
@@ -156,14 +179,11 @@ $(function () {
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
             url: "analyze_month_1.action",
             success: function (msg) {
-            	
-            	alert(msg);
                 var obj = eval(msg);
                 data_difference = obj["data_difference"];
                 data_input = obj["data_input"];
                 data_output = obj["data_output"];
-//                newdate = [obj["1"],obj["2"],obj["3"],obj["4"],obj["5"],obj["6"],obj["7"],obj["8"],obj["9"],obj["10"],obj["11"],obj["12"]];
-                alert(data_difference);
+                calculate();
                 chart.series[0].setData(data_difference);
                 chart.series[1].setData(data_input);
                 chart.series[2].setData(data_output);
@@ -183,14 +203,11 @@ $(function () {
 //            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
             url: "analyze_month_1.action",
             success: function (msg) {
-            	
-            	alert(msg);
                 var obj = eval(msg);
                 data_difference = obj["data_difference"];
                 data_input = obj["data_input"];
                 data_output = obj["data_output"];
-//                newdate = [obj["1"],obj["2"],obj["3"],obj["4"],obj["5"],obj["6"],obj["7"],obj["8"],obj["9"],obj["10"],obj["11"],obj["12"]];
-                alert(data_difference);
+                calculate();
                 chart.series[0].setData(data_difference);
                 chart.series[1].setData(data_input);
                 chart.series[2].setData(data_output);
@@ -230,5 +247,3 @@ $('.range-slider').jRange({
     isRange : true,
     ondragend : change,
 });
-
-

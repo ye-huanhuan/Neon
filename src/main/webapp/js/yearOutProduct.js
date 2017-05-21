@@ -59,14 +59,12 @@ $.ajax({
     dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
     url: "analyze_year_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
     success: function (msg) {
-    	alert("year_3");
         var obj = eval(msg);
         var a = obj["data_output_year_3"];
        for(var i=0;i<a.length;i++)
        {
            for(var j=0;j<a[i].length;j++)
            {
-              // alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                if(j==1){
             	   a[i][j] = Number(a[i][j]);
                }
@@ -80,10 +78,9 @@ $.ajax({
 //发送异步请求2016年数据
 
  $("#year2016").click(function () {
- 	alert("m4");
      $.ajax({
          async: true,
-         data: {quarter_quarter_3:$("#year2016").val()},
+         data: {year_year_3:$("#year2016").val()},
          type: "post",        //type：(string)请求方式，POST或GET
          dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
          url: "analyze_year_3.action",
@@ -94,7 +91,6 @@ $.ajax({
              {
                  for(var j=0;j<a[i].length;j++)
                  {
-                     //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                      if(j==1){
                   	   a[i][j] = Number(a[i][j]);
                      }
@@ -108,10 +104,9 @@ $.ajax({
 //发送异步请求2017年数据
 
  $("#year2017").click(function () {
- 	alert("m4");
      $.ajax({
          async: true,
-         data: {quarter_quarter_3:$("#year2017").val()},
+         data: {year_year_3:$("#year2017").val()},
          type: "post",        //type：(string)请求方式，POST或GET
          dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
          url: "analyze_year_3.action",
@@ -122,7 +117,6 @@ $.ajax({
              {
                  for(var j=0;j<a[i].length;j++)
                  {
-                     //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                      if(j==1){
                   	   a[i][j] = Number(a[i][j]);
                      }
@@ -135,10 +129,9 @@ $.ajax({
 //发送异步请求2015年数据
 
  $("#year2015").click(function () {
- 	alert("m4");
      $.ajax({
          async: true,
-         data: {quarter_quarter_3:$("#year2015").val()},
+         data: {year_year_3:$("#year2015").val()},
          type: "post",        //type：(string)请求方式，POST或GET
          dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
          url: "analyze_year_3.action",

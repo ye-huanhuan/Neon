@@ -1,22 +1,29 @@
 /**
  * 同一个季度不同商品的出售情况
  */
+ var chart2;
  $(function () {
-var chart2 = new Highcharts.Chart('container_third',{
+	 chart2= new Highcharts.Chart('container_third',{
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false
         },
+        //去除右下角水印
         credits: {
 			enabled:false
 		},
         title: {
-            text: '第二季度产品销售情况'
+            text: '第一季度产品销售情况',
+            x: -20,
         },
         tooltip: {
             headerFormat: '{series.name}<br>',
             pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        subtitle: {
+            text: '数据来源: 财务部',
+            x: -20,
         },
         plotOptions: {
             pie: {
@@ -66,13 +73,15 @@ $.ajax({
                }
            }
         chart2.series[0].setData(a);
+        chart2.title.update({
+     		text: '第一季度产品销售情况',
+     });
     }
 });
  });    
 //发送异步请求第一季度数据
-
+ $(function () {
      $("#third_quarter_1").click(function () {
-     	alert("m4");
          $.ajax({
              async: true,
              data: {quarter_quarter_3:$("#third_quarter_1").val()},
@@ -86,20 +95,22 @@ $.ajax({
                  {
                      for(var j=0;j<a[i].length;j++)
                      {
-                         //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                          if(j==1){
                       	   a[i][j] = Number(a[i][j]);
                          }
                          }
                      }
                   chart2.series[0].setData(a);
+                  chart2.title.update({
+               		text: '第一季度产品销售情况',
+               });
              }
          });
+     });
  });
 //发送异步请求第二季度数据
-
+ $(function () {
      $("#third_quarter_2").click(function () {
-     	alert("m4");
          $.ajax({
              async: true,
              data: {quarter_quarter_3:$("#third_quarter_2").val()},
@@ -113,21 +124,23 @@ $.ajax({
                  {
                      for(var j=0;j<a[i].length;j++)
                      {
-                         //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                          if(j==1){
                       	   a[i][j] = Number(a[i][j]);
-                         }
+                      	  
+                         	}
                          }
                      }
                   chart2.series[0].setData(a);
+                  chart2.title.update({
+               		text: '第二季度产品销售情况',
+               });
              }
          });
      });
-
+ });
 //发送异步请求第三季度数据
- 
+ $(function () {
      $("#third_quarter_3").click(function () {
-     	alert("m4");
          $.ajax({
              async: true,
              data: {quarter_quarter_3:$("#third_quarter_3").val()},
@@ -141,19 +154,21 @@ $.ajax({
                  {
                      for(var j=0;j<a[i].length;j++)
                      {
-                         //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                          if(j==1){
                       	   a[i][j] = Number(a[i][j]);
                          }
                          }
                      }
                   chart2.series[0].setData(a);
+                  chart2.title.update({
+               		text: '第三季度产品销售情况',
+               });
              }
          });
      });
-
+ });
 //发送异步请求第四季度数据
-
+ $(function () {
      $("#third_quarter_4").click(function () {
          $.ajax({
              async: true,
@@ -175,6 +190,10 @@ $.ajax({
                          }
                      }
                   chart2.series[0].setData(a);
+                  chart2.title.update({
+               		text: '第四季度产品销售情况',
+               });
              }
          });
+     });
  });

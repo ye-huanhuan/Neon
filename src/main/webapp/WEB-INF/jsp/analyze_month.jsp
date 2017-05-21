@@ -171,7 +171,7 @@
       
 
 <script src="js/highcharts.js"></script>
-<!--<script src="js/sumInOutMonth.js"></script>-->
+<script src="js/sumInOutMonth.js"></script>
 <script src="js/productOutMonth.js"></script>
 <script src="js/monthOutProduct.js"></script>
 <!--  
@@ -328,6 +328,7 @@
 	});
 </script>
 -->
+<!-- 
 <script>
 
 /**

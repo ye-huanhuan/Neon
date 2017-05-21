@@ -93,7 +93,6 @@
  //异步请求2017年数据
  $(function () {
 	    $("#second_year2017").click(function () {
-	    	alert("hello");
 	    	$.ajax({
 	      	    async: true,
 	      	  	data: {y2:$("#second_year2017").val()},
@@ -117,7 +116,6 @@
 //异步请求2016年数据
  $(function () {
 	    $("#second_year2016").click(function () {
-	    	alert("hello");
 	    	$.ajax({
 	      	    async: true,
 	      	  	data: {y2:$("#second_year2016").val()},
@@ -141,7 +139,6 @@
 //异步请求2015年数据
  $(function () {
 	    $("#second_year2015").click(function () {
-	    	alert("hello");
 	    	$.ajax({
 	      	    async: true,
 	      	  	data: {y2:$("#second_year2015").val()},

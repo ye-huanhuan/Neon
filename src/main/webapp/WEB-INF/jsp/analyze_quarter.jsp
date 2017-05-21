@@ -174,9 +174,9 @@
       
 
 <script src="js/highcharts.js"></script>
-<script src="js/sumInOutQuarter.js?ver=1"></script>
+<script src="js/sumInOutQuarter.js"></script>
 <script src="js/productOutQuarter.js"></script>
-<!--<script src="js/quarterOutProduct.js"></script>-->
+<script src="js/quarterOutProduct.js"></script>
 <!--  
 <script>
 /**
@@ -441,6 +441,7 @@ $('.range-slider').jRange({
 
 </script>
 -->
+<!--  
 <script>
 /**
  * 同一个季度不同商品的出售情况

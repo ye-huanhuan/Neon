@@ -164,10 +164,10 @@
       
 
 <script src="js/highcharts.js"></script>
-<!--<script src="js/sumInOutYear.js"></script>-->
+<script src="js/sumInOutYear.js"></script>
 <script src="js/productOutYear.js"></script>
-<!--<script src="js/yearOutProduct.js"></script>-->
-
+<script src="js/yearOutProduct.js"></script>
+  <!-- 
 <script type="text/javascript">
 /**
  * 年度进销项总和对比
@@ -217,6 +217,13 @@ function calculate(){
     $("#aver_output").text(aver_output);
     $("#variance_input").text(variance_input);
     $("#variance_output").text(variance_output);
+}
+function transfer(data){
+	for(i in data){
+    	if(data[i] == 0){
+    		data[i] = null;
+    	}
+    }
 }
 $(function () {
 	//运用构造函数式
@@ -305,6 +312,9 @@ $(function () {
     	        data_difference = obj["data_difference_year"];
     	        data_input = obj["data_input_year"];
     	        data_output = obj["data_output_year"];
+    	        transfer(data_difference);
+    	        transfer(data_input);
+    	        transfer(data_output);
     	        calculate();
     	        var rangeValue = obj["dvalue_double_year"];
     	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
@@ -349,10 +359,8 @@ $('.range-slider').jRange({
     ondragend : change,
 });
 
-
-
 </script>
- 
+ <!-- 
 <script>
 /*
  *  同一年不同产品的销量
@@ -415,7 +423,6 @@ $.ajax({
     dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
     url: "analyze_year_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
     success: function (msg) {
-    	alert("year_3");
         var obj = eval(msg);
         var a = obj["data_output_year_3"];
        for(var i=0;i<a.length;i++)
@@ -435,7 +442,6 @@ $.ajax({
 //发送异步请求2016年数据
 
  $("#year2016").click(function () {
- 	alert("m4");
      $.ajax({
          async: true,
          data: {year_year_3:$("#year2016").val()},
@@ -513,7 +519,7 @@ $.ajax({
      });
  });
 </script>
-   
+   -->
 <!--  
 <script>
 /**
