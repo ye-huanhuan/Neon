@@ -96,6 +96,19 @@ $(function () {
     	        data_input = obj["data_input"];
     	        data_output = obj["data_output"];
     	        var rangeValue = obj["dvalue_double"];
+    	        var num_effe_input = 0,num_effe_output = 0;
+    	        var sum_effe_input = 0,sum_effe_output = 0;
+    	        var aver_input = 0,aver_output = 0;
+    	        for(d in data_input){
+    	        	if(data_input[d] > 0){
+    	        		num_effe_input ++;
+    	        		sum_effe_input += data_input[d];
+    	        	}
+    	        }
+    	        aver_input = sum_effe_input/num_effe_input;
+    	        $("#aver_input").text(aver_input);
+    	        alert("平均值："+aver_input);
+    	        //设置range的初始值
     	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
     	        $('#rangeValue').jRange('setValue', initValue);
     	        change();

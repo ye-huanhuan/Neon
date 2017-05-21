@@ -14,7 +14,6 @@
        renderTo: 'container_second',
        type: 'line',
        marginRight: 130,
-       marginBottom: 25
      },
      title: {
        text: '产品分析表',

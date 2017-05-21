@@ -93,11 +93,13 @@
                   <div class="panel-body">
                     <div id="container_top" style="min-width:400px;height:400px"></div>
                   </div>
+                 
                   <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        进销项总和分析报告
-                      </div>
+                      <div class="col-xs-3 b-r b-light"> <span id="aver_input" class="h4 font-bold m-t block">5,860</span><small class="text-muted m-b block">进项数据平均值</small></div>
+                      <div class="col-xs-3 b-r b-light"> <span id="aver_output" class="h4 font-bold m-t block">10,450</span><small class="text-muted m-b block">销项数据平均值</small> </div>
+                      <div class="col-xs-3 b-r b-light"> <span id="variance_input" class="h4 font-bold m-t block">21,230</span> <small class="text-muted m-b block">进项数据方差</small> </div>
+                      <div class="col-xs-3"> <span id="variance_output" class="h4 font-bold m-t block">7,230</span> <small class="text-muted m-b block">销项数据方差</small></div>
                     </div>
                   </footer>
                 </section>
@@ -145,7 +147,7 @@
                   <div class="panel-body">
                     <div id="container_third" style="min-width:400px;height:400px"></div>
                   </div>
-                  <footer class="panel-footer bg-white no-padder">
+                   <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">
                       <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
                         	这是本月的产品销量图
@@ -337,6 +339,46 @@ var data_difference;
 var data_input;
 var data_output;
 var chart;
+function calculate(){
+	var num_effe_input = 0,num_effe_output = 0;
+    var sum_effe_input = 0,sum_effe_output = 0;
+    var aver_input = 0,aver_output = 0;
+    var variance_input = 0;variance_output = 0;
+    for(d in data_input){
+    	if(data_input[d] > 0){
+    		num_effe_input ++;
+    		sum_effe_input += data_input[d];
+    	}
+    }
+    if(num_effe_input != 0){
+    	aver_input = (sum_effe_input/num_effe_input).toFixed(2);
+    }
+    
+    for(d in data_output){
+    	if(data_output[d] > 0){
+    		num_effe_output ++;
+    		sum_effe_output += data_output[d];
+    	}
+    }
+    if(num_effe_output != 0){
+    	aver_output = (sum_effe_output/num_effe_output).toFixed(2);
+    }
+    for(d in data_input){
+    	if(data_input[d] > 0){
+    		variance_input += Math.pow((data_input[d]-aver_input),2);
+    	}
+    }
+    for(d in data_output){
+    	if(data_output[d] > 0){
+    		variance_output += (Math.pow((data_output[d]-aver_output),2));
+    	}
+    }
+    variance_output = variance_output.toFixed(2);
+    $("#aver_input").text(aver_input);
+    $("#aver_output").text(aver_output);
+    $("#variance_input").text(variance_input);
+    $("#variance_output").text(variance_output);
+}
 
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7','#058DC7'];
 $(function () {
@@ -425,6 +467,7 @@ $(function () {
     	        data_difference = obj["data_difference"];
     	        data_input = obj["data_input"];
     	        data_output = obj["data_output"];
+    	        calculate();
     	        var rangeValue = obj["dvalue_double"];
     	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
     	        $('#rangeValue').jRange('setValue', initValue);
@@ -453,8 +496,7 @@ $(function () {
                 data_difference = obj["data_difference"];
                 data_input = obj["data_input"];
                 data_output = obj["data_output"];
-//                newdate = [obj["1"],obj["2"],obj["3"],obj["4"],obj["5"],obj["6"],obj["7"],obj["8"],obj["9"],obj["10"],obj["11"],obj["12"]];
-                alert(data_difference);
+                calculate();
                 chart.series[0].setData(data_difference);
                 chart.series[1].setData(data_input);
                 chart.series[2].setData(data_output);
@@ -479,8 +521,7 @@ $(function () {
                 data_difference = obj["data_difference"];
                 data_input = obj["data_input"];
                 data_output = obj["data_output"];
-//                newdate = [obj["1"],obj["2"],obj["3"],obj["4"],obj["5"],obj["6"],obj["7"],obj["8"],obj["9"],obj["10"],obj["11"],obj["12"]];
-                alert(data_difference);
+                calculate();
                 chart.series[0].setData(data_difference);
                 chart.series[1].setData(data_input);
                 chart.series[2].setData(data_output);
@@ -506,8 +547,7 @@ $(function () {
                 data_difference = obj["data_difference"];
                 data_input = obj["data_input"];
                 data_output = obj["data_output"];
-//                newdate = [obj["1"],obj["2"],obj["3"],obj["4"],obj["5"],obj["6"],obj["7"],obj["8"],obj["9"],obj["10"],obj["11"],obj["12"]];
-                alert(data_difference);
+                calculate();
                 chart.series[0].setData(data_difference);
                 chart.series[1].setData(data_input);
                 chart.series[2].setData(data_output);

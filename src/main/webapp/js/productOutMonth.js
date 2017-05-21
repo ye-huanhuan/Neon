@@ -11,7 +11,6 @@
        renderTo: 'container_second',
        type: 'line',
        marginRight: 130,
-       marginBottom: 25
      },
      credits: {
  		enabled:false
@@ -25,11 +24,11 @@
          x: -20
      },
      xAxis: {
-       categories: ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'],
        title: {
            text: '月份/月',
            align: 'high',
        },
+       categories: ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'],
        labels: {
            style: {
                fontSize:'14px',
