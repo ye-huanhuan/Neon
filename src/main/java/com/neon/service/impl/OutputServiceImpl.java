@@ -112,7 +112,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			for(int month = 1 ; month <= 3 ; month++){
 				List<String> items = getThisMonthGoodsItem(month , year);
 				for(String item : items){
-					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 2);
+					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 4);
 					map.put(item, percent*100);
 				}
 			};
@@ -121,7 +121,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			for(int month = 4 ; month <= 6 ; month++){
 				List<String> items = getThisMonthGoodsItem(month , year);
 				for(String item : items){
-					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 2);
+					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 4);
 					map.put(item, percent*100);
 				}
 			};
@@ -131,7 +131,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			for(int month = 7 ; month <= 9 ; month++){
 				List<String> items = getThisMonthGoodsItem(month , year);
 				for(String item : items){
-					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 2);
+					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 4);
 					map.put(item, percent*100);
 				}
 			};
@@ -141,7 +141,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			for(int month = 10 ; month <= 12 ; month++){
 				List<String> items = getThisMonthGoodsItem(month , year);
 				for(String item : items){
-					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 2);
+					Double percent = Arith.div(getThisItemTotleMoney(item , month , year), totleMoney, 4);
 					map.put(item, percent*100);
 				}
 			};

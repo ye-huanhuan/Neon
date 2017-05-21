@@ -137,7 +137,11 @@ public class AnalyzeAction extends ActionBase<Input>{
 
 		Map<String, Double> output_percent_quarter = outputService.getThisQuarterOutputGoodsTotleMoney(quarter, y);
 		String output_percent_quarter_array[][] = ListToArray.getString2Array(output_percent_quarter);
-
+		for(int i = 0 ; i <= output_percent_quarter.size() ; i++){
+			for(int j = 0 ; j< 2 ; j++){
+				System.out.println(output_percent_quarter_array[i][j]);
+			}
+		}
 		return "quarter";
 	}
 	
