@@ -226,7 +226,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		result2.put("productVlaue", productVlaue);
 		return "success_year";
 	}
-	//不好使
+	
 	public String year_3(){
 		/*System.out.println("year_3");
 		String test[][] = {{"猪肉罐头","10"},{"鱼肉罐头","25.5"},{"鸡肉罐头","64.5"}};*/
@@ -234,7 +234,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Map<String, Double> output_percent_year = outputService.getThisYearOutputGoodsTotleMoney(y);
 		System.out.println(output_percent_year.size());
 		String output_percent_year_array[][] = ListToArray.getString2Array(output_percent_year);
-		for(int i = 0 ; i <= output_percent_year.size() ; i++){
+		for(int i = 0 ; i < output_percent_year.size() ; i++){
 			for(int j = 0 ; j< 2 ; j++){
 				System.out.println(output_percent_year_array[i][j]);
 			}

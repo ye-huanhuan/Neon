@@ -25,7 +25,7 @@ public class InitListener implements ServletContextListener {
 		ApplicationContext ap = WebApplicationContextUtils.getRequiredWebApplicationContext(sce.getServletContext());
 		PrivilegeService privilegeService = (PrivilegeService) ap.getBean("privilegeServiceImpl");
 		List<Privilege> topPrivileges = privilegeService.findTopList();
-		List<Privilege> topPrivilege_2 = privilegeService.getTop2List(topPrivileges.get(1));
+		List<Privilege> topPrivilege_2 = privilegeService.getTop2List(topPrivileges.get(0));
 		for(Privilege p : topPrivilege_2){
 			System.out.println(p.getLimiteName());
 		}
