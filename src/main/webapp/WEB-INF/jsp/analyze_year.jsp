@@ -422,7 +422,6 @@ $.ajax({
        {
            for(var j=0;j<a[i].length;j++)
            {
-              // alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                if(j==1){
             	   a[i][j] = Number(a[i][j]);
                }
@@ -439,7 +438,7 @@ $.ajax({
  	alert("m4");
      $.ajax({
          async: true,
-         data: {quarter_quarter_3:$("#year2016").val()},
+         data: {year_year_3:$("#year2016").val()},
          type: "post",        //type：(string)请求方式，POST或GET
          dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
          url: "analyze_year_3.action",
@@ -450,7 +449,6 @@ $.ajax({
              {
                  for(var j=0;j<a[i].length;j++)
                  {
-                     //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                      if(j==1){
                   	   a[i][j] = Number(a[i][j]);
                      }
@@ -467,7 +465,7 @@ $.ajax({
  	alert("m4");
      $.ajax({
          async: true,
-         data: {quarter_quarter_3:$("#year2017").val()},
+         data: {year_year_3:$("#year2017").val()},
          type: "post",        //type：(string)请求方式，POST或GET
          dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
          url: "analyze_year_3.action",
@@ -478,7 +476,6 @@ $.ajax({
              {
                  for(var j=0;j<a[i].length;j++)
                  {
-                     //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                      if(j==1){
                   	   a[i][j] = Number(a[i][j]);
                      }
@@ -494,7 +491,7 @@ $.ajax({
  	alert("m4");
      $.ajax({
          async: true,
-         data: {quarter_quarter_3:$("#year2015").val()},
+         data: {year_year_3:$("#year2015").val()},
          type: "post",        //type：(string)请求方式，POST或GET
          dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
          url: "analyze_year_3.action",

@@ -25,15 +25,21 @@ public class User {
 				return true;
 			}
 		}
-		System.out.println("2");
 		return false;
+	}
+	
+	public boolean isNotPrivilege(String name){
+		if("分析".equals(name)){
+			return false;
+		}
+	return true;
+		
 	}
 	
 	public boolean isPrivilege(String name){
 			if("分析".equals(name)){
 				return true;
 			}
-		System.out.println("1");
 		return false;
 	}
 	

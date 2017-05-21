@@ -67,7 +67,7 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 	public List<Double> getInputTotleMoneyWithYear() {
 		// TODO Auto-generated method stub
 		List<Double> list = new ArrayList<>();
-		for(int year = Constant.YEAR ; year >= Constant.YEAR - 6 ; year--){
+		for(int year = Constant.YEAR ; year > Constant.YEAR - 6 ; year--){
 			Double money =  getInputMoneyWithYear(year);
 			list.add(money);
 		}

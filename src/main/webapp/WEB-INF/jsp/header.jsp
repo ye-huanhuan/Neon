@@ -18,7 +18,7 @@
         <ul class="dropdown-menu animated fadeInRight">
           <span class="arrow top"></span>
           <li> <a href="user_setUp.action">设置</a> </li>
-          <li> <a href="log_logout.action" data-toggle="ajaxModal" >退出</a> </li>
+          <li> <a href="log_logout.action" >退出</a> </li>
         </ul>
       </li>
     </ul>

@@ -510,7 +510,6 @@ $.ajax({
        {
            for(var j=0;j<a[i].length;j++)
            {
-               //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                if(j==1){
             	   a[i][j] = Number(a[i][j]);
                }
@@ -541,7 +540,6 @@ $.ajax({
                  {
                      for(var j=0;j<a[i].length;j++)
                      {
-                         //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                          if(j==1){
                       	   a[i][j] = Number(a[i][j]);
                          }
@@ -572,10 +570,10 @@ $.ajax({
                  {
                      for(var j=0;j<a[i].length;j++)
                      {
-                         //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                          if(j==1){
                       	   a[i][j] = Number(a[i][j]);
-                         }
+                      	  
+                         	}
                          }
                      }
                   chart2.series[0].setData(a);
@@ -603,7 +601,6 @@ $.ajax({
                  {
                      for(var j=0;j<a[i].length;j++)
                      {
-                         //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                          if(j==1){
                       	   a[i][j] = Number(a[i][j]);
                          }
