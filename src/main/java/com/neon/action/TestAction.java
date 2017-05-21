@@ -36,9 +36,9 @@ public class TestAction extends ActionBase<User>{
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year);
 		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(year);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);
-		int[] data_difference = {1,2,-1,4,5,-3,1,2,-1,4,5,-3};
-		double[] data_input = { 15.5, 16, 15.3, 11, 12, 8,15.5, 16, 15.3, 11, 12, 8};
-		int[] data_output = { 16, 18, 11, 13, 14, 8,16, 18, 11, 13, 14, 8};
+		int[] data_difference = {1,2,-1,4,5,-3};
+		double[] data_input = { 15.5, 16, 15.3, 11, 12, 8};
+		int[] data_output = { 16, 18, 11, 13, 14, 8};
 		double[] test = ListToArray.getDoubleArray(output_totlemoney_month);
 		result.put("data_difference", data_difference);
 		result.put("data_input", data_input);

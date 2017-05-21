@@ -26,9 +26,9 @@ public class Installer {
 		
 		
 		//==============添加权限============================
-		Privilege privilege1 , privilege2 , privilege3;
-		privilege1 = new Privilege("首页","#",null);
-		session.save(privilege1);
+		Privilege  privilege2 , privilege3;
+		//privilege1 = new Privilege("首页","#",null);
+		//session.save(privilege1);
 		
 		privilege2 = new Privilege("分析","#",null);
 		session.save(privilege2);

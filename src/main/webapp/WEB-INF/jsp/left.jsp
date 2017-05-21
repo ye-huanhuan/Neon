@@ -34,12 +34,14 @@
 	                    	</s:iterator>
 	                    </s:if>
 	                    <s:else> --%>
+	                    
 	                    	<li > <a href=${actionName } > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>${limiteName }</span> </a>
 	                    	<ul class="nav lt">
 	                    	<%-- <s:if test="#session.user.isPrivilege(LimiteName)">
 	                    	<s:iterator value="topPrivilege_2">
 	                    	</s:if>
 	                    	<s:else> --%>
+	                    	
 	                    	<s:iterator value="children">
 	                    	<%-- </s:else> --%>
 	                      		<li > <a href=${actionName } > <i class="fa fa-angle-right"></i> <span>${limiteName }</span> </a> </li>

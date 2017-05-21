@@ -11,7 +11,10 @@ var chart;
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7','#058DC7'];
 $(function () {
      chart = new Highcharts.Chart('container_top', {
-        title: {
+    	 credits: {
+             enabled:false
+		},
+    	 title: {
             text: '月份分析表',
             x: -20
         },
@@ -24,6 +27,12 @@ $(function () {
             title: {
                 text: '月份/月',
                 align: 'high',
+            },
+            labels: {
+                style: {
+                    fontSize:'14px',
+                    fontFamily:'微软雅黑'
+                }
             }
         },
         yAxis: {
@@ -35,7 +44,13 @@ $(function () {
                 value: 0,
                 width: 1,
                 color: '#808080'
-            }]
+            }],
+            labels: {
+                style: {
+                    fontSize:'14px',
+                    fontFamily:'微软雅黑'
+                }
+            }
         },
         tooltip: {
         	//数据后缀
@@ -50,7 +65,6 @@ $(function () {
         
         series: [
 			{
-				
 				colorByPoint: true,	
    		 		type: 'column',
     			name: '进销差值',
@@ -76,12 +90,14 @@ $(function () {
     	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
     	    url: "analyze_month_1.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
     	    success: function (msg) {
+    	    	
     	        var obj = eval(msg);
     	        data_difference = obj["data_difference"];
     	        data_input = obj["data_input"];
     	        data_output = obj["data_output"];
     	        var rangeValue = obj["dvalue_double"];
-    	        $("#rangeValue").val(rangeValue);
+    	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
+    	        $('#rangeValue').jRange('setValue', initValue);
     	        change();
     	        chart.series[0].setData(data_difference);
     	        chart.series[1].setData(data_input);
@@ -125,7 +141,6 @@ $(function () {
             data: {y:$("#year-2017").val()},
             type: "post",        //type：(string)请求方式，POST或GET
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-//            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
             url: "analyze_month_1.action",
             success: function (msg) {
             	

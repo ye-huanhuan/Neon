@@ -41,7 +41,12 @@
 		 <result type="json">
 		 <param name="root">result</param>
 		 </result> 
-		 
+		 <result name="success_quarter" type="json">
+		 <param name="root">result1</param>
+		 </result>
+		 <result name="success_year" type="json">
+		 <param name="root">result2</param>
+		 </result>
 	</action>
 	 
 	<!-- ==============用户部分======================================= -->
