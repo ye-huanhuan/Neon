@@ -65,7 +65,7 @@ $(function () {
             x: -20
         },
         xAxis: {
-            categories: ['第一季度', '第二季度', '第三季度', '第四季度'],
+            
             title: {
                 text: '季度/季度',
                 align: 'high',
@@ -111,7 +111,7 @@ $(function () {
 				colorByPoint: true,	
    		 		type: 'column',
     			name: '进销差值',
-    			data: [-3, 1, 2, -4],
+    			
     			colors: columnColor,
 				},
              {
@@ -126,34 +126,60 @@ $(function () {
         ]
    });
    //初始化highchart
-     $("#year2017").attr("checked","checked");
+     $("#year4quarter").attr("checked","checked");
      $.ajax({
-    	    async: true,
-    	    data: {y_quarter_1:$("#year2017").val()},
-    	    type: "post",        //type：(string)请求方式，POST或GET
-    	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-    	    url: "analyze_quarter_1.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
-    	    success: function (msg) {
-    	    	
-    	        var obj = eval(msg);
-    	        data_difference_quarter = obj["data_difference_quarter"];
-    	        data_input_quarter = obj["data_input_quarter"];
-    	        data_output_quarter = obj["data_output_quarter"];
-    	        calculate();
-    	        var rangeValue = obj["dvalue_double"];
-    	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
-    	        $('#rangeValue').jRange('setValue', initValue);
-    	        change();
-    	        chart.series[0].setData(data_difference_quarter);
-    	        chart.series[1].setData(data_input_quarter);
-    	        chart.series[2].setData(data_output_quarter);
-    	    }
-    	});
+ 	    async: true,
+ 	    type: "post",        
+ 	    dataType: "json",    
+ 	    url: "analyze_quarter_1_other.action",
+ 	    success: function (msg) {
+ 	        var obj = eval(msg);
+ 	        data_difference_quarter = obj["data_difference_quarter"];
+ 	        data_input_quarter = obj["data_input_quarter"];
+ 	        data_output_quarter = obj["data_output_quarter"];
+ 	        var data_quarters = obj["data_quarters"];
+ 	        calculate();
+ 	        var rangeValue = obj["dvalue_double"];
+ 	        var initValue = ""+rangeValue[1]+","+rangeValue[0];
+ 	        $('#rangeValue').jRange('setValue', initValue);
+ 	        change();
+ 	        chart.series[0].setData(data_difference_quarter);
+ 	        chart.series[1].setData(data_input_quarter);
+ 	        chart.series[2].setData(data_output_quarter);
+ 	        chart.xAxis[0].setCategories(data_quarters);
+ 	    }
+ 	});
+ 
+   
+});
+
+//发送异步请求近四季度的数据
+$(function () {
+    $("#year4quarter").click(function () {
+        $.ajax({
+            async: true,
+            type: "post",        
+            dataType: "json",    
+            url: "analyze_quarter_1_other.action",
+            success: function (msg) {
+            	var obj = eval(msg);
+     	        data_difference_quarter = obj["data_difference_quarter"];
+     	        data_input_quarter = obj["data_input_quarter"];
+     	        data_output_quarter = obj["data_output_quarter"];
+     	        var data_quarters = obj["data_quarters"];
+     	        calculate();
+     	        chart.series[0].setData(data_difference_quarter);
+     	        chart.series[1].setData(data_input_quarter);
+     	        chart.series[2].setData(data_output_quarter);
+     	        chart.xAxis[0].setCategories(data_quarters);
+     	        change();
+            }
+        });
+    });
 });
 //发送异步请2017年数据
 $(function () {
     $("#year2017").click(function () {
-    	alert("hello");
         $.ajax({
             async: true,
             data: {y_quarter_1:$("#year2017").val()},
@@ -166,10 +192,11 @@ $(function () {
      	        data_input_quarter = obj["data_input_quarter"];
      	        data_output_quarter = obj["data_output_quarter"];
      	        calculate();
-     	        alert(data_difference_quarter);
      	        chart.series[0].setData(data_difference_quarter);
      	        chart.series[1].setData(data_input_quarter);
      	        chart.series[2].setData(data_output_quarter);
+     	        chart.xAxis[0].setCategories(['第一季度', '第二季度', '第三季度', '第四季度']);
+     	        change();
             }
         });
     });
@@ -177,7 +204,6 @@ $(function () {
 //发送异步请求2016年数据
 $(function () {
     $("#year2016").click(function () {
-    	
         $.ajax({
             async: true,
             data: {y_quarter_1:$("#year2016").val()},
@@ -193,6 +219,8 @@ $(function () {
      	        chart.series[0].setData(data_difference_quarter);
      	        chart.series[1].setData(data_input_quarter);
      	        chart.series[2].setData(data_output_quarter);
+     	        chart.xAxis[0].setCategories(['第一季度', '第二季度', '第三季度', '第四季度']);
+     	        change();
             }
         });
     });
@@ -208,7 +236,6 @@ $(function () {
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
             url: "analyze_quarter_1.action",
             success: function (msg) {
-            	
             	var obj = eval(msg);
      	        data_difference_quarter = obj["data_difference_quarter"];
      	        data_input_quarter = obj["data_input_quarter"];
@@ -217,6 +244,8 @@ $(function () {
      	        chart.series[0].setData(data_difference_quarter);
      	        chart.series[1].setData(data_input_quarter);
      	        chart.series[2].setData(data_output_quarter);
+     	        chart.xAxis[0].setCategories(['第一季度', '第二季度', '第三季度', '第四季度']);
+     	        change();
             }
         });
     });

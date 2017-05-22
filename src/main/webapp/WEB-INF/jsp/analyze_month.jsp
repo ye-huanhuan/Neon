@@ -84,10 +84,10 @@
 				  
 				  <div id="year">
 				  <font>年份:</font>
-				  
 				  <input id="year-2015" class="year" type="radio" name="year" value="2015">2015
 				  <input id="year-2016" class="year" type="radio" name="year" value="2016">2016
 				  <input id="year-2017" class="year" type="radio" name="year" value="2017">2017
+				  <input id="year-12month" class="year" type="radio" name="year" value="">近十二个月
 				  </div>
 				  </div>
                   <div class="panel-body">

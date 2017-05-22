@@ -7,6 +7,20 @@ var data_input;
 var data_output;
 var chart;
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7'];
+
+//使用jrange
+$('.range-slider').jRange({
+    from: -20,
+    to: 80,
+    step: 5,
+    scale: [-20,0,20,40,60,80],
+    format: '%s',
+    width: 300,
+    showLabels: true,
+    isRange : true,
+    ondragend : change,
+});
+
 function calculate(){
 	var num_effe_input = 0,num_effe_output = 0;
     var sum_effe_input = 0,sum_effe_output = 0;
@@ -144,10 +158,10 @@ $(function () {
     	        transfer(data_difference);
     	        transfer(data_input);
     	        transfer(data_output);
-    	        calculate();
+    	        calculate();  //统计
     	        var rangeValue = obj["dvalue_double_year"];
-    	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
-    	        $('#rangeValue').jRange('setValue', initValue);
+    	        var initValue = rangeValue[1].toString()+","+rangeValue[0].toString();
+    	        $('.range-slider').jRange('setValue', initValue);
     	        change();
     	        chart.series[0].setData(data_difference);
     	        chart.series[1].setData(data_input);
@@ -175,15 +189,4 @@ function change(){
 });
 }
 
-//使用jrange
-$('.range-slider').jRange({
-    from: -20,
-    to: 80,
-    step: 5,
-    scale: [-20,0,20,40,60,80],
-    format: '%s',
-    width: 300,
-    showLabels: true,
-    isRange : true,
-    ondragend : change,
-});
+

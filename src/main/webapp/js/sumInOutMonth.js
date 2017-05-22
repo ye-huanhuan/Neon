@@ -1,12 +1,12 @@
 /**
  * 月份进销项总和对比
  */
-	//运用构造函数式
 
 var data_difference;
 var data_input;
 var data_output;
 var chart;
+
 function calculate(){
 	var num_effe_input = 0,num_effe_output = 0;
     var sum_effe_input = 0,sum_effe_output = 0;
@@ -122,51 +122,80 @@ $(function () {
         ]
    });
    //初始化highchart
-     $("#year-2017").attr("checked","checked");
+     $("#year-12month").attr("checked","checked");
      $.ajax({
-    	    async: true,
-    	    data: {y:$("#year-2017").val()},
-    	    type: "post",        //type：(string)请求方式，POST或GET
-    	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-    	    url: "analyze_month_1.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
-    	    success: function (msg) {
-    	        var obj = eval(msg);
-    	        data_difference = obj["data_difference"];
-    	        data_input = obj["data_input"];
-    	        data_output = obj["data_output"];
-    	        calculate();
-    	        var rangeValue = obj["dvalue_double"];
-    	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
-    	        $('#rangeValue').jRange('setValue', initValue);
-    	        change();
-    	        chart.series[0].setData(data_difference);
-    	        chart.series[1].setData(data_input);
-    	        chart.series[2].setData(data_output);
-    	    }
-    	});
+ 	    async: true,
+ 	    type: "post",        
+ 	    dataType: "json",    
+ 	    url: "analyze_month_1_other.action",
+ 	    success: function (msg) {
+ 	        var obj = eval(msg);
+ 	        data_difference = obj["data_difference"];
+ 	        data_input = obj["data_input"];
+ 	        data_output = obj["data_output"];
+ 	        var data_month = obj["data_month"];
+ 	        calculate();
+ 	        var rangeValue = obj["dvalue_double"];
+ 	        var initValue = ""+rangeValue[1]+","+rangeValue[0];
+ 	        $('#rangeValue').jRange('setValue', initValue);
+ 	        change();
+ 	        chart.series[0].setData(data_difference);
+ 	        chart.series[1].setData(data_input);
+ 	        chart.series[2].setData(data_output);
+ 	        chart.xAxis[0].setCategories(data_month);
+ 	    }
+ 	});
 });
-//发送异步请求2016年数据
+
+//发送异步请求近十二个月的数据
 $(function () {
-    $("#year-2016").click(function () {
+    $("#year-12month").click(function () {
         $.ajax({
             async: true,
-            data: {y:$("#year-2016").val()},
-            type: "post",        //type：(string)请求方式，POST或GET
-            dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-//            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
-            url: "analyze_month_1.action",
+            type: "post",        
+            dataType: "json",    
+            url: "analyze_month_1_other.action",
             success: function (msg) {
-                var obj = eval(msg);
-                data_difference = obj["data_difference"];
-                data_input = obj["data_input"];
-                data_output = obj["data_output"];
-                calculate();
-                chart.series[0].setData(data_difference);
-                chart.series[1].setData(data_input);
-                chart.series[2].setData(data_output);
+            	var obj = eval(msg);
+     	        data_difference = obj["data_difference"];
+     	        data_input = obj["data_input"];
+     	        data_output = obj["data_output"];
+     	        var data_month = obj["data_month"];
+     	        calculate();
+     	        chart.series[0].setData(data_difference);
+     	        chart.series[1].setData(data_input);
+     	        chart.series[2].setData(data_output);
+     	        chart.xAxis[0].setCategories(data_month);
+     	        change();
             }
         });
     });
+});
+//发送异步请求2016年数据
+$(function () {
+    $("#year-2016").click(
+    		function  () {
+    		    $.ajax({
+    		        async: true,
+    		        data: {y:$("#year-2016").val()},
+    		        type: "post",        
+    		        dataType: "json",    
+    		        url: "analyze_month_1.action",
+    		        success: function (msg) {
+    		            var obj = eval(msg);
+    		            data_difference = obj["data_difference"];
+    		            data_input = obj["data_input"];
+    		            data_output = obj["data_output"];
+    		            calculate();
+    		            chart.series[0].setData(data_difference);
+    		            chart.series[1].setData(data_input);
+    		            chart.series[2].setData(data_output);
+    		            chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
+    		            change();
+    		        }
+    		    });
+    		}
+    );
 });
 //发送异步请求2017年数据
 $(function () {
@@ -175,8 +204,8 @@ $(function () {
         $.ajax({
             async: true,
             data: {y:$("#year-2017").val()},
-            type: "post",        //type：(string)请求方式，POST或GET
-            dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+            type: "post",        
+            dataType: "json",    
             url: "analyze_month_1.action",
             success: function (msg) {
                 var obj = eval(msg);
@@ -187,6 +216,8 @@ $(function () {
                 chart.series[0].setData(data_difference);
                 chart.series[1].setData(data_input);
                 chart.series[2].setData(data_output);
+                chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
+                change();
             }
         });
     });
@@ -194,13 +225,11 @@ $(function () {
 //发送异步请求2015年数据
 $(function () {
     $("#year-2015").click(function () {
-    	
         $.ajax({
             async: true,
             data: {y:$("#year-2015").val()},
-            type: "post",        //type：(string)请求方式，POST或GET
-            dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-//            url: "jsondate.json",  //url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+            type: "post",        
+            dataType: "json",    
             url: "analyze_month_1.action",
             success: function (msg) {
                 var obj = eval(msg);
@@ -211,6 +240,8 @@ $(function () {
                 chart.series[0].setData(data_difference);
                 chart.series[1].setData(data_input);
                 chart.series[2].setData(data_output);
+                chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
+                change();
             }
         });
     });
@@ -239,11 +270,11 @@ function change(){
 $('.range-slider').jRange({
     from: -20,
     to: 60,
-    step: 2,
+    step: 5,
     scale: [-20,0,20,40,60],
     format: '%s',
     width: 300,
     showLabels: true,
     isRange : true,
-    ondragend : change,
+    ondragend : change
 });

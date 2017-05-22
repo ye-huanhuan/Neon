@@ -76,7 +76,7 @@
               <li class="active">分析</li>
             </ul>
             <div class="row">
-            	<!-- 按月进销总和统计 -->
+            	<!-- 按年进销总和统计 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">进销总和分析表</header>
@@ -86,13 +86,11 @@
 				  <div id="range">
 				  <input id="rangeValue" type="hidden" class="range-slider"  value=""/>
 				  </div>
-				  
-				 
 				  </div>
                   <div class="panel-body">
                     <div id="container_top" style="min-width:400px;height:400px"></div>
                   </div>
-                  <<footer class="panel-footer bg-white no-padder">
+                  <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">
                       <div class="col-xs-3 b-r b-light"> <span id="aver_input" class="h4 font-bold m-t block">5,860</span><small class="text-muted m-b block">进项数据平均值</small></div>
                       <div class="col-xs-3 b-r b-light"> <span id="aver_output" class="h4 font-bold m-t block">10,450</span><small class="text-muted m-b block">销项数据平均值</small> </div>

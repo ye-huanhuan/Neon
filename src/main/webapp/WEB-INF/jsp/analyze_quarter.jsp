@@ -90,6 +90,7 @@
 				  <input id="year2015" class="quarter" type="radio" name="first_quarter" value="2015">2015
 				  <input id="year2016" class="quarter" type="radio" name="first_quarter" value="2016">2016
 				  <input id="year2017" class="quarter" type="radio" name="first_quarter" value="2017">2017
+				  <input id="year4quarter" class="quarter" type="radio" name="first_quarter" value="">近四个季度
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -116,6 +117,7 @@
 				  <input id="second_year_2015" class="quarter" type="radio" name="second_quarter" value="2015">2015
 				  <input id="second_year_2016" class="quarter" type="radio" name="second_quarter" value="2016">2016
 				  <input id="second_year_2017" class="quarter" type="radio" name="second_quarter" value="2017">2017
+				  <input id="second_year_4quarter" class="quarter" type="radio" name="second_quarter" value="">近四个季度
 				  </div>
 				  </div>
                   <div class="panel-body">
