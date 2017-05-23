@@ -170,6 +170,93 @@ public class AnalyzeAction extends ActionBase<Input>{
 		return "success";
 	}
 	
+	public String month_2_other(){
+		//第二张表的数据   output_everyGoodsTotleMoney_year
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH) + 1;
+		int i=0;
+		String[] months = {"第一月","第二月","第三月","第四月","第五月","第六月","第七月","第八月","第九月","第十月","第十一月","第十二月"};
+		if(month == 1){
+			String[] replace = {"第二月","第三月","第四月","第五月","第六月","第七月","第八月","第九月","第十月","第十一月","第十二月","第一月"};
+			months = replace;
+		}else if(month == 2){
+			String[] replace = {"第三月","第四月","第五月","第六月","第七月","第八月","第九月","第十月","第十一月","第十二月","第一月","第二月"};
+			months = replace;
+		}else if(month == 3){
+			String[] replace = {"第四月","第五月","第六月","第七月","第八月","第九月","第十月","第十一月","第十二月","第一月","第二月","第三月"};
+			months = replace;
+		}else if(month == 4){
+			String[] replace = {"第五月","第六月","第七月","第八月","第九月","第十月","第十一月","第十二月","第一月","第二月","第三月","第四月"};
+			months = replace;
+		}else if(month == 5){
+			String[] replace = {"第六月","第七月","第八月","第九月","第十月","第十一月","第十二月","第一月","第二月","第三月","第四月","第五月"};
+			months = replace;
+		}else if(month == 6){
+			String[] replace = {"第七月","第八月","第九月","第十月","第十一月","第十二月","第一月","第二月","第三月","第四月","第五月","第六月"};
+			months = replace;
+		}else if(month == 7){
+			String[] replace = {"第八月","第九月","第十月","第十一月","第十二月","第一月","第二月","第三月","第四月","第五月","第六月","第七月"};
+			months = replace;
+		}else if(month == 8){
+			String[] replace = {"第九月","第十月","第十一月","第十二月","第一月","第二月","第三月","第四月","第五月","第六月","第七月","第八月"};
+			months = replace;
+		}else if(month == 9){
+			String[] replace = {"第十月","第十一月","第十二月","第一月","第二月","第三月","第四月","第五月","第六月","第七月","第八月","第九月"};
+			months = replace;
+		}else if(month == 10){
+			String[] replace = {"第十一月","第十二月","第一月","第二月","第三月","第四月","第五月","第六月","第七月","第八月","第九月","第十月"};
+			months = replace;
+		}else if(month == 11){
+			String[] replace = {"第十二月","第一月","第二月","第三月","第四月","第五月","第六月","第七月","第八月","第九月","第十月","第十一月"};
+			months = replace;
+		}else{
+			String[] replace = {"第一月","第二月","第三月","第四月","第五月","第六月","第七月","第八月","第九月","第十月","第十一月","第十二月"};
+			months = replace;
+		}
+		Map<String, List<Double>> output_everyGoodsTotleMoney = outputService.getEveryGoodsgetOutputTotleMoneyWithYear(year-1);
+		Map<String , double[]> output_everyGoodsTotleMoney_year = new HashMap<>();
+		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney.entrySet()){
+			output_everyGoodsTotleMoney_year.put(map.getKey(), ListToArray.getDoubleArray(map.getValue()));
+		}
+		Map<String, List<Double>> output_everyGoodsTotleMoney_2 = outputService.getEveryGoodsgetOutputTotleMoneyWithYear(year);
+		Map<String , double[]> output_everyGoodsTotleMoney_year_2 = new HashMap<>();
+		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney_2.entrySet()){
+			output_everyGoodsTotleMoney_year_2.put(map.getKey(), ListToArray.getDoubleArray(map.getValue()));
+		}
+		int size = output_everyGoodsTotleMoney_year.keySet().size();
+		String[] productName = new String[size];
+		double[][] productVlaue = new double[size][12];
+		Set<String> name = output_everyGoodsTotleMoney_year.keySet();
+		for(Map.Entry<String, double[]> p : output_everyGoodsTotleMoney_year.entrySet()){
+			for(int m=0,n=0;m<p.getValue().length;m++){
+				if(m>=month){
+					productVlaue[i][n] = p.getValue()[m];
+					n++;
+				}
+			}
+			i+=1;
+		}
+		i=0;
+		for(Map.Entry<String, double[]> p : output_everyGoodsTotleMoney_year_2.entrySet()){
+			productName[i] = p.getKey();
+			for(int m=0,n=12-month;m<p.getValue().length;m++){
+				if(m<=month-1){
+					productVlaue[i][n] = p.getValue()[m];
+					n++;
+				}
+			}
+			i+=1;
+		}
+		//产品名称数组
+		result.put("productName", productName);
+		//产品值数组
+		result.put("productVlaue", productVlaue);
+		//月份
+		result.put("months", months);
+		return "success";
+	}
+	
 	public String month_3(){
 		System.out.println("month_3");
 		//第三张表的数据   output_percent_month_array

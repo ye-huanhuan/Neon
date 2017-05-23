@@ -28,7 +28,7 @@
            text: '月份/月',
            align: 'high',
        },
-       categories: ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'],
+       
        labels: {
            style: {
                fontSize:'14px',
@@ -69,27 +69,53 @@
    options.series = new Array();
    
    	//初始化chart1
-   	$("#second_year2017").attr("checked","checked");
+   	$("#second_year4month").attr("checked","checked");
    $.ajax({
   	    async: true,
-  	  	data: {y2:$("#second_year2017").val()},
   	    type: "post",        //type：(string)请求方式，POST或GET
   	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-  	    url: "analyze_month_2.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+  	    url: "analyze_month_2_other.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
   	    success: function (msg) {
   	    	var obj = eval(msg);
   	    	productName = obj["productName"];
   	    	productValue = obj["productVlaue"];
+  	    	var months = obj["months"];
   	    	for(var i=0;i<productName.length;i++){
 	        options.series[i] = new Object();
 	        options.series[i].name = productName[i];
 	        options.series[i].data = productValue[i];
   	    	}
+  	    	options.xAxis.categories = months;
 	        chart1 = new Highcharts.Chart(options);
   	    }
    });
    
 });
+ 
+//异步请求近十二个月数据
+ $(function () {
+	    $("#second_year4month").click(function () {
+	    	$.ajax({
+	      	    async: true,
+	      	    type: "post",        //type：(string)请求方式，POST或GET
+	      	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+	      	    url: "analyze_month_2_other.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+	      	    success: function (msg) {
+	      	    	var obj = eval(msg);
+	      	    	productName = obj["productName"];
+	      	    	productValue = obj["productVlaue"];
+	      	    	var months = obj["months"];
+	      	    	for(var i=0;i<productName.length;i++){
+	    	        options.series[i] = new Object();
+	    	        options.series[i].name = productName[i];
+	    	        options.series[i].data = productValue[i];
+	      	    	}
+	      	    	options.xAxis.categories = months;
+	    	        chart1 = new Highcharts.Chart(options);
+	      	    }
+	       });
+	    });
+	});
  //异步请求2017年数据
  $(function () {
 	    $("#second_year2017").click(function () {
@@ -108,6 +134,7 @@
 	    	        options.series[i].name = productName[i];
 	    	        options.series[i].data = productValue[i];
 	      	    	}
+	      	    	options.xAxis.categories = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
 	    	        chart1 = new Highcharts.Chart(options);
 	      	    }
 	       });
@@ -131,6 +158,7 @@
 	    	        options.series[i].name = productName[i];
 	    	        options.series[i].data = productValue[i];
 	      	    	}
+	      	    	options.xAxis.categories = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
 	    	        chart1 = new Highcharts.Chart(options);
 	      	    }
 	       });
@@ -154,6 +182,7 @@
 	    	        options.series[i].name = productName[i];
 	    	        options.series[i].data = productValue[i];
 	      	    	}
+	      	    	options.xAxis.categories = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
 	    	        chart1 = new Highcharts.Chart(options);
 	      	    }
 	       });
