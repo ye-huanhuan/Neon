@@ -20,11 +20,18 @@
 		margin-top: 5px;
 		
 	}
-	#range{
+	#range,#second_range{
 		width : 350px;
 		margin-left: 30px;
 		margin-top: 5px;
 		display: inline-block;
+	}
+	#second_button{
+		margin-left: 30px;
+		border-top-left-radius:0.5em;
+     	border-top-right-radius:0.5em;     
+     	border-bottom-left-radius:0.5em;
+     	border-bottom-right-radius:0.5em;
 	}
 	#month{
 		display: inline-block;
@@ -79,7 +86,7 @@
 				  <div id="wrap-range">
 				  <font>进销项差值合理的范围:<font id="demo"></font></font>
 				  <div id="range">
-				  <input id="rangeValue" type="hidden" class="range-slider"  value="-10,30"/>
+				  <input id="rangeValue" type="hidden" class="range-slider"  value=""/>
 				  </div>
 				  
 				  <div id="year">
@@ -109,14 +116,20 @@
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
                   <div id="wrap-product">
+                  <!-- range2 -->
+                  <font>查看的范围:</font>
+				  <div id="second_range">
+				  <input id="second_rangeValue" type="hidden" class="range-slider"  value="20,30"/>
+				  </div>
 				  <div id="year">
 				  <font>年份:</font>
-				  
 				  <input id="second_year2015" class="second_year" type="radio" name="second_year" value="2015"><font class="yearFont">2015</font>
 				  <input id="second_year2016" class="second_year" type="radio" name="second_year" value="2016"><font class="yearFont">2016</font>
 				  <input id="second_year2017" class="sevond_year" type="radio" name="second_year" value="2017"><font class="yearFont">2017</font>
 				  <input id="second_year4month" class="sevond_year" type="radio" name="second_year" value=""><font class="yearFont">近十二个月</font>
+				  <input id="second_button" class="sevond_year" type="button" value="重置">
 				  </div>
+				  
 				  </div>
                   <div class="panel-body">
                     <div id="container_second" style="min-width:400px;height:400px"></div>

@@ -163,6 +163,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 			productVlaue[i] = p.getValue();
 			i+=1;
 		}
+//		for(int m=0;m<12;m++){
+//			System.out.println(productVlaue[0][m]);
+//		}
 		//产品名称数组
 		result.put("productName", productName);
 		//产品值数组

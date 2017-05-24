@@ -4,7 +4,9 @@
  var chart1;
  var productName;
  var productValue;
+ var months;
  var options;
+ var disppears = new Array();
  $(function () {
    options = {
      chart: {
@@ -79,14 +81,9 @@
   	    	var obj = eval(msg);
   	    	productName = obj["productName"];
   	    	productValue = obj["productVlaue"];
-  	    	var months = obj["months"];
-  	    	for(var i=0;i<productName.length;i++){
-	        options.series[i] = new Object();
-	        options.series[i].name = productName[i];
-	        options.series[i].data = productValue[i];
-  	    	}
-  	    	options.xAxis.categories = months;
-	        chart1 = new Highcharts.Chart(options);
+  	    	months = obj["months"];
+//  	    	disappear();
+  	    	reset();
   	    }
    });
    
@@ -104,14 +101,9 @@
 	      	    	var obj = eval(msg);
 	      	    	productName = obj["productName"];
 	      	    	productValue = obj["productVlaue"];
-	      	    	var months = obj["months"];
-	      	    	for(var i=0;i<productName.length;i++){
-	    	        options.series[i] = new Object();
-	    	        options.series[i].name = productName[i];
-	    	        options.series[i].data = productValue[i];
-	      	    	}
-	      	    	options.xAxis.categories = months;
-	    	        chart1 = new Highcharts.Chart(options);
+	      	    	months = obj["months"];
+//	      	    	disappear();
+	      	    	reset();
 	      	    }
 	       });
 	    });
@@ -129,13 +121,9 @@
 	      	    	var obj = eval(msg);
 	      	    	productName = obj["productName"];
 	      	    	productValue = obj["productVlaue"];
-	      	    	for(var i=0;i<productName.length;i++){
-	    	        options.series[i] = new Object();
-	    	        options.series[i].name = productName[i];
-	    	        options.series[i].data = productValue[i];
-	      	    	}
-	      	    	options.xAxis.categories = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
-	    	        chart1 = new Highcharts.Chart(options);
+	      	    	months = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
+//	      	    	disappear();
+	      	    	reset();
 	      	    }
 	       });
 	    });
@@ -153,13 +141,10 @@
 	      	    	var obj = eval(msg);
 	      	    	productName = obj["productName"];
 	      	    	productValue = obj["productVlaue"];
-	      	    	for(var i=0;i<productName.length;i++){
-	    	        options.series[i] = new Object();
-	    	        options.series[i].name = productName[i];
-	    	        options.series[i].data = productValue[i];
-	      	    	}
-	      	    	options.xAxis.categories = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
-	    	        chart1 = new Highcharts.Chart(options);
+	      	    	alert(productValue[0]);
+	      	    	months = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
+//	      	    	disappear();
+	      	    	reset();
 	      	    }
 	       });
 	    });
@@ -177,14 +162,70 @@
 	      	    	var obj = eval(msg);
 	      	    	productName = obj["productName"];
 	      	    	productValue = obj["productVlaue"];
-	      	    	for(var i=0;i<productName.length;i++){
-	    	        options.series[i] = new Object();
-	    	        options.series[i].name = productName[i];
-	    	        options.series[i].data = productValue[i];
-	      	    	}
-	      	    	options.xAxis.categories = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
-	    	        chart1 = new Highcharts.Chart(options);
+	      	    	alert(productValue[0]);
+	      	    	months = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
+//	      	    	disappear();
+	      	    	reset();
 	      	    }
 	       });
 	    });
 	});
+ 
+//使用jrange
+ $('#second_rangeValue').jRange({
+     from: 0,
+     to: 50,
+     step: 1,
+     scale: [0,10,20,30,40,50],
+     format: '%s',
+     width: 300,
+     showLabels: true,
+     isRange : true,
+     ondragend : disappear
+ });
+ 
+//使rangevalue之下的值消失
+ function disappear(){
+		var aa = $("#second_rangeValue").val();
+		var subaa = aa.split(",");
+		var min = subaa[0];
+		var max = subaa[1];
+		var newProductValue = new Array();  //为了不覆盖掉原本的值
+		for(var n=0;n<productName.length;n++){      
+			newProductValue[n] = new Array();
+		}
+		for(var i=0;i<productName.length;i++){
+	        options.series[i] = new Object();
+	        for(var j=0;j<productValue[i].length;j++){
+	        	if(productValue[i][j]<min || productValue[i][j]>max){
+	        		newProductValue[i][j] = null;
+	        	}else{
+	        		newProductValue[i][j] = productValue[i][j];
+	        	}
+	        }
+	        options.series[i].name = productName[i];
+        	options.series[i].data = newProductValue[i];
+  	    	}
+		options.xAxis.categories = months;
+        chart1 = new Highcharts.Chart(options);
+	}
+ 
+ //重置
+ function reset(){
+	 for(var i=0;i<productName.length;i++){
+		 options.series[i] = new Object();
+		 options.series[i].data = productValue[i];
+		 options.series[i].name = productName[i];
+		 
+	 }
+	options.xAxis.categories = months;
+    chart1 = new Highcharts.Chart(options);
+ }
+ 
+ 
+ $(function () {
+	    $("#second_button").click(function () {
+	    	reset();
+	    });
+	});	    	
+	    
