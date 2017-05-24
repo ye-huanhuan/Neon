@@ -40,11 +40,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
-		System.out.println("dva:"+dva);
-		double[] range = dvalueService.getPdvalueAndNdvalue(dva);
-		System.out.println("test");
-		System.out.println("min:"+range[0]);
-		System.out.println(y);
+		double[] range = dvalueService.getPdvalueAndNdvalue_month(dva);
+		
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(y);
 		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(y);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);
@@ -66,10 +63,15 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
 		System.out.println("dva:"+dva);
-		double[] range = dvalueService.getPdvalueAndNdvalue(dva);
-		System.out.println("test");
+		double[] range = dvalueService.getPdvalueAndNdvalue_month(dva);
+		
+		for(double d : range){
+			
+			System.out.println(d);
+		}
+		/*System.out.println("test");
 		System.out.println("min:"+range[0]);
-		System.out.println(y);
+		System.out.println(y);*/
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year-1);
 		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(year-1);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);
@@ -264,6 +266,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		System.out.println("month_3");
 		//第三张表的数据   output_percent_month_array
 		System.out.println("月份："+m);
+		/*Map<String, Double>*/ 
 		Map<String, Double> output_percent_month = outputService.getThisMonthOutputGoodsTotleMoney(m, 2017);
 		String output_percent_month_array[][] = ListToArray.getString2Array(output_percent_month);
 		result.put("data_output_month_3", output_percent_month_array);
@@ -281,7 +284,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
 		System.out.println("dva:"+dva);
-		double[] range = dvalueService.getPdvalueAndNdvalue(dva);
+		double[] range = dvalueService.getPdvalueAndNdvalue_quarter(dva);
 //		double[] test = {20,60};		
 		List<Double> input_totlemoney_quarter = inputService.getInputTotleMoneyWithQuarter(y_quarter_1);
 		List<Double> output_totlemoney_quarter = outputService.getOutputTotleMoneyWithQuarter(y_quarter_1);
@@ -313,7 +316,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		}
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
-		double[] range = dvalueService.getPdvalueAndNdvalue(dva);
+		double[] range = dvalueService.getPdvalueAndNdvalue_quarter(dva);
 		List<Double> input_totlemoney_quarter = inputService.getInputTotleMoneyWithQuarter(year-1);
 		List<Double> output_totlemoney_quarter = outputService.getOutputTotleMoneyWithQuarter(year-1);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_quarter, output_totlemoney_quarter);
@@ -476,7 +479,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
-		double[] range = dvalueService.getPdvalueAndNdvalue(dva);
+		double[] range = dvalueService.getPdvalueAndNdvalue_year(dva);
 		System.out.println("year_1");		
 
 		List<Double> input_totlemoney_year = inputService.getInputTotleMoneyWithYear();
@@ -526,6 +529,11 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Map<String, Double> output_percent_year = outputService.getThisYearOutputGoodsTotleMoney(year_year_3);
 		System.out.println(output_percent_year.size());
 		String output_percent_year_array[][] = ListToArray.getString2Array(output_percent_year);
+		for(int i = 0 ; i < output_percent_year.size() ; i++){
+			for(int j = 0 ; j< 2 ; j++){
+				System.out.println(output_percent_year_array[i][j]);
+			}
+		}
 		result2.put("data_output_year_3", output_percent_year_array);
 		return "success_year";
 

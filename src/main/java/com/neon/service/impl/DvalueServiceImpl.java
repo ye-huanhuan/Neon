@@ -17,11 +17,28 @@ public class DvalueServiceImpl extends DaoSupportImpl<Dvalue> implements DvalueS
 				.uniqueResult();
 	}
 
+
 	@Override
-	public double[] getPdvalueAndNdvalue(Dvalue dva) {
+	public double[] getPdvalueAndNdvalue_month(Dvalue dva) {
 		double[] pAndNdvalue = new double[2];
-		pAndNdvalue[0] = dva.getPdvalue();
-		pAndNdvalue[1] = dva.getNdvalue();
+		pAndNdvalue[0] = dva.getPdvalue_month();
+		pAndNdvalue[1] = dva.getNdvalue_month();
+		return pAndNdvalue;
+	}
+	
+	@Override
+	public double[] getPdvalueAndNdvalue_quarter(Dvalue dva) {
+		double[] pAndNdvalue = new double[2];
+		pAndNdvalue[0] = dva.getPdvalue_month();
+		pAndNdvalue[1] = dva.getNdvalue_month();
+		return pAndNdvalue;
+	}
+	
+	@Override
+	public double[] getPdvalueAndNdvalue_year(Dvalue dva) {
+		double[] pAndNdvalue = new double[2];
+		pAndNdvalue[0] = dva.getPdvalue_month();
+		pAndNdvalue[1] = dva.getNdvalue_month();
 		return pAndNdvalue;
 	}
 

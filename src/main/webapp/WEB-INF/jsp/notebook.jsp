@@ -34,11 +34,35 @@
               <li class="active">发票</li>
             </ul>
          <form action="invoice_toSetDvalue.action" method="get">
-            <font>进销项合理差值：(利润)</font>
-            <s:textfield name="pdvalue"></s:textfield>
-            <font>进销项合理差值：(亏损)</font>
-            <s:textfield name="ndvalue"></s:textfield>
-        	<input type="submit" value="保存">
+	         <ul>
+	         	<li>
+		         	<font>进销项合理差值：(月利润)</font>
+		            <s:textfield name="pdvalue_month"></s:textfield>
+	         	</li>
+	         	<li>
+	         		<font>进销项合理差值：(月亏损)</font>
+	            	<s:textfield name="ndvalue_month"></s:textfield>
+	         	</li>
+	         	<li>
+		         	<font>进销项合理差值：(季度利润)</font>
+		            <s:textfield name="pdvalue_quarter"></s:textfield>
+	         	</li>
+	         	<li>
+	         		<font>进销项合理差值：(季度亏损)</font>
+	            	<s:textfield name="ndvalue_quarter"></s:textfield>
+	         	</li>
+	         	<li>
+		         	<font>进销项合理差值：(年利润)</font>
+		            <s:textfield name="pdvalue_year"></s:textfield>
+	         	</li>
+	         	<li>
+	         		<font>进销项合理差值：(年亏损)</font>
+	            	<s:textfield name="ndvalue_year"></s:textfield>
+	         	</li>
+	         	<li>
+	         		<input type="submit" value="保存">
+	         	</li>
+	         </ul>
        	 </form>
           </section>
         </section>

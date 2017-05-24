@@ -24,8 +24,12 @@ public class DvalueAction extends ActionBase<Dvalue>{
 	
 	public String toSetDvalue(){
 		Dvalue dvalue = new Dvalue();
-		dvalue.setPdvalue(model.getPdvalue());
-		dvalue.setNdvalue(model.getNdvalue());
+		dvalue.setPdvalue_month(model.getPdvalue_month());
+		dvalue.setNdvalue_month(model.getNdvalue_month());
+		dvalue.setPdvalue_quarter(model.getPdvalue_quarter());
+		dvalue.setNdvalue_quarter(model.getNdvalue_quarter());
+		dvalue.setPdvalue_year(model.getPdvalue_year());
+		dvalue.setNdvalue_year(model.getNdvalue_year());
 		Date date = new Date();
 		dvalue.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date).toString());
 		dvalueService.save(dvalue);

@@ -7,8 +7,12 @@
 			<id name="id">
 				<generator class="native"></generator>
 			</id>
-			<property name="pdvalue"></property>
-			<property name="ndvalue"></property>
+			<property name="pdvalue_month"></property>
+			<property name="ndvalue_month"></property>
+			<property name="pdvalue_quarter"></property>
+			<property name="ndvalue_quarter"></property>
+			<property name="pdvalue_year"></property>
+			<property name="ndvalue_year"></property>
 			<property name="date"></property>
 			
 	</class>
