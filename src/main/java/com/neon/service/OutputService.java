@@ -45,11 +45,19 @@ public interface OutputService extends DaoSupport<Output>{
 		//得到差值
 		List<Double> getDvalue(List<Double> input_totlemoney_month, List<Double> output_totlemoney_month);
 
+		//在该月份中得到top3商品
 		Map<String, Double> getThisMonthTop3GoodsMoney(int m, int yEAR);
+
+		//在该季度中得到top3商品
+		Map<String, Double> getThisQuarterTop3GoodsMoney(int quarter_quarter_3, int yEAR);
+		
+		//在该年中得到top3商品
+		Map<String, Double> getThisYearTop3GoodsMoney(int year_year_3);
 
 		String[] getItemByMap(Map<String, Double> output_top3_month);
 
 		double[] getValueByMap(Map<String, Double> output_top3_month);
+
 
 		
 }

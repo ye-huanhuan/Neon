@@ -65,13 +65,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 		System.out.println("dva:"+dva);
 		double[] range = dvalueService.getPdvalueAndNdvalue_month(dva);
 		
-		for(double d : range){
-			
-			System.out.println(d);
-		}
-		/*System.out.println("test");
-		System.out.println("min:"+range[0]);
-		System.out.println(y);*/
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year-1);
 		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(year-1);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);
@@ -471,7 +464,13 @@ public class AnalyzeAction extends ActionBase<Input>{
 		System.out.println(quarter_quarter_3);
 		Map<String, Double> output_percent_quarter = outputService.getThisQuarterOutputGoodsTotleMoney(quarter_quarter_3, Constant.YEAR);
 		String output_percent_quarter_array[][] = ListToArray.getString2Array(output_percent_quarter);
-		String test[][] = {{"猪肉罐头","25"},{"鱼肉罐头","100"},{"鸡肉罐头","49.5"}};
+		Map<String, Double> output_top3_quarter = outputService.getThisQuarterTop3GoodsMoney(quarter_quarter_3, Constant.YEAR);
+		//准备数据
+		String[] output_top3_key = outputService.getItemByMap(output_top3_quarter);
+		double[] output_top3_value = outputService.getValueByMap(output_top3_quarter);
+		/*for(int i = 0 ; i < 3 ; i++){
+			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
+		}*/
 		result1.put("data_out_quarter_3", output_percent_quarter_array);
 		return "success_quarter";
 	}
@@ -534,12 +533,19 @@ public class AnalyzeAction extends ActionBase<Input>{
 		System.out.println("year3:"+year_year_3);
 		Map<String, Double> output_percent_year = outputService.getThisYearOutputGoodsTotleMoney(year_year_3);
 		System.out.println(output_percent_year.size());
+		Map<String, Double> output_top3_year = outputService.getThisYearTop3GoodsMoney(year_year_3);
+		//准备数据
+		String[] output_top3_key = outputService.getItemByMap(output_top3_year);
+		double[] output_top3_value = outputService.getValueByMap(output_top3_year);
+		/*for(int i = 0 ; i < 3 ; i++){
+			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
+		}*/
 		String output_percent_year_array[][] = ListToArray.getString2Array(output_percent_year);
-		for(int i = 0 ; i < output_percent_year.size() ; i++){
+		/*for(int i = 0 ; i < output_percent_year.size() ; i++){
 			for(int j = 0 ; j< 2 ; j++){
 				System.out.println(output_percent_year_array[i][j]);
 			}
-		}
+		}*/
 		result2.put("data_output_year_3", output_percent_year_array);
 		return "success_year";
 

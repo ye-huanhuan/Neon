@@ -2,6 +2,10 @@ package com.neon.test;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -14,6 +18,7 @@ import com.neon.domain.Privilege;
 import com.neon.service.PrivilegeService;
 import com.neon.service.UserService;
 import com.neon.util.Constant;
+import com.neon.util.Sort;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
 @ContextConfiguration(locations = "classpath:applicationContext.xml")  
@@ -73,6 +78,8 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		pri.setParent(null);
 		
 		privilegeService.save(pri);*/
+		
+		
 	}
 	
 }
