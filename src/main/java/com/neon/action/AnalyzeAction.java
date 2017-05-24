@@ -62,13 +62,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
-		System.out.println("dva:"+dva);
 		double[] range = dvalueService.getPdvalueAndNdvalue_month(dva);
 		
-		for(double d : range){
-			
-			System.out.println(d);
-		}
 		/*System.out.println("test");
 		System.out.println("min:"+range[0]);
 		System.out.println(y);*/
@@ -270,13 +265,15 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备数据
 		String[] output_top3_key = outputService.getItemByMap(output_top3_month);
 		double[] output_top3_value = outputService.getValueByMap(output_top3_month);
-		//测试
-		//		for(int i = 0 ; i < 3 ; i++){
-//			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
-//		}
+		System.out.println(output_top3_value.length);
+		for(int i = 0 ; i < output_top3_key.length ; i++){
+			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
+		}
 		Map<String, Double> output_percent_month = outputService.getThisMonthOutputGoodsTotleMoney(m, Constant.YEAR);
 		String output_percent_month_array[][] = ListToArray.getString2Array(output_percent_month);
 		result.put("data_output_month_3", output_percent_month_array);
+		result.put("data_output_month_3_key", output_top3_key);
+		result.put("data_output_month_3_value", output_top3_value);
 		return "success";
 	}
 	

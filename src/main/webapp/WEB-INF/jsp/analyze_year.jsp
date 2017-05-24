@@ -159,7 +159,6 @@
                 </section>
               </div>
             </div>
-            </div>
           </section>
         </section>
         <a href="" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a> </section>
@@ -176,7 +175,7 @@
 <script src="js/sumInOutYear.js"></script>
 <script src="js/productOutYear.js"></script>
 <script src="js/yearOutProduct.js"></script>
-<script src="js/top_product.js"></script>
+<script src="js/top_product_year.js"></script>
   <!-- 
 <script type="text/javascript">
 /**
