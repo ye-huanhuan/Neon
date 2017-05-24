@@ -92,11 +92,12 @@
                   <div class="panel-body">
                     <div id="container_top" style="min-width:400px;height:400px"></div>
                   </div>
-                  <footer class="panel-footer bg-white no-padder">
+                  <<footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        进销项总和分析报告
-                      </div>
+                      <div class="col-xs-3 b-r b-light"> <span id="aver_input" class="h4 font-bold m-t block">5,860</span><small class="text-muted m-b block">进项数据平均值</small></div>
+                      <div class="col-xs-3 b-r b-light"> <span id="aver_output" class="h4 font-bold m-t block">10,450</span><small class="text-muted m-b block">销项数据平均值</small> </div>
+                      <div class="col-xs-3 b-r b-light"> <span id="variance_input" class="h4 font-bold m-t block">21,230</span> <small class="text-muted m-b block">进项数据方差</small> </div>
+                      <div class="col-xs-3"> <span id="variance_output" class="h4 font-bold m-t block">7,230</span> <small class="text-muted m-b block">销项数据方差</small></div>
                     </div>
                   </footer>
                 </section>
@@ -177,6 +178,46 @@ var data_input;
 var data_output;
 var chart;
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7'];
+function calculate(){
+	var num_effe_input = 0,num_effe_output = 0;
+    var sum_effe_input = 0,sum_effe_output = 0;
+    var aver_input = 0,aver_output = 0;
+    var variance_input = 0;variance_output = 0;
+    for(d in data_input){
+    	if(data_input[d] > 0){
+    		num_effe_input ++;
+    		sum_effe_input += data_input[d];
+    	}
+    }
+    if(num_effe_input != 0){
+    	aver_input = (sum_effe_input/num_effe_input).toFixed(2);
+    }
+    
+    for(d in data_output){
+    	if(data_output[d] > 0){
+    		num_effe_output ++;
+    		sum_effe_output += data_output[d];
+    	}
+    }
+    if(num_effe_output != 0){
+    	aver_output = (sum_effe_output/num_effe_output).toFixed(2);
+    }
+    for(d in data_input){
+    	if(data_input[d] > 0){
+    		variance_input += Math.pow((data_input[d]-aver_input),2);
+    	}
+    }
+    for(d in data_output){
+    	if(data_output[d] > 0){
+    		variance_output += (Math.pow((data_output[d]-aver_output),2));
+    	}
+    }
+    variance_output = variance_output.toFixed(2);
+    $("#aver_input").text(aver_input);
+    $("#aver_output").text(aver_output);
+    $("#variance_input").text(variance_input);
+    $("#variance_output").text(variance_output);
+}
 $(function () {
 	//运用构造函数式
      chart = new Highcharts.Chart('container_top', {
@@ -264,9 +305,9 @@ $(function () {
     	        data_difference = obj["data_difference_year"];
     	        data_input = obj["data_input_year"];
     	        data_output = obj["data_output_year"];
+    	        calculate();
     	        var rangeValue = obj["dvalue_double_year"];
     	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
-    	        alert("ceshi");
     	        $('#rangeValue').jRange('setValue', initValue);
     	        change();
     	        chart.series[0].setData(data_difference);
@@ -381,7 +422,6 @@ $.ajax({
        {
            for(var j=0;j<a[i].length;j++)
            {
-              // alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                if(j==1){
             	   a[i][j] = Number(a[i][j]);
                }
@@ -398,7 +438,7 @@ $.ajax({
  	alert("m4");
      $.ajax({
          async: true,
-         data: {quarter_quarter_3:$("#year2016").val()},
+         data: {year_year_3:$("#year2016").val()},
          type: "post",        //type：(string)请求方式，POST或GET
          dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
          url: "analyze_year_3.action",
@@ -409,7 +449,6 @@ $.ajax({
              {
                  for(var j=0;j<a[i].length;j++)
                  {
-                     //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                      if(j==1){
                   	   a[i][j] = Number(a[i][j]);
                      }
@@ -426,7 +465,7 @@ $.ajax({
  	alert("m4");
      $.ajax({
          async: true,
-         data: {quarter_quarter_3:$("#year2017").val()},
+         data: {year_year_3:$("#year2017").val()},
          type: "post",        //type：(string)请求方式，POST或GET
          dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
          url: "analyze_year_3.action",
@@ -437,7 +476,6 @@ $.ajax({
              {
                  for(var j=0;j<a[i].length;j++)
                  {
-                     //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                      if(j==1){
                   	   a[i][j] = Number(a[i][j]);
                      }
@@ -453,7 +491,7 @@ $.ajax({
  	alert("m4");
      $.ajax({
          async: true,
-         data: {quarter_quarter_3:$("#year2015").val()},
+         data: {year_year_3:$("#year2015").val()},
          type: "post",        //type：(string)请求方式，POST或GET
          dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
          url: "analyze_year_3.action",

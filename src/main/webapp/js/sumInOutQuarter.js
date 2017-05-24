@@ -8,6 +8,46 @@ var data_input_quatter;
 var data_output_quarter;
 var chart;
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7'];
+function calculate(){
+	var num_effe_input = 0,num_effe_output = 0;
+    var sum_effe_input = 0,sum_effe_output = 0;
+    var aver_input = 0,aver_output = 0;
+    var variance_input = 0;variance_output = 0;
+    for(d in data_input_quarter){
+    	if(data_input_quarter[d] > 0){
+    		num_effe_input ++;
+    		sum_effe_input += data_input_quarter[d];
+    	}
+    }
+    if(num_effe_input != 0){
+    	aver_input = (sum_effe_input/num_effe_input).toFixed(2);
+    }
+    
+    for(d in data_output_quarter){
+    	if(data_output_quarter[d] > 0){
+    		num_effe_output ++;
+    		sum_effe_output += data_output_quarter[d];
+    	}
+    }
+    if(num_effe_output != 0){
+    	aver_output = (sum_effe_output/num_effe_output).toFixed(2);
+    }
+    for(d in data_input_quarter){
+    	if(data_input_quarter[d] > 0){
+    		variance_input += Math.pow((data_input_quarter[d]-aver_input),2);
+    	}
+    }
+    for(d in data_output_quarter){
+    	if(data_output_quarter[d] > 0){
+    		variance_output += (Math.pow((data_output_quarter[d]-aver_output),2));
+    	}
+    }
+    variance_output = variance_output.toFixed(2);
+    $("#aver_input").text(aver_input);
+    $("#aver_output").text(aver_output);
+    $("#variance_input").text(variance_input);
+    $("#variance_output").text(variance_output);
+}
 $(function () {
      chart = new Highcharts.Chart('container_top', {
     	 credits: {
@@ -97,10 +137,9 @@ $(function () {
     	    	
     	        var obj = eval(msg);
     	        data_difference_quarter = obj["data_difference_quarter"];
-    	        alert(data_difference_quarter);
     	        data_input_quarter = obj["data_input_quarter"];
     	        data_output_quarter = obj["data_output_quarter"];
-    	        alert(data_difference_quarter);
+    	        calculate();
     	        var rangeValue = obj["dvalue_double"];
     	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
     	        $('#rangeValue').jRange('setValue', initValue);
@@ -124,9 +163,9 @@ $(function () {
             success: function (msg) {
             	var obj = eval(msg);
      	        data_difference_quarter = obj["data_difference_quarter"];
-     	        alert(data_difference_quarter);
      	        data_input_quarter = obj["data_input_quarter"];
      	        data_output_quarter = obj["data_output_quarter"];
+     	        calculate();
      	        alert(data_difference_quarter);
      	        chart.series[0].setData(data_difference_quarter);
      	        chart.series[1].setData(data_input_quarter);
@@ -146,13 +185,11 @@ $(function () {
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
             url: "analyze_quarter_1.action",
             success: function (msg) {
-            	
             	var obj = eval(msg);
      	        data_difference_quarter = obj["data_difference_quarter"];
-     	        alert(data_difference_quarter);
      	        data_input_quarter = obj["data_input_quarter"];
      	        data_output_quarter = obj["data_output_quarter"];
-     	        alert(data_difference_quarter);
+     	        calculate();
      	        chart.series[0].setData(data_difference_quarter);
      	        chart.series[1].setData(data_input_quarter);
      	        chart.series[2].setData(data_output_quarter);
@@ -174,10 +211,9 @@ $(function () {
             	
             	var obj = eval(msg);
      	        data_difference_quarter = obj["data_difference_quarter"];
-     	        alert(data_difference_quarter);
      	        data_input_quarter = obj["data_input_quarter"];
      	        data_output_quarter = obj["data_output_quarter"];
-     	        alert(data_difference_quarter);
+     	        calculate();
      	        chart.series[0].setData(data_difference_quarter);
      	        chart.series[1].setData(data_input_quarter);
      	        chart.series[2].setData(data_output_quarter);
@@ -218,4 +254,5 @@ $('.range-slider').jRange({
     isRange : true,
     ondragend : change,
 });
+
 

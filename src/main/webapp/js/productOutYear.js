@@ -12,7 +12,6 @@
        renderTo: 'container_second',
        type: 'line',
        marginRight: 130,
-       marginBottom: 25
      },
      credits: {
 			enabled:false

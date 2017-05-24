@@ -94,7 +94,6 @@ $(function () {
                 {
                     for(var j=0;j<a[i].length;j++)
                     {
-                        //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                         if(j==1){
                      	   a[i][j] = Number(a[i][j]);
                         }
@@ -124,7 +123,6 @@ $(function () {
                 {
                     for(var j=0;j<a[i].length;j++)
                     {
-                        //alert("第"+i+"行 第"+j+"列 的值为:"+a[i][j]);
                         if(j==1){
                      	   a[i][j] = Number(a[i][j]);
                         }
@@ -133,6 +131,36 @@ $(function () {
                  chart2.series[0].setData(a);
                  chart2.title.update({
              		text: '三月产品销售情况',
+             	
+             });
+            }
+        });
+    });
+});
+//发送异步请求五月数据
+$(function () {
+    $("#month5").click(function () {
+        $.ajax({
+            async: true,
+            data: {m:$("#month5").val()},
+            type: "post",        //type：(string)请求方式，POST或GET
+            dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+            url: "analyze_month_3.action",
+            success: function (msg) {
+                var obj = eval(msg);
+                var a = obj["data_output_month_3"];
+                for(var i=0;i<a.length;i++)
+                {
+                    for(var j=0;j<a[i].length;j++)
+                    {
+                        if(j==1){
+                     	   a[i][j] = Number(a[i][j]);
+                        }
+                        }
+                    }
+                 chart2.series[0].setData(a);
+                 chart2.title.update({
+             		text: '五月产品销售情况',
              	
              });
             }

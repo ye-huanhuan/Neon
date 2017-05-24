@@ -38,11 +38,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 		System.out.println("month_1");
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
-		
 		Dvalue dva = dvalueService.getById(id);
 		System.out.println("dva:"+dva);
-		//double[] range = dvalueService.getPdvalueAndNdvalue(dva);
-		double[] range = {-10,20};
+		double[] range = dvalueService.getPdvalueAndNdvalue_month(dva);
 		System.out.println("test");
 		System.out.println("min:"+range[0]);
 		System.out.println(y);
@@ -109,7 +107,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
 		System.out.println("dva:"+dva);
-		double[] test = {20,60};		
+		double[] range = dvalueService.getPdvalueAndNdvalue_quarter(dva);
+//		double[] test = {20,60};		
 		List<Double> input_totlemoney_quarter = inputService.getInputTotleMoneyWithQuarter(y_quarter_1);
 		List<Double> output_totlemoney_quarter = outputService.getOutputTotleMoneyWithQuarter(y_quarter_1);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_quarter, output_totlemoney_quarter);
@@ -119,7 +118,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		result1.put("data_input_quarter", input_totlemoney_quarter_array);
 		result1.put("data_output_quarter", output_totlemoney_quarter_array);
 		result1.put("data_difference_quarter", dvalue_array);
-		result1.put("dvalue_double", test);
+		result1.put("dvalue_double", range);
 		return "success_quarter";
 	}
 	
@@ -146,20 +145,14 @@ public class AnalyzeAction extends ActionBase<Input>{
 		return "success_quarter";
 	}
 	
-	//不好使
+	//所有季度数据一样
 	public String quarter_3(){
 		//第三张表的数据   output_percent_month_array
+		System.out.println(quarter_quarter_3);
 		Map<String, Double> output_percent_quarter = outputService.getThisQuarterOutputGoodsTotleMoney(quarter_quarter_3, Constant.YEAR);
 		String output_percent_quarter_array[][] = ListToArray.getString2Array(output_percent_quarter);
-		
-		for(int i = 0 ; i < output_percent_quarter.size() ; i++){
-			for(int j = 0 ; j< 2 ; j++){
-				System.out.println(output_percent_quarter_array[i][j]);
-			}
-		}
-
-		/*String test[][] = {{"猪肉罐头","25"},{"鱼肉罐头","100"},{"鸡肉罐头","49.5"}};
-		result1.put("data_out_quarter_3", output_percent_quarter_array);*/
+		String test[][] = {{"猪肉罐头","25"},{"鱼肉罐头","100"},{"鸡肉罐头","49.5"}};
+		result1.put("data_out_quarter_3", output_percent_quarter_array);
 		return "success_quarter";
 	}
 	
@@ -173,8 +166,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
-		System.out.println("dva:"+dva);
-		double[] range={-10,20};				
+		double[] range = dvalueService.getPdvalueAndNdvalue_year(dva);
 		System.out.println("year_1");		
 
 		List<Double> input_totlemoney_year = inputService.getInputTotleMoneyWithYear();
@@ -184,9 +176,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		double[] input_totlemoney_year_array = ListToArray.getDoubleArray2(input_totlemoney_year);
 		double[] output_totlemoney_year_array = ListToArray.getDoubleArray2(output_totlemoney_year);
 		double[] dvalue_array = ListToArray.getDoubleArray2(dvalue);
-		/*for(double d:output_totlemoney_year_array){
-			System.out.println(d);
-		}*/
+		
 		result2.put("data_difference_year", dvalue_array);
 		result2.put("data_input_year", input_totlemoney_year_array);
 		result2.put("data_output_year", output_totlemoney_year_array);
@@ -201,12 +191,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney.entrySet()){
 			output_everyGoodsTotleMoney_year.put(map.getKey(), ListToArray.getDoubleArray2(map.getValue()));
 		}
-//		for(Entry<String, double[]> map :output_everyGoodsTotleMoney_year.entrySet()){
-//			System.out.println(map.getKey());
-//			for(double d : map.getValue()){
-//				System.out.println(d);
-//			}
-//		}
 		int i=0;
 		int size = output_everyGoodsTotleMoney_year.keySet().size();
 		String[] productName = new String[size];
@@ -228,10 +212,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 	}
 	
 	public String year_3(){
-		/*System.out.println("year_3");
-		String test[][] = {{"猪肉罐头","10"},{"鱼肉罐头","25.5"},{"鸡肉罐头","64.5"}};*/
-		//执行出错
-		Map<String, Double> output_percent_year = outputService.getThisYearOutputGoodsTotleMoney(y);
+		System.out.println("year3:"+year_year_3);
+		Map<String, Double> output_percent_year = outputService.getThisYearOutputGoodsTotleMoney(year_year_3);
 		System.out.println(output_percent_year.size());
 		String output_percent_year_array[][] = ListToArray.getString2Array(output_percent_year);
 		for(int i = 0 ; i < output_percent_year.size() ; i++){
@@ -239,7 +221,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 				System.out.println(output_percent_year_array[i][j]);
 			}
 		}
-		//result2.put("data_output_year_3", test);
+		result2.put("data_output_year_3", output_percent_year_array);
 		return "success_year";
 
 	}
