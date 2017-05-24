@@ -248,7 +248,7 @@ $(function () {
 
 //改变超出范围的颜色
 function change(){
-	var aa = $(".range-slider").val();
+	var aa = $("#rangeValue").val();
 	var subaa = aa.split(",");
 	var min = subaa[0];
 	var max = subaa[1];
@@ -297,7 +297,7 @@ function change_aver_color(){
 }
 
 //使用jrange
-$('.range-slider').jRange({
+$('#rangeValue').jRange({
     from: -20,
     to: 60,
     step: 5,

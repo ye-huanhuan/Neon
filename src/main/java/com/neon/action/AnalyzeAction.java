@@ -165,6 +165,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 			productVlaue[i] = p.getValue();
 			i+=1;
 		}
+//		for(int m=0;m<12;m++){
+//			System.out.println(productVlaue[0][m]);
+//		}
 		//产品名称数组
 		result.put("productName", productName);
 		//产品值数组
@@ -289,7 +292,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Dvalue dva = dvalueService.getById(id);
 		System.out.println("dva:"+dva);
 		double[] range = dvalueService.getPdvalueAndNdvalue_quarter(dva);
-//		double[] test = {20,60};		
 		List<Double> input_totlemoney_quarter = inputService.getInputTotleMoneyWithQuarter(y_quarter_1);
 		List<Double> output_totlemoney_quarter = outputService.getOutputTotleMoneyWithQuarter(y_quarter_1);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_quarter, output_totlemoney_quarter);
@@ -321,6 +323,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
 		double[] range = dvalueService.getPdvalueAndNdvalue_quarter(dva);
+		System.out.println("quarter_range"+range[0]);
 		List<Double> input_totlemoney_quarter = inputService.getInputTotleMoneyWithQuarter(year-1);
 		List<Double> output_totlemoney_quarter = outputService.getOutputTotleMoneyWithQuarter(year-1);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_quarter, output_totlemoney_quarter);
@@ -484,7 +487,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
 		double[] range = dvalueService.getPdvalueAndNdvalue_year(dva);
-		System.out.println("year_1");		
 
 		List<Double> input_totlemoney_year = inputService.getInputTotleMoneyWithYear();
 		List<Double> output_totlemoney_year = outputService.getOutputTotleMoneyWithYear();
