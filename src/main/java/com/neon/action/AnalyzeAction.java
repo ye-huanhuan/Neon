@@ -266,8 +266,15 @@ public class AnalyzeAction extends ActionBase<Input>{
 		System.out.println("month_3");
 		//第三张表的数据   output_percent_month_array
 		System.out.println("月份："+m);
-		/*Map<String, Double>*/ 
-		Map<String, Double> output_percent_month = outputService.getThisMonthOutputGoodsTotleMoney(m, 2017);
+		Map<String, Double> output_top3_month = outputService.getThisMonthTop3GoodsMoney(m, Constant.YEAR);
+		//准备数据
+		String[] output_top3_key = outputService.getItemByMap(output_top3_month);
+		double[] output_top3_value = outputService.getValueByMap(output_top3_month);
+		//测试
+		//		for(int i = 0 ; i < 3 ; i++){
+//			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
+//		}
+		Map<String, Double> output_percent_month = outputService.getThisMonthOutputGoodsTotleMoney(m, Constant.YEAR);
 		String output_percent_month_array[][] = ListToArray.getString2Array(output_percent_month);
 		result.put("data_output_month_3", output_percent_month_array);
 		return "success";

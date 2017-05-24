@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.stereotype.Service;
 
@@ -213,6 +214,17 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	}
 	
 	@Override
+	public Map<String, Double> getThisMonthTop3GoodsMoney(int m, int year) {
+		Map<String, Double> maps = new HashMap<String, Double>();
+		List<Output> list = getTop3Goods(m , year);
+		for(int i = 0 ; i < 3 ; i++){
+			maps.put(list.get(i).getItem(), list.get(i).getMoney());
+		}
+		return maps;
+	}
+	
+
+	@Override
 	public List<Double> getOutputTotleMoneyWithYear() {
 		List<Double> list = new ArrayList<>();
 		for(int year = Constant.YEAR ; year > Constant.YEAR - 6 ; year--){
@@ -220,6 +232,37 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			list.add(money);
 		}
 		return list;
+	}
+	
+	@Override
+	public String[] getItemByMap(Map<String, Double> output_top3_month) {
+		String[] str = new String[output_top3_month.size()];
+		int i = 0;
+		for(Entry<String, Double> map : output_top3_month.entrySet()){
+			str[i] = map.getKey();
+			i++;
+		}
+		return str;
+	}
+	
+	@Override
+	public double[] getValueByMap(Map<String, Double> output_top3_month) {
+		double[] str = new double[output_top3_month.size()];
+		int i = 0;
+		for(Entry<String, Double> map : output_top3_month.entrySet()){
+			str[i] = map.getValue();
+			i++;
+		}
+		return str;
+	}
+
+	
+	private List<Output> getTop3Goods(int m, int year) {
+		return getSession().createQuery(//
+				"FROM Output out WHERE out.month=? AND out.year=? ORDER BY money DESC")
+				.setParameter(0, m)
+				.setParameter(1, year)
+				.list();
 	}
 	
 	private List<String> getThisMonthGoodsItemByMonth(int i[] , int year){
@@ -318,7 +361,6 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				.setParameter(2, item)
 				.list();
 	}
-
 
 }
 
