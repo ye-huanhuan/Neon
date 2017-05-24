@@ -369,11 +369,18 @@ public class AnalyzeAction extends ActionBase<Input>{
 	}
 	
 	public String quarter_2(){
+		System.out.println(y_quarter_2);
 		Map<String, List<Double>> output_everyGoodsTotleMoney = outputService.getEveryGoodsgetOutputQuarterTotleMoneyWithYear(y_quarter_2);
 		Map<String , double[]> output_everyGoodsTotleMoney_quarter = new HashMap<>();
 		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney.entrySet()){
 			output_everyGoodsTotleMoney_quarter.put(map.getKey(), ListToArray.getDoubleArray(map.getValue()));
 		}
+		/*for( Entry<String, double[]> map : output_everyGoodsTotleMoney_quarter.entrySet()){
+			System.out.println(map.getKey());
+			for(double d : map.getValue()){
+				System.out.println(d);
+			}
+		}*/
 		int i=0;
 		int size = output_everyGoodsTotleMoney_quarter.keySet().size();
 		String[] productName = new String[size];
@@ -472,6 +479,13 @@ public class AnalyzeAction extends ActionBase<Input>{
 			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
 		}*/
 		result1.put("data_out_quarter_3", output_percent_quarter_array);
+		
+		for(int i = 0 ; i < output_percent_quarter.size() ; i++){
+			for(int j = 0 ; j < 2 ; j++){
+				System.out.println(output_percent_quarter_array[i][j]);
+			}
+		}
+		
 		return "success_quarter";
 	}
 	

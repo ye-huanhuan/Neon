@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.neon.domain.Privilege;
 import com.neon.service.PrivilegeService;
 import com.neon.service.UserService;
+import com.neon.util.Arith;
 import com.neon.util.Constant;
 import com.neon.util.Sort;
 
@@ -78,7 +79,6 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		pri.setParent(null);
 		
 		privilegeService.save(pri);*/
-		
 		
 	}
 	
