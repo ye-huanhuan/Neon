@@ -29,16 +29,16 @@ public class DvalueServiceImpl extends DaoSupportImpl<Dvalue> implements DvalueS
 	@Override
 	public double[] getPdvalueAndNdvalue_quarter(Dvalue dva) {
 		double[] pAndNdvalue = new double[2];
-		pAndNdvalue[0] = dva.getPdvalue_month();
-		pAndNdvalue[1] = dva.getNdvalue_month();
+		pAndNdvalue[0] = dva.getPdvalue_quarter();
+		pAndNdvalue[1] = dva.getNdvalue_quarter();
 		return pAndNdvalue;
 	}
 	
 	@Override
 	public double[] getPdvalueAndNdvalue_year(Dvalue dva) {
 		double[] pAndNdvalue = new double[2];
-		pAndNdvalue[0] = dva.getPdvalue_month();
-		pAndNdvalue[1] = dva.getNdvalue_month();
+		pAndNdvalue[0] = dva.getPdvalue_year();
+		pAndNdvalue[1] = dva.getNdvalue_year();
 		return pAndNdvalue;
 	}
 
