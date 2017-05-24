@@ -7,11 +7,13 @@ var data_difference_quarter;
 var data_input_quatter;
 var data_output_quarter;
 var chart;
+var aver_input = 0,aver_output = 0;
+var newData_input_quarter = new Array();
+var newData_output_quarter = new Array();
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7'];
 function calculate(){
 	var num_effe_input = 0,num_effe_output = 0;
     var sum_effe_input = 0,sum_effe_output = 0;
-    var aver_input = 0,aver_output = 0;
     var variance_input = 0;variance_output = 0;
     for(d in data_input_quarter){
     	if(data_input_quarter[d] > 0){
@@ -144,8 +146,7 @@ $(function () {
  	        $('#rangeValue').jRange('setValue', initValue);
  	        change();
  	        chart.series[0].setData(data_difference_quarter);
- 	        chart.series[1].setData(data_input_quarter);
- 	        chart.series[2].setData(data_output_quarter);
+ 	        change_aver_color();
  	        chart.xAxis[0].setCategories(data_quarters);
  	    }
  	});
@@ -169,8 +170,7 @@ $(function () {
      	        var data_quarters = obj["data_quarters"];
      	        calculate();
      	        chart.series[0].setData(data_difference_quarter);
-     	        chart.series[1].setData(data_input_quarter);
-     	        chart.series[2].setData(data_output_quarter);
+     	        change_aver_color();
      	        chart.xAxis[0].setCategories(data_quarters);
      	        change();
             }
@@ -193,8 +193,7 @@ $(function () {
      	        data_output_quarter = obj["data_output_quarter"];
      	        calculate();
      	        chart.series[0].setData(data_difference_quarter);
-     	        chart.series[1].setData(data_input_quarter);
-     	        chart.series[2].setData(data_output_quarter);
+     	        change_aver_color();
      	        chart.xAxis[0].setCategories(['第一季度', '第二季度', '第三季度', '第四季度']);
      	        change();
             }
@@ -217,8 +216,7 @@ $(function () {
      	        data_output_quarter = obj["data_output_quarter"];
      	        calculate();
      	        chart.series[0].setData(data_difference_quarter);
-     	        chart.series[1].setData(data_input_quarter);
-     	        chart.series[2].setData(data_output_quarter);
+     	        change_aver_color();
      	        chart.xAxis[0].setCategories(['第一季度', '第二季度', '第三季度', '第四季度']);
      	        change();
             }
@@ -242,8 +240,7 @@ $(function () {
      	        data_output_quarter = obj["data_output_quarter"];
      	        calculate();
      	        chart.series[0].setData(data_difference_quarter);
-     	        chart.series[1].setData(data_input_quarter);
-     	        chart.series[2].setData(data_output_quarter);
+     	        change_aver_color();
      	        chart.xAxis[0].setCategories(['第一季度', '第二季度', '第三季度', '第四季度']);
      	        change();
             }
@@ -269,6 +266,37 @@ function change(){
 		colors: columnColor,
 	
 });
+}
+
+//改变进项和销项低于平均值的颜色
+function change_aver_color(){
+	for(var i=0;i<data_input_quarter.length;i++){
+		if(data_input_quarter[i]<aver_input){
+			var o = {};
+			o.y = data_input_quarter[i];
+			o.color = '#BF0B23';
+			newData_input_quarter[i] = o;
+		}else{
+			newData_input_quarter[i] = data_input_quarter[i];
+		}
+	}
+	for(var i=0;i<data_output_quarter.length;i++){
+		if(data_output_quarter[i]<aver_output){
+			var obj = new Object();
+			obj.y=data_output_quarter[i];
+			obj.color = '#BF0B23';
+			newData_output_quarter[i] = obj;
+		}else{
+			newData_output_quarter[i] = data_output_quarter[i];
+		}
+	}
+	chart.series[1].update({
+		data: newData_input_quarter,
+});
+	chart.series[2].update({
+		data: newData_output_quarter,
+});
+	
 }
 
 //使用jrange

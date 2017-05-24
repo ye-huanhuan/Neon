@@ -5,12 +5,13 @@
 var data_difference;
 var data_input;
 var data_output;
+var newData_input = new Array();
+var newData_output = new Array();
 var chart;
-
+var aver_input = 0,aver_output = 0;
 function calculate(){
 	var num_effe_input = 0,num_effe_output = 0;
     var sum_effe_input = 0,sum_effe_output = 0;
-    var aver_input = 0,aver_output = 0;
     var variance_input = 0;variance_output = 0;
     for(d in data_input){
     	if(data_input[d] > 0){
@@ -111,8 +112,8 @@ $(function () {
     			colors: columnColor,
 				},
              {
-			type: 'spline',
-            name: '进项金额',
+				type: 'spline',
+				name: '进项金额',
              
         }, {
         	type: 'spline',
@@ -139,9 +140,8 @@ $(function () {
  	        var initValue = ""+rangeValue[1]+","+rangeValue[0];
  	        $('#rangeValue').jRange('setValue', initValue);
  	        change();
+ 	        change_aver_color();
  	        chart.series[0].setData(data_difference);
- 	        chart.series[1].setData(data_input);
- 	        chart.series[2].setData(data_output);
  	        chart.xAxis[0].setCategories(data_month);
  	    }
  	});
@@ -162,9 +162,9 @@ $(function () {
      	        data_output = obj["data_output"];
      	        var data_month = obj["data_month"];
      	        calculate();
-     	        chart.series[0].setData(data_difference);
-     	        chart.series[1].setData(data_input);
-     	        chart.series[2].setData(data_output);
+     	        change_aver_color();
+     	        alert(newData_output);
+    	        chart.series[0].setData(data_difference);
      	        chart.xAxis[0].setCategories(data_month);
      	        change();
             }
@@ -187,11 +187,12 @@ $(function () {
     		            data_input = obj["data_input"];
     		            data_output = obj["data_output"];
     		            calculate();
-    		            chart.series[0].setData(data_difference);
-    		            chart.series[1].setData(data_input);
-    		            chart.series[2].setData(data_output);
+    		            change_aver_color();
+    		            alert(newData_output);
+    		 	        chart.series[0].setData(data_difference);
     		            chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
     		            change();
+    		            
     		        }
     		    });
     		}
@@ -213,9 +214,8 @@ $(function () {
                 data_input = obj["data_input"];
                 data_output = obj["data_output"];
                 calculate();
-                chart.series[0].setData(data_difference);
-                chart.series[1].setData(data_input);
-                chart.series[2].setData(data_output);
+                change_aver_color();
+     	        chart.series[0].setData(data_difference);
                 chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
                 change();
             }
@@ -237,9 +237,8 @@ $(function () {
                 data_input = obj["data_input"];
                 data_output = obj["data_output"];
                 calculate();
-                chart.series[0].setData(data_difference);
-                chart.series[1].setData(data_input);
-                chart.series[2].setData(data_output);
+                change_aver_color();
+     	        chart.series[0].setData(data_difference);
                 chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
                 change();
             }
@@ -264,6 +263,37 @@ function change(){
 		colors: columnColor,
 	
 });
+}
+
+//改变进项和销项低于平均值的颜色
+function change_aver_color(){
+	for(var i=0;i<data_input.length;i++){
+		if(data_input[i]<aver_input){
+			var o = {};
+			o.y = data_input[i];
+			o.color = '#BF0B23';
+			newData_input[i] = o;
+		}else{
+			newData_input[i] = data_input[i];
+		}
+	}
+	for(var i=0;i<data_output.length;i++){
+		if(data_output[i]<aver_output){
+			var obj = new Object();
+			obj.y=data_output[i];
+			obj.color = '#BF0B23';
+			newData_output[i] = obj;
+		}else{
+			newData_output[i] = data_output[i];
+		}
+	}
+	chart.series[1].update({
+		data: newData_input,
+});
+	chart.series[2].update({
+		data: newData_output,
+});
+	
 }
 
 //使用jrange
