@@ -6,20 +6,83 @@ var data_difference;
 var data_input;
 var data_output;
 var chart;
+var newData_input = new Array();
+var newData_output = new Array();
+var aver_input = 0,aver_output = 0;
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7'];
+
+//使用jrange
+$('.range-slider').jRange({
+    from: -20,
+    to: 80,
+    step: 5,
+    scale: [-20,0,20,40,60,80],
+    format: '%s',
+    width: 300,
+    showLabels: true,
+    isRange : true,
+    ondragend : change,
+});
+
+function calculate(){
+	var num_effe_input = 0,num_effe_output = 0;
+    var sum_effe_input = 0,sum_effe_output = 0;
+    var variance_input = 0;variance_output = 0;
+    for(d in data_input){
+    	if(data_input[d] > 0){
+    		num_effe_input ++;
+    		sum_effe_input += data_input[d];
+    	}
+    }
+    if(num_effe_input != 0){
+    	aver_input = (sum_effe_input/num_effe_input).toFixed(2);
+    }
+    
+    for(d in data_output){
+    	if(data_output[d] > 0){
+    		num_effe_output ++;
+    		sum_effe_output += data_output[d];
+    	}
+    }
+    if(num_effe_output != 0){
+    	aver_output = (sum_effe_output/num_effe_output).toFixed(2);
+    }
+    for(d in data_input){
+    	if(data_input[d] > 0){
+    		variance_input += Math.pow((data_input[d]-aver_input),2);
+    	}
+    }
+    for(d in data_output){
+    	if(data_output[d] > 0){
+    		variance_output += (Math.pow((data_output[d]-aver_output),2));
+    	}
+    }
+    variance_output = variance_output.toFixed(2);
+    $("#aver_input").text(aver_input);
+    $("#aver_output").text(aver_output);
+    $("#variance_input").text(variance_input);
+    $("#variance_output").text(variance_output);
+}
+function transfer(data){
+	for(i in data){
+    	if(data[i] == 0){
+    		data[i] = null;
+    	}
+    }
+}
 $(function () {
 	//运用构造函数式
      chart = new Highcharts.Chart('container_top', {
-    	
+    	 credits: {
+ 			enabled:false
+ 		},
         title: {
             text: '年度分析表',
             x: -20
         },
 
         subtitle: {
-
             text: '数据来源: 财务部',
-
             x: -20
         },
         xAxis: {
@@ -94,17 +157,50 @@ $(function () {
     	        data_difference = obj["data_difference_year"];
     	        data_input = obj["data_input_year"];
     	        data_output = obj["data_output_year"];
+    	        transfer(data_difference);
+    	        transfer(data_input);
+    	        transfer(data_output);
+    	        calculate();  //统计
     	        var rangeValue = obj["dvalue_double_year"];
-    	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
-    	        alert(initValue);
-    	        $('#rangeValue').jRange('setValue', initValue);
+    	        var initValue = rangeValue[1].toString()+","+rangeValue[0].toString();
+    	        $('.range-slider').jRange('setValue', initValue);
     	        change();
     	        chart.series[0].setData(data_difference);
-    	        chart.series[1].setData(data_input);
-    	        chart.series[2].setData(data_output);
+    	        change_aver_color();
     	    }
     	});
 });
+
+//改变进项和销项低于平均值的颜色
+function change_aver_color(){
+	for(var i=0;i<data_input.length;i++){
+		if(data_input[i]<aver_input){
+			var o = {};
+			o.y = data_input[i];
+			o.color = '#BF0B23';
+			newData_input[i] = o;
+		}else{
+			newData_input[i] = data_input[i];
+		}
+	}
+	for(var i=0;i<data_output.length;i++){
+		if(data_output[i]<aver_output){
+			var obj = new Object();
+			obj.y=data_output[i];
+			obj.color = '#BF0B23';
+			newData_output[i] = obj;
+		}else{
+			newData_output[i] = data_output[i];
+		}
+	}
+	chart.series[1].update({
+		data: newData_input,
+});
+	chart.series[2].update({
+		data: newData_output,
+});
+	
+}
 
 //改变超出范围的颜色
 function change(){
@@ -124,18 +220,5 @@ function change(){
 	
 });
 }
-
-//使用jrange
-$('.range-slider').jRange({
-    from: -20,
-    to: 80,
-    step: 5,
-    scale: [-20,0,20,40,60,80],
-    format: '%s',
-    width: 300,
-    showLabels: true,
-    isRange : true,
-    ondragend : change,
-});
 
 

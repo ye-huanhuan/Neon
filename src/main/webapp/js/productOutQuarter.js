@@ -70,31 +70,55 @@
    options.series = new Array();
    
    	//初始化chart1
-   	$("#second_year_2017").attr("checked","checked");
-   $.ajax({
+   $("#second_year_4quarter").attr("checked","checked");
+    $.ajax({
   	    async: true,
-  	  	data: {y_quarter_2:$("#second_year_2017").val()},
   	    type: "post",        //type：(string)请求方式，POST或GET
   	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-  	    url: "analyze_quarter_2.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+  	    url: "analyze_quarter_2_other.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
   	    success: function (msg) {
   	    	var obj = eval(msg);
   	    	productName = obj["productName"];
   	    	productValue = obj["productVlaue"];
+  	    	var data_quarter = obj["data_quarters"];
   	    	for(var i=0;i<productName.length;i++){
 	        options.series[i] = new Object();
 	        options.series[i].name = productName[i];
 	        options.series[i].data = productValue[i];
   	    	}
+  	    	options.xAxis.categories = data_quarter;
 	        chart1 = new Highcharts.Chart(options);
   	    }
    });
    
 });
+//异步请求2017年数据
+ $(function () {
+	    $("#second_year_4quarter").click(function () {
+	    	$.ajax({
+	      	    async: true,
+	      	    type: "post",        //type：(string)请求方式，POST或GET
+	      	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+	      	    url: "analyze_quarter_2_other.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+	      	    success: function (msg) {
+	      	    	var obj = eval(msg);
+	      	    	productName = obj["productName"];
+	      	    	productValue = obj["productVlaue"];
+	      	    	var data_quarter = obj["data_quarters"];
+	      	    	for(var i=0;i<productName.length;i++){
+	    	        options.series[i] = new Object();
+	    	        options.series[i].name = productName[i];
+	    	        options.series[i].data = productValue[i];
+	    	        options.xAxis.categories = data_quarter;
+	      	    	}
+	    	        chart1 = new Highcharts.Chart(options);
+	      	    }
+	       });
+	    });
+	});
  //异步请求2017年数据
  $(function () {
 	    $("#second_year_2017").click(function () {
-	    	alert("hello");
 	    	$.ajax({
 	      	    async: true,
 	      	  	data: {y_quarter_2:$("#second_year_2017").val()},
@@ -109,6 +133,7 @@
 	    	        options.series[i] = new Object();
 	    	        options.series[i].name = productName[i];
 	    	        options.series[i].data = productValue[i];
+	    	        options.xAxis.categories = ['第一季度', '第二季度', '第三季度', '第四季度'];
 	      	    	}
 	    	        chart1 = new Highcharts.Chart(options);
 	      	    }
@@ -118,7 +143,6 @@
 //异步请求2016年数据
  $(function () {
 	    $("#second_year_2016").click(function () {
-	    	alert("hello");
 	    	$.ajax({
 	      	    async: true,
 	      	  	data: {y_quarter_2:$("#second_year_2017").val()},
@@ -133,6 +157,7 @@
 	    	        options.series[i] = new Object();
 	    	        options.series[i].name = productName[i];
 	    	        options.series[i].data = productValue[i];
+	    	        options.xAxis.categories = ['第一季度', '第二季度', '第三季度', '第四季度'];
 	      	    	}
 	    	        chart1 = new Highcharts.Chart(options);
 	      	    }
@@ -142,7 +167,6 @@
 //异步请求2015年数据
  $(function () {
 	    $("#second_year_2015").click(function () {
-	    	alert("hello");
 	    	$.ajax({
 	      	    async: true,
 	      	  	data: {y_quarter_2:$("#second_year_2015").val()},
@@ -157,6 +181,7 @@
 	    	        options.series[i] = new Object();
 	    	        options.series[i].name = productName[i];
 	    	        options.series[i].data = productValue[i];
+	    	        options.xAxis.categories = ['第一季度', '第二季度', '第三季度', '第四季度'];
 	      	    	}
 	    	        chart1 = new Highcharts.Chart(options);
 	      	    }

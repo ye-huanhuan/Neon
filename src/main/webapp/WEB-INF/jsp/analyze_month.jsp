@@ -84,10 +84,10 @@
 				  
 				  <div id="year">
 				  <font>年份:</font>
-				  
 				  <input id="year-2015" class="year" type="radio" name="year" value="2015">2015
 				  <input id="year-2016" class="year" type="radio" name="year" value="2016">2016
 				  <input id="year-2017" class="year" type="radio" name="year" value="2017">2017
+				  <input id="year-12month" class="year" type="radio" name="year" value="">近十二个月
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -115,6 +115,7 @@
 				  <input id="second_year2015" class="second_year" type="radio" name="second_year" value="2015"><font class="yearFont">2015</font>
 				  <input id="second_year2016" class="second_year" type="radio" name="second_year" value="2016"><font class="yearFont">2016</font>
 				  <input id="second_year2017" class="sevond_year" type="radio" name="second_year" value="2017"><font class="yearFont">2017</font>
+				  <input id="second_year4month" class="sevond_year" type="radio" name="second_year" value=""><font class="yearFont">近十二个月</font>
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -139,6 +140,9 @@
 				  
 				  <div id="month">
 				  <font>月份:</font>
+				  <input id="month12" class="month" type="radio" name="month" value="12">十二月
+				  <input id="month1" class="month" type="radio" name="month" value="1">一月
+				  <input id="month2" class="month" type="radio" name="month" value="2">二月
 				  <input id="month3" class="month" type="radio" name="month" value="3">三月
 				  <input id="month4" class="month" type="radio" name="month" value="4">四月
 				  <input id="month5" class="month" type="radio" name="month" value="5">五月
@@ -171,7 +175,7 @@
       
 
 <script src="js/highcharts.js"></script>
-<!--<script src="js/sumInOutMonth.js"></script>-->
+<script src="js/sumInOutMonth.js"></script>
 <script src="js/productOutMonth.js"></script>
 <script src="js/monthOutProduct.js"></script>
 <!--  
@@ -328,6 +332,7 @@
 	});
 </script>
 -->
+<!-- 
 <script>
 
 /**

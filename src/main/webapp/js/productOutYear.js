@@ -81,6 +81,7 @@
   	    	for(var i=0;i<productName.length;i++){
 	        options.series[i] = new Object();
 	        options.series[i].name = productName[i];
+	        transfer(productValue[i]);
 	        options.series[i].data = productValue[i];
   	    	}
 	        chart1 = new Highcharts.Chart(options);

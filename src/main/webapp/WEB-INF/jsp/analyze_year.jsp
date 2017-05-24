@@ -76,7 +76,7 @@
               <li class="active">分析</li>
             </ul>
             <div class="row">
-            	<!-- 按月进销总和统计 -->
+            	<!-- 按年进销总和统计 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">进销总和分析表</header>
@@ -86,13 +86,11 @@
 				  <div id="range">
 				  <input id="rangeValue" type="hidden" class="range-slider"  value=""/>
 				  </div>
-				  
-				 
 				  </div>
                   <div class="panel-body">
                     <div id="container_top" style="min-width:400px;height:400px"></div>
                   </div>
-                  <<footer class="panel-footer bg-white no-padder">
+                  <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">
                       <div class="col-xs-3 b-r b-light"> <span id="aver_input" class="h4 font-bold m-t block">5,860</span><small class="text-muted m-b block">进项数据平均值</small></div>
                       <div class="col-xs-3 b-r b-light"> <span id="aver_output" class="h4 font-bold m-t block">10,450</span><small class="text-muted m-b block">销项数据平均值</small> </div>
@@ -164,10 +162,10 @@
       
 
 <script src="js/highcharts.js"></script>
-<!--<script src="js/sumInOutYear.js"></script>-->
+<script src="js/sumInOutYear.js"></script>
 <script src="js/productOutYear.js"></script>
-<!--<script src="js/yearOutProduct.js"></script>-->
-
+<script src="js/yearOutProduct.js"></script>
+  <!-- 
 <script type="text/javascript">
 /**
  * 年度进销项总和对比
@@ -217,6 +215,13 @@ function calculate(){
     $("#aver_output").text(aver_output);
     $("#variance_input").text(variance_input);
     $("#variance_output").text(variance_output);
+}
+function transfer(data){
+	for(i in data){
+    	if(data[i] == 0){
+    		data[i] = null;
+    	}
+    }
 }
 $(function () {
 	//运用构造函数式
@@ -305,6 +310,9 @@ $(function () {
     	        data_difference = obj["data_difference_year"];
     	        data_input = obj["data_input_year"];
     	        data_output = obj["data_output_year"];
+    	        transfer(data_difference);
+    	        transfer(data_input);
+    	        transfer(data_output);
     	        calculate();
     	        var rangeValue = obj["dvalue_double_year"];
     	        var initValue = ""+rangeValue[0]+","+rangeValue[1];
@@ -349,10 +357,8 @@ $('.range-slider').jRange({
     ondragend : change,
 });
 
-
-
 </script>
- 
+ <!-- 
 <script>
 /*
  *  同一年不同产品的销量
@@ -415,7 +421,6 @@ $.ajax({
     dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
     url: "analyze_year_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
     success: function (msg) {
-    	alert("year_3");
         var obj = eval(msg);
         var a = obj["data_output_year_3"];
        for(var i=0;i<a.length;i++)
@@ -435,7 +440,6 @@ $.ajax({
 //发送异步请求2016年数据
 
  $("#year2016").click(function () {
- 	alert("m4");
      $.ajax({
          async: true,
          data: {year_year_3:$("#year2016").val()},
@@ -513,7 +517,7 @@ $.ajax({
      });
  });
 </script>
-   
+   -->
 <!--  
 <script>
 /**

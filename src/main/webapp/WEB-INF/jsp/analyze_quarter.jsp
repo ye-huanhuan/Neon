@@ -90,6 +90,7 @@
 				  <input id="year2015" class="quarter" type="radio" name="first_quarter" value="2015">2015
 				  <input id="year2016" class="quarter" type="radio" name="first_quarter" value="2016">2016
 				  <input id="year2017" class="quarter" type="radio" name="first_quarter" value="2017">2017
+				  <input id="year4quarter" class="quarter" type="radio" name="first_quarter" value="">近四个季度
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -116,6 +117,7 @@
 				  <input id="second_year_2015" class="quarter" type="radio" name="second_quarter" value="2015">2015
 				  <input id="second_year_2016" class="quarter" type="radio" name="second_quarter" value="2016">2016
 				  <input id="second_year_2017" class="quarter" type="radio" name="second_quarter" value="2017">2017
+				  <input id="second_year_4quarter" class="quarter" type="radio" name="second_quarter" value="">近四个季度
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -174,9 +176,9 @@
       
 
 <script src="js/highcharts.js"></script>
-<script src="js/sumInOutQuarter.js?ver=1"></script>
+<script src="js/sumInOutQuarter.js"></script>
 <script src="js/productOutQuarter.js"></script>
-<!--<script src="js/quarterOutProduct.js"></script>-->
+<script src="js/quarterOutProduct.js"></script>
 <!--  
 <script>
 /**
@@ -441,6 +443,7 @@ $('.range-slider').jRange({
 
 </script>
 -->
+<!--  
 <script>
 /**
  * 同一个季度不同商品的出售情况
