@@ -16,7 +16,7 @@ function calculate(){
     var sum_effe_input = 0,sum_effe_output = 0;
     var variance_input = 0;variance_output = 0;
     for(d in data_input_quarter){
-    	if(data_input_quarter[d] > 0){
+    	if(data_input_quarter[d] >= 0 && data_input_quarter[d] != null){
     		num_effe_input ++;
     		sum_effe_input += data_input_quarter[d];
     	}
@@ -26,7 +26,7 @@ function calculate(){
     }
     
     for(d in data_output_quarter){
-    	if(data_output_quarter[d] > 0){
+    	if(data_output_quarter[d] >= 0 && data_output_quarter[d] != null){
     		num_effe_output ++;
     		sum_effe_output += data_output_quarter[d];
     	}
@@ -35,16 +35,17 @@ function calculate(){
     	aver_output = (sum_effe_output/num_effe_output).toFixed(2);
     }
     for(d in data_input_quarter){
-    	if(data_input_quarter[d] > 0){
+    	if(data_input_quarter[d] >= 0 && data_input_quarter[d] != null){
     		variance_input += Math.pow((data_input_quarter[d]-aver_input),2);
     	}
     }
     for(d in data_output_quarter){
-    	if(data_output_quarter[d] > 0){
+    	if(data_output_quarter[d] >= 0 && data_output_quarter[d] != null){
     		variance_output += (Math.pow((data_output_quarter[d]-aver_output),2));
     	}
     }
-    variance_output = variance_output.toFixed(2);
+    variance_input = variance_input.toFixed(4);
+    variance_output = variance_output.toFixed(4);
     $("#aver_input").text(aver_input);
     $("#aver_output").text(aver_output);
     $("#variance_input").text(variance_input);
@@ -251,7 +252,7 @@ $(function () {
 
 //改变超出范围的颜色
 function change(){
-	var aa = $(".range-slider").val();
+	var aa = $("#rangeValue").val();
 	var subaa = aa.split(",");
 	var min = subaa[0];
 	var max = subaa[1];
@@ -300,7 +301,7 @@ function change_aver_color(){
 }
 
 //使用jrange
-$('.range-slider').jRange({
+$('#rangeValue').jRange({
     from: -20,
     to: 120,
     step: 5,

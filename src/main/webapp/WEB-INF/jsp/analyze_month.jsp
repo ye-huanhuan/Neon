@@ -119,7 +119,7 @@
                   <!-- range2 -->
                   <font>查看的范围:</font>
 				  <div id="second_range">
-				  <input id="second_rangeValue" type="hidden" class="range-slider"  value="20,30"/>
+				  <input id="second_rangeValue" type="hidden" class="range-slider"  value="0,50"/>
 				  </div>
 				  <div id="year">
 				  <font>年份:</font>

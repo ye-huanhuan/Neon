@@ -12,11 +12,11 @@ var aver_input = 0,aver_output = 0;
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7'];
 
 //使用jrange
-$('.range-slider').jRange({
-    from: -20,
-    to: 80,
-    step: 5,
-    scale: [-20,0,20,40,60,80],
+$('#rangeValue').jRange({
+    from: 0,
+    to: 700,
+    step: 50,
+    scale: [0,100,200,300,400,500,600,700],
     format: '%s',
     width: 300,
     showLabels: true,
@@ -29,7 +29,7 @@ function calculate(){
     var sum_effe_input = 0,sum_effe_output = 0;
     var variance_input = 0;variance_output = 0;
     for(d in data_input){
-    	if(data_input[d] > 0){
+    	if(data_input[d] >= 0 && data_input[d] != null){
     		num_effe_input ++;
     		sum_effe_input += data_input[d];
     	}
@@ -39,7 +39,7 @@ function calculate(){
     }
     
     for(d in data_output){
-    	if(data_output[d] > 0){
+    	if(data_output[d] >= 0 && data_output[d] != null){
     		num_effe_output ++;
     		sum_effe_output += data_output[d];
     	}
@@ -48,16 +48,18 @@ function calculate(){
     	aver_output = (sum_effe_output/num_effe_output).toFixed(2);
     }
     for(d in data_input){
-    	if(data_input[d] > 0){
+    	if(data_input[d] >= 0 && data_input[d] != null){
     		variance_input += Math.pow((data_input[d]-aver_input),2);
     	}
     }
+    
     for(d in data_output){
-    	if(data_output[d] > 0){
+    	if(data_output[d] >= 0 && data_output[d] != null){
     		variance_output += (Math.pow((data_output[d]-aver_output),2));
     	}
     }
-    variance_output = variance_output.toFixed(2);
+    variance_input=variance_input.toFixed(4);
+    variance_output = variance_output.toFixed(4);
     $("#aver_input").text(aver_input);
     $("#aver_output").text(aver_output);
     $("#variance_input").text(variance_input);
@@ -132,7 +134,6 @@ $(function () {
 				colorByPoint: true,	
    		 		type: 'column',
     			name: '进销差值',
-    			data: [-3, 1, 2, -4, 2, 0],
     			colors: columnColor,
 				},
              {
@@ -163,7 +164,7 @@ $(function () {
     	        calculate();  //统计
     	        var rangeValue = obj["dvalue_double_year"];
     	        var initValue = rangeValue[1].toString()+","+rangeValue[0].toString();
-    	        $('.range-slider').jRange('setValue', initValue);
+    	        $('#rangeValue').jRange('setValue', initValue);
     	        change();
     	        chart.series[0].setData(data_difference);
     	        change_aver_color();
@@ -204,7 +205,7 @@ function change_aver_color(){
 
 //改变超出范围的颜色
 function change(){
-	var aa = $(".range-slider").val();
+	var aa = $("#rangeValue").val();
 	var subaa = aa.split(",");
 	var min = subaa[0];
 	var max = subaa[1];

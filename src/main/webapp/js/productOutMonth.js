@@ -6,7 +6,6 @@
  var productValue;
  var months;
  var options;
- var disppears = new Array();
  $(function () {
    options = {
      chart: {

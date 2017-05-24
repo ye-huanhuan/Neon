@@ -19,11 +19,18 @@
 		margin-top: 5px;
 		
 	}
-	#range{
+	#range,#second_range{
 		width : 350px;
 		margin-left: 30px;
 		margin-top: 5px;
 		display: inline-block;
+	}
+	#second_button{
+		margin-left: 30px;
+		border-top-left-radius:0.5em;
+     	border-top-right-radius:0.5em;     
+     	border-bottom-left-radius:0.5em;
+     	border-bottom-right-radius:0.5em;
 	}
 	
 	#year{
@@ -104,9 +111,12 @@
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
-                  <div id="wrap-product">
-				  <div id="year">
-				  
+                  <div id="wrap-range">
+				  <font>查看的范围:</font>
+				  <div id="second_range">
+				  <input id="second_rangeValue" type="hidden" class="range-slider"  value="0,500"/>
+				  </div>
+				  <input id="second_button" class="" type="button" value="重置">
 				  </div>
                   <div class="panel-body">
                     <div id="container_second" style="min-width:400px;height:400px"></div>
@@ -136,7 +146,8 @@
 				  </div>
 				  </div>
                   <div class="panel-body">
-                    <div id="container_third" style="min-width:400px;height:400px"></div>
+                    <div id="container_third" style="width:648px;height:400px;display: inline-block;"></div>
+                    <div id="container_third_2" style="width:648px;height:400px;display: inline-block;"></div>
                   </div>
                   <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">
@@ -165,6 +176,7 @@
 <script src="js/sumInOutYear.js"></script>
 <script src="js/productOutYear.js"></script>
 <script src="js/yearOutProduct.js"></script>
+<script src="js/top_product.js"></script>
   <!-- 
 <script type="text/javascript">
 /**

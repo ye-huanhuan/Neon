@@ -14,7 +14,7 @@ function calculate(){
     var sum_effe_input = 0,sum_effe_output = 0;
     var variance_input = 0;variance_output = 0;
     for(d in data_input){
-    	if(data_input[d] > 0){
+    	if(data_input[d] >= 0 && data_input[d] != null){
     		num_effe_input ++;
     		sum_effe_input += data_input[d];
     	}
@@ -24,7 +24,7 @@ function calculate(){
     }
     
     for(d in data_output){
-    	if(data_output[d] > 0){
+    	if(data_output[d] >= 0 && data_output[d] != null){
     		num_effe_output ++;
     		sum_effe_output += data_output[d];
     	}
@@ -33,16 +33,17 @@ function calculate(){
     	aver_output = (sum_effe_output/num_effe_output).toFixed(2);
     }
     for(d in data_input){
-    	if(data_input[d] > 0){
+    	if(data_input[d] >= 0 && data_input[d] != null){
     		variance_input += Math.pow((data_input[d]-aver_input),2);
     	}
     }
     for(d in data_output){
-    	if(data_output[d] > 0){
+    	if(data_output[d] >= 0 && data_output[d] != null){
     		variance_output += (Math.pow((data_output[d]-aver_output),2));
     	}
     }
-    variance_output = variance_output.toFixed(2);
+    variance_input = variance_input.toFixed(4);
+    variance_output = variance_output.toFixed(4);
     $("#aver_input").text(aver_input);
     $("#aver_output").text(aver_output);
     $("#variance_input").text(variance_input);
@@ -122,7 +123,7 @@ $(function () {
         }
         ]
    });
-   //初始化highchart
+//初始化highchart
      $("#year-12month").attr("checked","checked");
      $.ajax({
  	    async: true,
@@ -163,7 +164,6 @@ $(function () {
      	        var data_month = obj["data_month"];
      	        calculate();
      	        change_aver_color();
-     	        alert(newData_output);
     	        chart.series[0].setData(data_difference);
      	        chart.xAxis[0].setCategories(data_month);
      	        change();
@@ -188,7 +188,6 @@ $(function () {
     		            data_output = obj["data_output"];
     		            calculate();
     		            change_aver_color();
-    		            alert(newData_output);
     		 	        chart.series[0].setData(data_difference);
     		            chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
     		            change();

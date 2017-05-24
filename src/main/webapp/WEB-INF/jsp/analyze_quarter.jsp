@@ -19,11 +19,18 @@
 		margin-top: 5px;
 		
 	}
-	#range{
+	#range,#second_range{
 		width : 350px;
 		margin-left: 30px;
 		margin-top: 5px;
 		display: inline-block;
+	}
+	#second_button{
+		margin-left: 30px;
+		border-top-left-radius:0.5em;
+     	border-top-right-radius:0.5em;     
+     	border-bottom-left-radius:0.5em;
+     	border-bottom-right-radius:0.5em;
 	}
 	#quarter{
 		display: inline-block;
@@ -112,12 +119,17 @@
                   <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
                   <div id="wrap-product">
 				  <div id="quarter">
-				  
+				  <!-- range2 -->
+                  <font>查看的范围:</font>
+				  <div id="second_range">
+				  <input id="second_rangeValue" type="hidden" class="range-slider"  value="0,120"/>
+				  </div>
 				 <font>年份:</font>
 				  <input id="second_year_2015" class="quarter" type="radio" name="second_quarter" value="2015">2015
 				  <input id="second_year_2016" class="quarter" type="radio" name="second_quarter" value="2016">2016
 				  <input id="second_year_2017" class="quarter" type="radio" name="second_quarter" value="2017">2017
 				  <input id="second_year_4quarter" class="quarter" type="radio" name="second_quarter" value="">近四个季度
+				  <input id="second_button" class="" type="button" value="重置">
 				  </div>
 				  </div>
                   <div class="panel-body">
