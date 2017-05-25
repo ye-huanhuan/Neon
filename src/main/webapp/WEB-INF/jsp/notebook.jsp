@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/component.css">
 <link rel="stylesheet" href="css/demo.css">
 <link rel="stylesheet" href="css/normalize.css">
+<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 </head>
 <body>
 <section class="vbox">
@@ -34,7 +35,7 @@
         <section class="vbox">
           <section class="scrollable padder">
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
-              <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+              <li><a href="home_index.action"><i class="fa fa-home"></i> Home</a></li>
               <li class="active">设置</li>
             </ul>
             <!-- 
