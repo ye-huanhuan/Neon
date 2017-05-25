@@ -18,7 +18,6 @@
 <!--<script src="http://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>-->
 
 <link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
-  
 <title>Neon</title>
 </head>
 <body>
