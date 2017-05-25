@@ -58,6 +58,10 @@ public interface OutputService extends DaoSupport<Output>{
 
 		double[] getValueByMap(Map<String, Double> output_top3_month);
 
+		double[] getThisMonthOutputGoodsTotleMoney(int cURRENTMONTH, int yEAR, String[] items);
+
+		double[] getThisQuarterOutputGoodsTotleMoney(int cURRENTMONTH, int yEAR, String[] items);
+
 
 		
 }

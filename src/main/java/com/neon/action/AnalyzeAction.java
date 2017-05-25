@@ -62,6 +62,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
+		System.out.println("dva:"+dva);
 		double[] range = dvalueService.getPdvalueAndNdvalue_month(dva);
 		
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year-1);
@@ -262,12 +263,27 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备数据
 		String[] output_top3_key = outputService.getItemByMap(output_top3_month);
 		double[] output_top3_value = outputService.getValueByMap(output_top3_month);
-
+		//测试
+		for(int i = 0 ; i < 3 ; i++){
+			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
+		}
 		Map<String, Double> output_percent_month = outputService.getThisMonthOutputGoodsTotleMoney(m, Constant.YEAR);
 		String output_percent_month_array[][] = ListToArray.getString2Array(output_percent_month);
 		result.put("data_output_month_3", output_percent_month_array);
-		result.put("data_output_month_3_key", output_top3_key);
-		result.put("data_output_month_3_value", output_top3_value);
+		return "success";
+	}
+	
+	public String month_4(){
+		Map<String, Double> map_thisYear = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH, Constant.YEAR);
+		Map<String, Double> map_lastYear = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH, Constant.YEAR - 1);
+		String[] items = ListToArray.getItemsArray(map_thisYear , map_lastYear);
+		double[] thisYear_moeny = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH , Constant.YEAR , items);
+		double[] lastYear_money = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH , Constant.YEAR - 1 , items);
+		
+		for(int i = 0 ; i < items.length ; i++){
+			System.out.println(items[i] + "今年" + thisYear_moeny[i] + "  去年" + lastYear_money[i]);
+		}
+		
 		return "success";
 	}
 	
@@ -477,9 +493,29 @@ public class AnalyzeAction extends ActionBase<Input>{
 			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
 		}*/
 		result1.put("data_out_quarter_3", output_percent_quarter_array);
-		result1.put("data_output_month_3_key", output_top3_key);
-		result1.put("data_output_month_3_value", output_top3_value);
+		
+		for(int i = 0 ; i < output_percent_quarter.size() ; i++){
+			for(int j = 0 ; j < 2 ; j++){
+				System.out.println(output_percent_quarter_array[i][j]);
+			}
+		}
+		
 		return "success_quarter";
+	}
+	
+	public String quarter_4(){
+		Map<String, Double> map_thisQuarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER, Constant.YEAR);
+		Map<String, Double> map_lastQuarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER, Constant.YEAR - 1);
+		String[] items = ListToArray.getItemsArray(map_thisQuarter , map_lastQuarter);
+		//准备数据
+		double[] thisYear_Quarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER , Constant.YEAR , items);
+		double[] lastYear_Quarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER , Constant.YEAR - 1 , items);
+		//测试
+		/*for(int i = 0 ; i < items.length ; i++){
+			System.out.println(items[i] + "今年" + thisYear_Quarter[i] + "  去年" + lastYear_Quarter[i]);
+		}*/
+		
+		return "success";
 	}
 	
 	//准备年份分析数据
@@ -539,7 +575,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 	public String year_3(){
 		System.out.println("year3:"+year_year_3);
 		Map<String, Double> output_percent_year = outputService.getThisYearOutputGoodsTotleMoney(year_year_3);
-		System.out.println(output_percent_year.size());
 		Map<String, Double> output_top3_year = outputService.getThisYearTop3GoodsMoney(year_year_3);
 		//准备数据
 		String[] output_top3_key = outputService.getItemByMap(output_top3_year);
@@ -554,8 +589,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 			}
 		}*/
 		result2.put("data_output_year_3", output_percent_year_array);
-		result2.put("data_output_month_3_key", output_top3_key);
-		result2.put("data_output_month_3_value", output_top3_value);
 		return "success_year";
 
 	}

@@ -19,6 +19,7 @@ import com.neon.service.PrivilegeService;
 import com.neon.service.UserService;
 import com.neon.util.Arith;
 import com.neon.util.Constant;
+import com.neon.util.ListToArray;
 import com.neon.util.Sort;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
@@ -79,6 +80,18 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		pri.setParent(null);
 		
 		privilegeService.save(pri);*/
+		
+		Map<String, Double> map = new HashMap<>();
+		map.put("yy", 2.1);
+		map.put("yh", 2.1);
+		map.put("hh", 2.1);
+		Map<String, Double> map2 = new HashMap<>();
+		map2.put("yy", 2.1);
+		map2.put("yh", 2.1);
+		map2.put("hh", 2.1);
+		for(String s : ListToArray.getItemsArray(map, map2)){
+			System.out.println(s);
+		}
 		
 	}
 	
