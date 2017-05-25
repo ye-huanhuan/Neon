@@ -105,6 +105,15 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	}
 	
 	@Override
+	public double[] getThisMonthOutputGoodsTotleMoney(int month, int year, String[] items) {
+		double[] strs = new double[items.length];
+		for(int i = 0 ; i < items.length ; i++){
+			strs[i] = getThisItemTotleMoney(items[i],month,year);
+		}
+		return strs;
+	}
+	
+	@Override
 	public Map<String, Double> getThisQuarterOutputGoodsTotleMoney(int quarter, int year) {
 		Map<String, Double> map = new HashMap<>();
 		switch(quarter){
@@ -155,6 +164,58 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		}
 		
 		return Sort.SortMapByDESC3(map);
+	}
+	
+	@Override
+	public double[] getThisQuarterOutputGoodsTotleMoney(int quarter, int year, String[] items) {
+		double[] dou = new double[items.length];
+		switch(quarter){
+		case 1 : 
+			int temp = 0;
+			for(String item : items){
+				double money = 0.0;	
+				for(int month = 1 ; month <= 3 ; month++){
+					money = Arith.add(money , getThisItemTotleMoney(item,month,year));
+				}
+				dou[temp] = money;
+				temp++;
+			};
+			break;
+		case 2 :
+			int temp_2 = 0;
+			for(String item : items){
+				double money = 0.0;	
+				for(int month = 4 ; month <= 6 ; month++){
+					money = Arith.add(money , getThisItemTotleMoney(item,month,year));
+				}
+				dou[temp_2] = money;
+				temp_2++;
+			};
+			break;
+		case 3 :
+			int temp_3 = 0;
+			for(String item : items){
+				double money = 0.0;	
+				for(int month = 7 ; month <= 9 ; month++){
+					money = Arith.add(money , getThisItemTotleMoney(item,month,year));
+				}
+				dou[temp_3] = money;
+				temp_3++;
+			};
+			break;
+		case 4 :
+			int temp_4 = 0;
+			for(String item : items){
+				double money = 0.0;	
+				for(int month = 10 ; month <= 12 ; month++){
+					money = Arith.add(money , getThisItemTotleMoney(item,month,year));
+				}
+				dou[temp_4] = money;
+				temp_4++;
+			};
+			break;
+		}
+		return dou;
 	}
 		
 	@Override
