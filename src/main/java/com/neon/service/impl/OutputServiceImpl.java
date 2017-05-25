@@ -154,7 +154,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			break;
 		}
 		
-		return map;
+		return Sort.SortMapByDESC3(map);
 	}
 		
 	@Override
@@ -218,7 +218,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		for(int i = 0 ; i < 3 ; i++){
 			maps.put(list.get(i).getItem(), list.get(i).getMoney());
 		}
-		return maps;
+		return Sort.SortMapByDESC3(maps);
 	}
 	
 
