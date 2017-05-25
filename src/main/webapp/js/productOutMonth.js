@@ -226,5 +226,6 @@
 	    $("#second_button").click(function () {
 	    	reset();
 	    });
-	});	    	
-	    
+	});
+ 
+

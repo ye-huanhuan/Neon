@@ -98,7 +98,7 @@
 				  </div>
 				  </div>
                   <div class="panel-body">
-                    <div id="container_top" style="min-width:400px;height:400px"></div>
+                    <div id="container_top" style="width:100%;height:400px"></div>
                   </div>
                  
                   <footer class="panel-footer bg-white no-padder">
@@ -202,7 +202,7 @@
   </section>
 </section>
  
-      
+
 
 <script src="js/highcharts.js"></script>
 <script src="js/sumInOutMonth.js"></script>
@@ -210,6 +210,7 @@
 <script src="js/monthOutProduct.js"></script>
 <script src="js/top_product_month.js"></script>
 <script src="js/compare_same_month.js"></script>
+
 <!--  
 <script type="text/javascript">
 /**

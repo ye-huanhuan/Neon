@@ -77,13 +77,13 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		for(String item : items){
 			List<Double> moneys = new ArrayList<>();
 			for(int month = 1 ; month <= Constant.MONTH ; month++){
-				if(month%3 == 0){
-					moneys.add(money);
-					money = 0.0;
-				}
 				List<Output> outputs = getOutputsWithMonthAndYearAndItem(month , year ,item);
 				for(Output output : outputs){
 					money = Arith.add(money, output.getMoney());
+				}
+				if(month%3 == 0){
+					moneys.add(money);
+					money = 0.0;
 				}
 			}
 			maps.put(item, moneys);
@@ -107,54 +107,51 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	@Override
 	public Map<String, Double> getThisQuarterOutputGoodsTotleMoney(int quarter, int year) {
 		Map<String, Double> map = new HashMap<>();
-		double totleMoney = 0.0;
 		switch(quarter){
 		case 1 : 
 			int i[] = {1 , 2 , 3};
-			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
 			List<String> items = getThisMonthGoodsItemByMonth( i , year);
 				for(String item : items){
 				double money = 0.0;	
 				for(int month = 1 ; month <= 3 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+					money = Arith.add(money , getThisItemTotleMoney(item,month,year));
 				}
-				map.put(item, Arith.div(money, totleMoney, 4)*100);
+				map.put(item, money);
 			};
+			break;
 		case 2 :
 			int i_2[] = {4 , 5 , 6};
-			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
 			List<String> items_2 = getThisMonthGoodsItemByMonth( i_2 , year);
 				for(String item : items_2){
 				double money = 0.0;	
 				for(int month = 4 ; month <= 6 ; month++){
 					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
 				}
-				map.put(item, Arith.div(money, totleMoney, 4)*100);
+				map.put(item, money);
 			};
-			
+			break;
 		case 3 :
 			int i_3[] = {7 , 8 , 9};
-			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
 			List<String> items_3 = getThisMonthGoodsItemByMonth( i_3 , year);
 				for(String item : items_3){
 				double money = 0.0;	
 				for(int month = 7 ; month <= 9 ; month++){
 					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
 				}
-				map.put(item, Arith.div(money, totleMoney, 4)*100);
+				map.put(item, money);
 			};
-			
+			break;
 		case 4 :
 			int i_4[] = {10 , 11 , 12};
-			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
 			List<String> items_4 = getThisMonthGoodsItemByMonth( i_4 , year);
 				for(String item : items_4){
 				double money = 0.0;	
 				for(int month = 10 ; month <= 12 ; month++){
 					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
 				}
-				map.put(item, Arith.div(money, totleMoney, 4)*100);
+				map.put(item, money);
 			};
+			break;
 		}
 		
 		return map;
@@ -273,6 +270,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				}
 				map.put(item, Arith.div(money, totleMoney, 4)*100);
 			};
+			break;
 		case 2 :
 			int i_2[] = {4 , 5 , 6};
 			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
@@ -284,7 +282,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				}
 				map.put(item, Arith.div(money, totleMoney, 4)*100);
 			};
-			
+			break;
 		case 3 :
 			int i_3[] = {7 , 8 , 9};
 			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
@@ -296,7 +294,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				}
 				map.put(item, Arith.div(money, totleMoney, 4)*100);
 			};
-			
+			break;
 		case 4 :
 			int i_4[] = {10 , 11 , 12};
 			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
@@ -308,7 +306,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				}
 				map.put(item, Arith.div(money, totleMoney, 4)*100);
 			};
-			
+			break;
 		}
 		
 		return Sort.SortMapByDESC3(map);

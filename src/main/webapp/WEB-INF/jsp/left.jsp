@@ -19,7 +19,7 @@
 
 <link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
   
-<title>Insert title here</title>
+<title>Neon</title>
 </head>
 <body>
 <ul class="nav">

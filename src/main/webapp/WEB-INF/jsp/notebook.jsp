@@ -4,11 +4,15 @@
 <html lang="en" class="app">
 <head>
 <meta charset="utf-8" />
-<title>Notebook | Web Application</title>
+<title>Neon</title>
 <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
 <link rel="stylesheet" href="js\calendar/bootstrap_calendar.css" type="text/css" cache="false" />
+<link rel="stylesheet" href="css/buttons.css">
+<link rel="stylesheet" href="css/component.css">
+<link rel="stylesheet" href="css/demo.css">
+<link rel="stylesheet" href="css/normalize.css">
 </head>
 <body>
 <section class="vbox">
@@ -31,8 +35,9 @@
           <section class="scrollable padder">
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
               <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-              <li class="active">发票</li>
+              <li class="active">设置</li>
             </ul>
+            <!-- 
          <form action="invoice_toSetDvalue.action" method="get">
 	         <ul>
 	         	<li>
@@ -64,6 +69,54 @@
 	         	</li>
 	         </ul>
        	 </form>
+       	  -->
+       	  
+       	   <section class="content bgcolor-5" style="background-color:rgb(240,240,240)">
+    		<center><h2 style="color: rgb(106,121,137);opacity: 1.0">利润合理区间设置</h2>
+    		<span class="input input--minoru">
+					<input class="input__field input__field--yoko" type="text" id="input-1" />
+					<label class="input__label input__label--yoko" for="input-1">
+						<span class="input__label-content input__label-content--yoko">月利润</span>
+					</label>
+				</span>
+    		<span class="input input--minoru">
+					<input class="input__field input__field--yoko" type="text" id="input-2" />
+					<label class="input__label input__label--yoko" for="input-2">
+						<span class="input__label-content input__label-content--yoko">季度利润</span>
+					</label>
+				</span>
+    		<span class="input input--minoru">
+					<input class="input__field input__field--yoko" type="text" id="input-3" />
+					<label class="input__label input__label--yoko" for="input-3">
+						<span class="input__label-content input__label-content--yoko">年利润</span>
+					</label>
+				</span>
+    		<span class="input input--minoru">
+					<input class="input__field input__field--yoko" type="text" id="input-4" />
+					<label class="input__label input__label--yoko" for="input-4">
+						<span class="input__label-content input__label-content--yoko">月亏损</span>
+					</label>
+				</span>
+    		<span class="input input--minoru">
+					<input class="input__field input__field--yoko" type="text" id="input-5" />
+					<label class="input__label input__label--yoko" for="input-5">
+						<span class="input__label-content input__label-content--yoko">季度亏损</span>
+					</label>
+				</span>
+    		<span class="input input--minoru">
+					<input class="input__field input__field--yoko" type="text" id="input-6" />
+					<label class="input__label input__label--yoko" for="input-6">
+						<span class="input__label-content input__label-content--yoko">年亏损</span>
+					</label>
+				</span>
+
+    </center>
+</section>
+<center>
+<a href="" class="button button-raised button-pill button-inverse" onclick="">保存</a>
+</center>
+       	  
+       	  
           </section>
         </section>
         

@@ -5,6 +5,9 @@ $(document).ready(function() {
         var chart = {
             zoomType: 'x'
         };
+        var credits =  {
+            enabled:false
+		};
         var title = {
             text: '2015年1月1日至今每日的进项总额'
         };
@@ -12,7 +15,11 @@ $(document).ready(function() {
             text: '拖动x轴能缩放图表'
         };
         var xAxis = {
-            type: 'datetime',
+        	title: {
+                 text: '时间/天',
+                 align: 'high',
+            },
+        	type: 'datetime',
             minRange: 15 * 24 * 3600000, // 15 天
             dateTimeLabelFormats: {      //格式化时间
                 millisecond: '%H:%M:%S.%L',
@@ -23,12 +30,24 @@ $(document).ready(function() {
                 week: '%m-%d',
                 month: '%Y-%m',
                 year: '%Y'
+            },
+            labels: {
+                style: {
+                    fontSize:'14px',
+                    fontFamily:'微软雅黑'
+                }
             }
         };
         var yAxis = {
             title: {
                 text: '进项税',
                 align: 'high',
+            },
+            labels: {
+                style: {
+                    fontSize:'14px',
+                    fontFamily:'微软雅黑'
+                }
             }
         };
         var legend = {
@@ -198,7 +217,7 @@ $(document).ready(function() {
         json.yAxis = yAxis;
         json.series = series;
         json.plotOptions = plotOptions;
-
+        json.credits = credits;
         $('#container_second').highcharts(json);
 
     });

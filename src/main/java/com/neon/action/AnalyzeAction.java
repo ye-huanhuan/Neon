@@ -370,11 +370,18 @@ public class AnalyzeAction extends ActionBase<Input>{
 	}
 	
 	public String quarter_2(){
+		System.out.println(y_quarter_2);
 		Map<String, List<Double>> output_everyGoodsTotleMoney = outputService.getEveryGoodsgetOutputQuarterTotleMoneyWithYear(y_quarter_2);
 		Map<String , double[]> output_everyGoodsTotleMoney_quarter = new HashMap<>();
 		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney.entrySet()){
 			output_everyGoodsTotleMoney_quarter.put(map.getKey(), ListToArray.getDoubleArray(map.getValue()));
 		}
+		/*for( Entry<String, double[]> map : output_everyGoodsTotleMoney_quarter.entrySet()){
+			System.out.println(map.getKey());
+			for(double d : map.getValue()){
+				System.out.println(d);
+			}
+		}*/
 		int i=0;
 		int size = output_everyGoodsTotleMoney_quarter.keySet().size();
 		String[] productName = new String[size];
