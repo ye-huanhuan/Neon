@@ -13,6 +13,7 @@ import com.neon.domain.Output;
 import com.neon.service.OutputService;
 import com.neon.util.Arith;
 import com.neon.util.Constant;
+import com.neon.util.Sort;
 
 @Service
 public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputService{
@@ -254,6 +255,78 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			i++;
 		}
 		return str;
+	}
+	
+	@Override
+	public Map<String, Double> getThisQuarterTop3GoodsMoney(int quarter_quarter_3, int year) {
+		Map<String, Double> map = new HashMap<>();
+		double totleMoney = 0.0;
+		switch(quarter_quarter_3){
+		case 1 :
+			int i[] = {1 , 2 , 3};
+			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
+			List<String> items = getThisMonthGoodsItemByMonth( i , year);
+				for(String item : items){
+				double money = 0.0;	
+				for(int month = 1 ; month <= 3 ; month++){
+					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+				}
+				map.put(item, Arith.div(money, totleMoney, 4)*100);
+			};
+		case 2 :
+			int i_2[] = {4 , 5 , 6};
+			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
+			List<String> items_2 = getThisMonthGoodsItemByMonth( i_2 , year);
+				for(String item : items_2){
+				double money = 0.0;	
+				for(int month = 4 ; month <= 6 ; month++){
+					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+				}
+				map.put(item, Arith.div(money, totleMoney, 4)*100);
+			};
+			
+		case 3 :
+			int i_3[] = {7 , 8 , 9};
+			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
+			List<String> items_3 = getThisMonthGoodsItemByMonth( i_3 , year);
+				for(String item : items_3){
+				double money = 0.0;	
+				for(int month = 7 ; month <= 9 ; month++){
+					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+				}
+				map.put(item, Arith.div(money, totleMoney, 4)*100);
+			};
+			
+		case 4 :
+			int i_4[] = {10 , 11 , 12};
+			totleMoney = Arith.add(Arith.add(getThisMonthTotleMoney(1 , year) , getThisMonthTotleMoney(2 , year)),getThisMonthTotleMoney(3 , year));
+			List<String> items_4 = getThisMonthGoodsItemByMonth( i_4 , year);
+				for(String item : items_4){
+				double money = 0.0;	
+				for(int month = 10 ; month <= 12 ; month++){
+					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+				}
+				map.put(item, Arith.div(money, totleMoney, 4)*100);
+			};
+			
+		}
+		
+		return Sort.SortMapByDESC3(map);
+	}
+	
+	@Override
+	public Map<String, Double> getThisYearTop3GoodsMoney(int year_year_3) {
+		Map<String, Double> maps = new HashMap<>();
+		List<String> items = getEveryGoodsItem();
+		for(String item : items){
+			double money = 0.0;
+			List<Output> outputs = getOutputsWithYearAndItem(year_year_3 ,item);
+			for(Output output : outputs){
+				money = Arith.add(money, output.getMoney());
+			}
+			maps.put(item, money);
+		}
+		return Sort.SortMapByDESC3(maps);
 	}
 
 	

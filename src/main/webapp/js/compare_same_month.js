@@ -12,6 +12,10 @@ $(function () {
         subtitle: {
             text: '数据来源: 财务部'
         },
+        //去除右下角水印
+        credits: {
+			enabled:false
+		},
         xAxis: {
             categories: ['鱼肉罐头','猪肉罐头','鸡肉罐头'],
             crosshair: true,
