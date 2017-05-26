@@ -1,8 +1,12 @@
 /**
  * 产品较去年同比-季度
  */
+var items;
+var thisYearValue;
+var lastYearValue;
+var chart4;
 $(function () {
-    $('#container_fourth').highcharts({
+	chart4 = new Highcharts.Chart('container_fourth',{
         chart: {
             type: 'column'
         },
@@ -68,5 +72,26 @@ $(function () {
         	name: '今年第二季度',
             data: [83.6, 78.8, 98.5]
         }]
+    });
+	$.ajax({
+        async: true,
+        type: "post",        //type：(string)请求方式，POST或GET
+        dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+        url: "analyze_quarter_4.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+        success: function (msg) {
+            var obj = eval(msg);
+            items = obj["items_quarter_4"];
+            thisYearValue = obj["thisYear_Quarter_quarter_4"];
+            lastYearValue = obj["lastYear_Quarter_quarter_4"];
+            chart4.series[0].update({
+        		data: lastYearValue,
+            });
+            chart4.series[1].update({
+            	data: thisYearValue,
+            });
+            chart4.xAxis[0].update({
+            	categories: items,
+            });
+        }
     });
 });
