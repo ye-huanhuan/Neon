@@ -52,12 +52,18 @@ $(function () {
             }
         },
         tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            headerFormat: '<span style="font-size:14px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
             '<td style="padding:0"><b>{point.y:.1f} 万元</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
-            useHTML: true
+            useHTML: true,
+            style: {                      // 文字内容相关样式
+                color: "#F0F8FF",
+                fontSize: "14px",
+                fontWeight: "blod",
+                fontFamily: "微软雅黑"
+            }
         },
         plotOptions: {
             column: {

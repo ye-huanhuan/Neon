@@ -44,13 +44,6 @@
                   <div class="panel-body">
                     <div id="container_top" style="min-width:400px;height:500px"></div>
                   </div>
-                  <footer class="panel-footer bg-white no-padder">
-                    <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        这是2015至今销项分析报告
-                      </div>
-                    </div>
-                  </footer>
                 </section>
               </div>
               <!-- 近年进项数据 -->
@@ -60,13 +53,7 @@
                   <div class="panel-body">
                     <div id="container_second" style="min-width:400px;height:500px"></div>
                   </div>
-                  <footer class="panel-footer bg-white no-padder">
-                    <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        这是2015至今进项分析报告
-                      </div>
-                    </div>
-                  </footer>
+                  
                 </section>
               </div>
             </div>

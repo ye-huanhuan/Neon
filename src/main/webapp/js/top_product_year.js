@@ -42,7 +42,14 @@ $(function () {
             }
         },
         tooltip: {
-            valueSuffix: ' 万元'
+        	headerFormat: '<span style="font-size:14px">{point.key}</span><br>',
+            valueSuffix: ' 万元',
+            style: {                      // 文字内容相关样式
+                color: "#F0F8FF",
+                fontSize: "14px",
+                fontWeight: "blod",
+                fontFamily: "微软雅黑"
+            }
         },
         plotOptions: {
             bar: {

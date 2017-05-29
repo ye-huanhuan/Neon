@@ -135,14 +135,6 @@
                   <div class="panel-body">
                     <div id="container_second" style="min-width:400px;height:400px"></div>
                   </div>
-                  <footer class="panel-footer bg-white no-padder">
-                   <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        	这是产品分析表
-                      </div>
-                    </div>
-                  </footer>
-                   
                 </section>
               </div>
               <!-- 同一时间产品销项 -->
@@ -165,13 +157,6 @@
                     <div id="container_third" style="width:49%;height:400px;display: inline-block;"></div>
                     <div id="container_third_2" style="width:49%;height:400px;display: inline-block;"></div>
                   </div>
-                  <footer class="panel-footer bg-white no-padder">
-                    <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        	这是本月的产品销量图
-                      </div>
-                    </div>
-                  </footer>
                 </section>
               </div>
               <!-- 同比图 -->
@@ -182,13 +167,6 @@
                   <div class="panel-body">
                     <div id="container_fourth" style="min-width:400px;height:400px"></div>
                   </div>
-                   <footer class="panel-footer bg-white no-padder">
-                    <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        	这是本月的产品销量图
-                      </div>
-                    </div>
-                  </footer>
                 </section>
               </div>
             </div>
@@ -203,7 +181,6 @@
   </section>
 </section>
  
-      
 
 <script src="js/highcharts.js"></script>
 <script src="js/sumInOutQuarter.js"></script>

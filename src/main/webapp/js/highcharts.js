@@ -6,10 +6,10 @@ Highcharts.setOptions({
     lang:{
        contextButtonTitle:"图表导出菜单",
        decimalPoint:".",
-       downloadJPEG:"下载JPEG图片",
        downloadPDF:"下载PDF文件",
        downloadPNG:"下载PNG文件",
        downloadSVG:"下载SVG文件",
+       downloadXLS: '下载 XLS文件',
        drillUpText:"返回 {series.name}",
        loading:"加载中",
        months:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],

@@ -58,6 +58,7 @@
     </section>
   </section>
 </section>
+<script src="js/highcharts.js"></script>
 <script src="js/scatter_quarter.js"></script>
 <script src="js/scatter_month.js"></script>
 </body>

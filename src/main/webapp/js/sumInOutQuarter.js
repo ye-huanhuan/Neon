@@ -97,7 +97,14 @@ $(function () {
         },
         tooltip: {
         	//数据后缀
-            valueSuffix: '万'
+            valueSuffix: '万',
+            headerFormat: '<span style="font-size:14px">{point.key}</span><br>',
+            style: {                      // 文字内容相关样式
+                color: "#F0F8FF",
+                fontSize: "14px",
+                fontWeight: "blod",
+                fontFamily: "微软雅黑"
+            }
         },
         legend: {
             layout: 'vertical',
@@ -280,7 +287,7 @@ function change_aver_color(){
 		}else{
 			var o1 = {};
 			o1.y = data_input_quarter[i];
-			o1.color = '#90EE7E';
+			o1.color = '#2B908F';
 			newData_input_quarter[i] = o1;
 		}
 	}

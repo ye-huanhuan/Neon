@@ -70,8 +70,8 @@ $(function () {
                     }
                 },
                 tooltip: {
-                    headerFormat: '<b>{series.name}</b><br>',
-                    pointFormat: '{point.x} 万元, {point.y} 万元'
+                	headerFormat: '<span style="font-size:14px">{series.name}</span><br>',
+                    pointFormat: '<span style="font-size:14px">{point.x} 万元, {point.y} 万元</span>',
                 }
             }
         },
