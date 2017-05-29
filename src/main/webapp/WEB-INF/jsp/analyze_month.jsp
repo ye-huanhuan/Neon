@@ -162,8 +162,8 @@
 				  </div>
 				  </div>
                   <div class="panel-body">
-                    <div id="container_third" style="width:648px;height:400px;display: inline-block;"></div>
-                    <div id="container_third_2" style="width:648px;height:400px;display: inline-block;"></div>
+                    <div id="container_third" style="width:49%;height:400px;display: inline-block;"></div>
+                    <div id="container_third_2" style="width:49%;height:400px;display: inline-block;"></div>
                   </div>
                    <footer class="panel-footer bg-white no-padder">
                     <div class="row text-center no-gutter">

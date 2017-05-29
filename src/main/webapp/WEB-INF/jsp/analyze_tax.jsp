@@ -32,7 +32,7 @@
           <section class="scrollable padder">
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
               <li><a href="home_index.action"><i class="fa fa-home"></i> Home</a></li>
-              <li class="active">税收分析</li>
+              <li class="active">进销分析</li>
             </ul>
             <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">

@@ -6,8 +6,6 @@ var data_difference;
 var data_input;
 var data_output;
 var chart;
-var newData_input = new Array();
-var newData_output = new Array();
 var aver_input = 0,aver_output = 0;
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7'];
 
@@ -174,6 +172,8 @@ $(function () {
 
 //改变进项和销项低于平均值的颜色
 function change_aver_color(){
+	var newData_input = [];
+	var newData_output = [];
 	for(var i=0;i<data_input.length;i++){
 		if(data_input[i]<aver_input){
 			var o = {};
@@ -181,7 +181,10 @@ function change_aver_color(){
 			o.color = '#BF0B23';
 			newData_input[i] = o;
 		}else{
-			newData_input[i] = data_input[i];
+			var o1 = {};
+			o1.y = data_input[i];
+			o1.color = '#90EE7E';
+			newData_input[i] = o1;
 		}
 	}
 	for(var i=0;i<data_output.length;i++){
@@ -191,7 +194,10 @@ function change_aver_color(){
 			obj.color = '#BF0B23';
 			newData_output[i] = obj;
 		}else{
-			newData_output[i] = data_output[i];
+			var obj1 = new Object();
+			obj1.y=data_output[i];
+			obj1.color = '#90EE7E';
+			newData_output[i] = obj1;
 		}
 	}
 	chart.series[1].update({

@@ -8,8 +8,6 @@ var data_input_quatter;
 var data_output_quarter;
 var chart;
 var aver_input = 0,aver_output = 0;
-var newData_input_quarter = new Array();
-var newData_output_quarter = new Array();
 var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7'];
 function calculate(){
 	var num_effe_input = 0,num_effe_output = 0;
@@ -271,6 +269,8 @@ function change(){
 
 //改变进项和销项低于平均值的颜色
 function change_aver_color(){
+	var newData_input_quarter = [];
+	var newData_output_quarter = [];
 	for(var i=0;i<data_input_quarter.length;i++){
 		if(data_input_quarter[i]<aver_input){
 			var o = {};
@@ -278,7 +278,10 @@ function change_aver_color(){
 			o.color = '#BF0B23';
 			newData_input_quarter[i] = o;
 		}else{
-			newData_input_quarter[i] = data_input_quarter[i];
+			var o1 = {};
+			o1.y = data_input_quarter[i];
+			o1.color = '#90EE7E';
+			newData_input_quarter[i] = o1;
 		}
 	}
 	for(var i=0;i<data_output_quarter.length;i++){
@@ -288,7 +291,10 @@ function change_aver_color(){
 			obj.color = '#BF0B23';
 			newData_output_quarter[i] = obj;
 		}else{
-			newData_output_quarter[i] = data_output_quarter[i];
+			var obj1 = new Object();
+			obj1.y=data_output_quarter[i];
+			obj1.color = '#90EE7E';
+			newData_output_quarter[i] = obj1;
 		}
 	}
 	chart.series[1].update({
