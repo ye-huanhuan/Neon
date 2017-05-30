@@ -32,7 +32,7 @@
      	border-bottom-left-radius:0.5em;
      	border-bottom-right-radius:0.5em;
 	}
-	#quarter{
+	#quarter,#inOut{
 		display: inline-block;
 		margin-left: 15px;
 	}
@@ -137,6 +137,23 @@
                   </div>
                 </section>
               </div>
+              <!-- 同比图 -->
+              <div class="col-md-8" style="width: 100%">
+                <section class="panel panel-default">
+                  <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
+                  <div id="wrap_inOut">
+				  <div id="inOut">
+				  <font>进销:</font>
+				  <input id="in" class="month" type="radio" name="month" value="in">进项
+				  <input id="out" class="month" type="radio" name="month" value="out">销项
+				  </div>
+				  </div>
+                  <div class="panel-body">
+                    <div id="container_fourth" style="min-width:400px;height:400px"></div>
+                  </div>
+                </section>
+              </div>
+            </div>
               <!-- 同一时间产品销项 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
@@ -159,17 +176,7 @@
                   </div>
                 </section>
               </div>
-              <!-- 同比图 -->
-              <div class="col-md-8" style="width: 100%">
-                <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
-                  
-                  <div class="panel-body">
-                    <div id="container_fourth" style="min-width:400px;height:400px"></div>
-                  </div>
-                </section>
-              </div>
-            </div>
+              
             
           </section>
         </section>
