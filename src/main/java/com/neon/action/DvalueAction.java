@@ -30,9 +30,13 @@ public class DvalueAction extends ActionBase<Dvalue>{
 		dvalue.setNdvalue_quarter(model.getNdvalue_quarter());
 		dvalue.setPdvalue_year(model.getPdvalue_year());
 		dvalue.setNdvalue_year(model.getNdvalue_year());
+		dvalue.setTarget_month(model.getTarget_month());
+		dvalue.setTarget_quarter(model.getTarget_quarter());
+		dvalue.setTarget_year(model.getTarget_year());
 		Date date = new Date();
 		dvalue.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date).toString());
 		dvalueService.save(dvalue);
+		System.out.println("存入成功");
 		return "setDvalue";
 	}
 }

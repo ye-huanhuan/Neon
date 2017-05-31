@@ -42,4 +42,14 @@ public class DvalueServiceImpl extends DaoSupportImpl<Dvalue> implements DvalueS
 		return pAndNdvalue;
 	}
 
+
+	@Override
+	public double[] getCurrentTargets(Dvalue dva) {
+		double[] target = new double[3];
+		target[0] = dva.getTarget_month();
+		target[1] = dva.getTarget_quarter();
+		target[2] = dva.getTarget_year();
+		return target;
+	}
+
 }

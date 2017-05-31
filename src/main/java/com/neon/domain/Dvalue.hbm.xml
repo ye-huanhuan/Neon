@@ -13,6 +13,9 @@
 			<property name="ndvalue_quarter"></property>
 			<property name="pdvalue_year"></property>
 			<property name="ndvalue_year"></property>
+			<property name="target_month"></property>
+			<property name="target_quarter"></property>
+			<property name="target_year"></property>
 			<property name="date"></property>
 			
 	</class>

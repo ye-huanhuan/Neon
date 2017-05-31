@@ -77,8 +77,8 @@
        	  
        	   <section class="content bgcolor-5" style="background-color:rgb(240,240,240)">
     		<center><h2 style="color: rgb(106,121,137);opacity: 1.0">利润合理区间设置</h2>
-    		<span class="input input--minoru">
-					<input class="input__field input__field--yoko" type="text" id="input-1" name="pdvalue_month"/>
+    		<span class="input input--minoru" style="font-size: 150%;">
+					<input class="input__field input__field--yoko" type="text" id="input-1" value="" name="pdvalue_month"/>
 					<label class="input__label input__label--yoko" for="input-1">
 						<span class="input__label-content input__label-content--yoko">月利润</span>
 					</label>
@@ -113,12 +113,30 @@
 						<span class="input__label-content input__label-content--yoko">年亏损</span>
 					</label>
 				</span>
+				
+				<span class="input input--minoru" style="font-size: 150%;">
+					<input class="input__field input__field--yoko" type="text" id="input-4" name="target_month"/>
+					<label class="input__label input__label--yoko" for="input-4">
+						<span class="input__label-content input__label-content--yoko">月目标</span>
+					</label>
+				</span>
+    		<span class="input input--minoru" style="font-size: 150%;">
+					<input class="input__field input__field--yoko" type="text" id="input-5" name="target_quarter"/>
+					<label class="input__label input__label--yoko" for="input-5">
+						<span class="input__label-content input__label-content--yoko">季度目标</span>
+					</label>
+				</span>
+    		<span class="input input--minoru" style="font-size: 150%;">
+					<input class="input__field input__field--yoko" type="text" id="input-6" name="target_year"/>
+					<label class="input__label input__label--yoko" for="input-6">
+						<span class="input__label-content input__label-content--yoko">年目标</span>
+					</label>
+				</span>
 
     </center>
 </section>
 <center>
-<input class="button button-raised button-pill button-inverse" type="button" name="保存" value="保存"/>
-<!-- <a href="" class="button button-raised button-pill button-inverse" onclick="">保存</a>-->
+<input class="button button-raised button-pill button-inverse" type="submit" name="保存" value="保存"/>
 </center>
 </form>
        	  

@@ -10,7 +10,34 @@ public class Dvalue {
 	private Double ndvalue_quarter;//季度亏损
 	private Double pdvalue_year;//年利润
 	private Double ndvalue_year;//年亏损
+	private Double target_month;//月目标
+	private Double target_quarter;//季度目标
+	private Double target_year;//年目标
 	private String date;
+	
+	public Double getTarget_month() {
+		return target_month;
+	}
+
+	public Double getTarget_quarter() {
+		return target_quarter;
+	}
+
+	public Double getTarget_year() {
+		return target_year;
+	}
+
+	public void setTarget_month(Double target_month) {
+		this.target_month = target_month;
+	}
+
+	public void setTarget_quarter(Double target_quarter) {
+		this.target_quarter = target_quarter;
+	}
+
+	public void setTarget_year(Double target_year) {
+		this.target_year = target_year;
+	}
 	public Long getId() {
 		return id;
 	}

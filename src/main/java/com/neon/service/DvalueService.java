@@ -16,4 +16,7 @@ public interface DvalueService extends DaoSupport<Dvalue>{
 	//得到利润和亏损的标准 年
 	double[] getPdvalueAndNdvalue_year(Dvalue dva);
 
+	//得到当前（月季度年 数组）的目标
+	double[] getCurrentTargets(Dvalue dva);
+
 }
