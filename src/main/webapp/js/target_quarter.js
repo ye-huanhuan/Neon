@@ -33,13 +33,21 @@ $(document).ready(function() {
             tickPixelInterval: 400,
             tickWidth: 0,
             labels: {
-                y: 16
+                y: 16,
+                style: {
+                    fontSize:'14px',
+                    fontFamily:'微软雅黑'
+                },
             },
             min: 0,
             max: 500,
             title: {
                 text: '当季目标',
-                y: -70
+                y: -70,
+                style: {
+                    fontSize:'16px',
+                    fontFamily:'微软雅黑'
+                },
             }
         };
 
