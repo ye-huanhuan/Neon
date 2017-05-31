@@ -32,14 +32,23 @@ $(document).ready(function() {
             minorTickInterval: null,
             tickPixelInterval: 400,
             tickWidth: 0,
-            labels: {
-                y: 16
-            },
+            
             min: 0,
             max: 100,
             title: {
                 text: '当月目标',
-                y: -70
+                y: -70,
+                style: {
+                    fontSize:'16px',
+                    fontFamily:'微软雅黑'
+                },
+            },
+            labels: {
+                style: {
+                    fontSize:'14px',
+                    fontFamily:'微软雅黑'
+                },
+                y: 16,
             }
         };
 
