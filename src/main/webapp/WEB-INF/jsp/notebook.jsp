@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="app">
 <head>
@@ -71,10 +72,13 @@
        	 </form>
        	  -->
        	  
+       	  <form action="invoice_toSetDvalue.action" method="post">
+       	  
        	   <section class="content bgcolor-5" style="background-color:rgb(240,240,240)">
     		<center><h2 style="color: rgb(106,121,137);opacity: 1.0">利润合理区间设置</h2>
     		<span class="input input--minoru">
-					<input class="input__field input__field--yoko" type="text" id="input-1" />
+    				<s:textfield class="input__field input__field--yoko" type="text" id="input-1" name=""></s:textfield>
+					<!-- <input class="input__field input__field--yoko" type="text" id="input-1" /> -->
 					<label class="input__label input__label--yoko" for="input-1">
 						<span class="input__label-content input__label-content--yoko">月利润</span>
 					</label>
@@ -115,6 +119,7 @@
 <center>
 <a href="" class="button button-raised button-pill button-inverse" onclick="">保存</a>
 </center>
+</form>
        	  
        	  
           </section>
