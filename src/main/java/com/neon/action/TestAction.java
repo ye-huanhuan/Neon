@@ -18,6 +18,11 @@ import com.opensymphony.xwork2.ActionContext;
 public class TestAction extends ActionBase<User>{
 	private Map<String,Object> result = new HashMap<String,Object>();
 	private int year;
+	
+	public String detail(){
+		System.out.println("我执行了");
+		return "detail";
+	}
 	public String hello(){
 		System.out.println("我执行了");
 		ActionContext.getContext().put("user", "yhh");

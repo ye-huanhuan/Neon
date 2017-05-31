@@ -21,12 +21,11 @@
     </result-types>
 
 	<action name="test_*" class="testAction" method="{1}">
-
-		
 		<result name="hello">hello.jsp</result>
 		<result type="json">
 			<param name="root">result</param>
 		</result>
+		<result name="detail">WEB-INF/jsp/analyze_detail.jsp</result>
 	</action>
 	
 	<!-- ==============发票部分======================================= -->
