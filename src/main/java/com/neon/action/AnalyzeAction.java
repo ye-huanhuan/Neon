@@ -489,6 +489,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备数据
 		String[] output_top3_key = outputService.getItemByMap(output_top3_quarter);
 		double[] output_top3_value = outputService.getValueByMap(output_top3_quarter);
+		//double[] output_top3_month_1 = outputService.getMomthValueByMap(output_top3_quarter , quarter_quarter_3);
 		/*for(int i = 0 ; i < 3 ; i++){
 			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
 		}*/
@@ -595,6 +596,12 @@ public class AnalyzeAction extends ActionBase<Input>{
 	//准备税收分析数据
 	public String tax(){
 		return "tax";
+	}
+	
+	//明细分析
+	public String detail(){
+		
+		return "detail";
 	}
 
 
