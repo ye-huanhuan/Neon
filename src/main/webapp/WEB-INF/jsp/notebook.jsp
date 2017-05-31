@@ -12,8 +12,9 @@
 <link rel="stylesheet" href="js\calendar/bootstrap_calendar.css" type="text/css" cache="false" />
 <link rel="stylesheet" href="css/buttons.css">
 <link rel="stylesheet" href="css/component.css">
-<link rel="stylesheet" href="css/demo.css">
+<!-- <link rel="stylesheet" href="css/demo.css">-->
 <link rel="stylesheet" href="css/normalize.css">
+<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 </head>
 <body>
 <section class="vbox">
@@ -35,7 +36,7 @@
         <section class="vbox">
           <section class="scrollable padder">
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
-              <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+              <li><a href="home_index.action"><i class="fa fa-home"></i> Home</a></li>
               <li class="active">设置</li>
             </ul>
             <!-- 
@@ -77,38 +78,37 @@
        	   <section class="content bgcolor-5" style="background-color:rgb(240,240,240)">
     		<center><h2 style="color: rgb(106,121,137);opacity: 1.0">利润合理区间设置</h2>
     		<span class="input input--minoru">
-    				<s:textfield class="input__field input__field--yoko" type="text" id="input-1" name=""></s:textfield>
-					<!-- <input class="input__field input__field--yoko" type="text" id="input-1" /> -->
+					<input class="input__field input__field--yoko" type="text" id="input-1" name="pdvalue_month"/>
 					<label class="input__label input__label--yoko" for="input-1">
 						<span class="input__label-content input__label-content--yoko">月利润</span>
 					</label>
 				</span>
-    		<span class="input input--minoru">
-					<input class="input__field input__field--yoko" type="text" id="input-2" />
+    		<span class="input input--minoru" style="font-size: 150%;">
+					<input class="input__field input__field--yoko" type="text" id="input-2" name="pdvalue_quarter"/>
 					<label class="input__label input__label--yoko" for="input-2">
 						<span class="input__label-content input__label-content--yoko">季度利润</span>
 					</label>
 				</span>
-    		<span class="input input--minoru">
-					<input class="input__field input__field--yoko" type="text" id="input-3" />
+    		<span class="input input--minoru" style="font-size: 150%;">
+					<input class="input__field input__field--yoko" type="text" id="input-3" name="pdvalue_year"/>
 					<label class="input__label input__label--yoko" for="input-3">
 						<span class="input__label-content input__label-content--yoko">年利润</span>
 					</label>
 				</span>
-    		<span class="input input--minoru">
-					<input class="input__field input__field--yoko" type="text" id="input-4" />
+    		<span class="input input--minoru" style="font-size: 150%;">
+					<input class="input__field input__field--yoko" type="text" id="input-4" name="ndvalue_month"/>
 					<label class="input__label input__label--yoko" for="input-4">
 						<span class="input__label-content input__label-content--yoko">月亏损</span>
 					</label>
 				</span>
-    		<span class="input input--minoru">
-					<input class="input__field input__field--yoko" type="text" id="input-5" />
+    		<span class="input input--minoru" style="font-size: 150%;">
+					<input class="input__field input__field--yoko" type="text" id="input-5" name="ndvalue_quarter"/>
 					<label class="input__label input__label--yoko" for="input-5">
 						<span class="input__label-content input__label-content--yoko">季度亏损</span>
 					</label>
 				</span>
-    		<span class="input input--minoru">
-					<input class="input__field input__field--yoko" type="text" id="input-6" />
+    		<span class="input input--minoru" style="font-size: 150%;">
+					<input class="input__field input__field--yoko" type="text" id="input-6" name="ndvalue_year"/>
 					<label class="input__label input__label--yoko" for="input-6">
 						<span class="input__label-content input__label-content--yoko">年亏损</span>
 					</label>
@@ -117,7 +117,8 @@
     </center>
 </section>
 <center>
-<a href="" class="button button-raised button-pill button-inverse" onclick="">保存</a>
+<input class="button button-raised button-pill button-inverse" type="button" name="保存" value="保存"/>
+<!-- <a href="" class="button button-raised button-pill button-inverse" onclick="">保存</a>-->
 </center>
 </form>
        	  

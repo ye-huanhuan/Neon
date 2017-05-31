@@ -42,7 +42,14 @@ $(function () {
             }
         },
         tooltip: {
-            valueSuffix: ' 万元'
+        	headerFormat: '<span style="font-size:14px">{point.key}</span><br>',
+            valueSuffix: ' 万元',
+            style: {                      // 文字内容相关样式
+                color: "#F0F8FF",
+                fontSize: "14px",
+                fontWeight: "blod",
+                fontFamily: "微软雅黑"
+            }
         },
         plotOptions: {
             bar: {
@@ -73,8 +80,6 @@ $(function () {
             var obj = eval(msg);
             productName_top = obj["data_output_month_3_key"];
             productValue_top = obj["data_output_month_3_value"];
-            alert(productName_top);
-            alert(productValue_top);
             chart3.series[0].update({
             	name: '2017年',
         		data: productValue_top,

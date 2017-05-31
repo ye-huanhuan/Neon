@@ -121,14 +121,6 @@
                   <div class="panel-body">
                     <div id="container_second" style="min-width:400px;height:400px"></div>
                   </div>
-                  <footer class="panel-footer bg-white no-padder">
-                   <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        	这是产品分析表
-                      </div>
-                    </div>
-                  </footer>
-                   
                 </section>
               </div>
               <!-- 同一时间产品销项 -->
@@ -146,16 +138,10 @@
 				  </div>
 				  </div>
                   <div class="panel-body">
-                    <div id="container_third" style="width:648px;height:400px;display: inline-block;"></div>
-                    <div id="container_third_2" style="width:648px;height:400px;display: inline-block;"></div>
+                    <div id="container_third" style="width:49%;height:400px;display: inline-block;"></div>
+                    <div id="container_third_2" style="width:49%;height:400px;display: inline-block;"></div>
                   </div>
-                  <footer class="panel-footer bg-white no-padder">
-                    <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        	这是本年度的产品销量图
-                      </div>
-                    </div>
-                  </footer>
+                  
                 </section>
               </div>
             </div>

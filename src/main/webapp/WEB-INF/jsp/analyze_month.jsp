@@ -33,7 +33,7 @@
      	border-bottom-left-radius:0.5em;
      	border-bottom-right-radius:0.5em;
 	}
-	#month{
+	#month,#inOut{
 		display: inline-block;
 		margin-left: 15px;
 	}
@@ -134,23 +134,30 @@
                   <div class="panel-body">
                     <div id="container_second" style="min-width:400px;height:400px"></div>
                   </div>
-                  <footer class="panel-footer bg-white no-padder">
-                   <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        	这是产品分析表
-                      </div>
-                    </div>
-                  </footer>
                    
+                </section>
+              </div>
+              <!-- 同比图 -->
+              <div class="col-md-8" style="width: 100%">
+                <section class="panel panel-default">
+                  <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
+                  <div id="wrap_inOut">
+				  <div id="inOut">
+				  <font>进销:</font>
+				  <input id="in" class="month" type="radio" name="month" value="in">进项
+				  <input id="out" class="month" type="radio" name="month" value="out">销项
+				  </div>
+				  </div>
+                  <div class="panel-body">
+                    <div id="container_fourth" style="min-width:400px;height:400px"></div>
+                  </div>
                 </section>
               </div>
               <!-- 同一时间产品销项 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
-                  
 				  <div id="wrap_month">
-				  
 				  <div id="month">
 				  <font>月份:</font>
 				  <input id="month12" class="month" type="radio" name="month" value="12">十二月
@@ -162,35 +169,12 @@
 				  </div>
 				  </div>
                   <div class="panel-body">
-                    <div id="container_third" style="width:648px;height:400px;display: inline-block;"></div>
-                    <div id="container_third_2" style="width:648px;height:400px;display: inline-block;"></div>
+                    <div id="container_third" style="width:49%;height:400px;display: inline-block;"></div>
+                    <div id="container_third_2" style="width:49%;height:400px;display: inline-block;"></div>
                   </div>
-                   <footer class="panel-footer bg-white no-padder">
-                    <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        	这是本月的产品销量图
-                      </div>
-                    </div>
-                  </footer>
                 </section>
               </div>
-              <!-- 同比图 -->
-              <div class="col-md-8" style="width: 100%">
-                <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
-                  
-                  <div class="panel-body">
-                    <div id="container_fourth" style="min-width:400px;height:400px"></div>
-                  </div>
-                   <footer class="panel-footer bg-white no-padder">
-                    <div class="row text-center no-gutter">
-                      <div style="height: 40px;line-height: 40px;font-size: 18px;text-align:center;">
-                        	这是本月的产品销量图
-                      </div>
-                    </div>
-                  </footer>
-                </section>
-              </div>
+              
             </div>
           </section>
         </section>

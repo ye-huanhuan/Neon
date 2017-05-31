@@ -263,12 +263,10 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备数据
 		String[] output_top3_key = outputService.getItemByMap(output_top3_month);
 		double[] output_top3_value = outputService.getValueByMap(output_top3_month);
-		//测试
-		for(int i = 0 ; i < 3 ; i++){
-			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
-		}
 		Map<String, Double> output_percent_month = outputService.getThisMonthOutputGoodsTotleMoney(m, Constant.YEAR);
 		String output_percent_month_array[][] = ListToArray.getString2Array(output_percent_month);
+		result.put("data_output_month_3_key", output_top3_key);
+		result.put("data_output_month_3_value", output_top3_value);
 		result.put("data_output_month_3", output_percent_month_array);
 		return "success";
 	}
@@ -283,7 +281,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 		for(int i = 0 ; i < items.length ; i++){
 			System.out.println(items[i] + "今年" + thisYear_moeny[i] + "  去年" + lastYear_money[i]);
 		}
-		
+		result.put("items_month_4", items);
+		result.put("thisYear_moeny_month_4", thisYear_moeny);
+		result.put("lastYear_money_month_4", lastYear_money);
 		return "success";
 	}
 	
@@ -493,13 +493,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
 		}*/
 		result1.put("data_out_quarter_3", output_percent_quarter_array);
-		
-		for(int i = 0 ; i < output_percent_quarter.size() ; i++){
-			for(int j = 0 ; j < 2 ; j++){
-				System.out.println(output_percent_quarter_array[i][j]);
-			}
-		}
-		
+		result1.put("data_output_month_3_key", output_top3_key);
+		result1.put("data_output_month_3_value", output_top3_value);
 		return "success_quarter";
 	}
 	
@@ -511,11 +506,13 @@ public class AnalyzeAction extends ActionBase<Input>{
 		double[] thisYear_Quarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER , Constant.YEAR , items);
 		double[] lastYear_Quarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER , Constant.YEAR - 1 , items);
 		//测试
-		/*for(int i = 0 ; i < items.length ; i++){
+		for(int i = 0 ; i < items.length ; i++){
 			System.out.println(items[i] + "今年" + thisYear_Quarter[i] + "  去年" + lastYear_Quarter[i]);
-		}*/
-		
-		return "success";
+		}
+		result1.put("items_quarter_4", items);
+		result1.put("thisYear_Quarter_quarter_4", thisYear_Quarter);
+		result1.put("lastYear_Quarter_quarter_4", lastYear_Quarter);
+		return "success_quarter";
 	}
 	
 	//准备年份分析数据
@@ -588,6 +585,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 				System.out.println(output_percent_year_array[i][j]);
 			}
 		}*/
+		result2.put("data_output_month_3_key", output_top3_key);
+		result2.put("data_output_month_3_value", output_top3_value);
 		result2.put("data_output_year_3", output_percent_year_array);
 		return "success_year";
 
