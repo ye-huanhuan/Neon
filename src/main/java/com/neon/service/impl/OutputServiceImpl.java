@@ -476,8 +476,94 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		
 		return list;
 	}
+	
+
+	@Override
+	public String[] getMomthByQuarter(int quarter_quarter_3) {
+		String[] str = new String[3];
+		switch(quarter_quarter_3){
+		case 1 :
+			str[0] = "第一月";
+			str[1] = "第二月";
+			str[2] = "第三月";
+		break;
+		case 2 :
+			str[0] = "第四月";
+			str[1] = "第五月";
+			str[2] = "第六月";
+		break;
+		case 3 :
+			str[0] = "第七月";
+			str[1] = "第八月";
+			str[2] = "第九月";
+		break;
+		case 4 :
+			str[0] = "第十月";
+			str[1] = "第十一月";
+			str[2] = "第十二月";
+		break;
+		}
+		return str;
+	}
+	
+	@Override
+	public List<double[]> getQuarterValueByMap(String[] output_top3_key , int year) {
+		List<double[]> list = new ArrayList<>();
+		double[] quarter_1 = new double[output_top3_key.length];
+		double[] quarter_2 = new double[output_top3_key.length];
+		double[] quarter_3 = new double[output_top3_key.length];
+		double[] quarter_4 = new double[output_top3_key.length];
+		
+		int index = 0;
+		
+		for(String str : output_top3_key){
+			quarter_1[index] = getThisQuarterThisGoodsTotleMoney(str , 1 , year);
+			quarter_2[index] = getThisQuarterThisGoodsTotleMoney(str , 2 , year);
+			quarter_3[index] = getThisQuarterThisGoodsTotleMoney(str , 3 , year);
+			quarter_4[index] = getThisQuarterThisGoodsTotleMoney(str , 4 , year);
+			index++;
+		}
+		
+		list.add(quarter_1);
+		list.add(quarter_2);
+		list.add(quarter_3);
+		list.add(quarter_4);
+		
+		return list;
+	}
 
 	
+	private double getThisQuarterThisGoodsTotleMoney(String item , int i, int year) {
+		List<Output> output_1 = new ArrayList<>();
+		List<Output> output_2 = new ArrayList<>();
+		List<Output> output_3 = new ArrayList<>();
+		switch(i){
+		case 1 :
+			output_1 = getOutputsWithMonthAndYearAndItem(1, year, item);
+			output_2 = getOutputsWithMonthAndYearAndItem(2, year, item);
+			output_3 = getOutputsWithMonthAndYearAndItem(3, year, item);
+		break;
+		case 2 :
+			output_1 = getOutputsWithMonthAndYearAndItem(4, year, item);
+			output_2 = getOutputsWithMonthAndYearAndItem(5, year, item);
+			output_3 = getOutputsWithMonthAndYearAndItem(6, year, item);
+		break;
+		case 3 :
+			output_1 = getOutputsWithMonthAndYearAndItem(7, year, item);
+			output_2 = getOutputsWithMonthAndYearAndItem(8, year, item);
+			output_3 = getOutputsWithMonthAndYearAndItem(9, year, item);
+		break;
+		case 4 :
+			output_1 = getOutputsWithMonthAndYearAndItem(10, year, item);
+			output_2 = getOutputsWithMonthAndYearAndItem(11, year, item);
+			output_3 = getOutputsWithMonthAndYearAndItem(12, year, item);
+		break;
+		}
+		
+		return Arith.add(Arith.add(output_1.get(0).getMoney(), output_2.get(0).getMoney()) , output_3.get(0).getMoney());
+	}
+
+
 	private List<Output> getTop3Goods(int m, int year) {
 		return getSession().createQuery(//
 				"FROM Output out WHERE out.month=? AND out.year=? ORDER BY money DESC")
@@ -582,7 +668,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				.setParameter(2, item)
 				.list();
 	}
-
+	
 
 }
 
