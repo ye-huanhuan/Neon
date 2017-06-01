@@ -387,6 +387,95 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		}
 		return Sort.SortMapByDESC3(maps);
 	}
+	
+	@Override
+	public List<double[]> getMomthValueByMap(String[] output_top3_quarter, int quarter_quarter_3) {
+		List<double[]> list = new ArrayList<>();
+		double[] month_1 = new double[output_top3_quarter.length];
+		double[] month_2 = new double[output_top3_quarter.length];
+		double[] month_3 = new double[output_top3_quarter.length];
+		
+		switch(quarter_quarter_3){
+		case 1 :
+				for(int month = 1 ; month <= 3 ; month++){
+					int index = 0;
+					for(String str : output_top3_quarter){
+						if(month == 1){
+							month_1[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						}else if(month == 2){
+							month_2[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						}else if(month == 3){
+							month_3[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						}
+						index++;
+					}
+					 
+				}
+			list.add(month_1);
+			list.add(month_2);
+			list.add(month_3);
+			break;
+		case 2 :
+			for(int month = 4 ; month <= 6 ; month++){
+				int index = 0;
+				for(String str : output_top3_quarter){
+					if(month == 4){
+						month_1[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+					}else if(month == 5){
+						month_2[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+					}else if(month == 6){
+						month_3[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+					}
+					index++;
+				}
+				 
+			}
+			list.add(month_1);
+			list.add(month_2);
+			list.add(month_3);
+			break;
+		case 3 :
+			for(int month = 7 ; month <= 9 ; month++){
+				int index = 0;
+				for(String str : output_top3_quarter){
+					if(month == 7){
+						month_1[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+					}else if(month == 8){
+						month_2[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+					}else if(month == 9){
+						month_3[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+					}
+					index++;
+				}
+				 
+			}
+			list.add(month_1);
+			list.add(month_2);
+			list.add(month_3);
+			break;
+		case 4 :
+			for(int month = 10 ; month <= 12 ; month++){
+				int index = 0;
+				for(String str : output_top3_quarter){
+					if(month == 10){
+						month_1[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+					}else if(month == 11){
+						month_2[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+					}else if(month == 12){
+						month_3[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+					}
+					index++;
+				}
+				 
+			}
+			list.add(month_1);
+			list.add(month_2);
+			list.add(month_3);
+			break;
+		}
+		
+		return list;
+	}
 
 	
 	private List<Output> getTop3Goods(int m, int year) {
@@ -493,6 +582,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				.setParameter(2, item)
 				.list();
 	}
+
 
 }
 

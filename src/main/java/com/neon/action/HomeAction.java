@@ -20,6 +20,10 @@ public class HomeAction extends ActionBase<User>{
 		Dvalue dva = dvalueService.getById(id);
 		//准备数据
 		double[] target = dvalueService.getCurrentTargets(dva);
+		for(double d : target){
+			
+			System.out.println(d);
+		}
 		return "detail";
 	}
 }
