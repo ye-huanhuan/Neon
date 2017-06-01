@@ -36,7 +36,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 	}
 
 	public String month_1(){
-		System.out.println("month_1");
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
@@ -492,7 +491,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		double[] output_top3_month_1 = outputService.getMomthValueByMap(output_top3_key , quarter_quarter_3).get(0);
 		double[] output_top3_month_2 = outputService.getMomthValueByMap(output_top3_key, quarter_quarter_3).get(1);
 		double[] output_top3_month_3 = outputService.getMomthValueByMap(output_top3_key, quarter_quarter_3).get(2);
-				
+		String[] months = outputService.getMomthByQuarter(quarter_quarter_3);
 		/*for(int i = 0 ; i < 3 ; i++){
 			System.out.println(output_top3_key[i]);
 		}
@@ -592,10 +591,34 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Map<String, Double> output_top3_year = outputService.getThisYearTop3GoodsMoney(year_year_3);
 		//准备数据
 		String[] output_top3_key = outputService.getItemByMap(output_top3_year);
-		double[] output_top3_value = outputService.getValueByMap(output_top3_year);
+		//double[] output_top3_value = outputService.getValueByMap(output_top3_year);
+		//准备数据
+		double[] output_Quarter_1 = outputService.getQuarterValueByMap(output_top3_key , year_year_3).get(0);
+		double[] output_Quarter_2 = outputService.getQuarterValueByMap(output_top3_key , year_year_3).get(1);
+		double[] output_Quarter_3 = outputService.getQuarterValueByMap(output_top3_key , year_year_3).get(2);
+		double[] output_Quarter_4 = outputService.getQuarterValueByMap(output_top3_key , year_year_3).get(3);
+		String[] quarters = {"第一季度","第二季度","第三季度","第四季度"};
+		
 		/*for(int i = 0 ; i < 3 ; i++){
-			System.out.println(output_top3_key[i] + " " + output_top3_value[i] );
+			System.out.println(output_top3_key[i]);
+		}
+		System.out.println("第一季度");
+		for(double d : output_Quarter_1){
+			System.out.println(d);
+		}
+		System.out.println("第二季度");
+		for(double d : output_Quarter_2){
+			System.out.println(d);
+		}
+		System.out.println("第三季度");
+		for(double d : output_Quarter_3){
+			System.out.println(d);
+		}
+		System.out.println("第四季度");
+		for(double d : output_Quarter_4){
+			System.out.println(d);
 		}*/
+		
 		String output_percent_year_array[][] = ListToArray.getString2Array(output_percent_year);
 		/*for(int i = 0 ; i < output_percent_year.size() ; i++){
 			for(int j = 0 ; j< 2 ; j++){
@@ -603,7 +626,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 			}
 		}*/
 		result2.put("data_output_month_3_key", output_top3_key);
-		result2.put("data_output_month_3_value", output_top3_value);
+		//result2.put("data_output_month_3_value", output_top3_value);
 		result2.put("data_output_year_3", output_percent_year_array);
 		return "success_year";
 

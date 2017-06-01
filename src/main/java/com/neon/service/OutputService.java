@@ -65,6 +65,12 @@ public interface OutputService extends DaoSupport<Output>{
 		//得到该季度的每个月的销售额
 		List<double[]> getMomthValueByMap(String[] output_top3_quarter, int quarter_quarter_3);
 
+		//得到该年的每个季度的销售额
+		List<double[]> getQuarterValueByMap(String[] output_top3_key , int year);
+		
+		//根据季度得到月分的值
+		String[] getMomthByQuarter(int quarter_quarter_3);
+
 
 		
 }
