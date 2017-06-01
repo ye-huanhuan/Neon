@@ -32,10 +32,11 @@ $(document).ready(function() {
                 [0.9, '#55BF3B'] // green
             ],
             lineWidth: 0,
+            tickPixelInterval: 50,
             max: 40,
             min: 0,
             title: {
-                text: '当季度目标',
+                text: '当季目标',
                 y: -70,
                 style: {
                     fontSize:'16px',
@@ -68,8 +69,8 @@ $(document).ready(function() {
         	enabled:false //用来设置是否显示‘打印’,'导出'等功能按钮，不设置时默认为显示  
         };  
         var series = [{
-            name: '当季度目标',
-            data: [25],
+            name: '当季目标',
+            data: [28],
             dataLabels: {
                 format: '<div style="text-align:center"><span style="font-size:25px;color:' +
                 ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +

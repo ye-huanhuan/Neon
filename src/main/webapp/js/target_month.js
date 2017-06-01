@@ -30,6 +30,7 @@ $(document).ready(function() {
                 [0.9, '#55BF3B'] // green
             ],
             lineWidth: 0,
+            tickPixelInterval: 50,
             max: 11,
             min: 0,
             title: {

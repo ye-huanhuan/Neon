@@ -32,6 +32,7 @@
                 [0.9, '#55BF3B'] // green
             ],
             lineWidth: 0,
+            tickPixelInterval: 50,
             labels: {
                 y: 16,
                 style: {

@@ -41,7 +41,7 @@ public class Installer {
 		session.save(new Privilege("年度分析","analyze_year.action",privilege2));
 		session.save(new Privilege("税收分析","analyze_tax.action",privilege2));
 		session.save(new Privilege("明细分析","analyze_detail.action",privilege2));
-		
+
 		session.save(new Privilege("设置数据","invoice_setDvalue.action",privilege3));
 		
 		//==============================================

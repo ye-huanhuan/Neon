@@ -13,6 +13,10 @@
 
 <link rel="icon" href="https://static.jianshukeji.com/hcode/images/favicon.ico">
 <script src="js/app.v2.js"></script>
+<!-- 钻取所需要的js  -->
+ <script src="https://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/drilldown.js"></script>
 <style type="text/css">
 	#wrap-range{
 		margin-left: 15px;
