@@ -1,4 +1,5 @@
 // 当月目标 
+
 $(document).ready(function() {
         
         var chart = {
@@ -29,12 +30,8 @@ $(document).ready(function() {
                 [0.9, '#55BF3B'] // green
             ],
             lineWidth: 0,
-            minorTickInterval: null,
-            tickPixelInterval: 400,
-            tickWidth: 0,
-            
+            max: 11,
             min: 0,
-            max: 100,
             title: {
                 text: '当月目标',
                 y: -70,
@@ -70,7 +67,7 @@ $(document).ready(function() {
         };  
         var series = [{
             name: '当月目标',
-            data: [80],
+            data: [5],
             dataLabels: {
                 format: '<div style="text-align:center"><span style="font-size:25px;color:' +
                 ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
@@ -80,16 +77,27 @@ $(document).ready(function() {
                 valueSuffix: ' 万元'
             }
         }];
-
-        var json = {};
-        json.chart = chart;
-        json.title = title;
-        json.pane = pane;
-        json.tooltip = tooltip;
-        json.yAxis = yAxis;
-        json.credits = credits;
-        json.series = series;
-        json.plotOptions = plotOptions;
-        json.exporting = exporting;
-        $('#container-month').highcharts(json);
+        
+        $.ajax({
+            async: true,
+            type: "post",        //type：(string)请求方式，POST或GET
+            dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+            url: "home_detail.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+            success: function (msg) {
+                var obj = eval(msg);
+                var data_target = obj["data_target"];
+                yAxis["max"] = data_target[0];
+                var json = {};
+                json.chart = chart;
+                json.title = title;
+                json.pane = pane;
+                json.tooltip = tooltip;
+                json.yAxis = yAxis;
+                json.credits = credits;
+                json.series = series;
+                json.plotOptions = plotOptions;
+                json.exporting = exporting;
+                $('#container-month').highcharts(json);
+            }
+        });
     });
