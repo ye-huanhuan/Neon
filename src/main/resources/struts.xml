@@ -47,6 +47,12 @@
 		 <param name="root">result2</param>
 		 </result>
 	</action>
+	
+	<!-- ==============详细分析部分====================================== -->
+	 <action name="detailAnalyze_*" class="detailAction" method="{1}">
+		 <result name="detail">WEB-INF/jsp/analyze_detail.jsp</result>
+	</action>
+	 
 	 
 	<!-- ==============用户部分======================================= -->
 	<action name="user_*" class="userAction" method="{1}">

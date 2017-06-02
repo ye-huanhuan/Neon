@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="app">
 <head>
@@ -72,38 +73,16 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                        <td><input type="checkbox" name="post[]" value="2"></td>
-                        <td>20151702326</td>
-                        <td>小米公司</td>
-                        <td>360</td>
-                        <td>90000</td>
-                        <td>2017-05-11</td>
-                      </tr>
-                      <tr>
-                        <td><input type="checkbox" name="post[]" value="2"></td>
-                        <td>201517024354</td>
-                        <td>吉林食品有限公司</td>
-                        <td>长春食品有限公司</td>
-                        <td>40000</td>
-                        <td>2016-11-23</td>
-                      </tr><tr>
-                        <td><input type="checkbox" name="post[]" value="2"></td>
-                        <td>20151702015</td>
-                        <td>北华大学</td>
-                        <td>清华大学</td>
-                        <td>90000</td>
-                        <td>2015-01-01</td>
-                      </tr>
-
-                        <!--<tr>-->
-                          <!--<td><input type="checkbox" name="post[]" value="2"></td>-->
-                          <!--<td><a href="#modal" data-toggle="modal"><i class="fa fa-search-plus"></i></a></td>-->
-                          <!--<td>Idrawfast</td>-->
-                          <!--<td>4c</td>-->
-                          <!--<td>Jul 25, 2013</td>-->
-                          <!--<td><a href="#" class="active" data-toggle="class"><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a></td>-->
-                        <!--</tr>-->
+                      <s:iterator value="#lists">
+	                      <tr>
+	                        <td><input type="checkbox" name="post[]" value="2"></td>
+	                        <td>${ein }</td>
+	                        <td>${receUnit }</td>
+	                        <td>${payUnit }</td>
+	                        <td>${money }</td>
+	                        <td>${date }</td>
+	                      </tr>
+                      </s:iterator>
 
                       </tbody>
                     </table>

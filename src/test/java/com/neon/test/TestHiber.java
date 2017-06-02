@@ -81,7 +81,7 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		
 		privilegeService.save(pri);*/
 		
-		Map<String, Double> map = new HashMap<>();
+		/*Map<String, Double> map = new HashMap<>();
 		map.put("yy", 2.1);
 		map.put("yh", 2.1);
 		map.put("hh", 2.1);
@@ -91,7 +91,8 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		map2.put("hh", 2.1);
 		for(String s : ListToArray.getItemsArray(map, map2)){
 			System.out.println(s);
-		}
+		}*/
+		
 		
 	}
 	
