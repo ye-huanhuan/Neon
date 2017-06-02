@@ -2,10 +2,15 @@
  * 季度top3
  */
 var productName_top;
-var productValue_top;
+//var productValue_top;
+var productValue = [];
+var productMonths;
+var productValue_month_1;
+var productValue_month_2;
+var productValue_month_3;
 var chart3;
 $(function () {
-	chart3 = new Highcharts.Chart('container_third_2',{
+    chart3 = new Highcharts.Chart('container_third_2', {
         chart: {
             type: 'bar'
         },
@@ -22,8 +27,8 @@ $(function () {
             },
             labels: {
                 style: {
-                    fontSize:'14px',
-                    fontFamily:'微软雅黑'
+                    fontSize: '14px',
+                    fontFamily: '微软雅黑'
                 }
             }
         },
@@ -36,29 +41,29 @@ $(function () {
             labels: {
                 overflow: 'justify',
                 style: {
-                    fontSize:'14px',
-                    fontFamily:'微软雅黑'
+                    fontSize: '14px',
+                    fontFamily: '微软雅黑'
                 }
             }
         },
         tooltip: {
-            valueSuffix: ' 万元',
-            headerFormat: '<span style="font-size:14px">{point.key}</span><br>',
-            style: {                      // 文字内容相关样式
-                color: "#F0F8FF",
-                fontSize: "14px",
-                fontWeight: "blod",
-                fontFamily: "微软雅黑"
-            }
+        	headerFormat: '<span style="font-size:14px">{point.key}</span><br>',
+            pointFormat: '<span style="color:{series.color};font-size: 14px">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+            shared: true,
+		    style: {                      // 文字内容相关样式
+		        color: "#F0F8FF",
+		        fontSize: "14px",
+		        fontWeight: "blod",
+		        fontFamily: "微软雅黑"
+		    }
         },
+
         plotOptions: {
-            bar: {
-                dataLabels: {
-                    enabled: true,
-                    allowOverlap: true
-                }
+            series: {
+                stacking: 'normal'
             }
         },
+
         credits: {
             enabled: false
         },
@@ -66,9 +71,11 @@ $(function () {
             enabled: false  //关闭图例
         },
         series: [{
-        	name: '第一季度',
-            data: [100,80,60]
-        }]
+            },
+            {
+            },
+            {
+            }]
     });
 	
 	$.ajax({
@@ -80,13 +87,27 @@ $(function () {
         success: function (msg) {
             var obj = eval(msg);
             productName_top = obj["data_output_month_3_key"];
-            productValue_top = obj["data_output_month_3_value"];
-            chart3.series[0].update({
-            	name: '第一季度',
-        		data: productValue_top,
-            });
+            productMonths = obj["data_output_month_3_months"];
+            productValue_month_1 = obj["data_output_month_3_1"];
+            productValue_month_2 = obj["data_output_month_3_2"];
+            productValue_month_3 = obj["data_output_month_3_3"];
+            productValue[0] = productValue_month_1;
+            productValue[1] = productValue_month_2;
+            productValue[2] = productValue_month_3;
             chart3.xAxis[0].update({
             	categories: productName_top,
+            });
+        	chart3.series[0].update({
+            	name: productMonths[0],
+        		data: productValue[0],
+            });
+        	chart3.series[1].update({
+            	name: productMonths[1],
+        		data: productValue[1],
+            });
+        	chart3.series[2].update({
+            	name: productMonths[2],
+        		data: productValue[2],
             });
         }
     });
@@ -101,17 +122,31 @@ $(function () {
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
             url: "analyze_quarter_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
             success: function (msg) {
-                var obj = eval(msg);
+            	var obj = eval(msg);
                 productName_top = obj["data_output_month_3_key"];
-                productValue_top = obj["data_output_month_3_value"];
-                chart3.series[0].update({
-                	name: '第一季度',
-            		data: productValue_top,
-                });
+                productMonths = obj["data_output_month_3_months"];
+                productValue_month_1 = obj["data_output_month_3_1"];
+                productValue_month_2 = obj["data_output_month_3_2"];
+                productValue_month_3 = obj["data_output_month_3_3"];
+                productValue[0] = productValue_month_1;
+                productValue[1] = productValue_month_2;
+                productValue[2] = productValue_month_3;
                 chart3.xAxis[0].update({
                 	categories: productName_top,
                 });
-                chart3.title.update({
+            	chart3.series[0].update({
+                	name: productMonths[0],
+            		data: productValue[0],
+                });
+            	chart3.series[1].update({
+                	name: productMonths[1],
+            		data: productValue[1],
+                });
+            	chart3.series[2].update({
+                	name: productMonths[2],
+            		data: productValue[2],
+                });
+            	chart3.title.update({
                 	text: "第一季度产品销售情况",
                 });
             }
@@ -128,15 +163,29 @@ $(function () {
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
             url: "analyze_quarter_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
             success: function (msg) {
-                var obj = eval(msg);
+            	var obj = eval(msg);
                 productName_top = obj["data_output_month_3_key"];
-                productValue_top = obj["data_output_month_3_value"];
-                chart3.series[0].update({
-                	name: '第二季度',
-            		data: productValue_top,
-                });
+                productMonths = obj["data_output_month_3_months"];
+                productValue_month_1 = obj["data_output_month_3_1"];
+                productValue_month_2 = obj["data_output_month_3_2"];
+                productValue_month_3 = obj["data_output_month_3_3"];
+                productValue[0] = productValue_month_1;
+                productValue[1] = productValue_month_2;
+                productValue[2] = productValue_month_3;
                 chart3.xAxis[0].update({
                 	categories: productName_top,
+                });
+            	chart3.series[0].update({
+                	name: productMonths[0],
+            		data: productValue[0],
+                });
+            	chart3.series[1].update({
+                	name: productMonths[1],
+            		data: productValue[1],
+                });
+            	chart3.series[2].update({
+                	name: productMonths[2],
+            		data: productValue[2],
                 });
                 chart3.title.update({
                 	text: "第二季度产品销售情况",
@@ -155,15 +204,29 @@ $(function () {
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
             url: "analyze_quarter_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
             success: function (msg) {
-                var obj = eval(msg);
+            	var obj = eval(msg);
                 productName_top = obj["data_output_month_3_key"];
-                productValue_top = obj["data_output_month_3_value"];
-                chart3.series[0].update({
-                	name: '第三季度',
-            		data: productValue_top,
-                });
+                productMonths = obj["data_output_month_3_months"];
+                productValue_month_1 = obj["data_output_month_3_1"];
+                productValue_month_2 = obj["data_output_month_3_2"];
+                productValue_month_3 = obj["data_output_month_3_3"];
+                productValue[0] = productValue_month_1;
+                productValue[1] = productValue_month_2;
+                productValue[2] = productValue_month_3;
                 chart3.xAxis[0].update({
                 	categories: productName_top,
+                });
+            	chart3.series[0].update({
+                	name: productMonths[0],
+            		data: productValue[0],
+                });
+            	chart3.series[1].update({
+                	name: productMonths[1],
+            		data: productValue[1],
+                });
+            	chart3.series[2].update({
+                	name: productMonths[2],
+            		data: productValue[2],
                 });
                 chart3.title.update({
                 	text: "第三季度产品销售情况",
@@ -182,15 +245,29 @@ $(function () {
             dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
             url: "analyze_quarter_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
             success: function (msg) {
-                var obj = eval(msg);
+            	var obj = eval(msg);
                 productName_top = obj["data_output_month_3_key"];
-                productValue_top = obj["data_output_month_3_value"];
-                chart3.series[0].update({
-                	name: '第四季度',
-            		data: productValue_top,
-                });
+                productMonths = obj["data_output_month_3_months"];
+                productValue_month_1 = obj["data_output_month_3_1"];
+                productValue_month_2 = obj["data_output_month_3_2"];
+                productValue_month_3 = obj["data_output_month_3_3"];
+                productValue[0] = productValue_month_1;
+                productValue[1] = productValue_month_2;
+                productValue[2] = productValue_month_3;
                 chart3.xAxis[0].update({
                 	categories: productName_top,
+                });
+            	chart3.series[0].update({
+                	name: productMonths[0],
+            		data: productValue[0],
+                });
+            	chart3.series[1].update({
+                	name: productMonths[1],
+            		data: productValue[1],
+                });
+            	chart3.series[2].update({
+                	name: productMonths[2],
+            		data: productValue[2],
                 });
                 chart3.title.update({
                 	text: "第四季度产品销售情况",

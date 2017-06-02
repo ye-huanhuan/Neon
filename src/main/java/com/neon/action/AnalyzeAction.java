@@ -491,7 +491,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Map<String, Double> output_top3_quarter = outputService.getThisQuarterTop3GoodsMoney(quarter_quarter_3, Constant.YEAR);
 		//准备数据
 		String[] output_top3_key = outputService.getItemByMap(output_top3_quarter);
-		//double[] output_top3_value = outputService.getValueByMap(output_top3_quarter);
 		double[] output_top3_month_1 = outputService.getMomthValueByMap(output_top3_key , quarter_quarter_3).get(0);
 		double[] output_top3_month_2 = outputService.getMomthValueByMap(output_top3_key, quarter_quarter_3).get(1);
 		double[] output_top3_month_3 = outputService.getMomthValueByMap(output_top3_key, quarter_quarter_3).get(2);
@@ -511,9 +510,14 @@ public class AnalyzeAction extends ActionBase<Input>{
 		for(double d : output_top3_month_3){
 			System.out.println(d);
 		}*/
-		
+		//饼图数据
 		result1.put("data_out_quarter_3", output_percent_quarter_array);
+		//top3图数据
 		result1.put("data_output_month_3_key", output_top3_key);
+		result1.put("data_output_month_3_1", output_top3_month_1);
+		result1.put("data_output_month_3_2", output_top3_month_2);
+		result1.put("data_output_month_3_3", output_top3_month_3);
+		result1.put("data_output_month_3_months", months);
 		//result1.put("data_output_month_3_value", output_top3_value);
 		return "success_quarter";
 	}
@@ -624,13 +628,14 @@ public class AnalyzeAction extends ActionBase<Input>{
 		}*/
 		
 		String output_percent_year_array[][] = ListToArray.getString2Array(output_percent_year);
-		/*for(int i = 0 ; i < output_percent_year.size() ; i++){
-			for(int j = 0 ; j< 2 ; j++){
-				System.out.println(output_percent_year_array[i][j]);
-			}
-		}*/
-		result2.put("data_output_month_3_key", output_top3_key);
-		//result2.put("data_output_month_3_value", output_top3_value);
+		//top3数据
+		result2.put("data_output_year_3_key", output_top3_key);
+		result2.put("data_output_quarter_3_1", output_Quarter_1);
+		result2.put("data_output_quarter_3_2", output_Quarter_2);
+		result2.put("data_output_quarter_3_3", output_Quarter_3);
+		result2.put("data_output_quarter_3_4", output_Quarter_4);
+		result2.put("data_output_year_3_quarters", quarters);
+		//饼图数据
 		result2.put("data_output_year_3", output_percent_year_array);
 		return "success_year";
 
