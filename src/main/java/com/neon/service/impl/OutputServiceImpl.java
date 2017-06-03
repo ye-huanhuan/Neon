@@ -13,6 +13,7 @@ import com.neon.domain.Output;
 import com.neon.service.OutputService;
 import com.neon.util.Arith;
 import com.neon.util.Constant;
+import com.neon.util.DoubleJudge;
 import com.neon.util.Sort;
 
 @Service
@@ -123,7 +124,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				for(String item : items){
 				double money = 0.0;	
 				for(int month = 1 ; month <= 3 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year));
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d);
 				}
 				map.put(item, money);
 			};
@@ -134,7 +139,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				for(String item : items_2){
 				double money = 0.0;	
 				for(int month = 4 ; month <= 6 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d);
 				}
 				map.put(item, money);
 			};
@@ -145,7 +154,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				for(String item : items_3){
 				double money = 0.0;	
 				for(int month = 7 ; month <= 9 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d);
 				}
 				map.put(item, money);
 			};
@@ -156,7 +169,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				for(String item : items_4){
 				double money = 0.0;	
 				for(int month = 10 ; month <= 12 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d) ;
 				}
 				map.put(item, money);
 			};
@@ -175,7 +192,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			for(String item : items){
 				double money = 0.0;	
 				for(int month = 1 ; month <= 3 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year));
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d);
 				}
 				dou[temp] = money;
 				temp++;
@@ -186,7 +207,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			for(String item : items){
 				double money = 0.0;	
 				for(int month = 4 ; month <= 6 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year));
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d);
 				}
 				dou[temp_2] = money;
 				temp_2++;
@@ -197,7 +222,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			for(String item : items){
 				double money = 0.0;	
 				for(int month = 7 ; month <= 9 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year));
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d);
 				}
 				dou[temp_3] = money;
 				temp_3++;
@@ -208,7 +237,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			for(String item : items){
 				double money = 0.0;	
 				for(int month = 10 ; month <= 12 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year));
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d);
 				}
 				dou[temp_4] = money;
 				temp_4++;
@@ -327,7 +360,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				for(String item : items){
 				double money = 0.0;	
 				for(int month = 1 ; month <= 3 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d) ;
 				}
 				map.put(item, Arith.div(money, totleMoney, 4)*100);
 			};
@@ -339,7 +376,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				for(String item : items_2){
 				double money = 0.0;	
 				for(int month = 4 ; month <= 6 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d) ;
 				}
 				map.put(item, Arith.div(money, totleMoney, 4)*100);
 			};
@@ -351,7 +392,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				for(String item : items_3){
 				double money = 0.0;	
 				for(int month = 7 ; month <= 9 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d) ;
 				}
 				map.put(item, Arith.div(money, totleMoney, 4)*100);
 			};
@@ -363,7 +408,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				for(String item : items_4){
 				double money = 0.0;	
 				for(int month = 10 ; month <= 12 ; month++){
-					money = Arith.add(money , getThisItemTotleMoney(item,month,year)) ;
+					double d = 0.0;
+					if(getThisItemTotleMoney(item,month,year) != null){
+						d = getThisItemTotleMoney(item,month,year);
+					}
+					money = Arith.add(money , d) ;
 				}
 				map.put(item, Arith.div(money, totleMoney, 4)*100);
 			};
@@ -401,11 +450,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 					int index = 0;
 					for(String str : output_top3_quarter){
 						if(month == 1){
-							month_1[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+							month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 						}else if(month == 2){
-							month_2[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+							month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 						}else if(month == 3){
-							month_3[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+							month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 						}
 						index++;
 					}
@@ -420,11 +469,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				int index = 0;
 				for(String str : output_top3_quarter){
 					if(month == 4){
-						month_1[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 					}else if(month == 5){
-						month_2[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 					}else if(month == 6){
-						month_3[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 					}
 					index++;
 				}
@@ -439,11 +488,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				int index = 0;
 				for(String str : output_top3_quarter){
 					if(month == 7){
-						month_1[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 					}else if(month == 8){
-						month_2[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 					}else if(month == 9){
-						month_3[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 					}
 					index++;
 				}
@@ -458,11 +507,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				int index = 0;
 				for(String str : output_top3_quarter){
 					if(month == 10){
-						month_1[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 					}else if(month == 11){
-						month_2[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 					}else if(month == 12){
-						month_3[index] = getThisItemTotleMoney(str,month,Constant.YEAR);
+						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
 					}
 					index++;
 				}
@@ -517,10 +566,10 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		int index = 0;
 		
 		for(String str : output_top3_key){
-			quarter_1[index] = getThisQuarterThisGoodsTotleMoney(str , 1 , year);
-			quarter_2[index] = getThisQuarterThisGoodsTotleMoney(str , 2 , year);
-			quarter_3[index] = getThisQuarterThisGoodsTotleMoney(str , 3 , year);
-			quarter_4[index] = getThisQuarterThisGoodsTotleMoney(str , 4 , year);
+			quarter_1[index] = DoubleJudge.isDouble(getThisQuarterThisGoodsTotleMoney(str , 1 , year));
+			quarter_2[index] = DoubleJudge.isDouble(getThisQuarterThisGoodsTotleMoney(str , 2 , year));
+			quarter_3[index] = DoubleJudge.isDouble(getThisQuarterThisGoodsTotleMoney(str , 3 , year));
+			quarter_4[index] = DoubleJudge.isDouble(getThisQuarterThisGoodsTotleMoney(str , 4 , year));
 			index++;
 		}
 		
@@ -559,8 +608,34 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			output_3 = getOutputsWithMonthAndYearAndItem(12, year, item);
 		break;
 		}
+		double d_1 = 0.0;
+		double d_2 = 0.0;
+		double d_3 = 0.0;
+		try{
+			if(output_1 != null){
+				d_1 = output_1.get(0).getMoney();
+			}
+			
+		}catch(Exception e){
+			d_1 = 0.0;
+		}
+		try{
+			
+			if(output_2 != null){
+				d_2 = output_2.get(0).getMoney();
+			}
+		}catch(Exception e){
+			d_2 = 0.0;
+		}
+		try{
+			if(output_3 != null){
+				d_3 = output_3.get(0).getMoney();
+			}
+		}catch(Exception e){
+			d_3 = 0.0;
+		}
 		
-		return Arith.add(Arith.add(output_1.get(0).getMoney(), output_2.get(0).getMoney()) , output_3.get(0).getMoney());
+		return Arith.add(Arith.add(d_1, d_2) , d_3);
 	}
 
 

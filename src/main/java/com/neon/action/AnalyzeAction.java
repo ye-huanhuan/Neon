@@ -286,6 +286,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 	public String month_4(){
 		Map<String, Double> map_thisYear = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH, Constant.YEAR);
 		Map<String, Double> map_lastYear = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH, Constant.YEAR - 1);
+		//bug
 		String[] items = ListToArray.getItemsArray(map_thisYear , map_lastYear);
 		double[] thisYear_moeny = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH , Constant.YEAR , items);
 		double[] lastYear_money = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH , Constant.YEAR - 1 , items);
@@ -296,6 +297,24 @@ public class AnalyzeAction extends ActionBase<Input>{
 		result.put("items_month_4", items);
 		result.put("thisYear_moeny_month_4", thisYear_moeny);
 		result.put("lastYear_money_month_4", lastYear_money);
+		return "success";
+	}
+	
+	public String month_5(){
+		Map<String, Double> map_thisYear = inputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH, Constant.YEAR);
+		Map<String, Double> map_lastYear = inputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH, Constant.YEAR - 1);
+		String[] item = ListToArray.getItemsArray(map_thisYear , map_lastYear);
+		String[] items = inoutService.getInputItemByOutputItem(item);
+		for(String str : items){
+			System.out.println(str);
+		}
+		double[] thisYear_moeny = inputService.getThisMonthInputGoodsTotleMoney(Constant.CURRENTMONTH , Constant.YEAR , items);
+		double[] lastYear_money = inputService.getThisMonthInputGoodsTotleMoney(Constant.CURRENTMONTH , Constant.YEAR - 1 , items);
+		
+		for(int i = 0 ; i < items.length ; i++){
+			System.out.println(items[i] + "今年" + thisYear_moeny[i] + "  去年" + lastYear_money[i]);
+		}
+		
 		return "success";
 	}
 	
@@ -619,6 +638,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 		Map<String, Double> output_top3_year = outputService.getThisYearTop3GoodsMoney(year_year_3);
 		//准备数据
 		String[] output_top3_key = outputService.getItemByMap(output_top3_year);
+		for(int i = 0 ; i < 3 ; i++){
+			System.out.println(output_top3_key[i] + "=======");
+		}
 		//double[] output_top3_value = outputService.getValueByMap(output_top3_year);
 		//准备数据
 		double[] output_Quarter_1 = outputService.getQuarterValueByMap(output_top3_key , year_year_3).get(0);

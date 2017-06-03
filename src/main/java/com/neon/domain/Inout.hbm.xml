@@ -3,15 +3,12 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
  
 <hibernate-mapping package="com.neon.domain">
-		<class name="Detail" table="Detail">
+		<class name="Inout" table="Inout">
 			<id name="id">
 				<generator class="native"></generator>
 			</id>
-			<property name="ein"></property>
-			<property name="money"></property>
-			<property name="payUnit"></property>
-			<property name="receUnit"></property>
-			<property name="date"></property>
+			<property name="input"></property>
+			<property name="output"></property>
 			
 	</class>
 

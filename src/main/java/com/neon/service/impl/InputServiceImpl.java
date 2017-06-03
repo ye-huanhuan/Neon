@@ -10,7 +10,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.neon.base.DaoSupportImpl;
+import com.neon.domain.Inout;
 import com.neon.domain.Input;
+import com.neon.service.InoutService;
 import com.neon.service.InputService;
 import com.neon.util.Arith;
 import com.neon.util.Constant;
@@ -33,15 +35,6 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 		return list;
 	}
 	
-
-	public List<Input> getInputDataByMonth(int month,int year){
-		return getSession().createQuery(//
-				"FROM Input input WHERE input.month=? AND input.year=?")
-				.setParameter(0, month)
-				.setParameter(1, year)
-				.list();
-		
-	}
 
 	@Override
 	public List<Double> getInputTotleMoneyWithQuarter(int year) {
@@ -74,6 +67,53 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 		return list; 
 	}
 	
+	@Override
+	public Map<String, Double> getThisMonthOutputGoodsTotleMoney(int month, int year) {
+		Map<String, Double> map = new HashMap<>();
+		List<String> items = getThisMonthGoodsItem(month , year);
+		for(String item : items){
+			map.put(item, 0.0);
+		}
+		return map;
+	}
+	
+	@Override
+	public double[] getThisMonthInputGoodsTotleMoney(int month, int year, String[] items) {
+		double[] strs = new double[items.length];
+		for(int i = 0 ; i < items.length ; i++){
+			strs[i] = getThisItemTotleMoney(items[i],month,year);
+		}
+		return strs;
+	}
+	
+	public List<Input> getInputDataByMonth(int month,int year){
+		return getSession().createQuery(//
+				"FROM Input input WHERE input.month=? AND input.year=?")
+				.setParameter(0, month)
+				.setParameter(1, year)
+				.list();
+	}
+	
+	
+	private double getThisItemTotleMoney(String item, int month, int year) {
+		return (Double) getSession().createQuery(//
+				"SELECT money FROM Input output WHERE output.item=? AND output.month=? AND output.year=?")
+				.setParameter(0, item)
+				.setParameter(1, month)
+				.setParameter(2, year)
+				.uniqueResult();
+	}
+
+
+	private List<String> getThisMonthGoodsItem(int month, int year) {
+		return getSession().createQuery(//
+				"SELECT DISTINCT item FROM Output input WHERE input.month=? AND input.year=?")
+				.setParameter(0, month)
+				.setParameter(1, year)
+				.list();
+	}
+
+
 	private List<Integer> getInputYear(){
 		return getSession().createQuery(//
 				"SELECT DISTINCT year FROM Input input")//
@@ -92,9 +132,8 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 		}
 		return d;
 	}
-	
-	
-	
-	}
+
+
+}
 
 
