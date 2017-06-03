@@ -283,13 +283,14 @@ public class AnalyzeAction extends ActionBase<Input>{
 		return "success";
 	}
 	
+	//出项同比数据
 	public String month_4(){
-		Map<String, Double> map_thisYear = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH, Constant.YEAR);
-		Map<String, Double> map_lastYear = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH, Constant.YEAR - 1);
+		Map<String, Double> map_thisYear = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR);
+		Map<String, Double> map_lastYear = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR - 1);
 		//bug
 		String[] items = ListToArray.getItemsArray(map_thisYear , map_lastYear);
-		double[] thisYear_moeny = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH , Constant.YEAR , items);
-		double[] lastYear_money = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH , Constant.YEAR - 1 , items);
+		double[] thisYear_moeny = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1 , Constant.YEAR , items);
+		double[] lastYear_money = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR - 1 , items);
 		
 		for(int i = 0 ; i < items.length ; i++){
 			System.out.println(items[i] + "今年" + thisYear_moeny[i] + "  去年" + lastYear_money[i]);
@@ -300,20 +301,20 @@ public class AnalyzeAction extends ActionBase<Input>{
 		return "success";
 	}
 	
+	//进项同比数据
 	public String month_5(){
-		Map<String, Double> map_thisYear = inputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH, Constant.YEAR);
-		Map<String, Double> map_lastYear = inputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH, Constant.YEAR - 1);
+		Map<String, Double> map_thisYear = inputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR);
+		Map<String, Double> map_lastYear = inputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR - 1);
 		String[] item = ListToArray.getItemsArray(map_thisYear , map_lastYear);
 		String[] items = inoutService.getInputItemByOutputItem(item);
-		for(String str : items){
-			System.out.println(str);
-		}
-		double[] thisYear_moeny = inputService.getThisMonthInputGoodsTotleMoney(Constant.CURRENTMONTH , Constant.YEAR , items);
-		double[] lastYear_money = inputService.getThisMonthInputGoodsTotleMoney(Constant.CURRENTMONTH , Constant.YEAR - 1 , items);
+		//进项同比数据
+		double[] thisYear_moeny = inputService.getThisMonthInputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR , items);
+		double[] lastYear_money = inputService.getThisMonthInputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR - 1 , items);
 		
-		for(int i = 0 ; i < items.length ; i++){
+		//测试
+		/*for(int i = 0 ; i < items.length ; i++){
 			System.out.println(items[i] + "今年" + thisYear_moeny[i] + "  去年" + lastYear_money[i]);
-		}
+		}*/
 		
 		return "success";
 	}
@@ -562,15 +563,35 @@ public class AnalyzeAction extends ActionBase<Input>{
 	}
 	
 	public String quarter_4(){
-		Map<String, Double> map_thisQuarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER, Constant.YEAR);
-		Map<String, Double> map_lastQuarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER, Constant.YEAR - 1);
+		Map<String, Double> map_thisQuarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER - 1, Constant.YEAR);
+		Map<String, Double> map_lastQuarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER - 1, Constant.YEAR - 1);
+		//销项名称
 		String[] items = ListToArray.getItemsArray(map_thisQuarter , map_lastQuarter);
-		//准备数据
-		double[] thisYear_Quarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER , Constant.YEAR , items);
-		double[] lastYear_Quarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER , Constant.YEAR - 1 , items);
+		//准备数据  今年这个季度的总和
+		double[] thisYear_Quarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER - 1, Constant.YEAR , items);
+		//准备数据  去年这个季度的总和
+		double[] lastYear_Quarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER - 1, Constant.YEAR - 1 , items);
+		//该季度包含的月份
+		String[] months = outputService.getMomthByQuarter(Constant.CURRENTQUARTER);
+		//去年该季每个月份的销售额
+		double[][] data_last_month = outputService.getMonthMoneyByQuarterAndYearAnditems(Constant.YEAR - 1 , Constant.CURRENTQUARTER - 1, items);
+		//前年该季每个月份的销售额
+		double[][] data_now_month  = outputService.getMonthMoneyByQuarterAndYearAnditems(Constant.YEAR , Constant.CURRENTQUARTER - 1, items);
 		//测试
+		System.out.println("去年和前年这个季度的总和");
 		for(int i = 0 ; i < items.length ; i++){
 			System.out.println(items[i] + "今年" + thisYear_Quarter[i] + "  去年" + lastYear_Quarter[i]);
+		}
+		System.out.println("该季度包含月份");
+		for(int i = 0 ; i < months.length ; i++){
+			System.out.println(months[i]);
+		}
+		System.out.println("去年和前年这个季度的每个月的销售额");
+		for(int i = 0 ; i < items.length ; i++){
+			System.out.println("第"+	i+1 +"个月份");
+			for(int j = 0 ; j < 3 ; j++){
+				System.out.println("前年"+ data_last_month[i][j] + "  去年" +data_now_month[i][j]);
+			}
 		}
 		result1.put("items_quarter_4", items);
 		result1.put("thisYear_Quarter_quarter_4", thisYear_Quarter);

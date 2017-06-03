@@ -71,6 +71,9 @@ public interface OutputService extends DaoSupport<Output>{
 		//根据季度得到月分的值
 		String[] getMomthByQuarter(int quarter_quarter_3);
 
+		//根据该年该季度销项名称得到每个月份的销售额
+		double[][] getMonthMoneyByQuarterAndYearAnditems(int i, int cURRENTQUARTER, String[] items);
+
 
 		
 }

@@ -81,7 +81,11 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 	public double[] getThisMonthInputGoodsTotleMoney(int month, int year, String[] items) {
 		double[] strs = new double[items.length];
 		for(int i = 0 ; i < items.length ; i++){
-			strs[i] = getThisItemTotleMoney(items[i],month,year);
+			try{
+				strs[i] = getThisItemTotleMoney(items[i],month,year);
+			}catch (Exception e) {
+				strs[i] = 0.0;
+			}
 		}
 		return strs;
 	}
