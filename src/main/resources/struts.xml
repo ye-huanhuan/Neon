@@ -62,7 +62,10 @@
 	
 	<!-- ==============主页部分======================================= -->
 	<action name="home_*" class="homeAction" method="{1}">
-		 <result name="index">WEB-INF/jsp/index.jsp</result> 
+		 <result name="index">WEB-INF/jsp/index.jsp</result>
+		 <result name="detail" type="json">
+		 <param name="root">result1</param>
+		 </result>
 	</action> 
 	
 	<!-- ==============登录部分======================================= -->

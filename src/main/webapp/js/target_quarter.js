@@ -1,4 +1,7 @@
-// 当月目标 
+/**
+ * 当季度目标
+ */
+
 $(document).ready(function() {
         
         var chart = {
@@ -29,18 +32,9 @@ $(document).ready(function() {
                 [0.9, '#55BF3B'] // green
             ],
             lineWidth: 0,
-            minorTickInterval: null,
-            tickPixelInterval: 400,
-            tickWidth: 0,
-            labels: {
-                y: 16,
-                style: {
-                    fontSize:'14px',
-                    fontFamily:'微软雅黑'
-                },
-            },
+            tickPixelInterval: 50,
+            max: 40,
             min: 0,
-            max: 500,
             title: {
                 text: '当季目标',
                 y: -70,
@@ -48,13 +42,20 @@ $(document).ready(function() {
                     fontSize:'16px',
                     fontFamily:'微软雅黑'
                 },
+            },
+            labels: {
+                style: {
+                    fontSize:'14px',
+                    fontFamily:'微软雅黑'
+                },
+                y: 16,
             }
         };
 
         var plotOptions = {
             solidgauge: {
                 dataLabels: {
-                    y: 5,
+                    y: 10,
                     borderWidth: 0,
                     useHTML: true
                 }
@@ -65,11 +66,11 @@ $(document).ready(function() {
             enabled: false
         };
         var exporting = {  
-            	enabled:false //用来设置是否显示‘打印’,'导出'等功能按钮，不设置时默认为显示  
-        }; 
+        	enabled:false //用来设置是否显示‘打印’,'导出'等功能按钮，不设置时默认为显示  
+        };  
         var series = [{
             name: '当季目标',
-            data: [200],
+            data: [28],
             dataLabels: {
                 format: '<div style="text-align:center"><span style="font-size:25px;color:' +
                 ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
@@ -79,16 +80,27 @@ $(document).ready(function() {
                 valueSuffix: ' 万元'
             }
         }];
-
-        var json = {};
-        json.chart = chart;
-        json.title = title;
-        json.pane = pane;
-        json.tooltip = tooltip;
-        json.yAxis = yAxis;
-        json.credits = credits;
-        json.series = series;
-        json.plotOptions = plotOptions;
-        json.exporting = exporting;
-        $('#container-quarter').highcharts(json);
+        
+        $.ajax({
+            async: true,
+            type: "post",        //type：(string)请求方式，POST或GET
+            dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+            url: "home_detail.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+            success: function (msg) {
+                var obj = eval(msg);
+                var data_target = obj["data_target"];
+                yAxis["max"] = data_target[1];
+                var json = {};
+                json.chart = chart;
+                json.title = title;
+                json.pane = pane;
+                json.tooltip = tooltip;
+                json.yAxis = yAxis;
+                json.credits = credits;
+                json.series = series;
+                json.plotOptions = plotOptions;
+                json.exporting = exporting;
+                $('#container-quarter').highcharts(json);
+            }
+        });
     });

@@ -12,9 +12,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.neon.domain.Inout;
 import com.neon.domain.Privilege;
 import com.neon.domain.Role;
 import com.neon.domain.User;
+import com.neon.service.InoutService;
 import com.neon.service.PrivilegeService;
 import com.neon.service.RoleService;
 import com.neon.service.UserService;
@@ -33,6 +35,8 @@ public class Installer2 extends AbstractJUnit4SpringContextTests{
 	
 	@Resource
 	private UserService userService;
+	
+	@Resource InoutService inoutService;
 	
 	@Test
 	public void test(){
@@ -70,6 +74,21 @@ public class Installer2 extends AbstractJUnit4SpringContextTests{
 		user_2.setPassword(Md5.getMD5("yhh"));
 		user_2.setRole(role_2);
 		userService.save(user_2);
+		
+		Inout inout_1 = new Inout();
+		inout_1.setInput("猪肉");
+		inout_1.setOutput("猪肉罐头");
+		inoutService.save(inout_1);
+		
+		Inout inout_2 = new Inout();
+		inout_1.setInput("鱼肉");
+		inout_1.setOutput("鱼肉罐头");
+		inoutService.save(inout_2);
+		
+		Inout inout_3 = new Inout();
+		inout_1.setInput("鸡肉");
+		inout_1.setOutput("鸡肉罐头");
+		inoutService.save(inout_3);
 		
 	}
 }

@@ -16,5 +16,9 @@ public interface InputService extends DaoSupport<Input>{
 	
 	//每年进项的总钱数  key为 年份  value为 该年的进项总钱数
 	List <Double> getInputTotleMoneyWithYear();
+
+	Map<String, Double> getThisMonthOutputGoodsTotleMoney(int cURRENTMONTH, int yEAR);
+
+	double[] getThisMonthInputGoodsTotleMoney(int cURRENTMONTH, int yEAR, String[] items);
 	
 }
