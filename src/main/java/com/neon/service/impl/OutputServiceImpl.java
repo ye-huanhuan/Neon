@@ -637,6 +637,100 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		
 		return Arith.add(Arith.add(d_1, d_2) , d_3);
 	}
+	
+	@Override
+	public double[][] getMonthMoneyByQuarterAndYearAnditems(int year, int quarter, String[] items) {
+		System.out.println(items.length);
+		double[][] d = new double[3][];
+		double[] d_1 = {1,2,3};
+		double[] d_2 = {4,5,6};
+		double[] d_3 = {7,8,9};
+		d[0] = d_1;
+		d[1] = d_2;
+		d[2] = d_3;
+		/*for(int q = 0 ; q < 3 ; q++){
+			for(int j = 0 ; j < 3 ; j++){
+				System.out.println(d[q][j]);
+			}
+		}*/
+		switch (quarter) {
+		case 1:
+			int temp = 0;
+			for(String item : items){
+				int j = 0;
+				for(int i = 1 ; i <= 3 ; i++){
+					try {
+						d[temp][j] = getThisMonthThisGoodsTotleMoney(item, i, year);
+					} catch (Exception e) {
+						d[temp][j] = 0.0;
+					}
+					j++;
+				}
+				temp++;
+			}
+			break;
+		case 2:
+			int temp_2 = 0;
+			for(String item : items){
+				int j = 0;
+				for(int i = 4 ; i <= 6 ; i++){
+					try {
+						d[temp_2][j] = getThisMonthThisGoodsTotleMoney(item, i, year);
+					} catch (Exception e) {
+						System.out.println(d[0][0]);
+						System.out.println(temp_2+"  "+j);
+						d[temp_2][j] = 0.0;
+						System.out.println("======");
+					}
+					j++;
+				}
+				temp_2++;
+			}
+			break;
+		case 3:
+			int temp_3 = 0;
+			for(String item : items){
+				int j = 0;
+				for(int i = 7 ; i <= 9 ; i++){
+					try {
+						d[temp_3][j] = getThisMonthThisGoodsTotleMoney(item, i, year);
+					} catch (Exception e) {
+						d[temp_3][j] = 0.0;
+					}
+					j++;
+				}
+				temp_3++;
+			}
+			break;
+		case 4:
+			int temp_4 = 0;
+			for(String item : items){
+				int j = 0;
+				for(int i = 10 ; i <= 12 ; i++){
+					try {
+						d[temp_4][j] = getThisMonthThisGoodsTotleMoney(item, i, year);
+					} catch (Exception e) {
+						d[temp_4][j] = 0.0;
+					}
+					j++;
+				}
+				temp_4++;
+			}
+			break;
+		}
+		return d;
+	}
+
+
+
+	private double getThisMonthThisGoodsTotleMoney(String item, int month, int year) {
+		return (double) getSession().createQuery(//
+				"SELECT money FROM Output out WHERE out.month=? AND out.year=? AND out.item=?")
+				.setParameter(0, month)
+				.setParameter(1, year)
+				.setParameter(2, item)
+				.uniqueResult();
+	}
 
 
 	private List<Output> getTop3Goods(int m, int year) {
@@ -743,7 +837,6 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				.setParameter(2, item)
 				.list();
 	}
-	
 
 }
 
