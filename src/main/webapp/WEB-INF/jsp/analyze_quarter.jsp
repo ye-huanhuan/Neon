@@ -18,7 +18,7 @@
     <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
     <script src="https://img.hcharts.cn/highcharts/modules/drilldown.js"></script>
 <style type="text/css">
-	#wrap-range{
+	#wrap-range,#wrap-product{
 		margin-left: 15px;
 		margin-top: 5px;
 		
@@ -36,7 +36,7 @@
      	border-bottom-left-radius:0.5em;
      	border-bottom-right-radius:0.5em;
 	}
-	#quarter,#inOut{
+	#quarter,#inOut,#second_quarter,#third_quarter{
 		display: inline-block;
 		margin-left: 15px;
 	}
@@ -98,9 +98,9 @@
 				  
 				  <div id="quarter">
 				  <font>年度:</font>
-				  <input id="year2015" class="quarter" type="radio" name="first_quarter" value="2015">2015
+				  <!-- <input id="year2015" class="quarter" type="radio" name="first_quarter" value="2015">2015
 				  <input id="year2016" class="quarter" type="radio" name="first_quarter" value="2016">2016
-				  <input id="year2017" class="quarter" type="radio" name="first_quarter" value="2017">2017
+				  <input id="year2017" class="quarter" type="radio" name="first_quarter" value="2017">2017 -->
 				  <input id="year4quarter" class="quarter" type="radio" name="first_quarter" value="">近四个季度
 				  </div>
 				  </div>
@@ -122,17 +122,17 @@
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
                   <div id="wrap-product">
-				  <div id="quarter">
 				  <!-- range2 -->
                   <font>查看的范围:</font>
 				  <div id="second_range">
 				  <input id="second_rangeValue" type="hidden" class="range-slider"  value="0,120"/>
 				  </div>
+				  <div id="second_quarter">
 				 <font>年份:</font>
-				  <input id="second_year_2015" class="quarter" type="radio" name="second_quarter" value="2015">2015
+				  <!-- <input id="second_year_2015" class="quarter" type="radio" name="second_quarter" value="2015">2015
 				  <input id="second_year_2016" class="quarter" type="radio" name="second_quarter" value="2016">2016
-				  <input id="second_year_2017" class="quarter" type="radio" name="second_quarter" value="2017">2017
-				  <input id="second_year_4quarter" class="quarter" type="radio" name="second_quarter" value="">近四个季度
+				  <input id="second_year_2017" class="quarter" type="radio" name="second_quarter" value="2017">2017 -->
+				  <span><input id="second_year_4quarter" class="quarter" type="radio" name="second_quarter" value="">近四个季度</span>
 				  <input id="second_button" class="" type="button" value="重置">
 				  </div>
 				  </div>
@@ -163,17 +163,15 @@
                 <section class="panel panel-default">
                   <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
                   
-				  <div id="wrap_month">
-				  
-				  <div id="quarter">
-				  
-				 <font>季度:</font>
-				  <input id="third_quarter_1" class="quarter" type="radio" name="third_quarter" value="1">第一季度
+				  <div id="third_quarter">
+				  <font>季度:</font>
+				  <!-- <input id="third_quarter_1" class="quarter" type="radio" name="third_quarter" value="1">第一季度
 				  <input id="third_quarter_2" class="quarter" type="radio" name="third_quarter" value="2">第二季度
 				  <input id="third_quarter_3" class="quarter" type="radio" name="third_quarter" value="3">第三季度
-				  <input id="third_quarter_4" class="quarter" type="radio" name="third_quarter" value="4">第四季度
+				  <input id="third_quarter_4" class="quarter" type="radio" name="third_quarter" value="4">第四季度 -->
+				  <span></span>
 				  </div>
-				  </div>
+				  
                   <div class="panel-body">
                     <div id="container_third" style="width:49%;height:400px;display: inline-block;"></div>
                     <div id="container_third_2" style="width:49%;height:400px;display: inline-block;"></div>
@@ -199,6 +197,8 @@
 <script src="js/quarterOutProduct.js"></script>
 <script src="js/top_product_quarter.js"></script>
 <script src="js/compare_same_quarter.js"></script>
+<script src="js/dynamic_quarter.js"></script>
+
 <!--  
 <script>
 /**

@@ -82,7 +82,7 @@ $(function () {
     });
     $.ajax({
         async: true,
-        data: {year_year_3:$("#year2016").val()},
+        data: {year_year_3:$("#year2017").val()},
         type: "post",        //type：(string)请求方式，POST或GET
         dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
         url: "analyze_year_3.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
