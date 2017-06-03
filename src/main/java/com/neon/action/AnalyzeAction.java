@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import com.neon.base.ActionBase;
 import com.neon.domain.Dvalue;
 import com.neon.domain.Input;
+import com.neon.util.ChangeLength;
 import com.neon.util.Constant;
 import com.neon.util.ListToArray;
 
@@ -28,7 +29,10 @@ public class AnalyzeAction extends ActionBase<Input>{
 	private int year_year_3;
 	private Map<String,Object> result = new HashMap<String,Object>(); 
 	private Map<String,Object> result1 = new HashMap<String,Object>(); 
-	private Map<String,Object> result2 = new HashMap<String,Object>(); 
+	private Map<String,Object> result2 = new HashMap<String,Object>();
+	//获取当前日期
+	Calendar cal = Calendar.getInstance();
+	int current_year = cal.get(Calendar.YEAR);
 	//准备月份分析数据
 	
 	public String month(){
@@ -36,6 +40,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 	}
 
 	public String month_1(){
+		
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
@@ -47,6 +52,11 @@ public class AnalyzeAction extends ActionBase<Input>{
 		double[] input_totlemoney_month_array = ListToArray.getDoubleArray(input_totlemoney_month);
 		double[] output_totlemoney_month_array = ListToArray.getDoubleArray(output_totlemoney_month);
 		double[] dvalue_array = ListToArray.getDoubleArray(dvalue);
+		//将零值去除
+		if(y == current_year){
+			input_totlemoney_month_array = ChangeLength.changeLength(input_totlemoney_month_array);
+			output_totlemoney_month_array = ChangeLength.changeLength(output_totlemoney_month_array);
+		}
 		result.put("data_difference",dvalue_array);
  		result.put("data_input", input_totlemoney_month_array);
  		result.put("data_output", output_totlemoney_month_array);
@@ -157,9 +167,12 @@ public class AnalyzeAction extends ActionBase<Input>{
 			productVlaue[i] = p.getValue();
 			i+=1;
 		}
-//		for(int m=0;m<12;m++){
-//			System.out.println(productVlaue[0][m]);
-//		}
+		//将零值去除
+		if(y2 == current_year){
+			for(int j=0;j<productVlaue.length;j++){
+				productVlaue[j] = ChangeLength.changeLength(productVlaue[j]);
+			}
+		}
 		//产品名称数组
 		result.put("productName", productName);
 		//产品值数组
@@ -304,12 +317,13 @@ public class AnalyzeAction extends ActionBase<Input>{
 		double[] input_totlemoney_quarter_array = ListToArray.getDoubleArray(input_totlemoney_quarter);
 		double[] output_totlemoney_quarter_array = ListToArray.getDoubleArray(output_totlemoney_quarter);
 		double[] dvalue_array = ListToArray.getDoubleArray(dvalue);
+		//去除零值
+		if(y_quarter_1 == current_year){
+			input_totlemoney_quarter_array = ChangeLength.changeLength(input_totlemoney_quarter_array);
+			output_totlemoney_quarter_array = ChangeLength.changeLength(output_totlemoney_quarter_array);
+		}
 		result1.put("data_input_quarter", input_totlemoney_quarter_array);
 		result1.put("data_output_quarter", output_totlemoney_quarter_array);
-		//null值是0.0
-		for(double d:output_totlemoney_quarter_array){
-			System.out.println(d);
-		}
 		result1.put("data_difference_quarter", dvalue_array);
 		result1.put("dvalue_double", range);
 		return "success_quarter";
@@ -406,6 +420,12 @@ public class AnalyzeAction extends ActionBase<Input>{
 			productName[i] = p.getKey();
 			productVlaue[i] = p.getValue();
 			i+=1;
+		}
+		//去除零值
+		if(y_quarter_2 == current_year){
+			for(int j=0;j<productVlaue.length;j++){
+				productVlaue[j] = ChangeLength.changeLength(productVlaue[j]);
+			}
 		}
 		result1.put("productName", productName);
 		result1.put("productVlaue", productVlaue);

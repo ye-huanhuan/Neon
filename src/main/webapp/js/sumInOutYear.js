@@ -113,7 +113,7 @@ $(function () {
                     fontSize:'14px',
                     fontFamily:'微软雅黑'
                 }
-            }
+            },
         },
         tooltip: {
         	//数据后缀

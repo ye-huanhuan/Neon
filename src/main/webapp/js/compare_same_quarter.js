@@ -257,8 +257,12 @@ var chart1;
     $(function() {
         // Create the chart
         chart1 = new Highcharts.Chart('container_fourth',{
-            chart: {
+        	credits: {
+                enabled: false
+            },
+        	chart: {
                 type: 'column',
+                
                 events: {
                     drilldown: function(e) {
                         if (!e.seriesOptions) {
