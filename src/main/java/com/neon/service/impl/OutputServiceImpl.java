@@ -640,19 +640,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	
 	@Override
 	public double[][] getMonthMoneyByQuarterAndYearAnditems(int year, int quarter, String[] items) {
-		System.out.println(items.length);
-		double[][] d = new double[3][];
-		double[] d_1 = {1,2,3};
-		double[] d_2 = {4,5,6};
-		double[] d_3 = {7,8,9};
-		d[0] = d_1;
-		d[1] = d_2;
-		d[2] = d_3;
-		/*for(int q = 0 ; q < 3 ; q++){
-			for(int j = 0 ; j < 3 ; j++){
-				System.out.println(d[q][j]);
-			}
-		}*/
+		double[][] d = new double[items.length][];
+		for(int q = 0 ; q < items.length ; q++){
+			d[q] = new double[3];
+		}
+		
 		switch (quarter) {
 		case 1:
 			int temp = 0;
@@ -677,10 +669,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 					try {
 						d[temp_2][j] = getThisMonthThisGoodsTotleMoney(item, i, year);
 					} catch (Exception e) {
-						System.out.println(d[0][0]);
-						System.out.println(temp_2+"  "+j);
 						d[temp_2][j] = 0.0;
-						System.out.println("======");
 					}
 					j++;
 				}

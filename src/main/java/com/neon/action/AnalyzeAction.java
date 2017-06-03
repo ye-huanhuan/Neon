@@ -568,7 +568,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		}
 		System.out.println("去年和前年这个季度的每个月的销售额");
 		for(int i = 0 ; i < items.length ; i++){
-			System.out.println("第"+	i+1 +"个月份");
+			System.out.println("第"+	(i+1) +"个月份");
 			for(int j = 0 ; j < 3 ; j++){
 				System.out.println("前年"+ data_last_month[i][j] + "  去年" +data_now_month[i][j]);
 			}

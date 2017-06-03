@@ -94,6 +94,9 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		}*/
 		
 		double[][] d = new double[3][];
+		for(int i = 0 ; i < 3 ; i++){
+			d[i] = new double[3];
+		}
 		/*double[] d_1 = {1,2,3};
 		double[] d_2 = {4,5,6};
 		double[] d_3 = {7,8,9};
