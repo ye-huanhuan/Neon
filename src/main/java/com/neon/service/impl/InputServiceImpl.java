@@ -16,6 +16,7 @@ import com.neon.service.InoutService;
 import com.neon.service.InputService;
 import com.neon.util.Arith;
 import com.neon.util.Constant;
+import com.neon.util.Sort;
 
 @Service
 public class InputServiceImpl extends DaoSupportImpl<Input> implements InputService{
@@ -90,6 +91,175 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 		return strs;
 	}
 	
+	@Override
+	public double[] getThisQuarterInputGoodsTotleMoney(int quarter, int year, String[] items) {
+		double[] dou = new double[items.length];
+		switch(quarter){
+		case 1 : 
+			int temp = 0;
+			for(String item : items){
+				double money = 0.0;	
+				for(int month = 1 ; month <= 3 ; month++){
+					double d = 0.0;
+					try{
+						d = getThisItemTotleMoney(item,month,year);
+					}catch (Exception e) {
+						d = 0.0;
+					}
+					money = Arith.add(money , d);
+				}
+				dou[temp] = money;
+				temp++;
+			};
+			break;
+		case 2 :
+			int temp_2 = 0;
+			for(String item : items){
+				double money = 0.0;	
+				for(int month = 4 ; month <= 6 ; month++){
+					double d = 0.0;
+					try{
+						d = getThisItemTotleMoney(item,month,year);
+					}catch (Exception e) {
+						d = 0.0;
+					}
+					money = Arith.add(money , d);
+				}
+				dou[temp_2] = money;
+				temp_2++;
+			};
+			break;
+		case 3 :
+			int temp_3 = 0;
+			for(String item : items){
+				double money = 0.0;	
+				for(int month = 7 ; month <= 9 ; month++){
+					double d = 0.0;
+					try{
+						d = getThisItemTotleMoney(item,month,year);
+					}catch (Exception e) {
+						d = 0.0;
+					}
+					money = Arith.add(money , d);
+				}
+				dou[temp_3] = money;
+				temp_3++;
+			};
+			break;
+		case 4 :
+			int temp_4 = 0;
+			for(String item : items){
+				double money = 0.0;	
+				for(int month = 10 ; month <= 12 ; month++){
+					double d = 0.0;
+					try{
+						d = getThisItemTotleMoney(item,month,year);
+					}catch (Exception e) {
+						d = 0.0;
+					}
+					money = Arith.add(money , d);
+				}
+				dou[temp_4] = money;
+				temp_4++;
+			};
+			break;
+		}
+		return dou;
+	}
+	
+	@Override
+	public double[][] getMonthMoneyByQuarterAndYearAnditems(int year, int quarter, String[] items) {
+		double[][] d = new double[items.length][];
+		for(int q = 0 ; q < items.length ; q++){
+			d[q] = new double[3];
+		}
+		
+		switch (quarter) {
+		case 1:
+			int temp = 0;
+			for(String item : items){
+				int j = 0;
+				for(int i = 1 ; i <= 3 ; i++){
+					try {
+						d[temp][j] = getThisMonthThisGoodsTotleMoney(item, i, year);
+					} catch (Exception e) {
+						d[temp][j] = 0.0;
+					}
+					j++;
+				}
+				temp++;
+			}
+			break;
+		case 2:
+			int temp_2 = 0;
+			for(String item : items){
+				int j = 0;
+				for(int i = 4 ; i <= 6 ; i++){
+					try {
+						d[temp_2][j] = getThisMonthThisGoodsTotleMoney(item, i, year);
+					} catch (Exception e){
+						d[temp_2][j] = 0.0;
+					}
+					j++;
+				}
+				temp_2++;
+			}
+			break;
+		case 3:
+			int temp_3 = 0;
+			for(String item : items){
+				int j = 0;
+				for(int i = 7 ; i <= 9 ; i++){
+					try {
+						d[temp_3][j] = getThisMonthThisGoodsTotleMoney(item, i, year);
+					} catch (Exception e) {
+						d[temp_3][j] = 0.0;
+					}
+					j++;
+				}
+				temp_3++;
+			}
+			break;
+		case 4:
+			int temp_4 = 0;
+			for(String item : items){
+				int j = 0;
+				for(int i = 10 ; i <= 12 ; i++){
+					try {
+						d[temp_4][j] = getThisMonthThisGoodsTotleMoney(item, i, year);
+					} catch (Exception e) {
+						d[temp_4][j] = 0.0;
+					}
+					j++;
+				}
+				temp_4++;
+			}
+			break;
+		}
+		return d;
+	}
+	
+	private double getThisMonthThisGoodsTotleMoney(String item, int month, int year) {
+		return (double) getSession().createQuery(//
+				"SELECT money FROM Input out WHERE out.month=? AND out.year=? AND out.item=?")
+				.setParameter(0, month)
+				.setParameter(1, year)
+				.setParameter(2, item)
+				.uniqueResult();
+	}
+
+
+	private List<String> getThisMonthGoodsItemByMonth(int[] i, int year) {
+		return getSession().createQuery(//
+				"SELECT DISTINCT item FROM Input out WHERE out.year=? AND out.month=? OR out.month=? OR out.month=?")
+				.setParameter(0, year)
+				.setParameter(1, i[0])
+				.setParameter(2, i[1])
+				.setParameter(3, i[2])
+				.list();
+	}
+
+
 	public List<Input> getInputDataByMonth(int month,int year){
 		return getSession().createQuery(//
 				"FROM Input input WHERE input.month=? AND input.year=?")

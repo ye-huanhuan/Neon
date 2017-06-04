@@ -111,6 +111,7 @@ var month = ["一月","二月","三月"];
 var data_last_month = [[0.5,0.2,0.3],[1,2,2],[4,2,3]];
 var data_now_month = [[1,0.5,0.5],[1,2,4],[5,2,3]];
 $("#out").attr("checked","checked");
+var createChart;
 //初始化
 $(function () {
 $.ajax({
@@ -127,6 +128,7 @@ $.ajax({
         data_last_month = obj["lastYear_Month_quarter_4"];
         data_now_month = obj["thisYear_Month_quarter_4"];
         reduce();
+        createChart();
     }
 });
 });
@@ -146,6 +148,7 @@ $("#out").click(function () {
 	        data_last_month = obj["lastYear_Month_quarter_4"];
 	        data_now_month = obj["thisYear_Month_quarter_4"];
 	        reduce();
+	        createChart();
 	    }
 	});
 });
@@ -155,16 +158,18 @@ $("#in").click(function () {
 	    async: false,
 	    type: "post",        //type：(string)请求方式，POST或GET
 	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
-	    url: "analyze_quarter_4.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+	    url: "analyze_quarter_5.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
 	    success: function (msg) {
 	        var obj = eval(msg);
-	        items = obj["items_quarter_4"];
-	        data_last = obj["lastYear_Quarter_quarter_4"];
-	        data_now = obj["thisYear_Quarter_quarter_4"];
-	        month = obj["months_quarter_4"];
-	        data_last_month = obj["lastYear_Month_quarter_4"];
-	        data_now_month = obj["thisYear_Month_quarter_4"];
+	        items = obj["input_items_quarter_4"];
+	        data_last = obj["input_lastYear_Quarter_quarter_4"];
+	        
+	        data_now = obj["input_thisYear_Quarter_quarter_4"];
+	        month = obj["input_months_quarter_4"];
+	        data_last_month = obj["input_lastYear_Month_quarter_4"];
+	        data_now_month = obj["input_thisYear_Month_quarter_4"];
 	        reduce();
+	        createChart();
 	    }
 	});
 });
@@ -224,93 +229,93 @@ function reduce(){
 
         }
     }
-    alert(JSON.stringify(drilldown));
 }
     
-
-    $(function() {
-    	//配置返回按钮
-    	Highcharts.setOptions({
-            lang: {
-                drillUpText: '<< 返回季度'
-            }
-        });
-        // Create the chart
-        chart1 = new Highcharts.Chart('container_fourth',{
-        	credits: {
-                enabled: false
-            },
-        	chart: {
-                type: 'column',
-                
-                events: {
-                    drilldown: function(e) {
-                        if (!e.seriesOptions) {
-                            var chart = this,
-                                drilldowns = drilldown,
-                                series,
-                                points = [];
-                            //single point drilldown
-                            if (e.points === false) {
-                                points.push(e.point)
-                            } else { //or category drilldown
-                                points = e.points;
-                            }
-                            Highcharts.each(points, function(point) {
-                                series = [drilldowns[point.name], drilldowns[point.name + '2']];
-                                chart.addSingleSeriesAsDrilldown(e.point, series[0]);
-                                chart.addSingleSeriesAsDrilldown(e.point, series[1]);
-                            });
-                            chart.applyDrilldown();
-                        }
-                    }
-                }
-            },
-            title: {
-                text: '产品同比图'
-            },
-            xAxis: {
-                type: 'category',
-                labels: {
-                    style: {
-                        textDecoration: 'none',
-                        fontSize:'14px',
-                        fontFamily:'微软雅黑'
-                    }
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            
-            tooltip: {
-                headerFormat: '<span style="font-size:14px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} 万元</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true,
-                style: {                      // 文字内容相关样式
-                    color: "#F0F8FF",
-                    fontSize: "14px",
-                    fontWeight: "blod",
-                    fontFamily: "微软雅黑"
-                }
-            },
-            series: test1,
-            drilldown: {
-                series: [],
-                activeAxisLabelStyle: {
-                    textDecoration: 'none',
-                    fontSize:'14px',
-                    fontFamily:'微软雅黑'
-                },
-                activeDataLabelStyle: {
-                    textDecoration: 'none',
-                    fontSize:'14px',
-                    fontFamily:'微软雅黑'
-                }
-            }
-        });
-
-    });
+	
+		 createChart = function() {
+	    	//配置返回按钮
+	    	Highcharts.setOptions({
+	            lang: {
+	                drillUpText: '<< 返回季度'
+	            }
+	        });
+	        // Create the chart
+	        chart1 = new Highcharts.Chart('container_fourth',{
+	        	credits: {
+	                enabled: false
+	            },
+	        	chart: {
+	                type: 'column',
+	                
+	                events: {
+	                    drilldown: function(e) {
+	                        if (!e.seriesOptions) {
+	                            var chart = this,
+	                                drilldowns = drilldown,
+	                                series,
+	                                points = [];
+	                            //single point drilldown
+	                            if (e.points === false) {
+	                                points.push(e.point)
+	                            } else { //or category drilldown
+	                                points = e.points;
+	                            }
+	                            Highcharts.each(points, function(point) {
+	                                series = [drilldowns[point.name], drilldowns[point.name + '2']];
+	                                chart.addSingleSeriesAsDrilldown(e.point, series[0]);
+	                                chart.addSingleSeriesAsDrilldown(e.point, series[1]);
+	                            });
+	                            chart.applyDrilldown();
+	                        }
+	                    }
+	                }
+	            },
+	            title: {
+	                text: '产品同比图'
+	            },
+	            xAxis: {
+	                type: 'category',
+	                labels: {
+	                    style: {
+	                        textDecoration: 'none',
+	                        fontSize:'14px',
+	                        fontFamily:'微软雅黑'
+	                    }
+	                }
+	            },
+	            legend: {
+	                enabled: false
+	            },
+	            
+	            tooltip: {
+	                headerFormat: '<span style="font-size:14px">{point.key}</span><table>',
+	                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+	                '<td style="padding:0"><b>{point.y:.1f} 万元</b></td></tr>',
+	                footerFormat: '</table>',
+	                shared: true,
+	                useHTML: true,
+	                style: {                      // 文字内容相关样式
+	                    color: "#F0F8FF",
+	                    fontSize: "14px",
+	                    fontWeight: "blod",
+	                    fontFamily: "微软雅黑"
+	                }
+	            },
+	            series: test1,
+	            drilldown: {
+	                series: [],
+	                activeAxisLabelStyle: {
+	                    textDecoration: 'none',
+	                    fontSize:'14px',
+	                    fontFamily:'微软雅黑'
+	                },
+	                activeDataLabelStyle: {
+	                    textDecoration: 'none',
+	                    fontSize:'14px',
+	                    fontFamily:'微软雅黑'
+	                }
+	            }
+	        });
+		 }
+	
+    
