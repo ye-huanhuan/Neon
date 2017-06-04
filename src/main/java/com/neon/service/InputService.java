@@ -20,5 +20,10 @@ public interface InputService extends DaoSupport<Input>{
 	Map<String, Double> getThisMonthOutputGoodsTotleMoney(int cURRENTMONTH, int yEAR);
 
 	double[] getThisMonthInputGoodsTotleMoney(int cURRENTMONTH, int yEAR, String[] items);
+
+
+	double[] getThisQuarterInputGoodsTotleMoney(int i, int yEAR, String[] items);
+
+	double[][] getMonthMoneyByQuarterAndYearAnditems(int i, int j, String[] items);
 	
 }

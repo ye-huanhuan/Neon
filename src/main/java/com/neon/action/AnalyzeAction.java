@@ -299,9 +299,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 		double[] lastYear_money = inputService.getThisMonthInputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR - 1 , items);
 		
 		//测试
-		/*for(int i = 0 ; i < items.length ; i++){
+		for(int i = 0 ; i < items.length ; i++){
 			System.out.println(items[i] + "今年" + thisYear_moeny[i] + "  去年" + lastYear_money[i]);
-		}*/
+		}
 		
 		return "success";
 	}
@@ -577,6 +577,42 @@ public class AnalyzeAction extends ActionBase<Input>{
 		result1.put("thisYear_Quarter_quarter_4", thisYear_Quarter);
 		result1.put("lastYear_Quarter_quarter_4", lastYear_Quarter);
 		return "success_quarter";
+	}
+	
+	public String quarter_5(){
+		Map<String, Double> map_thisQuarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER - 1, Constant.YEAR);
+		Map<String, Double> map_lastQuarter = outputService.getThisQuarterOutputGoodsTotleMoney(Constant.CURRENTQUARTER - 1, Constant.YEAR - 1);
+		String[] item = ListToArray.getItemsArray(map_thisQuarter , map_lastQuarter);
+		//销项名称
+		String[] items = inoutService.getInputItemByOutputItem(item);
+		//准备数据  今年这个季度的总和
+		double[] thisYear_Quarter = inputService.getThisQuarterInputGoodsTotleMoney(Constant.CURRENTQUARTER - 1, Constant.YEAR , items);
+		//准备数据  去年这个季度的总和
+		double[] lastYear_Quarter = inputService.getThisQuarterInputGoodsTotleMoney(Constant.CURRENTQUARTER - 1, Constant.YEAR - 1 , items);
+		//该季度包含的月份
+		String[] months = outputService.getMomthByQuarter(Constant.CURRENTQUARTER);
+		//去年该季每个月份的销售额
+		double[][] data_last_month = inputService.getMonthMoneyByQuarterAndYearAnditems(Constant.YEAR - 1 , Constant.CURRENTQUARTER - 1, items);
+		//前年该季每个月份的销售额
+		double[][] data_now_month  = inputService.getMonthMoneyByQuarterAndYearAnditems(Constant.YEAR , Constant.CURRENTQUARTER - 1, items);
+		
+		//测试
+				System.out.println("今年和去年这个季度的总和");
+				for(int i = 0 ; i < items.length ; i++){
+					System.out.println(items[i] + "今年" + thisYear_Quarter[i] + "  去年" + lastYear_Quarter[i]);
+				}
+				System.out.println("该季度包含月份");
+				for(int i = 0 ; i < months.length ; i++){
+					System.out.println(months[i]);
+				}
+				System.out.println("今年和去年这个季度的每个月的销售额");
+				for(int i = 0 ; i < items.length ; i++){
+					System.out.println("第"+	(i+1) +"个月份");
+					for(int j = 0 ; j < 3 ; j++){
+						System.out.println("去年"+ data_last_month[i][j] + "  今年" +data_now_month[i][j]);
+					}
+				}
+		return "success";
 	}
 	
 	//准备年份分析数据
