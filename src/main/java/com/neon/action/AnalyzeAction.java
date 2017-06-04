@@ -268,14 +268,17 @@ public class AnalyzeAction extends ActionBase<Input>{
 	}
 	
 	public String month_3(){
-		System.out.println("month_3");
 		//第三张表的数据   output_percent_month_array
-		System.out.println("月份："+m);
-		Map<String, Double> output_top3_month = outputService.getThisMonthTop3GoodsMoney(m, Constant.YEAR);
+		//如果是大于等于当前月份就查询去年的值
+		int query_year = Constant.YEAR;
+		if(m>=Constant.CURRENTMONTH){
+			query_year -= 1;
+		}
+		Map<String, Double> output_top3_month = outputService.getThisMonthTop3GoodsMoney(m, query_year);
 		//准备数据
 		String[] output_top3_key = outputService.getItemByMap(output_top3_month);
 		double[] output_top3_value = outputService.getValueByMap(output_top3_month);
-		Map<String, Double> output_percent_month = outputService.getThisMonthOutputGoodsTotleMoney(m, Constant.YEAR);
+		Map<String, Double> output_percent_month = outputService.getThisMonthOutputGoodsTotleMoney(m, query_year);
 		String output_percent_month_array[][] = ListToArray.getString2Array(output_percent_month);
 		result.put("data_output_month_3_key", output_top3_key);
 		result.put("data_output_month_3_value", output_top3_value);
@@ -283,39 +286,53 @@ public class AnalyzeAction extends ActionBase<Input>{
 		return "success";
 	}
 	
-	//出项同比数据
+	//出项同比数据 
 	public String month_4(){
-		Map<String, Double> map_thisYear = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR);
-		Map<String, Double> map_lastYear = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR - 1);
+		int query_month = Constant.CURRENTMONTH;
+		int query_year = Constant.YEAR;
+		if(Constant.CURRENTMONTH == 1){
+			query_month = 13;
+			query_year = Constant.YEAR - 1;
+		}
+		Map<String, Double> map_thisYear = outputService.getThisMonthOutputGoodsTotleMoney(query_month - 1, query_year);
+		Map<String, Double> map_lastYear = outputService.getThisMonthOutputGoodsTotleMoney(query_month - 1, query_year - 1);
 		//bug
 		String[] items = ListToArray.getItemsArray(map_thisYear , map_lastYear);
-		double[] thisYear_moeny = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1 , Constant.YEAR , items);
-		double[] lastYear_money = outputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR - 1 , items);
+		double[] thisYear_moeny = outputService.getThisMonthOutputGoodsTotleMoney(query_month - 1 , query_year , items);
+		double[] lastYear_money = outputService.getThisMonthOutputGoodsTotleMoney(query_month - 1, query_year - 1 , items);
 		
-		for(int i = 0 ; i < items.length ; i++){
-			System.out.println(items[i] + "今年" + thisYear_moeny[i] + "  去年" + lastYear_money[i]);
-		}
+//		for(int i = 0 ; i < items.length ; i++){
+//			System.out.println(items[i] + "今年" + thisYear_moeny[i] + "  去年" + lastYear_money[i]);
+//		}
 		result.put("items_month_4", items);
 		result.put("thisYear_moeny_month_4", thisYear_moeny);
 		result.put("lastYear_money_month_4", lastYear_money);
 		return "success";
 	}
 	
-	//进项同比数据
+	//进项同比数据 
 	public String month_5(){
-		Map<String, Double> map_thisYear = inputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR);
-		Map<String, Double> map_lastYear = inputService.getThisMonthOutputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR - 1);
+		int query_month = Constant.CURRENTMONTH;
+		int query_year = Constant.YEAR;
+		if(Constant.CURRENTMONTH == 1){
+			query_month = 13;
+			query_year = Constant.YEAR - 1;
+		}
+		Map<String, Double> map_thisYear = inputService.getThisMonthOutputGoodsTotleMoney(query_month - 1, query_year);
+		Map<String, Double> map_lastYear = inputService.getThisMonthOutputGoodsTotleMoney(query_month - 1, query_year - 1);
 		String[] item = ListToArray.getItemsArray(map_thisYear , map_lastYear);
 		String[] items = inoutService.getInputItemByOutputItem(item);
 		//进项同比数据
-		double[] thisYear_moeny = inputService.getThisMonthInputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR , items);
-		double[] lastYear_money = inputService.getThisMonthInputGoodsTotleMoney(Constant.CURRENTMONTH - 1, Constant.YEAR - 1 , items);
+		double[] thisYear_moeny = inputService.getThisMonthInputGoodsTotleMoney(query_month - 1, query_year , items);
+		double[] lastYear_money = inputService.getThisMonthInputGoodsTotleMoney(query_month - 1, query_year - 1 , items);
 		
 		//测试
-		/*for(int i = 0 ; i < items.length ; i++){
+		for(int i = 0 ; i < items.length ; i++){
 			System.out.println(items[i] + "今年" + thisYear_moeny[i] + "  去年" + lastYear_money[i]);
-		}*/
-		
+		}
+		result.put("input_items_month_4", items);
+		result.put("input_thisYear_moeny_month_4", thisYear_moeny);
+		result.put("input_lastYear_money_month_4", lastYear_money);
 		return "success";
 	}
 	
@@ -526,14 +543,18 @@ public class AnalyzeAction extends ActionBase<Input>{
 	public String quarter_3(){
 		//第三张表的数据   output_percent_month_array
 		System.out.println(quarter_quarter_3);
-		Map<String, Double> output_percent_quarter = outputService.getThisQuarterOutputGoodsTotleMoney(quarter_quarter_3, Constant.YEAR);
+		int query_year = Constant.YEAR;
+		if(quarter_quarter_3>Constant.CURRENTQUARTER){
+			query_year -= 1;
+		}
+		Map<String, Double> output_percent_quarter = outputService.getThisQuarterOutputGoodsTotleMoney(quarter_quarter_3, query_year);
 		String output_percent_quarter_array[][] = ListToArray.getString2Array(output_percent_quarter);
-		Map<String, Double> output_top3_quarter = outputService.getThisQuarterTop3GoodsMoney(quarter_quarter_3, Constant.YEAR);
+		Map<String, Double> output_top3_quarter = outputService.getThisQuarterTop3GoodsMoney(quarter_quarter_3, query_year);
 		//准备数据
 		String[] output_top3_key = outputService.getItemByMap(output_top3_quarter);
-		double[] output_top3_month_1 = outputService.getMomthValueByMap(output_top3_key , quarter_quarter_3).get(0);
-		double[] output_top3_month_2 = outputService.getMomthValueByMap(output_top3_key, quarter_quarter_3).get(1);
-		double[] output_top3_month_3 = outputService.getMomthValueByMap(output_top3_key, quarter_quarter_3).get(2);
+		double[] output_top3_month_1 = outputService.getMomthValueByMap(output_top3_key , quarter_quarter_3, query_year).get(0);
+		double[] output_top3_month_2 = outputService.getMomthValueByMap(output_top3_key, quarter_quarter_3, query_year).get(1);
+		double[] output_top3_month_3 = outputService.getMomthValueByMap(output_top3_key, quarter_quarter_3, query_year).get(2);
 		String[] months = outputService.getMomthByQuarter(quarter_quarter_3);
 		/*for(int i = 0 ; i < 3 ; i++){
 			System.out.println(output_top3_key[i]);
@@ -596,6 +617,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 		result1.put("items_quarter_4", items);
 		result1.put("thisYear_Quarter_quarter_4", thisYear_Quarter);
 		result1.put("lastYear_Quarter_quarter_4", lastYear_Quarter);
+		result1.put("months_quarter_4", months);
+		result1.put("lastYear_Month_quarter_4", data_last_month);
+		result1.put("thisYear_Month_quarter_4", data_now_month);
 		return "success_quarter";
 	}
 	

@@ -102,15 +102,75 @@
 //    });
 //});
 var chart1;
+var test1 = [];
+var drilldown = {};
+var items = ["鸡肉罐头","鱼肉罐头","猪肉罐头"];
+var data_last = [1,5,9];
+var data_now = [2,7,10];
+var month = ["一月","二月","三月"];
+var data_last_month = [[0.5,0.2,0.3],[1,2,2],[4,2,3]];
+var data_now_month = [[1,0.5,0.5],[1,2,4],[5,2,3]];
+$("#out").attr("checked","checked");
+//初始化
+$(function () {
+$.ajax({
+    async: false,
+    type: "post",        //type：(string)请求方式，POST或GET
+    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+    url: "analyze_quarter_4.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+    success: function (msg) {
+        var obj = eval(msg);
+        items = obj["items_quarter_4"];
+        data_last = obj["lastYear_Quarter_quarter_4"];
+        data_now = obj["thisYear_Quarter_quarter_4"];
+        month = obj["months_quarter_4"];
+        data_last_month = obj["lastYear_Month_quarter_4"];
+        data_now_month = obj["thisYear_Month_quarter_4"];
+        reduce();
+    }
+});
+});
+//异步请求销项
+$("#out").click(function () {
+	$.ajax({
+	    async: false,
+	    type: "post",        //type：(string)请求方式，POST或GET
+	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+	    url: "analyze_quarter_4.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+	    success: function (msg) {
+	        var obj = eval(msg);
+	        items = obj["items_quarter_4"];
+	        data_last = obj["lastYear_Quarter_quarter_4"];
+	        data_now = obj["thisYear_Quarter_quarter_4"];
+	        month = obj["months_quarter_4"];
+	        data_last_month = obj["lastYear_Month_quarter_4"];
+	        data_now_month = obj["thisYear_Month_quarter_4"];
+	        reduce();
+	    }
+	});
+});
+//异步请求进项
+$("#in").click(function () {
+	$.ajax({
+	    async: false,
+	    type: "post",        //type：(string)请求方式，POST或GET
+	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
+	    url: "analyze_quarter_4.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
+	    success: function (msg) {
+	        var obj = eval(msg);
+	        items = obj["items_quarter_4"];
+	        data_last = obj["lastYear_Quarter_quarter_4"];
+	        data_now = obj["thisYear_Quarter_quarter_4"];
+	        month = obj["months_quarter_4"];
+	        data_last_month = obj["lastYear_Month_quarter_4"];
+	        data_now_month = obj["thisYear_Month_quarter_4"];
+	        reduce();
+	    }
+	});
+});
     //series
-    var test1 = [];
-    var items = ["鸡肉罐头","鱼肉罐头","猪肉罐头"];
-    var data_last = [1,5,9];
-    var data_now = [2,7,10];
-    var month = ["一月","二月","三月"];
-    var data_last_month = [[0.5,0.2,0.3],[1,2,2],[4,2,3]];
-    var data_now_month = [[1,0.5,0.5],[1,2,4],[5,2,3]];
-    for(var i=0;i<2;i++){
+function reduce(){
+	for(var i=0;i<2;i++){
         test1[i] = {};
         if(i===0){
             test1[i].name = "去年";
@@ -139,7 +199,6 @@ var chart1;
         }
 
     }
-   var drilldown = {};
     for(var n=0;n<items.length;n++){
         var item = items[n];
         var item_2 = item+"2";
@@ -166,95 +225,16 @@ var chart1;
         }
     }
     alert(JSON.stringify(drilldown));
-    //drilldowns
-    var drill = {
-        '鸡肉罐头': {
-            name: '去年',
-            data: [
-                ['一月', 2],
-                ['二月', 3],
-                ['三月',4],
-            ]
-        },
-        '鸡肉罐头2': {
-            name: '今年',
-            color: Highcharts.getOptions().colors[1],
-            data: [
-                ['一月', 5],
-                ['二月', 7],
-                ['三月',8]
-            ]
-        },
-        '鱼肉罐头': {
-            name: '去年',
-            data: [
-                ['一月', 5],
-                ['二月', 7],
-                ['三月', 2]
-            ]
-        },
-        '鱼肉罐头2': {
-            name: '今年',
-            color: 'red',
-            data: [
-                ['一月', 15],
-                ['二月', 17],
-                ['三月', 22]
-            ]
-        },
-        'Cars': {
-            name: 'Cars',
-            data: [
-                ['Toyota', 1],
-                ['Volkswagen', 2],
-                ['Opel', 5]
-            ]
-        },
-        'Cars2': {
-            name: '2 Cars',
-            color: '#bada55',
-            data: [
-                ['Toyota', 11],
-                ['Volkswagen', 21],
-                ['Opel', 15]
-            ]
-        }
-    };
-//serise
-    var test = [{
-        name: '去年',
-        colorByPoint: true,
-        data: [{
-            name: '鸡肉罐头',
-            y: 5,
-            drilldown: true
-        }, {
-            name: '鱼肉罐头',
-            y: 2,
-            drilldown: true
-        }, {
-            name: 'Cars',
-            y: 4,
-            drilldown: true
-        }]
-    }, {
-        name: '今年',
-        colorByPoint: true,
-        data: [{
-            name: '鸡肉罐头',
-            y: 4,
-            drilldown: true
-        }, {
-            name: '鱼肉罐头',
-            y: 3,
-            drilldown: true
-        }, {
-            name: 'Cars',
-            y: 5,
-            drilldown: true
-        }]
-    }];
+}
+    
+
     $(function() {
+    	//配置返回按钮
+    	Highcharts.setOptions({
+            lang: {
+                drillUpText: '<< 返回季度'
+            }
+        });
         // Create the chart
         chart1 = new Highcharts.Chart('container_fourth',{
         	credits: {
@@ -302,12 +282,19 @@ var chart1;
             legend: {
                 enabled: false
             },
-            plotOptions: {
-                series: {
-                    borderWidth: 0,
-                    dataLabels: {
-                        enabled: true
-                    }
+            
+            tooltip: {
+                headerFormat: '<span style="font-size:14px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} 万元</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true,
+                style: {                      // 文字内容相关样式
+                    color: "#F0F8FF",
+                    fontSize: "14px",
+                    fontWeight: "blod",
+                    fontFamily: "微软雅黑"
                 }
             },
             series: test1,

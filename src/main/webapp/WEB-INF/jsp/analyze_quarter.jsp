@@ -190,14 +190,14 @@
   </section>
 </section>
  
-
+<script src="js/dynamic_quarter.js"></script>
 <script src="js/highcharts.js"></script>
 <script src="js/sumInOutQuarter.js"></script>
 <script src="js/productOutQuarter.js"></script>
 <script src="js/quarterOutProduct.js"></script>
 <script src="js/top_product_quarter.js"></script>
 <script src="js/compare_same_quarter.js"></script>
-<script src="js/dynamic_quarter.js"></script>
+
 
 <!--  
 <script>

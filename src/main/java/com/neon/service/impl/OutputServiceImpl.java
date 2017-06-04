@@ -438,7 +438,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	}
 	
 	@Override
-	public List<double[]> getMomthValueByMap(String[] output_top3_quarter, int quarter_quarter_3) {
+	public List<double[]> getMomthValueByMap(String[] output_top3_quarter, int quarter_quarter_3,int year) {
 		List<double[]> list = new ArrayList<>();
 		double[] month_1 = new double[output_top3_quarter.length];
 		double[] month_2 = new double[output_top3_quarter.length];
@@ -450,11 +450,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 					int index = 0;
 					for(String str : output_top3_quarter){
 						if(month == 1){
-							month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+							month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 						}else if(month == 2){
-							month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+							month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 						}else if(month == 3){
-							month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+							month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 						}
 						index++;
 					}
@@ -469,11 +469,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				int index = 0;
 				for(String str : output_top3_quarter){
 					if(month == 4){
-						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 5){
-						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 6){
-						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}
 					index++;
 				}
@@ -488,11 +488,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				int index = 0;
 				for(String str : output_top3_quarter){
 					if(month == 7){
-						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 8){
-						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 9){
-						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}
 					index++;
 				}
@@ -507,11 +507,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				int index = 0;
 				for(String str : output_top3_quarter){
 					if(month == 10){
-						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 11){
-						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 12){
-						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}
 					index++;
 				}
@@ -797,6 +797,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				.list();
 	}
 	private Double getThisItemTotleMoney(String item, int month, int year) {
+		
 		return (Double) getSession().createQuery(//
 				"SELECT money FROM Output output WHERE output.item=? AND month=? AND year=?")
 				.setParameter(0, item)

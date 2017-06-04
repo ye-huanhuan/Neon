@@ -57,6 +57,7 @@ chart2 = new Highcharts.Chart('container_third',{
             ]
         }]
     });
+
 $("#month5").attr("checked","checked");
 $.ajax({
     async: true,

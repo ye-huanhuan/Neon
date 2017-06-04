@@ -56,6 +56,7 @@ var parent2 = document.getElementById("second_year");
         span3 = document.createElement("span");
         year3 = document.createElement("input");
         year3.id = "month"+((month+j)%12+1);
+        
         year3.setAttribute("class","month");
         year3.setAttribute("type","radio");
         year3.setAttribute("name","month");
@@ -66,3 +67,4 @@ var parent2 = document.getElementById("second_year");
         span3.appendChild(year3_content);
         parent3.insertBefore(span3,parent3.lastElementChild);
     }
+    

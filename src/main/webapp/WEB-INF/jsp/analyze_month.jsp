@@ -143,8 +143,8 @@
                   <div id="wrap_inOut">
 				  <div id="inOut">
 				  <font>进销:</font>
-				  <input id="in" class="month" type="radio" name="month" value="in">进项
-				  <input id="out" class="month" type="radio" name="month" value="out">销项
+				  <input id="in" class="month" type="radio" name="inOut" value="in">进项
+				  <input id="out" class="month" type="radio" name="inOut" value="out">销项
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -187,14 +187,14 @@
 </section>
  
 
-
+<script src="js/dynamic_month.js"></script>
 <script src="js/highcharts.js"></script>
 <script src="js/sumInOutMonth.js"></script>
 <script src="js/productOutMonth.js"></script>
 <script src="js/monthOutProduct.js"></script>
 <script src="js/top_product_month.js"></script>
 <script src="js/compare_same_month.js"></script>
-<script src="js/dynamic_month.js"></script>
+
 
 <!--  
 <script type="text/javascript">
