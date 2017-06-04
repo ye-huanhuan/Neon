@@ -44,6 +44,7 @@
         <div class="form-group">
         <label class="control-label" style="font-size: 16px">验证码</label>
         <input class="form-control input-lg" type="text" name="jcaptcha" value="" placeholder="Verification"/><img id="imgCode" alt="验证图片" src="jcaptcha.jpg" onclick="this.src='jcaptcha.jpg?now=' + new Date().getTime()"/>
+        <span style="color:red">点击图片换一张</span>
         </div>
         
         <div class="checkbox">

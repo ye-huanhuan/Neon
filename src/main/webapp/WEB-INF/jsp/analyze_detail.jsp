@@ -28,9 +28,6 @@
           </section>
         </section>
       </aside>
-      
-        <!--</aside>-->
-          <aside>
             <section class="vbox">
               <header class="header bg-white b-b clearfix">
                 <div class="row m-t-sm">
@@ -108,7 +105,7 @@
                 </div>
               </footer>
             </section>
-          </aside>
+          
         
         </section>
     </section>
