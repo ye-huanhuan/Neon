@@ -14,6 +14,7 @@ import com.neon.service.OutputService;
 import com.neon.util.Arith;
 import com.neon.util.Constant;
 import com.neon.util.DoubleJudge;
+import com.neon.util.ListToArray;
 import com.neon.util.Sort;
 
 @Service
@@ -711,6 +712,72 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	}
 
 
+	@Override
+	public String[] getAllItems() {
+		List<String> items = getItemsAll();
+		return ListToArray.getStringArray_2(items);
+	}
+	
+	
+	@Override
+	public double[][][] getInputAndOutputByItems(List<Output> outputs, String[] items, String[] inputItems) {
+		double[][][] d = new double[items.length][][];
+		int temp = 0;
+		for(String str : items){
+			List<Output> output = new ArrayList<>();
+			for(Output out : outputs){
+				if(out.getItem().equals(str)){
+					output.add(out);
+				}
+			}
+			d[temp] = getInputAndOutputByOutput(output , inputItems[temp]);
+			temp++;
+		}
+		return d;
+	}
+	
+	
+
+	private double[][] getInputAndOutputByOutput(List<Output> out , String inputItem) {
+		double[][] d = new double[out.size()][];
+		for(int q = 0 ; q < out.size() ; q++){
+			d[q] = new double[2];
+		}
+		int temp = 0;
+		for(Output output : out){
+			for(int j = 0 ; j < 2 ; j++){
+				if(j == 0){
+					try{
+						d[temp][j] = getInputMoneyByOutput(inputItem , output.getMonth() , output.getYear());
+					}catch (Exception e) {
+						d[temp][j] = 0;
+					}
+				}else{
+					d[temp][j] = output.getMoney();
+				}
+			}
+			temp++;
+		}
+		return d;
+	}
+
+
+	private double getInputMoneyByOutput(String inputItem, int month, int year) {
+		return (double) getSession().createQuery(//
+				"SELECT money FROM Input input WHERE input.item=? AND input.month=? AND input.year=?")
+				.setParameter(0, inputItem)
+				.setParameter(1, month)
+				.setParameter(2, year)
+				.uniqueResult();
+	}
+
+
+	private List<String> getItemsAll() {
+		return getSession().createQuery(//
+				"SELECT DISTINCT item FROM Output out")
+				.list();
+	}
+
 
 	private double getThisMonthThisGoodsTotleMoney(String item, int month, int year) {
 		return (double) getSession().createQuery(//
@@ -826,6 +893,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				.setParameter(2, item)
 				.list();
 	}
+
 
 }
 

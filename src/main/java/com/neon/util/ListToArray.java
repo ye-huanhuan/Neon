@@ -35,10 +35,17 @@ public class ListToArray {
 	        array[i] = itr.next();  
 	        i++;
 	    }  
-        /*for(int i = 0 ; i < set.size() ; i++){  
-            array[i] = 
-        } */ 
+     
 		return array;
+	}
+	
+	public static String[] getStringArray_2(List<String> list){
+		String[] array = new String[list.size()];
+		for(int i = 0 ; i < list.size() ; i++){
+			array[i] = list.get(i);
+		}  
+		return array;
+		
 	}
 	
 	/**

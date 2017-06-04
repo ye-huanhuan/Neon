@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import com.neon.base.ActionBase;
 import com.neon.domain.Dvalue;
 import com.neon.domain.Input;
+import com.neon.domain.Output;
 import com.neon.util.Constant;
 import com.neon.util.ListToArray;
 
@@ -722,7 +723,24 @@ public class AnalyzeAction extends ActionBase<Input>{
 	
 	//准备税收分析数据
 	public String tax(){
-		return "tax";
+		List<Output> outputs = outputService.findAll();
+		//销项数组
+		String[] items = outputService.getAllItems();
+		String[] inputItems = inoutService.getInputItemByOutputItem(items);
+		double[][][] item_in_out = outputService.getInputAndOutputByItems(outputs , items , inputItems);
+		//测试
+		
+		for(int i = 0 ; i < items.length ; i++){
+			System.out.println(inputItems[i] + "  " + items[i]);
+			for(int j = 0 ; j < 10 ; j++){
+					System.out.println(item_in_out[i][j][0] + "  " + item_in_out[i][j][1]);
+			}
+		}
+		return "success";
+	}
+	
+	public String tax_1(){
+		return "success";
 	}
 	
 	//明细分析
