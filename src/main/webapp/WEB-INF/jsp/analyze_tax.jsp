@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
 <link rel="stylesheet" href="js\calendar/bootstrap_calendar.css" type="text/css" cache="false" />
 <script src="js/app.v2.js"></script>
+<!-- 拖拽legend插件 -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://rawgithub.com/highcharts/draggable-legend/master/draggable-legend.js"></script>
 </head>
 <body>
 <section class="vbox">

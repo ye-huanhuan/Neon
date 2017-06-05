@@ -20,7 +20,8 @@ $(function () {
             title: {
                 enabled: true,
                 text: '进项/万元',
-                align: 'high'
+                align: 'high',
+                zIndex: 6
             },
             labels: {
                 style: {
@@ -30,7 +31,8 @@ $(function () {
             },
             startOnTick: true,
             endOnTick: true,
-            showLastLabel: true
+            showLastLabel: true,
+            
         };
        var yAxis = {
             title: {
@@ -41,19 +43,48 @@ $(function () {
                 style: {
                     fontSize:'14px',
                     fontFamily:'微软雅黑'
-                }
-            }
+                },
+                zIndex: 6
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }],
+            
         };
-        var legend = {
-            layout: 'vertical',
-            align: 'left',
-            verticalAlign: 'top',
-            x: 100,
-            y: 70,
-            floating: true,
-            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
-            borderWidth: 1
-        };
+//        var legend = {
+//            layout: 'vertical',
+//            align: 'left',
+//            verticalAlign: 'top',
+//            x: 100,
+//            y: 70,
+//            floating: true,
+//            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+//            borderWidth: 1
+//        };
+       var legend = {
+           layout: 'vertical',
+           align: 'left',
+           verticalAlign: 'top',
+           y: 70,
+           x: 100,
+           borderWidth: 1,
+           borderRadius: 0,
+           title: {
+               text: '::拖拽我',
+               style: {
+            	   fontSize:'14px',
+                   fontFamily:'微软雅黑',
+                   color: 'white'
+               }
+           },
+           
+           backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+           floating: true,
+           draggable: true,
+           zIndex: 20
+       };
         var plotOptions = {
             scatter: {
                 marker: {
