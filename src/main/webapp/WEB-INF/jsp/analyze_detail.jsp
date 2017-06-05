@@ -28,9 +28,6 @@
           </section>
         </section>
       </aside>
-      
-        <!--</aside>-->
-          <aside>
             <section class="vbox">
               <header class="header bg-white b-b clearfix">
                 <div class="row m-t-sm">
@@ -92,23 +89,23 @@
               <footer class="footer bg-white b-t">
                 <div class="row text-center-xs">
                   <div class="col-md-6 hidden-sm">
-                    <p class="text-muted m-t">2017-05-31</p>
+                    <p id="date" class="text-muted m-t"></p>
                   </div>
                   <div class="col-md-6 col-sm-12 text-right text-center-xs">
                     <ul class="pagination pagination-sm m-t-sm m-b-none">
-                      <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                      <li><a href="#"  style="height:29px"><i class="fa fa-chevron-left"></i></a></li>
                       <li class="active"><a href="#">1</a></li>
                       <li><a href="#">2</a></li>
                       <li><a href="#">3</a></li>
                       <li><a href="#">4</a></li>
                       <li><a href="#">5</a></li>
-                      <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                      <li><a href="#" style="height:29px"><i class="fa fa-chevron-right"></i></a></li>
                     </ul>
                   </div>
                 </div>
               </footer>
             </section>
-          </aside>
+          
         
         </section>
     </section>
@@ -123,6 +120,11 @@
 		            }
 		        }
 		    }
+		 var date = new Date();
+		 var year = date.getFullYear();
+		 var month = date.getMonth()+1;
+		 var day = date.getDate();
+		 document.getElementById("date").innerText = "当前时间为："+year+" - "+month+" - "+day;
 		</script>
 </body>
 </html>

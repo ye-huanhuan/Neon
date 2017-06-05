@@ -10,11 +10,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <link rel="stylesheet" href="css/app.v2.css" type="text/css" />
 <script src="js/app.v2.js"></script>
+ 
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
 <script src="http://code.highcharts.com/modules/solid-gauge.js"></script>
-    
+
 </head>
 <body>
 <section class="vbox">
@@ -83,7 +84,6 @@
     </section>
   </section>
 </section>
-
 <script src= "js/indexIn.js"></script>
 <script src="js/highcharts.js"></script>
 <script src="js/indexOut.js"></script>

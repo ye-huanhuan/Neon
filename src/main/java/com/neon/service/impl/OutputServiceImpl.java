@@ -439,7 +439,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	}
 	
 	@Override
-	public List<double[]> getMomthValueByMap(String[] output_top3_quarter, int quarter_quarter_3) {
+	public List<double[]> getMomthValueByMap(String[] output_top3_quarter, int quarter_quarter_3,int year) {
 		List<double[]> list = new ArrayList<>();
 		double[] month_1 = new double[output_top3_quarter.length];
 		double[] month_2 = new double[output_top3_quarter.length];
@@ -451,11 +451,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 					int index = 0;
 					for(String str : output_top3_quarter){
 						if(month == 1){
-							month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+							month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 						}else if(month == 2){
-							month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+							month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 						}else if(month == 3){
-							month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+							month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 						}
 						index++;
 					}
@@ -470,11 +470,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				int index = 0;
 				for(String str : output_top3_quarter){
 					if(month == 4){
-						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 5){
-						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 6){
-						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}
 					index++;
 				}
@@ -489,11 +489,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				int index = 0;
 				for(String str : output_top3_quarter){
 					if(month == 7){
-						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 8){
-						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 9){
-						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}
 					index++;
 				}
@@ -508,11 +508,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				int index = 0;
 				for(String str : output_top3_quarter){
 					if(month == 10){
-						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_1[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 11){
-						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_2[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}else if(month == 12){
-						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,Constant.YEAR));
+						month_3[index] = DoubleJudge.isDouble(getThisItemTotleMoney(str,month,year));
 					}
 					index++;
 				}
@@ -739,6 +739,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	
 
 	private double[][] getInputAndOutputByOutput(List<Output> out , String inputItem) {
+		System.out.println(out.size());
 		double[][] d = new double[out.size()][];
 		for(int q = 0 ; q < out.size() ; q++){
 			d[q] = new double[2];
@@ -853,6 +854,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				.list();
 	}
 	private Double getThisItemTotleMoney(String item, int month, int year) {
+		
 		return (Double) getSession().createQuery(//
 				"SELECT money FROM Output output WHERE output.item=? AND month=? AND year=?")
 				.setParameter(0, item)
@@ -891,6 +893,15 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				.setParameter(0, month)
 				.setParameter(1, year)
 				.setParameter(2, item)
+				.list();
+	}
+
+
+	@Override
+	public List<Output> getOutputsByItem(String outputItem) {
+		return getSession().createQuery(//
+				"FROM Output out WHERE out.item=?")
+				.setParameter(0, outputItem)
 				.list();
 	}
 

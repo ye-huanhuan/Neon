@@ -37,9 +37,8 @@
 		display: inline-block;
 		margin-left: 15px;
 	}
-	#year{
+	#year,#second_year{
 		display: inline-block;
-		
 	}
 	.year,.product,.month,.second_year{
 		width: 25px;
@@ -91,9 +90,9 @@
 				  
 				  <div id="year">
 				  <font>年份:</font>
-				  <input id="year-2015" class="year" type="radio" name="year" value="2015">2015
+				  <!-- <input id="year-2015" class="year" type="radio" name="year" value="2015">2015
 				  <input id="year-2016" class="year" type="radio" name="year" value="2016">2016
-				  <input id="year-2017" class="year" type="radio" name="year" value="2017">2017
+				  <input id="year-2017" class="year" type="radio" name="year" value="2017">2017 -->
 				  <input id="year-12month" class="year" type="radio" name="year" value="">近十二个月
 				  </div>
 				  </div>
@@ -121,12 +120,12 @@
 				  <div id="second_range">
 				  <input id="second_rangeValue" type="hidden" class="range-slider"  value="0,50"/>
 				  </div>
-				  <div id="year">
+				  <div id="second_year">
 				  <font>年份:</font>
-				  <input id="second_year2015" class="second_year" type="radio" name="second_year" value="2015"><font class="yearFont">2015</font>
+				  <!-- <input id="second_year2015" class="second_year" type="radio" name="second_year" value="2015"><font class="yearFont">2015</font>
 				  <input id="second_year2016" class="second_year" type="radio" name="second_year" value="2016"><font class="yearFont">2016</font>
-				  <input id="second_year2017" class="sevond_year" type="radio" name="second_year" value="2017"><font class="yearFont">2017</font>
-				  <input id="second_year4month" class="sevond_year" type="radio" name="second_year" value=""><font class="yearFont">近十二个月</font>
+				  <input id="second_year2017" class="second_year" type="radio" name="second_year" value="2017"><font class="yearFont">2017</font> -->
+				  <span><input id="second_year4month" class="second_year" type="radio" name="second_year" value=""><font class="yearFont">近十二个月</font></span>
 				  <input id="second_button" class="sevond_year" type="button" value="重置">
 				  </div>
 				  
@@ -144,8 +143,8 @@
                   <div id="wrap_inOut">
 				  <div id="inOut">
 				  <font>进销:</font>
-				  <input id="in" class="month" type="radio" name="month" value="in">进项
-				  <input id="out" class="month" type="radio" name="month" value="out">销项
+				  <input id="in" class="month" type="radio" name="inOut" value="in">进项
+				  <input id="out" class="month" type="radio" name="inOut" value="out">销项
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -160,12 +159,13 @@
 				  <div id="wrap_month">
 				  <div id="month">
 				  <font>月份:</font>
-				  <input id="month12" class="month" type="radio" name="month" value="12">十二月
+				  <!-- <input id="month12" class="month" type="radio" name="month" value="12">十二月
 				  <input id="month1" class="month" type="radio" name="month" value="1">一月
 				  <input id="month2" class="month" type="radio" name="month" value="2">二月
 				  <input id="month3" class="month" type="radio" name="month" value="3">三月
 				  <input id="month4" class="month" type="radio" name="month" value="4">四月
-				  <input id="month5" class="month" type="radio" name="month" value="5">五月
+				  <input id="month5" class="month" type="radio" name="month" value="5">五月 -->
+				  <span></span>
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -187,13 +187,14 @@
 </section>
  
 
-
+<script src="js/dynamic_month.js"></script>
 <script src="js/highcharts.js"></script>
 <script src="js/sumInOutMonth.js"></script>
 <script src="js/productOutMonth.js"></script>
 <script src="js/monthOutProduct.js"></script>
 <script src="js/top_product_month.js"></script>
 <script src="js/compare_same_month.js"></script>
+
 
 <!--  
 <script type="text/javascript">

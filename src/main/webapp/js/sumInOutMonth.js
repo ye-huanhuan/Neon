@@ -63,7 +63,6 @@ $(function () {
             x: -20
         },
         xAxis: {
-            categories: ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'],
             title: {
                 text: '月份/月',
                 align: 'high',
@@ -73,7 +72,8 @@ $(function () {
                     fontSize:'14px',
                     fontFamily:'微软雅黑'
                 }
-            }
+            },
+            
         },
         yAxis: {
             title: {
@@ -90,7 +90,7 @@ $(function () {
                     fontSize:'14px',
                     fontFamily:'微软雅黑'
                 }
-            }
+            },
         },
         tooltip: {
         	//数据后缀
@@ -220,7 +220,7 @@ $(function () {
                 calculate();
                 change_aver_color();
      	        chart.series[0].setData(data_difference);
-                chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
+     	        chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
                 change();
             }
         });

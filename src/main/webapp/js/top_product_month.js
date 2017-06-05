@@ -57,7 +57,7 @@ $(function () {
                 	enabled: true,
                     allowOverlap: true
                 }
-            }
+            },
         },
         credits: {
             enabled: false

@@ -94,7 +94,7 @@
    });
    
 });
-//异步请求2017年数据
+//异步请求近四个季度数据
  $(function () {
 	    $("#second_year_4quarter").click(function () {
 	    	$.ajax({
@@ -136,7 +136,7 @@
 	    $("#second_year_2016").click(function () {
 	    	$.ajax({
 	      	    async: true,
-	      	  	data: {y_quarter_2:$("#second_year_2017").val()},
+	      	  	data: {y_quarter_2:$("#second_year_2016").val()},
 	      	    type: "post",        //type：(string)请求方式，POST或GET
 	      	    dataType: "json",    //dataType：(string)预期返回的数据类型。xml,html,json,text等
 	      	    url: "analyze_quarter_2.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。

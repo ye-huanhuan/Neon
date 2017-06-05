@@ -132,9 +132,10 @@
 				  
 				  <div id="year">
 				  <font>年份:</font>
-				  <input id="year2015" class="year" type="radio" name="year" value="2015">2015
+				  <!-- <input id="year2015" class="year" type="radio" name="year" value="2015">2015
 				  <input id="year2016" class="year" type="radio" name="year" value="2016">2016
-				  <input id="year2017" class="year" type="radio" name="year" value="2017">2017
+				  <input id="year2017" class="year" type="radio" name="year" value="2017">2017 -->
+				  <span></span>
 				  </div>
 				  </div>
                   <div class="panel-body">
@@ -162,6 +163,8 @@
 <script src="js/productOutYear.js"></script>
 <script src="js/yearOutProduct.js"></script>
 <script src="js/top_product_year.js"></script>
+
+<script src="js/dynamic_year.js"></script>
   <!-- 
 <script type="text/javascript">
 /**
