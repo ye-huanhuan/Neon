@@ -1,5 +1,6 @@
 package com.zyujie.dm;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /** 
@@ -84,7 +85,7 @@ public class LinearRegression {
     	}
          printSums(line);  
          printLine(line);  
-    	return ((line.getA1()*month)+line.getA0());
+    	return Double.parseDouble(new DecimalFormat("#.00").format(((line.getA1()*month)+line.getA0())));
     }
   
     /** 
