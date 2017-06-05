@@ -83,6 +83,9 @@ public interface OutputService extends DaoSupport<Output>{
 		//根据销项的名称找到该出项
 		List<Output> getOutputsByItem(String outputItem);
 
+		//得到所有的月和当月的销售额
+		List<double[][]> getAllMonthAndMoney();
+
 
 		
 }

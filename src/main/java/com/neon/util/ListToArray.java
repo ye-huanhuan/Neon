@@ -23,7 +23,7 @@ public class ListToArray {
 	}
 	
 	/**
-	 * 将list转换为String类型的一维数组
+	 * 将set转换为String类型的一维数组
 	 * @param list
 	 * @return
 	 */
@@ -39,6 +39,11 @@ public class ListToArray {
 		return array;
 	}
 	
+	/**
+	 * 将list数组转换成字符串数组
+	 * @param list
+	 * @return
+	 */
 	public static String[] getStringArray_2(List<String> list){
 		String[] array = new String[list.size()];
 		for(int i = 0 ; i < list.size() ; i++){
@@ -46,6 +51,19 @@ public class ListToArray {
 		}  
 		return array;
 		
+	}
+	
+	/**
+	 * 将list数组转换成int型数组
+	 * @param list
+	 * @return
+	 */
+	public static int[] getIntArray(List<Integer> list){
+		int[] array = new int[list.size()];
+		for(int i = 0 ; i < list.size() ; i++){
+			array[i] = list.get(i);
+		}  
+		return array;
 	}
 	
 	/**

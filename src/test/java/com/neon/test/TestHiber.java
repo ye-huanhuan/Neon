@@ -2,7 +2,9 @@ package com.neon.test;
 
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -21,6 +23,7 @@ import com.neon.util.Arith;
 import com.neon.util.Constant;
 import com.neon.util.ListToArray;
 import com.neon.util.Sort;
+import com.zyujie.dm.LinearRegression;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
 @ContextConfiguration(locations = "classpath:applicationContext.xml")  
@@ -93,32 +96,13 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 			System.out.println(s);
 		}*/
 		
-		double[][] d = new double[3][];
-		for(int i = 0 ; i < 3 ; i++){
-			d[i] = new double[3];
+		List<Double> list = new ArrayList<>();
+		double d = 0.0;
+		list.add(d);
+		for(double d_2 : list){
+			System.out.println(d_2);
 		}
-		/*double[] d_1 = {1,2,3};
-		double[] d_2 = {4,5,6};
-		double[] d_3 = {7,8,9};
-		
-		d[0] = d_1;
-		d[1] = d_2;
-		d[2] = d_3;
-		
-		d[0][0] = 10;*/
-		
-		for(int i = 0 ; i < 3 ; i++){
-			for(int j = 0 ; j < 3 ; j++){
-				d[i][j] = 1;
-			}
-		}
-		
-		
-		for(int i = 0 ; i < 3 ; i++){
-			for(int j = 0 ; j < 3 ; j++){
-				System.out.println(d[i][j]);
-			}
-		}
+ 		
 	}
 	
 }
