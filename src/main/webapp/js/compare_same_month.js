@@ -50,11 +50,25 @@ $(function () {
             }
         },
         tooltip: {
-            headerFormat: '<span style="font-size:14px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} 万元</b></td></tr>',
-            footerFormat:  '</table>',
-            
+//            headerFormat: '<span style="font-size:14px">{point.key}</span><table>',
+//            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+//            '<td style="padding:0"><b>{point.y:.1f} 万元</b></td></tr>',
+//            footerFormat:  '</table>',
+        	 formatter: function() {
+                 var points = this.points,
+                     str = '';
+                 var i = 0;
+                 var a = [];
+                 var itemsName;
+                 Highcharts.each(points, function(p) {
+                	 itemsName = p.x;
+                     str += p.series.name + ':' + '\t' + p.y + '<br>';
+                     a[i] = p.y;
+                     i++;
+                 });
+                var percent = ((a[1]/a[0])*100).toFixed(2) + "%";
+                 return itemsName + '<br>' + str + "同比增长:" + percent;
+             },
             shared: true,
             useHTML: true,
             style: {                      // 文字内容相关样式

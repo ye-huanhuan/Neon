@@ -1,7 +1,8 @@
 /**
  * 年度目标
  */
- $(document).ready(function() {
+$(function () {
+	alert("hello_year");
         var chart = {
             type: 'solidgauge'
         };

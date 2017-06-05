@@ -2,8 +2,8 @@
  * 当季度目标
  */
 
-$(document).ready(function() {
-        
+$(function () {
+        alert("hello_quarter");
         var chart = {
             type: 'solidgauge'
         };

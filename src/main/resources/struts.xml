@@ -46,6 +46,9 @@
 		 <result name="success_year" type="json">
 		 <param name="root">result2</param>
 		 </result>
+		 <result name="success_tax" type="json">
+		 <param name="root">result3</param>
+		 </result>
 	</action>
 	
 	<!-- ==============详细分析部分====================================== -->

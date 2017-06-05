@@ -33,6 +33,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 	private Map<String,Object> result = new HashMap<String,Object>(); 
 	private Map<String,Object> result1 = new HashMap<String,Object>(); 
 	private Map<String,Object> result2 = new HashMap<String,Object>();
+	private Map<String,Object> result3 = new HashMap<String,Object>();
 	//获取当前日期
 	Calendar cal = Calendar.getInstance();
 	int current_year = cal.get(Calendar.YEAR);
@@ -788,8 +789,12 @@ public class AnalyzeAction extends ActionBase<Input>{
 
 	}
 	
-	//准备税收分析数据
 	public String tax(){
+		return "tax";
+	}
+	
+	//准备税收分析数据
+	public String tax_1(){
 		List<Output> outputs = outputService.findAll();
 		//销项数组
 		String[] items = outputService.getAllItems();
@@ -804,20 +809,11 @@ public class AnalyzeAction extends ActionBase<Input>{
 					System.out.println(item_in_out[i][j][0] + "  " + item_in_out[i][j][1]);
 			}
 		}*/
-		return "success";
+		result3.put("items", items);
+		result3.put("data_in_out", item_in_out);
+		return "success_tax";
 	}
 	
-	public String tax_1(){
-		System.out.println(outputItem);
-		List<Output> outputs = outputService.getOutputsByItem(outputItem);
-		String[] items = {outputItem};
-		String[] inputItems = inoutService.getInputItemByOutputItem(items);
-		double[][] item_in_out = outputService.getInputAndOutputByItems(outputs , items , inputItems)[0];
-		/*for(int j = 0 ; j < 10 ; j++){
-			System.out.println(item_in_out[j][0] + "  " + item_in_out[j][1]);
-		}*/
-		return "success";
-	}
 	
 	//明细分析
 	public String detail(){
@@ -930,6 +926,14 @@ public class AnalyzeAction extends ActionBase<Input>{
 
 	public void setOutputItem(String outputItem) {
 		this.outputItem = outputItem;
+	}
+
+	public Map<String,Object> getResult3() {
+		return result3;
+	}
+
+	public void setResult3(Map<String,Object> result3) {
+		this.result3 = result3;
 	}
 
 	
