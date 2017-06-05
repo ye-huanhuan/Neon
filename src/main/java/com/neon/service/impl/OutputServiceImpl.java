@@ -737,6 +737,49 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	}
 	
 	
+	@Override
+	public List<Output> getOutputsByItem(String outputItem) {
+		return getSession().createQuery(//
+				"FROM Output out WHERE out.item=?")
+				.setParameter(0, outputItem)
+				.list();
+	}
+
+
+	@Override
+	public List<double[][]> getAllMonthAndMoney() {
+		List<double[][]> list = new ArrayList<>();
+		int[] years = ListToArray.getIntArray(getOutputYear());
+		for(int year : years){
+			if(year == Constant.YEAR){
+				for(int month = 1 ; month <= Constant.CURRENTMONTH - 1; month++ ){
+					List<Output> outputs = getOutputsWithMonthAndYear(month,year);
+					Double money = 0.0;
+					for(Output out : outputs){
+						money += out.getMoney();
+					}
+					double[][] d = {{0 , 0}};
+					d[0][0] = month;
+					d[0][1] = money;
+					list.add(d);
+				}
+			}else{
+				for(int month = 1 ; month <= 12 ; month++ ){
+					List<Output> outputs = getOutputsWithMonthAndYear(month,year);
+					Double money = 0.0;
+					for(Output out : outputs){
+						money += out.getMoney();
+					}
+					double[][] d = {{0 , 0}};
+					d[0][0] = month;
+					d[0][1] = money;
+					list.add(d);
+				}
+			}
+		}
+		return list;
+	}
+	
 
 	private double[][] getInputAndOutputByOutput(List<Output> out , String inputItem) {
 		System.out.println(out.size());
@@ -897,13 +940,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	}
 
 
-	@Override
-	public List<Output> getOutputsByItem(String outputItem) {
-		return getSession().createQuery(//
-				"FROM Output out WHERE out.item=?")
-				.setParameter(0, outputItem)
-				.list();
-	}
+	
 
 
 }

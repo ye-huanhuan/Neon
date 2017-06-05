@@ -1,5 +1,7 @@
-package com.zyujie.dm;  
-  
+package com.zyujie.dm;
+
+import java.util.List;
+
 /** 
  * <p> 
  * <b>Linear Regression</b> <br> 
@@ -10,29 +12,29 @@ package com.zyujie.dm;
  * require DataPoint.java,RegressionLine.java 
  *  
  * <p> 
- * ÎªÁË¼ÆËã¶ÔÓÚ¸ø¶¨Êı¾İµãµÄ×îĞ¡·½²î»ØÏß£¬ĞèÒª¼ÆËãSumX,SumY,SumXX,SumXY; (×¢£ºSumXX = Sum (X^2)) 
+ * Îªï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İµï¿½ï¿½ï¿½ï¿½Ğ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½SumX,SumY,SumXX,SumXY; (×¢ï¿½ï¿½SumXX = Sum (X^2)) 
  * <p> 
- * <b>»Ø¹éÖ±Ïß·½³ÌÈçÏÂ£º f(x)=a1x+a0 </b> 
+ * <b>ï¿½Ø¹ï¿½Ö±ï¿½ß·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½ f(x)=a1x+a0 </b> 
  * <p> 
- * <b>Ğ±ÂÊºÍ½Ø¾àµÄ¼ÆËã¹«Ê½ÈçÏÂ£º</b> <br> 
- * n: Êı¾İµã¸öÊı 
+ * <b>Ğ±ï¿½ÊºÍ½Ø¾ï¿½Ä¼ï¿½ï¿½ã¹«Ê½ï¿½ï¿½ï¿½Â£ï¿½</b> <br> 
+ * n: ï¿½ï¿½ï¿½İµï¿½ï¿½ï¿½ï¿½ 
  * <p> 
  * a1=(n(SumXY)-SumX*SumY)/(n*SumXX-(SumX)^2) <br> 
  * a0=(SumY - SumY * a1)/n <br> 
- * (Ò²¿É±í´ïÎªa0=averageY-a1*averageX) 
+ * (Ò²ï¿½É±ï¿½ï¿½Îªa0=averageY-a1*averageX) 
  *  
  * <p> 
- * <b>»­ÏßµÄÔ­Àí£ºÁ½µã³ÉÒ»Ö±Ïß£¬Ö»ÒªÄÜÈ·¶¨Á½¸öµã¼´¿É</b><br> 
- * µÚÒ»µã£º(0,a0) ÔÙËæÒâÈ¡Ò»¸öx1Öµ´úÈë·½³Ì£¬È¡µÃy1£¬Á¬½á(0,a0)ºÍ(x1,y1)Á½µã¼´¿É¡£ 
- * ÎªÁËÈÃÏß´©¹ıÕû¸öÍ¼,x1¿ÉÒÔÈ¡ºá×ø±êµÄ×î´óÖµXmax£¬¼´Á½µãÎª(0,a0),(Xmax,Y)¡£Èç¹ûy=a1*Xmax+a0,y´óÓÚ 
- * ×İ×ø±ê×î´óÖµYmax£¬Ôò²»ÓÃÕâ¸öµã¡£¸ÄÓÃyÈ¡×î´óÖµYmax£¬ËãµÃ´ËÊ±xµÄÖµ£¬Ê¹ÓÃ(X,Ymax)£¬ ¼´Á½µãÎª(0,a0),(X,Ymax) 
+ * <b>ï¿½ï¿½ï¿½ßµï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ö±ï¿½ß£ï¿½Ö»Òªï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã¼´ï¿½ï¿½</b><br> 
+ * ï¿½ï¿½Ò»ï¿½ã£º(0,a0) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Ò»ï¿½ï¿½x1Öµï¿½ï¿½ï¿½ë·½ï¿½Ì£ï¿½È¡ï¿½ï¿½y1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(0,a0)ï¿½ï¿½(x1,y1)ï¿½ï¿½ï¿½ã¼´ï¿½É¡ï¿½ 
+ * Îªï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼,x1ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµXmaxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª(0,a0),(Xmax,Y)ï¿½ï¿½ï¿½ï¿½ï¿½y=a1*Xmax+a0,yï¿½ï¿½ï¿½ï¿½ 
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµYmaxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã¡£ï¿½ï¿½ï¿½ï¿½yÈ¡ï¿½ï¿½ï¿½ÖµYmaxï¿½ï¿½ï¿½ï¿½Ã´ï¿½Ê±xï¿½ï¿½Öµï¿½ï¿½Ê¹ï¿½ï¿½(X,Ymax)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª(0,a0),(X,Ymax) 
  *  
  * <p> 
- * <b>ÄâºÏ¶È¼ÆËã£º(¼´ExcelÖĞµÄR^2)</b> 
+ * <b>ï¿½ï¿½Ï¶È¼ï¿½ï¿½ã£º(ï¿½ï¿½Excelï¿½Ğµï¿½R^2)</b> 
  * <p> 
  * *R2 = 1 - E 
  * <p> 
- * Îó²îEµÄ¼ÆËã£ºE = SSE/SST 
+ * ï¿½ï¿½ï¿½Eï¿½Ä¼ï¿½ï¿½ã£ºE = SSE/SST 
  * <p> 
  * SSE=sum((Yi-Y)^2) SST=sumYY - (sumY*sumY)/n; 
  * <p> 
@@ -49,7 +51,7 @@ public class LinearRegression {
      * @param args 
      *            the array of runtime arguments 
      */  
-    public static void main(String args[]) {  
+/*    public static void main(String args[]) {  
         RegressionLine line = new RegressionLine();  
   
 //        line.addDataPoint(new DataPoint(1, 136));  
@@ -57,7 +59,8 @@ public class LinearRegression {
 //        line.addDataPoint(new DataPoint(3, 132));  
 //        line.addDataPoint(new DataPoint(4, 142));  
 //        line.addDataPoint(new DataPoint(5, 147));
-        line.addDataPoint(new DataPoint(1, 27));  
+        line.addDataPoint(new DataPoint(1, 27));
+        line.addDataPoint(new DataPoint(6, 1));
         line.addDataPoint(new DataPoint(2, 35));  
         line.addDataPoint(new DataPoint(3, 33));  
         line.addDataPoint(new DataPoint(4, 30));  
@@ -65,8 +68,24 @@ public class LinearRegression {
         line.addDataPoint(new DataPoint(6, 31));
         printSums(line);  
         printLine(line);  
-        System.out.println("Ô¤¼ÆÆßÔÂ·İ:"+((line.getA1()*7)+line.getA0()));
-    }  
+        System.out.println("é¢„æµ‹7æœˆä»½:"+((line.getA1()*7)+line.getA0()));
+    }  */
+    
+    /**
+     * æ ¹æ®ä¼ è¿›æ¥çš„ç‚¹æ¥é¢„æµ‹ æœ¬æœˆçš„æ•°æ®
+     * @param list
+     * @param month
+     * @return
+     */
+    public static double predict(List<double[][]> list , int month){
+    	RegressionLine line = new RegressionLine();
+    	for(double[][] l : list){
+    		line.addDataPoint(new DataPoint((int)l[0][0], (float)l[0][1]));
+    	}
+         printSums(line);  
+         printLine(line);  
+    	return ((line.getA1()*month)+line.getA0());
+    }
   
     /** 
      * Print the computed sums. 
@@ -75,7 +94,7 @@ public class LinearRegression {
      *            the regression line 
      */  
     private static void printSums(RegressionLine line) {  
-        System.out.println("\nÊı¾İµã¸öÊı n = " + line.getDataPointCount());  
+        System.out.println("\nï¿½ï¿½ï¿½İµï¿½ï¿½ï¿½ï¿½ n = " + line.getDataPointCount());  
         System.out.println("\nSum x  = " + line.getSumX());  
         System.out.println("Sum y  = " + line.getSumY());  
         System.out.println("Sum xx = " + line.getSumXX());  
@@ -91,9 +110,9 @@ public class LinearRegression {
      *            the regression line 
      */  
     private static void printLine(RegressionLine line) {  
-        System.out.println("\n»Ø¹éÏß¹«Ê½:  y = " + line.getA1() + "x + "  
+        System.out.println("\nï¿½Ø¹ï¿½ï¿½ß¹ï¿½Ê½:  y = " + line.getA1() + "x + "  
                 + line.getA0());  
-        System.out.println("Îó²î£º     R^2 = " + line.getR());  
+        System.out.println("ï¿½ï¿½î£º     R^2 = " + line.getR());  
     }  
       
     //y = 2.1x + 133.7   2.1 * 6 + 133.7 = 12.6 + 133.7 = 146.3  
