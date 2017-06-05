@@ -16,6 +16,7 @@ import com.neon.util.Constant;
 import com.neon.util.DoubleJudge;
 import com.neon.util.ListToArray;
 import com.neon.util.Sort;
+import com.zyujie.dm.LinearRegression;
 
 @Service
 public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputService{
@@ -23,14 +24,28 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	@Override
 	public List<Double> getOutputTotleMoneyWithMonth(int year) {
 		List<Double> list = new ArrayList<>();
-		for(int month = 1 ; month <= Constant.MONTH ; month++ ){
-			List<Output> outputs = getOutputsWithMonthAndYear(month,year);
-			Double money = 0.0;
-			for(Output out : outputs){
-				money += out.getMoney();
+		if(year == Constant.YEAR){
+			for(int month = 1 ; month <= Constant.CURRENTMONTH - 1 ; month++ ){
+				List<Output> outputs = getOutputsWithMonthAndYear(month,year);
+				Double money = 0.0;
+				for(Output out : outputs){
+					money += out.getMoney();
+				}
+				list.add(money);
 			}
-			list.add(money);
+			
+			list.add(LinearRegression.predict(getAllMonthAndMoney(), Constant.CURRENTMONTH));
+		}else{
+			for(int month = 1 ; month <= Constant.MONTH ; month++ ){
+				List<Output> outputs = getOutputsWithMonthAndYear(month,year);
+				Double money = 0.0;
+				for(Output out : outputs){
+					money += out.getMoney();
+				}
+				list.add(money);
+			}
 		}
+		
 		return list;
 	}
 

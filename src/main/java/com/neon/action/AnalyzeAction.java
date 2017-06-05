@@ -52,7 +52,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 		
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(y);
 		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(y);
-		output_totlemoney_month.add(LinearRegression.predict(outputService.getAllMonthAndMoney(), Constant.CURRENTMONTH));
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);
 		double[] input_totlemoney_month_array = ListToArray.getDoubleArray(input_totlemoney_month);
 		double[] output_totlemoney_month_array = ListToArray.getDoubleArray(output_totlemoney_month);
@@ -81,7 +80,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 		
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year-1);
 		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(year-1);
-		output_totlemoney_month.add(LinearRegression.predict(outputService.getAllMonthAndMoney(), Constant.CURRENTMONTH));
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);
 		double[] input_totlemoney_month_array = ListToArray.getDoubleArray(input_totlemoney_month);
 		double[] output_totlemoney_month_array = ListToArray.getDoubleArray(output_totlemoney_month);
