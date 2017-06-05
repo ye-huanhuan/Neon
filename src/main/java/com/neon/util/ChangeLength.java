@@ -2,7 +2,6 @@ package com.neon.util;
 
 public class ChangeLength {
 	public static double[] changeLength(double[] before){
-		
 		int number_zero = 0;
 		for(int i=before.length-1;i>=0;i--){
 			if(before[i] == 0){

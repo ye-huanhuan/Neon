@@ -33,7 +33,6 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				}
 				list.add(money);
 			}
-			
 			list.add(LinearRegression.predict(getAllMonthAndMoney(), Constant.CURRENTMONTH));
 		}else{
 			for(int month = 1 ; month <= Constant.MONTH ; month++ ){
@@ -270,7 +269,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	@Override
 	public List<Double> getDvalue(List<Double> input_totlemoney_month, List<Double> output_totlemoney_month) {
 		List<Double> dvalue = new ArrayList<>();
-		for(int index = 0 ; index < input_totlemoney_month.size() ; index++){
+		for(int index = 0 ; index < output_totlemoney_month.size() ; index++){
 			dvalue.add(Arith.sub(output_totlemoney_month.get(index), input_totlemoney_month.get(index)));
 		}
 		return dvalue;
