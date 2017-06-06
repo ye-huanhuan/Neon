@@ -48,11 +48,6 @@
 	                    	</ul>
                     		</li>
                    </s:if>
-                   
-                    
-        		 
-        		
-        
                   </s:iterator>
        </ul>
 </body>

@@ -6,6 +6,7 @@
  var productValue;
  var months;
  var options;
+ var zone;
  $(function () {
    options = {
      chart: {
@@ -89,6 +90,7 @@
   	    	productValue = obj["productVlaue"];
   	    	months = obj["months"];
 //  	    	disappear();
+  	    	zone = productValue[0].length - 2;
   	    	reset();
   	    }
    });
@@ -109,6 +111,7 @@
 	      	    	productValue = obj["productVlaue"];
 	      	    	months = obj["months"];
 //	      	    	disappear();
+	      	    	zone = productValue[0].length - 2;
 	      	    	reset();
 	      	    }
 	       });
@@ -129,6 +132,7 @@
 	      	    	productValue = obj["productVlaue"];
 	      	    	months = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
 //	      	    	disappear();
+	      	    	zone = productValue[0].length - 2;
 	      	    	reset();
 	      	    }
 	       });
@@ -150,6 +154,7 @@
 	      	    	alert(productValue[0]);
 	      	    	months = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
 //	      	    	disappear();
+	      	    	zone = productValue[0].length - 1;
 	      	    	reset();
 	      	    }
 	       });
@@ -171,6 +176,7 @@
 	      	    	alert(productValue[0]);
 	      	    	months = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
 //	      	    	disappear();
+	      	    	zone = productValue[0].length - 1;
 	      	    	reset();
 	      	    }
 	       });
@@ -222,6 +228,13 @@
 		 options.series[i] = new Object();
 		 options.series[i].data = productValue[i];
 		 options.series[i].name = productName[i];
+		 //设置虚线
+		 options.series[i].zoneAxis = 'x';
+		 options.series[i].zones = [{
+			    value: zone,
+		 }, {
+		     dashStyle: 'dot'
+		 }];
 		 
 	 }
 	options.xAxis.categories = months;
