@@ -72,14 +72,27 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		List<String> items = getEveryGoodsItem();
 		for(String item : items){
 			List<Double> moneys = new ArrayList<>();
-			for(int month = 1 ; month <= Constant.MONTH ; month++){
-				List<Output> outputs = getOutputsWithMonthAndYearAndItem(month , year ,item);
-				Double money = 0.0;
-				for(Output output : outputs){
-					money = Arith.add(money, output.getMoney());
+			if(year == Constant.YEAR){
+				for(int month = 1 ; month <= Constant.CURRENTMONTH - 1 ; month++){
+					List<Output> outputs = getOutputsWithMonthAndYearAndItem(month , year ,item);
+					Double money = 0.0;
+					for(Output output : outputs){
+						money = Arith.add(money, output.getMoney());
+					}
+					moneys.add(money);
 				}
-				moneys.add(money);
+				moneys.add(LinearRegression.predict(getAllMonthAndMoneyByItem(item), Constant.CURRENTMONTH));
+			}else{
+				for(int month = 1 ; month <= Constant.MONTH ; month++){
+					List<Output> outputs = getOutputsWithMonthAndYearAndItem(month , year ,item);
+					Double money = 0.0;
+					for(Output output : outputs){
+						money = Arith.add(money, output.getMoney());
+					}
+					moneys.add(money);
+				}
 			}
+			
 			maps.put(item, moneys);
 		}
 		return maps;
@@ -269,9 +282,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	@Override
 	public List<Double> getDvalue(List<Double> input_totlemoney_month, List<Double> output_totlemoney_month) {
 		List<Double> dvalue = new ArrayList<>();
+		
 		for(int index = 0 ; index < output_totlemoney_month.size() ; index++){
 			dvalue.add(Arith.sub(output_totlemoney_month.get(index), input_totlemoney_month.get(index)));
 		}
+		
 		return dvalue;
 	}
 
@@ -794,6 +809,41 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		return list;
 	}
 	
+	public List<double[][]> getAllMonthAndMoneyByItem(String item){
+		List<double[][]> list = new ArrayList<>();
+		int[] years = ListToArray.getIntArray(getOutputYear());
+		for(int year : years){
+			if(year == Constant.YEAR){
+				for(int month = 1 ; month <= Constant.CURRENTMONTH - 1; month++ ){
+					Output output = getOutputsWithMonthAndYearAndItem(item ,month,year);
+					double[][] d = {{0 , 0}};
+					d[0][0] = month;
+					d[0][1] = output.getMoney();
+					list.add(d);
+				}
+			}else{
+				for(int month = 1 ; month <= 12 ; month++ ){
+					Output output = getOutputsWithMonthAndYearAndItem(item ,month,year);
+					double[][] d = {{0 , 0}};
+					d[0][0] = month;
+					d[0][1] = output.getMoney();
+					list.add(d);
+				}
+			}
+		}
+		return list;
+	}
+	
+
+	private Output getOutputsWithMonthAndYearAndItem(String item, int month, int year) {
+		return (Output) getSession().createQuery(//
+				"FROM Output output WHERE output.month=? AND output.year=? AND output.item=?")
+				.setParameter(0, month)
+				.setParameter(1, year)
+				.setParameter(2, item)
+				.uniqueResult();
+	}
+
 
 	private double[][] getInputAndOutputByOutput(List<Output> out , String inputItem) {
 		System.out.println(out.size());
