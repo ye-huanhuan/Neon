@@ -36,20 +36,22 @@
                       <button type="button" class="btn btn-sm btn-default" title="Remove" style="height:30px;width:42.4px" onclick="remove()"><i class="fa fa-trash-o"></i></button>
                       <button type="button" class="btn btn-sm btn-default" title="Filter" data-toggle="dropdown"><i class="fa fa-filter"></i> <span class="caret"></span></button>
                       <ul class="dropdown-menu">
-                        <li><a href="#">时间</a></li>
-                        <li><a href="#">单位</a></li>
-                        <li><a href="#">金额</a></li>
+                        <li><a href="detailAnalyze_sortByTime.action">时间</a></li>
+                        <li><a href="detailAnalyze_sortByMoney.action">金额</a></li>
 
 
                       </ul>
                     </div>
                     <!--<a href="modal.html" data-toggle="ajaxModal" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Create</a> </div>-->
                   <div class="col-sm-4 m-b-xs">
+                  	<form action="detailAnalyze_search.action" method="post">
                     <div class="input-group">
-                      <input type="text" class="input-sm form-control" placeholder="Search">
+                      <input type="text" class="input-sm form-control" placeholder="Search" name="search">
                       <span class="input-group-btn">
-                      <button class="btn btn-sm btn-default" type="button">搜索</button>
-                      </span> </div>
+                      <input class="btn btn-sm btn-default" type="submit" value="搜索" />
+                      </span> 
+                    </div>
+                    </form>
                   </div>
                   </div></div>
               </header>
