@@ -96,13 +96,22 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 			System.out.println(s);
 		}*/
 		
-		List<Double> list = new ArrayList<>();
-		double d = 0.0;
+		double[][] d = new double[1][];
+		d[0] = new double[2];
+		d[0][0] = 1;
+		d[0][1] = 2;
+		double[][] d_2 = new double[1][];
+		d_2[0] = new double[2];
+		d_2[0][0] = 2;
+		d_2[0][1] = 3;
+		
+		List<double[][]> list = new ArrayList<>();
 		list.add(d);
-		for(double d_2 : list){
-			System.out.println(d_2);
-		}
- 		
+		list.add(d_2);
+		
+		
+		System.out.println(LinearRegression.predict(list, 3));
+ 		System.out.println("3");
 	}
 	
 }

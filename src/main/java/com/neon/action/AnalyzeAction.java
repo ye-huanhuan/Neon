@@ -238,7 +238,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney_2.entrySet()){
 			output_everyGoodsTotleMoney_year_2.put(map.getKey(), ListToArray.getDoubleArray(map.getValue()));
 		}
-		int size = output_everyGoodsTotleMoney_year.keySet().size();
+		System.out.println(output_everyGoodsTotleMoney_year_2.size() + "===");
+		int size = output_everyGoodsTotleMoney_year_2.keySet().size();
 		String[] productName = new String[size];
 		double[][] productVlaue = new double[size][12];
 		Set<String> name = output_everyGoodsTotleMoney_year.keySet();
@@ -253,6 +254,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		}
 		i=0;
 		for(Map.Entry<String, double[]> p : output_everyGoodsTotleMoney_year_2.entrySet()){
+			System.out.println(i);
 			productName[i] = p.getKey();
 			for(int m=0,n=12-month;m<p.getValue().length;m++){
 				if(m<=month-1){

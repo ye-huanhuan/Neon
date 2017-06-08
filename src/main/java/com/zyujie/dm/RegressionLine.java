@@ -26,7 +26,7 @@ public class RegressionLine // implements Evaluatable
     /** sum of sumDeltaY^2 */  
     private double sumDeltaY2;  
   
-    /** Îó²î */  
+    /** ï¿½ï¿½ï¿½ */  
     private double sse;  
   
     private double sst;  
@@ -186,7 +186,7 @@ public class RegressionLine // implements Evaluatable
             YMax = (int) dataPoint.y;  
         }  
   
-        // °ÑÃ¿¸öµãµÄ¾ßÌå×ø±ê´æÈëArrayListÖÐ£¬±¸ÓÃ  
+        // ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ArrayListï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½  
   
         xy[0] = (int) dataPoint.x + "";  
         xy[1] = (int) dataPoint.y + "";  
@@ -238,7 +238,7 @@ public class RegressionLine // implements Evaluatable
     }  
   
     /** 
-     * Validate the coefficients. ¼ÆËã·½³ÌÏµÊý y=ax+b ÖÐµÄa 
+     * Validate the coefficients. ï¿½ï¿½ï¿½ã·½ï¿½ï¿½Ïµï¿½ï¿½ y=ax+b ï¿½Ðµï¿½a 
      */  
     private void validateCoefficients() {  
         if (coefsValid)  
@@ -259,10 +259,10 @@ public class RegressionLine // implements Evaluatable
     }  
   
     /** 
-     * ·µ»ØÎó²î 
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
      */  
     public double getR() {  
-        // ±éÀúÕâ¸ölist²¢¼ÆËã·ÖÄ¸  
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½listï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸  
         for (int i = 0; i < pn - 1; i++) {  
             float Yi = (float) Integer.parseInt(listY.get(i).toString());  
             float Y = at(Integer.parseInt(listX.get(i).toString()));  
@@ -286,7 +286,7 @@ public class RegressionLine // implements Evaluatable
         return round(E, 4);  
     }  
   
-    // ÓÃÓÚÊµÏÖ¾«È·µÄËÄÉáÎåÈë  
+    // ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö¾ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
     public double round(double v, int scale) {  
   
         if (scale < 0) {  

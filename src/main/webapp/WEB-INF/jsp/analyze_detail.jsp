@@ -33,13 +33,13 @@
                 <div class="row m-t-sm">
                   <div class="col-sm-8 m-b-xs"> <!--<a href="#subNav" data-toggle="class:hide" class="btn btn-sm btn-default active"><i class="fa fa-caret-right text fa-lg"></i><i class="fa fa-caret-left text-active fa-lg"></i></a>-->
                     <div class="btn-group">
+                    
+<button type="button" class="btn btn-sm btn-default" title="Refresh" style="height:30px;width:42.4px" onclick="refresh()"><i class="fa fa-refresh"></i></button>
                       <button type="button" class="btn btn-sm btn-default" title="Remove" style="height:30px;width:42.4px" onclick="remove()"><i class="fa fa-trash-o"></i></button>
                       <button type="button" class="btn btn-sm btn-default" title="Filter" data-toggle="dropdown"><i class="fa fa-filter"></i> <span class="caret"></span></button>
                       <ul class="dropdown-menu">
                         <li><a href="detailAnalyze_sortByTime.action">时间</a></li>
                         <li><a href="detailAnalyze_sortByMoney.action">金额</a></li>
-
-
                       </ul>
                     </div>
                     <!--<a href="modal.html" data-toggle="ajaxModal" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Create</a> </div>-->
@@ -113,6 +113,17 @@
     </section>
   </section>
 		<script>
+		function refresh(){
+			 $.ajax({
+		         async: true,
+		         type: "post",        //type：(string)请求方式，POST或GET
+		         url: "detailAnalyze_detail.action",
+		         success: function(){
+		        	 location.reload();  //请求成功之后重新刷新页面
+		        	 alert("hello");
+		         }
+		     });
+		 }
 		 function remove(){
 		        var s = document.getElementsByName("post[]");
 		        for(var i=0;i<s.length;i++){
