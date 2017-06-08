@@ -448,6 +448,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 	public String quarter_2(){
 		System.out.println(y_quarter_2);
 		Map<String, List<Double>> output_everyGoodsTotleMoney = outputService.getEveryGoodsgetOutputQuarterTotleMoneyWithYear(y_quarter_2);
+		for( Entry<String, List<Double>> map_1 : output_everyGoodsTotleMoney.entrySet()){
+			System.out.println(map_1.getKey());
+		}
 		Map<String , double[]> output_everyGoodsTotleMoney_quarter = new HashMap<>();
 		for(Entry<String, List<Double>> map :output_everyGoodsTotleMoney.entrySet()){
 			output_everyGoodsTotleMoney_quarter.put(map.getKey(), ListToArray.getDoubleArray(map.getValue()));
@@ -518,7 +521,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 			output_everyGoodsTotleMoney_quarter_2.put(map.getKey(), ListToArray.getDoubleArray(map.getValue()));
 		}
 		int i=0;
-		int size = output_everyGoodsTotleMoney_quarter.keySet().size();
+		int size = output_everyGoodsTotleMoney_quarter_2.keySet().size();
 		String[] productName = new String[size];
 		double[][] productVlaue = new double[size][4];
 		
@@ -555,6 +558,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 		if(quarter_quarter_3>Constant.CURRENTQUARTER){
 			query_year -= 1;
 		}
+		
 		Map<String, Double> output_percent_quarter = outputService.getThisQuarterOutputGoodsTotleMoney(quarter_quarter_3, query_year);
 		String output_percent_quarter_array[][] = ListToArray.getString2Array(output_percent_quarter);
 		Map<String, Double> output_top3_quarter = outputService.getThisQuarterTop3GoodsMoney(quarter_quarter_3, query_year);

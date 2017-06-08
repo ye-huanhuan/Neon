@@ -120,7 +120,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	@Override
 	public Map<String, List<Double>> getEveryGoodsgetOutputQuarterTotleMoneyWithYear(int year) {
 		Map<String, List<Double>> maps = new HashMap<>();
-		List<String> items = getEveryGoodsItem();
+		List<String> items = getEveryGoodsItem(year);
 		Double money = 0.0;
 		for(String item : items){
 			List<Double> moneys = new ArrayList<>();
@@ -156,7 +156,11 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	public double[] getThisMonthOutputGoodsTotleMoney(int month, int year, String[] items) {
 		double[] strs = new double[items.length];
 		for(int i = 0 ; i < items.length ; i++){
-			strs[i] = getThisItemTotleMoney(items[i],month,year);
+			try{
+				strs[i] = getThisItemTotleMoney(items[i],month,year);
+			}catch (Exception e) {
+				strs[i] = 0.0;
+			}
 		}
 		return strs;
 	}
@@ -227,7 +231,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			break;
 		}
 		
-		return Sort.SortMapByDESC3(map);
+		return map;
 	}
 	
 	@Override
