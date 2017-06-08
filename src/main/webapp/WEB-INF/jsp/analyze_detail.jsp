@@ -45,8 +45,6 @@
                       <ul class="dropdown-menu">
                         <li><a href="detailAnalyze_sortByTime.action">时间</a></li>
                         <li><a href="detailAnalyze_sortByMoney.action">金额</a></li>
-
-
                       </ul>
                     </div>
                   <div class="col-sm-4 m-b-xs">

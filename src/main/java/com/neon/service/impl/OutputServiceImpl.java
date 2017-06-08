@@ -69,35 +69,54 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	@Override
 	public Map<String, List<Double>> getEveryGoodsgetOutputTotleMoneyWithYear(int year) {
 		Map<String, List<Double>> maps = new HashMap<>();
-		List<String> items = getEveryGoodsItem();
+		if(year == Constant.YEAR){
+		List<String> items = getEveryGoodsItem(year);
 		for(String item : items){
+			System.out.println(item);
 			List<Double> moneys = new ArrayList<>();
-			if(year == Constant.YEAR){
 				for(int month = 1 ; month <= Constant.CURRENTMONTH - 1 ; month++){
-					List<Output> outputs = getOutputsWithMonthAndYearAndItem(month , year ,item);
-					Double money = 0.0;
-					for(Output output : outputs){
-						money = Arith.add(money, output.getMoney());
+					try{
+						Output output_2 = getOutputsWithMonthAndYearAndItem_test(month, year, item);
+						Double money = output_2.getMoney();
+						moneys.add(money);
+					}catch (Exception e) {
+						Double money = 0.0;
+						moneys.add(money);
 					}
-					moneys.add(money);
+					
 				}
 				moneys.add(LinearRegression.predict(getAllMonthAndMoneyByItem(item), Constant.CURRENTMONTH));
-			}else{
-				for(int month = 1 ; month <= Constant.MONTH ; month++){
-					List<Output> outputs = getOutputsWithMonthAndYearAndItem(month , year ,item);
-					Double money = 0.0;
-					for(Output output : outputs){
-						money = Arith.add(money, output.getMoney());
-					}
-					moneys.add(money);
+				maps.put(item, moneys);
 				}
+				
+		}else{
+				List<String> items = getEveryGoodsItem(year);
+				for(String item : items){
+					System.out.println(item);
+				}
+				for(String item : items){
+					List<Double> moneys = new ArrayList<>();
+				for(int month = 1 ; month <= Constant.MONTH ; month++){
+					try{
+						List<Output> outputs = getOutputsWithMonthAndYearAndItem(month , year ,item);
+						Double money = 0.0;
+						for(Output output : outputs){
+							money = Arith.add(money, output.getMoney());
+						}
+						moneys.add(money);
+					}catch (Exception e) {
+						Double money = 0.0;
+						moneys.add(money);
+					}
+				}
+				maps.put(item, moneys);
 			}
 			
-			maps.put(item, moneys);
 		}
 		return maps;
 	}
 	
+
 	@Override
 	public Map<String, List<Double>> getEveryGoodsgetOutputQuarterTotleMoneyWithYear(int year) {
 		Map<String, List<Double>> maps = new HashMap<>();
@@ -809,25 +828,41 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		return list;
 	}
 	
+	private List<String> getEveryGoodsItem(int year) {
+		return getSession().createQuery(//
+				"SELECT DISTINCT item FROM Output out WHERE out.year=?")
+				.setParameter(0, year)
+				.list();
+	}
+	
 	public List<double[][]> getAllMonthAndMoneyByItem(String item){
 		List<double[][]> list = new ArrayList<>();
 		int[] years = ListToArray.getIntArray(getOutputYear());
 		for(int year : years){
+			System.out.println(year);
 			if(year == Constant.YEAR){
 				for(int month = 1 ; month <= Constant.CURRENTMONTH - 1; month++ ){
-					Output output = getOutputsWithMonthAndYearAndItem(item ,month,year);
-					double[][] d = {{0 , 0}};
-					d[0][0] = month;
-					d[0][1] = output.getMoney();
-					list.add(d);
+					try{
+						Output output = getOutputsWithMonthAndYearAndItem(item ,month,year);
+						double[][] d = {{0 , 0}};
+						d[0][0] = month;
+						d[0][1] = output.getMoney();
+						list.add(d);
+					}catch (Exception e) {
+						
+					}
+					
 				}
 			}else{
 				for(int month = 1 ; month <= 12 ; month++ ){
-					Output output = getOutputsWithMonthAndYearAndItem(item ,month,year);
-					double[][] d = {{0 , 0}};
-					d[0][0] = month;
-					d[0][1] = output.getMoney();
-					list.add(d);
+					try{
+						Output output = getOutputsWithMonthAndYearAndItem(item ,month,year);
+						double[][] d = {{0 , 0}};
+						d[0][0] = month;
+						d[0][1] = output.getMoney();
+						list.add(d);
+					}catch (Exception e) {
+					}
 				}
 			}
 		}
@@ -949,7 +984,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	}
 	private List<String> getEveryGoodsItem() {
 		return getSession().createQuery(//
-				"SELECT item FROM Output")
+				"SELECT DISTINCT item FROM Output")
 				.list();
 	}
 
@@ -1003,7 +1038,15 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				.list();
 	}
 
-
+	private Output getOutputsWithMonthAndYearAndItem_test(int month, int year, String item) {
+		System.out.println(month+" " + year + " " +item + "|||||" );
+		return (Output) getSession().createQuery(//
+				"FROM Output output WHERE output.month=? AND output.year=? AND output.item=?")
+				.setParameter(0, month)
+				.setParameter(1, year)
+				.setParameter(2, item)
+				.uniqueResult();
+	}
 	
 
 
