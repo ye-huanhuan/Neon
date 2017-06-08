@@ -82,7 +82,7 @@ $.ajax({
 });
  });
 //发送异步请求2016年数据
-
+$(function(){
  $("#year2016").click(function () {
      $.ajax({
          async: true,
@@ -106,9 +106,9 @@ $.ajax({
          }
      });
  });
- 
+});
 //发送异步请求2017年数据
-
+$(function(){
  $("#year2017").click(function () {
      $.ajax({
          async: true,
@@ -132,8 +132,9 @@ $.ajax({
          }
      });
  });
+});
 //发送异步请求2015年数据
-
+ $(function () {
  $("#year2015").click(function () {
      $.ajax({
          async: true,
@@ -144,6 +145,7 @@ $.ajax({
          success: function (msg) {
              var obj = eval(msg);
              var a = obj["data_output_year_3"];
+             alert(a);
              for(var i=0;i<a.length;i++)
              {
                  for(var j=0;j<a[i].length;j++)
@@ -157,4 +159,5 @@ $.ajax({
               chart2.series[0].setData(a);
          }
      });
+ });
  });

@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-    <%@ taglib prefix="s" uri="/struts-tags" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en" class="app">
 <head>
 <meta charset="utf-8" />
@@ -14,7 +11,19 @@
 </head>
 <body>
 <section class="vbox">
-  <%@include file="header.jsp" %>
+  <header class="bg-dark dk header navbar navbar-fixed-top-xs">
+    <div class="navbar-header aside-md"> <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a> <a href="#" class="navbar-brand" data-toggle="fullscreen"><img src="images/logo.png" class="m-r-sm">Neon</a> <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user"> <i class="fa fa-cog"></i> </a> </div>
+    <ul class="nav navbar-nav navbar-right hidden-xs nav-user">
+      <li class="dropdown"> <a href="" class="dropdown-toggle" data-toggle="dropdown"> <span class="thumb-sm avatar pull-left"> <img src="images/avatar.jpg"> </span> ${user.username } <b class="caret"></b> </a>
+        <ul class="dropdown-menu animated fadeInRight">
+          <span class="arrow top"></span>
+          <li> <a href="user_setUp.action">设置</a> </li>
+          <li> <a href="log_logout.action">退出</a> </li>
+        </ul>
+      </li>
+    </ul>
+  </header>
+
   <section>
     <section class="hbox stretch"> <!-- .aside -->
       <aside class="bg-dark lter aside-md hidden-print" id="nav">
@@ -37,14 +46,14 @@
                 <div class="row m-t-sm">
 
                     <div class="btn-group">
-                    <form action="detailAnalyze_detail.action" style="display: inline-block">
-                    <button type="submit" class="btn btn-sm btn-default" title="Refresh" style="height:30px;width:42.4px;margin-left:0px" ><i class="fa fa-refresh"></i></button>
-                    </form>
+                      <button type="button" class="btn btn-sm btn-default" title="Refresh" style="height:30px;width:42.4px" onclick="refresh()"><i class="fa fa-refresh"></i></button>
                       <button type="button" class="btn btn-sm btn-default" title="Remove" style="height:30px;width:42.4px" onclick="remove()"><i class="fa fa-trash-o"></i></button>
                       <button type="button" class="btn btn-sm btn-default" title="Filter" data-toggle="dropdown"><i class="fa fa-filter"></i> <span class="caret"></span></button>
                       <ul class="dropdown-menu">
                         <li><a href="detailAnalyze_sortByTime.action">时间</a></li>
                         <li><a href="detailAnalyze_sortByMoney.action">金额</a></li>
+
+
                       </ul>
                     </div>
                   <div class="col-sm-4 m-b-xs">
@@ -67,6 +76,7 @@
                       <thead>
                         <tr>
                           <th width="20"><input type="checkbox"></th>
+                          <!--<th width="20"></th>-->
                           <th class="th-sortable" data-toggle="class">税号  </th>
                           <th>收款单位</th>
                           <th>付款单位</th>
@@ -113,14 +123,83 @@
           </aside>
         </section>
         <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a> </section>
+      <aside class="bg-light lter b-l aside-md hide" id="notes">
+        <div class="wrapper">Notification</div>
+      </aside>
     </section>
   </section>
 </section>
 <script src="js/app.v2.js"></script> <!-- Bootstrap --> <!-- App -->
-
+<div class="modal fade" id="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Idrawfast 02/2013</h4>
+      </div>
+      <div class="modal-body">
+        <p>This is a table in a modal, click the trash icon to remove the item</p>
+        <section class="panel panel-default m-l-n-md m-r-n-md m-b-none">
+          <header class="panel-heading"> <span class="label bg-danger pull-right">4 left</span> Tasks </header>
+          <table class="table table-striped m-b-none text-sm">
+            <thead>
+              <tr>
+                <th>Progress</th>
+                <th>Item</th>
+                <th width="20"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="item-1">
+                <td><div class="progress progress-sm progress-striped active m-t-xs m-b-none">
+                    <div class="progress-bar progress-bar-success" data-toggle="tooltip" data-original-title="80%" style="width: 80%"></div>
+                  </div></td>
+                <td>App prototype design</td>
+                <td class="text-right"><a href="#item-1" data-dismiss="alert"><i class="fa fa-trash-o"></i></a></td>
+              </tr>
+              <tr id="item-2">
+                <td><div class="progress progress-xs m-t-xs m-b-none">
+                    <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="40%" style="width: 40%"></div>
+                  </div></td>
+                <td>Design documents</td>
+                <td class="text-right"><a href="#item-2" data-dismiss="alert"><i class="fa fa-trash-o"></i></a></td>
+              </tr>
+              <tr id="item-3">
+                <td><div class="progress progress-xs m-t-xs m-b-none">
+                    <div class="progress-bar progress-bar-warning" data-toggle="tooltip" data-original-title="20%" style="width: 20%"></div>
+                  </div></td>
+                <td>UI toolkit</td>
+                <td class="text-right"><a href="#item-3" data-dismiss="alert"><i class="fa fa-trash-o"></i></a></td>
+              </tr>
+              <tr id="item-4">
+                <td><div class="progress progress-xs m-t-xs m-b-none">
+                    <div class="progress-bar progress-bar-danger" data-toggle="tooltip" data-original-title="15%" style="width: 15%"></div>
+                  </div></td>
+                <td>Testing</td>
+                <td class="text-right"><a href="#item-4" data-dismiss="alert"><i class="fa fa-trash-o"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" data-loading-text="Updating...">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content --> </div>
+  <!-- /.modal-dialog --> </div>
   <script>
-  		
-		 //移除明细记录
+		 function refresh(){
+			 $.ajax({
+		         async: true,
+		         type: "post",        //type：(string)请求方式，POST或GET
+		         url: "detailAnalyze_detail.action",
+		         success: function(){
+		        	 location.reload();  //请求成功之后重新刷新页面
+		         }
+		     });
+		 }
 		 function remove(){
 		        var s = document.getElementsByName("post[]");
 		        for(var i=0;i<s.length;i++){
@@ -130,7 +209,6 @@
 		            }
 		        }
 		    }
-		 //设置当前时间
 		 var date = new Date();
 		 var year = date.getFullYear();
 		 var month = date.getMonth()+1;

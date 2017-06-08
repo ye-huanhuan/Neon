@@ -44,7 +44,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 	}
 
 	public String month_1(){
-		
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
@@ -144,6 +143,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 				j++;
 			}
 		}
+		//将零值去除
+		input_totlemoney_month_array = ChangeLength.changeLength(input_totlemoney_month_array);
+		output_totlemoney_month_array = ChangeLength.changeLength(output_totlemoney_month_array);
 		result.put("data_difference",dvalue_array);
  		result.put("data_input", input_totlemoney_month_array);
  		result.put("data_output", output_totlemoney_month_array);

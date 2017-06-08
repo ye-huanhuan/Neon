@@ -7,6 +7,12 @@ var data_input;
 var data_output;
 var chart;
 var aver_input = 0,aver_output = 0;
+//设置虚线的范围
+var zone = [{
+    value: 10
+}, {
+    dashStyle: 'dot'
+}] ;
 function calculate(){
 	var num_effe_input = 0,num_effe_output = 0;
     var sum_effe_input = 0,sum_effe_output = 0;
@@ -124,7 +130,8 @@ $(function () {
         }, {
         	type: 'spline',
         	name: '销项金额',
-             
+        	zoneAxis: 'x',
+            zones: zone
         }
         ]
    });
@@ -172,6 +179,11 @@ $(function () {
     	        chart.series[0].setData(data_difference);
      	        chart.xAxis[0].setCategories(data_month);
      	        change();
+     	        //设置虚线的范围
+     	        zone[0].value = data_output.length - 2;
+                chart.series[2].update({
+               	zones: zone,
+                });
             }
         });
     });
@@ -196,7 +208,10 @@ $(function () {
     		 	        chart.series[0].setData(data_difference);
     		            chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
     		            change();
-    		            
+    		            zone[0].value = data_output.length;
+    	                chart.series[2].update({
+    	                	zones: zone,
+    	                });
     		        }
     		    });
     		}
@@ -222,6 +237,10 @@ $(function () {
      	        chart.series[0].setData(data_difference);
      	        chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
                 change();
+                zone[0].value = data_output.length - 2;
+                chart.series[2].update({
+                	zones: zone,
+                });
             }
         });
     });
@@ -245,6 +264,10 @@ $(function () {
      	        chart.series[0].setData(data_difference);
                 chart.xAxis[0].setCategories(['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月']);
                 change();
+                zone[0].value = data_output.length;
+                chart.series[2].update({
+                	zones: zone,
+                });
             }
         });
     });
