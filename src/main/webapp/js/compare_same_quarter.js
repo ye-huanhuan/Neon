@@ -304,7 +304,12 @@ function reduce(){
 	                        a[i] = p.y;
 	                        i++;
 	                    });
-	                   var percent = ((a[1]/a[0])*100).toFixed(2) + "%";
+	                   if(a[0] == 0){
+	                	   var percent = '无穷';
+	                   }else{
+	                	   var percent = ((a[1]/a[0])*100).toFixed(2) + "%";
+	                   }
+	                   
 	                    return itemsName + '<br>' + str + "同比增长:" + percent;
 	                },
 	                shared: true,

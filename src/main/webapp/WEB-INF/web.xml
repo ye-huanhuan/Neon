@@ -3,9 +3,12 @@
   <display-name>Neon</display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
-    <!--<welcome-file>index.jsp</welcome-file>  -->
-    
+   
   </welcome-file-list>
+  <!-- 设置session过期时间 -->
+  <session-config>  
+        <session-timeout>3</session-timeout>  
+</session-config> 
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
