@@ -548,7 +548,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 		return "success_quarter";
 	}
 	
-	//所有季度数据一样
 	public String quarter_3(){
 		//第三张表的数据   output_percent_month_array
 		System.out.println(quarter_quarter_3);

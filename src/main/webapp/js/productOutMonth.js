@@ -224,6 +224,7 @@
  
  //重置
  function reset(){
+	 alert(productName.length);
 	 for(var i=0;i<productName.length;i++){
 		 options.series[i] = new Object();
 		 options.series[i].data = productValue[i];
@@ -237,6 +238,7 @@
 		 }];
 		 
 	 }
+	options.series.length = productName.length;
 	options.xAxis.categories = months;
     chart1 = new Highcharts.Chart(options);
  }
