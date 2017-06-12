@@ -86,6 +86,12 @@ public interface OutputService extends DaoSupport<Output>{
 		//得到所有的月和当月的销售额
 		List<double[][]> getAllMonthAndMoney();
 
+		//将销售额分为10组
+		String[] group();
+
+		//根据分组得到销售额在每个组中的次数
+		int[] getTimesByGroup(String[] strs);
+
 
 		
 }
