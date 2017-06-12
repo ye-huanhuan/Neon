@@ -79,7 +79,6 @@ $(function () {
             var obj = eval(msg);
             productName_top = obj["data_output_month_3_key"];
             productValue_top = obj["data_output_month_3_value"];
-            alert(productValue_top);
             chart3.series[0].update({
             	name: '五月',
         		data: productValue_top,

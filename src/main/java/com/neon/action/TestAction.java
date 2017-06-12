@@ -19,9 +19,9 @@ public class TestAction extends ActionBase<User>{
 	private Map<String,Object> result = new HashMap<String,Object>();
 	private int year;
 	
-	public String detail(){
+	public String same(){
 		System.out.println("我执行了");
-		return "detail";
+		return "same";
 	}
 	public String hello(){
 		System.out.println("我执行了");
