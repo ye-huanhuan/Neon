@@ -25,5 +25,9 @@ public interface InputService extends DaoSupport<Input>{
 	double[] getThisQuarterInputGoodsTotleMoney(int i, int yEAR, String[] items);
 
 	double[][] getMonthMoneyByQuarterAndYearAnditems(int i, int j, String[] items);
+
+	String[] group();
+
+	int[] getTimesByGroup(String[] group_out);
 	
 }

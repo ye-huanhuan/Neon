@@ -368,6 +368,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 			input_totlemoney_quarter_array = ChangeLength.changeLength(input_totlemoney_quarter_array);
 			output_totlemoney_quarter_array = ChangeLength.changeLength(output_totlemoney_quarter_array);
 		}
+		System.out.println(input_totlemoney_quarter_array.length);
+		System.out.println(output_totlemoney_quarter_array.length);
+		System.out.println(dvalue_array.length);
 		result1.put("data_input_quarter", input_totlemoney_quarter_array);
 		result1.put("data_output_quarter", output_totlemoney_quarter_array);
 		result1.put("data_difference_quarter", dvalue_array);
@@ -794,6 +797,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 
 	}
 	
+	
 	public String tax(){
 		return "tax";
 	}
@@ -824,6 +828,22 @@ public class AnalyzeAction extends ActionBase<Input>{
 	public String detail(){
 		
 		return "detail";
+	}
+	
+	public String distribution(){
+		//销项数据
+		String[] group_out = outputService.group();
+		int[] times_out = outputService.getTimesByGroup(group_out);
+		for(int i = 0 ; i < 10 ; i++){
+			System.out.println(group_out[i] +"  "+times_out[i]);
+		}
+		//进项数据
+		String[] group_in = inputService.group();
+		int[] times_in = inputService.getTimesByGroup(group_in);
+		for(int i = 0 ; i < 10 ; i++){
+			System.out.println(group_in[i] +"  "+times_in[i]);
+		}
+		return "success";
 	}
 
 

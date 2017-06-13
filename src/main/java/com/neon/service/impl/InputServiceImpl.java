@@ -12,10 +12,12 @@ import org.springframework.stereotype.Service;
 import com.neon.base.DaoSupportImpl;
 import com.neon.domain.Inout;
 import com.neon.domain.Input;
+import com.neon.domain.Output;
 import com.neon.service.InoutService;
 import com.neon.service.InputService;
 import com.neon.util.Arith;
 import com.neon.util.Constant;
+import com.neon.util.ListToArray;
 import com.neon.util.Sort;
 
 @Service
@@ -50,8 +52,10 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 				d = Arith.add(d, inp.getMoney());
 			}
 			if(month%3 ==0){
-				list.add(d);
-				d=0.0;
+				if(d != 0.0){
+					list.add(d);
+					d=0.0;
+				}
 			}
 		}
 		return list;
@@ -239,6 +243,109 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 		return d;
 	}
 	
+	@Override
+	public String[] group() {
+		String[] str = new String[10];
+		List<Double> list = getAllMonthAndMoney_2();
+		int sub = (int) ((Arith.max(list) - Arith.min(list))/10);
+		double temp = Arith.max(list);
+		for(int i = 0 ; i < 10 ; i++){
+			temp = temp - sub;
+			temp = Math.floor(temp);
+			if(i == 0){
+				str[i] = temp + "";
+			}else if(i == 9){
+				str[i] = temp + "";
+			}else{
+				str[i] = temp+"";
+			}
+		}
+		return str;
+	}
+	
+	@Override
+	public int[] getTimesByGroup(String[] group) {
+		List<Integer> list = new ArrayList<>();
+		List<Double> month = getAllMonthAndMoney_2();
+		int i1=0,i2=0,i3=0,i4=0,i5=0,i6=0,i7=0,i8=0,i9=0,i10=0;
+		for(double d : month){
+			if(d > Double.parseDouble(group[1])){
+				i1++;
+			}else if(Double.parseDouble(group[1]) <= d || d >Double.parseDouble(group[2])){
+				i2++;
+			}else if(Double.parseDouble(group[2]) <= d || d >Double.parseDouble(group[3])){
+				i3++;
+			}else if(Double.parseDouble(group[3]) <= d || d >Double.parseDouble(group[4])){
+				i4++;
+			}else if(Double.parseDouble(group[4]) <= d || d >Double.parseDouble(group[5])){
+				i5++;
+			}else if(Double.parseDouble(group[5]) <= d || d >Double.parseDouble(group[6])){
+				i6++;
+			}else if(Double.parseDouble(group[6]) <= d || d >Double.parseDouble(group[7])){
+				i7++;
+			}else if(Double.parseDouble(group[7]) <= d || d >Double.parseDouble(group[8])){
+				i8++;
+			}else if(Double.parseDouble(group[8]) <= d || d >Double.parseDouble(group[9])){
+				i9++;
+			}else{
+				i10++;
+			}
+		}
+		
+		list.add(i1);
+		list.add(i2);
+		list.add(i3);
+		list.add(i4);
+		list.add(i5);
+		list.add(i6);
+		list.add(i7);
+		list.add(i8);
+		list.add(i9);
+		list.add(i10);
+		return ListToArray.getIntArray(list);
+	}
+	
+	private List<Double> getAllMonthAndMoney_2() {
+		List<Double> list = new ArrayList<>();
+		int[] years = ListToArray.getIntArray(getInputYear());
+		for(int year : years){
+			if(year == Constant.YEAR){
+				for(int month = 1 ; month <= Constant.CURRENTMONTH - 1; month++ ){
+					List<Input> inputs = getInputsWithMonthAndYear(month,year);
+					Double money = 0.0;
+					for(Input out : inputs){
+						money += out.getMoney();
+					}
+					list.add(money);
+				}
+			}else{
+				for(int month = 1 ; month <= 12 ; month++ ){
+					try{
+						List<Input> inputs = getInputsWithMonthAndYear(month,year);
+						Double money = 0.0;
+						for(Input out : inputs){
+							money += out.getMoney();
+						}
+						list.add(money);
+					}catch (Exception e) {
+					}
+					
+				}
+			}
+		}
+		return list;
+	}
+
+
+	private List<Input> getInputsWithMonthAndYear(int month, int year) {
+		return getSession().createQuery(//
+				"FROM Input output WHERE output.month=? AND output.year=?")
+				.setParameter(0, month)
+				.setParameter(1, year)
+				.list();
+	}
+
+
 	private double getThisMonthThisGoodsTotleMoney(String item, int month, int year) {
 		return (double) getSession().createQuery(//
 				"SELECT money FROM Input out WHERE out.month=? AND out.year=? AND out.item=?")

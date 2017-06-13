@@ -1,6 +1,7 @@
 package com.neon.util;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Arith {
 
@@ -47,4 +48,42 @@ public class Arith {
        BigDecimal b2 = new BigDecimal(v2.toString());    
        return new Double(b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).doubleValue());    
     }    
+    
+    /**
+     * 得到一个集合中的最小值
+     * @param list
+     * @return
+     */
+    public static Double max(List<Double> list){
+    	double d = 0.0;
+    	if(list.size() != 0){
+    		for(int i = 0 ; i < list.size() ; i++){
+    			if(d < list.get(i)){
+    				d = list.get(i);
+    			}
+    		}
+    	}else{
+    		return null;
+    	}
+    	return d;
+    }
+    
+    /**
+     * 得到一个集合中的最小值
+     * @param list
+     * @return
+     */
+    public static Double min(List<Double> list){
+    	double d = 0.0;
+    	if(list.size() != 0){
+    		for(int i = 0 ; i < list.size() ; i++){
+    			if(d > list.get(i)){
+    				d = list.get(i);
+    			}
+    		}
+    	}else{
+    		return null;
+    	}
+    	return d;
+    }
 }
