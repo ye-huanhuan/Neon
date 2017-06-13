@@ -31,7 +31,7 @@
          <section class="w-f scrollable">
             <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333">
               <nav class="nav-primary hidden-xs">
-              <%@include file="left.jsp" %>
+              <!-- <%@include file="left.jsp" %> -->
               </nav>
             </div>
           </section>

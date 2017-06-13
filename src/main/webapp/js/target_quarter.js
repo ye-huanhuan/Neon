@@ -3,7 +3,6 @@
  */
 
 $(function () {
-        alert("hello_quarter");
         var chart = {
             type: 'solidgauge'
         };

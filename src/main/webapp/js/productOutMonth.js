@@ -237,6 +237,7 @@
 		 }];
 		 
 	 }
+	options.series.length = productName.length;
 	options.xAxis.categories = months;
     chart1 = new Highcharts.Chart(options);
  }

@@ -145,7 +145,6 @@ $(function(){
          success: function (msg) {
              var obj = eval(msg);
              var a = obj["data_output_year_3"];
-             alert(a);
              for(var i=0;i<a.length;i++)
              {
                  for(var j=0;j<a[i].length;j++)

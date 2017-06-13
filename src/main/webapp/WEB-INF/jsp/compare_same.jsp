@@ -47,12 +47,13 @@
 
                     <div class="btn-group">
                     <form action="detailAnalyze_detail.action" style="display: inline-block">
-                    <button type="submit" class="btn btn-sm btn-default" title="Refresh" style="height:30px;width:42.4px;margin-left:0px" ><i class="fa fa-refresh"></i></button>
+                    <button id="refresh" type="submit" class="btn btn-sm btn-default" title="Refresh" style="height:30px;width:42.4px;margin-left:0px" ><i class="fa fa-refresh"></i></button>
                     </form>
                       <button type="button" class="btn btn-sm btn-default" title="Remove" style="height:30px;width:42.4px" onclick="remove()"><i class="fa fa-trash-o"></i></button>
                       <button type="button" class="btn btn-sm btn-default" title="Filter" data-toggle="dropdown"><i class="fa fa-filter"></i> <span class="caret"></span></button>
                        <button id="preview" class="button">预览</button>
                        <button id="btnExport" class="button">下载</button>
+                       
                       <ul class="dropdown-menu">
                         <li><a href="detailAnalyze_sortByTime.action">时间</a></li>
                         <li><a href="detailAnalyze_sortByMoney.action">金额</a></li>
@@ -77,25 +78,190 @@
                      <table class="table table-striped m-b-none" id="Tax_detail">
                       <thead>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox" class="all"></th>
-                          <th>税号 <input type="checkbox" name="select" style="margin-left:20px" id="1"> </th>
-                          <th>收款单位<input type="checkbox" name="select" style="margin-left:20px" id="2"></th>
-                          <th>付款单位<input type="checkbox" name="select" style="margin-left:20px" id="3"></th>
-                          <th>金额<input type="checkbox" name="select" style="margin-left:20px" id="4"></th>
-                          <th>日期<input type="checkbox" name="select" style="margin-left:20px" id="5"></th>
+                          <th width="20"><input name="all" class="all" type="checkbox"></th>
+                          <th>年份  <input type="checkbox" name="select" style="margin-left:20px" id="1"></th>
+                          <th>月份<input type="checkbox" name="select" style="margin-left:20px" id="2"></th>
+                          <th>税收额<input type="checkbox" name="select" style="margin-left:20px" id="3"></th>
+                          <th>月份环比<input type="checkbox" name="select" style="margin-left:20px" id="4"></th>
+                          <th>年份同比<input type="checkbox" name="select" style="margin-left:20px" id="5"></th>
+                          <th>年内占比<input type="checkbox" name="select" style="margin-left:20px" id="6"></th>
                         </tr>
                       </thead>
                       <tbody>
-                      <s:iterator value="#lists">
-	                      <tr>
-	                        <td><input type="checkbox" name="all" value="2"></td>
-	                        <td>${ein }</td>
-	                        <td>${receUnit }</td>
-	                        <td>${payUnit }</td>
-	                        <td>${money }</td>
-	                        <td>${date }</td>
-	                      </tr>
-                      </s:iterator>
+                      <tr>
+                          <th width="20" style="vertical-align: middle;text-align:center" rowspan="12"><input name="all" type="checkbox"></th>
+                          <th style="vertical-align: middle;text-align:center" rowspan="12">2016  </th>
+                          <th>1</th>
+                          <th>10</th>
+                          <th>170%</th>
+                          <th>150%</th>
+                          <th>20%</th>
+                        </tr>
+                        <tr>
+                          <th>2</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>3</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>4</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>5</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>6</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>7</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>8</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        
+                        <tr>
+                          <th>9</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>10</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>11</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>12</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th style="vertical-align: middle;text-align:center" width="20" rowspan="12"><input name="all" type="checkbox"></th>
+                          <th style="vertical-align: middle;text-align:center" rowspan="12">2015  </th>
+                          <th>1</th>
+                          <th>10</th>
+                          <th>170%</th>
+                          <th>150%</th>
+                          <th>20%</th>
+                        </tr>
+                        <tr>
+                          <th>2</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>3</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>4</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>5</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>6</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>7</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>8</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        
+                        <tr>
+                          <th>9</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>10</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>11</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
+                        <tr>
+                          <th>12</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                        </tr>
 		              </tbody>
                     </table>
                   </div>
@@ -128,37 +294,11 @@
 </section>
 <script src="js/app.v2.js"></script> <!-- Bootstrap --> <!-- App -->
 <!--  table2excel所需要的包 -->
+ 
  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
- <script>
-$("#preview").click(function(){
-	 var selectedNumber = [];
-    $('input:checkbox[name=select]').not("input:checked").each(function(i){
-   	 selectedNumber[i] = $(this).attr('id');
-    });
-    if(selectedNumber.length === 5){
-   	 selectedNumber = [];
-    }
-var trs = document.getElementById("Tax_detail").rows;
-for(var i = 0, len = trs.length; i < len; i++){
-		 var cell0 = trs[i].cells[0];
-	     var parent = cell0.parentNode;
-	     if($(cell0).children(':first').attr('name') === "all"){
-	    	 parent.removeChild(cell0);
-	     }
-	     
-	     for(var j=0;j<selectedNumber.length;j++){
-	    	 trs[i].cells[selectedNumber[j]-j-1].parentNode.removeChild(trs[i].cells[selectedNumber[j]-j-1]);
-	     }
-	 }
-    
-
-});
-
-</script>
+ <script src="js/preview_compare_same.js"></script>
  <script src="plugin/jquery.table2excel.js"></script>
  <script src="js/Export_Tax_detail.js"></script>
-
-
 
   <script>
   		
@@ -166,8 +306,12 @@ for(var i = 0, len = trs.length; i < len; i++){
 		 function remove(){
 		        var s = document.getElementsByName("all");
 		        for(var i=0;i<s.length;i++){
+		        	
 		            if(s[i].checked&&$(s[i]).attr('class') != "all"){
-		                s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
+		            	var childs = s[i].parentNode.parentNode.parentNode.children;
+		            	for(var j=(i-1)*12+1;j<(i-1)*12+1+12;j++){
+		                	childs[(i-1)*12].parentNode.removeChild(childs[(i-1)*12]);
+		                }
 		                i--;
 		            }
 		        }

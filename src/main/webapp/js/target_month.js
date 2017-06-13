@@ -1,7 +1,6 @@
 // 当月目标 
 
 $(function () {
-	alert("hello_month");
         var chart = {
             type: 'solidgauge'
         };

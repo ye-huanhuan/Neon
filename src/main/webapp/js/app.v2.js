@@ -4251,7 +4251,7 @@ Date.now = Date.now || function() {
         $(document).on('click', '.fontawesome-icon-list a', function(e) {
             e && e.preventDefault();
         });
-        $(document).on('change', 'table thead [type="checkbox"]', function(e) {
+        $(document).on('change', 'table thead [class="all"]', function(e) {
             e && e.preventDefault();
             var $table = $(e.target).closest('table'), $checked = $(e.target).is(':checked');
             $('tbody [type="checkbox"]', $table).prop('checked', $checked);
