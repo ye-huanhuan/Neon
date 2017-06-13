@@ -74,7 +74,7 @@ public class Arith {
      * @return
      */
     public static Double min(List<Double> list){
-    	double d = 0.0;
+    	double d = list.get(0);
     	if(list.size() != 0){
     		for(int i = 0 ; i < list.size() ; i++){
     			if(d > list.get(i)){

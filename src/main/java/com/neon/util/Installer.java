@@ -26,23 +26,29 @@ public class Installer {
 		
 		
 		//==============添加权限============================
-		Privilege  privilege2 , privilege3;
+		Privilege  privilege2 , privilege3 , privilege4;
 		//privilege1 = new Privilege("首页","#",null);
 		//session.save(privilege1);
 		
 		privilege2 = new Privilege("分析","#",null);
 		session.save(privilege2);
 		
-		privilege3 = new Privilege("设置","#",null);
+		privilege3 = new Privilege("报表","#",null);
 		session.save(privilege3);
+		
+		privilege4 = new Privilege("设置","#",null);
+		session.save(privilege4);
 		
 		session.save(new Privilege("月份分析","analyze_month.action",privilege2));
 		session.save(new Privilege("季度分析","analyze_quarter.action",privilege2));
 		session.save(new Privilege("年度分析","analyze_year.action",privilege2));
 		session.save(new Privilege("税收分析","analyze_tax.action",privilege2));
-		session.save(new Privilege("明细分析","detailAnalyze_detail.action",privilege2));
 		
-		session.save(new Privilege("设置数据","invoice_setDvalue.action",privilege3));
+		session.save(new Privilege("明细分析","detailAnalyze_detail.action",privilege3));
+		session.save(new Privilege("同比分析","detailAnalyze_detail.action",privilege3));
+		session.save(new Privilege("产品分析","detailAnalyze_detail.action",privilege3));
+		
+		session.save(new Privilege("设置数据","invoice_setDvalue.action",privilege4));
 		
 		//==============================================
 		

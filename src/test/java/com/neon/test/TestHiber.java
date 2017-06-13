@@ -96,7 +96,7 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 			System.out.println(s);
 		}*/
 		
-		double[][] d = new double[1][];
+		/*double[][] d = new double[1][];
 		d[0] = new double[2];
 		d[0][0] = 1;
 		d[0][1] = 2;
@@ -111,7 +111,14 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		
 		
 		System.out.println(LinearRegression.predict(list, 3));
- 		System.out.println("3");
+ 		System.out.println("3");*/
+		
+		/*List<Double> l = new ArrayList<>();
+		l.add(1.0);
+		l.add(2.0);
+		l.add(0.5);
+		System.out.println(Arith.max(l) + " " + Arith.min(l));*/
+		
 	}
 	
 }
