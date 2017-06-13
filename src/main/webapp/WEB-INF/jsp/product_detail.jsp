@@ -138,21 +138,21 @@
                         <tr>
                           <th width="20"><input class="product_one" name="all" type="checkbox"></th>
                           <th>6</th>
-                          <th>50</th>
+                          <th>20</th>
                           <th>150%</th>
                           <th>130%</th>
                           <th>30%</th>
-                          <th>3</th>
+                          <th>1</th>
                         </tr>
                         <tr>
-                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
-                          <th rowspan="6" class="two" style="vertical-align: middle;text-align:center">鸡肉罐头  </th>
+                          <th width="20"><input name="all" class="product_two_other" type="checkbox"></th>
+                          <th rowspan="6" id="two" style="vertical-align: middle;text-align:center">鱼肉罐头  </th>
                           <th>1</th>
                           <th>10</th>
                           <th>170%</th>
                           <th>150%</th>
-                          <th>30%</th>
-                          <th>1</th>
+                          <th>20%</th>
+                          <th>2</th>
                         </tr>
                         <tr>
                           <th width="20"><input class="product_two" name="all" type="checkbox"></th>
@@ -199,6 +199,7 @@
                           <th>30%</th>
                           <th>1</th>
                         </tr>
+                        
 		              </tbody>
                     </table>
                   </div>
@@ -244,11 +245,44 @@
 		        var s = document.getElementsByName("all");
 		        for(var i=0;i<s.length;i++){
 		            if(s[i].checked&&$(s[i]).attr('class') != "all"){
-		                s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
-		                var product_group = $(s[i]).attr("class");
-		                alert(product_group);
+		            	var childs = s[i].parentNode.parentNode.children;
+		            	var len = (s[i].parentNode.parentNode.parentNode.children).length;
+		            	alert(i);
+		            	alert(len);
+		            	var product_group = $(s[i]).attr("class");
+		            	if(i != len){
+		            		var childs_inner = s[i+1].parentNode.parentNode.children;
+		            		var importantChild = childs[1];
+			            	if(childs.length === 7||childs_inner.length === 8){
+			            		alert("hello");
+			            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
+			            	}else{
+			            		s[i+1].parentNode.parentNode.insertBefore(importantChild,childs_inner[1]);
+			            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
+			            	}
+		            	}else{
+		            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
+		            	}
+		            	
+		            	
+		            	/*if(childs.length === 7){
+		            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
+		            	}else{
+		            		for(var t=0;t<8;t++){
+		            			alert(t);
+		            			if(t<2){
+		            				alert("hello");
+		            				childs[t].parentNode.removeChild(childs[t]);
+		            			}
+		            			if(t>=2){
+		            				alert("hi");
+		            				childs[1].parentNode.removeChild(childs[1]);
+		            			}
+		            			
+		            		}
+		            	}
+		                */
 		                var modify_rowspan = product_group.split("_")[1];
-		                alert(modify_rowspan);
 		                var rowspan_number = document.getElementById(modify_rowspan).getAttribute('rowspan');
 		                document.getElementById(modify_rowspan).setAttribute('rowspan',""+(rowspan_number-1)); 
 		                i--;

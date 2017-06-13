@@ -89,7 +89,7 @@
                       </thead>
                       <tbody>
                       <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
+                          <th width="20" style="vertical-align: middle;text-align:center" rowspan="12"><input name="all" type="checkbox"></th>
                           <th style="vertical-align: middle;text-align:center" rowspan="12">2016  </th>
                           <th>1</th>
                           <th>10</th>
@@ -98,7 +98,6 @@
                           <th>20%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>2</th>
                           <th>20</th>
                           <th>150%</th>
@@ -106,7 +105,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>3</th>
                           <th>20</th>
                           <th>150%</th>
@@ -114,7 +112,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>4</th>
                           <th>20</th>
                           <th>150%</th>
@@ -122,7 +119,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>5</th>
                           <th>20</th>
                           <th>150%</th>
@@ -130,7 +126,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>6</th>
                           <th>20</th>
                           <th>150%</th>
@@ -138,7 +133,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>7</th>
                           <th>20</th>
                           <th>150%</th>
@@ -146,7 +140,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>8</th>
                           <th>20</th>
                           <th>150%</th>
@@ -155,7 +148,6 @@
                         </tr>
                         
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>9</th>
                           <th>20</th>
                           <th>150%</th>
@@ -163,7 +155,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>10</th>
                           <th>20</th>
                           <th>150%</th>
@@ -171,7 +162,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>11</th>
                           <th>20</th>
                           <th>150%</th>
@@ -179,7 +169,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>12</th>
                           <th>20</th>
                           <th>150%</th>
@@ -187,7 +176,7 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
+                          <th style="vertical-align: middle;text-align:center" width="20" rowspan="12"><input name="all" type="checkbox"></th>
                           <th style="vertical-align: middle;text-align:center" rowspan="12">2015  </th>
                           <th>1</th>
                           <th>10</th>
@@ -196,7 +185,6 @@
                           <th>20%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>2</th>
                           <th>20</th>
                           <th>150%</th>
@@ -204,7 +192,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>3</th>
                           <th>20</th>
                           <th>150%</th>
@@ -212,7 +199,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>4</th>
                           <th>20</th>
                           <th>150%</th>
@@ -220,7 +206,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>5</th>
                           <th>20</th>
                           <th>150%</th>
@@ -228,7 +213,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>6</th>
                           <th>20</th>
                           <th>150%</th>
@@ -236,7 +220,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>7</th>
                           <th>20</th>
                           <th>150%</th>
@@ -244,7 +227,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>8</th>
                           <th>20</th>
                           <th>150%</th>
@@ -253,7 +235,6 @@
                         </tr>
                         
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>9</th>
                           <th>20</th>
                           <th>150%</th>
@@ -261,7 +242,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>10</th>
                           <th>20</th>
                           <th>150%</th>
@@ -269,7 +249,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>11</th>
                           <th>20</th>
                           <th>150%</th>
@@ -277,7 +256,6 @@
                           <th>30%</th>
                         </tr>
                         <tr>
-                          <th width="20"><input name="all" type="checkbox"></th>
                           <th>12</th>
                           <th>20</th>
                           <th>150%</th>
@@ -328,8 +306,12 @@
 		 function remove(){
 		        var s = document.getElementsByName("all");
 		        for(var i=0;i<s.length;i++){
+		        	
 		            if(s[i].checked&&$(s[i]).attr('class') != "all"){
-		                s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
+		            	var childs = s[i].parentNode.parentNode.parentNode.children;
+		            	for(var j=(i-1)*12+1;j<(i-1)*12+1+12;j++){
+		                	childs[(i-1)*12].parentNode.removeChild(childs[(i-1)*12]);
+		                }
 		                i--;
 		            }
 		        }
