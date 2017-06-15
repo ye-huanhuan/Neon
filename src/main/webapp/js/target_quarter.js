@@ -87,6 +87,7 @@ $(function () {
             url: "home_detail.action",//url：(string)发送请求的地址，可以是服务器页面也可以是WebService动作。
             success: function (msg) {
                 var obj = eval(msg);
+                alert("quarter");
                 var data_target = obj["data_target"];
                 yAxis["max"] = data_target[1];
                 var json = {};

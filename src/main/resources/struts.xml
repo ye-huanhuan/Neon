@@ -49,6 +49,9 @@
 		 <result name="success_tax" type="json">
 		 <param name="root">result3</param>
 		 </result>
+		 <result name="success_distribution" type="json">
+		 <param name="root">result4</param>
+		 </result>
 	</action>
 	
 	<!-- ==============详细分析部分====================================== -->

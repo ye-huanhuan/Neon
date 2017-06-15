@@ -1,9 +1,10 @@
 /**
  * 进项税分布情况
  */
-var sum_in = 27;
+var sum_in = 0;
+var chart1;
 $(function () {
-    $('#container_second_2').highcharts({
+	chart1 = new Highcharts.Chart('container_second_2', {
         chart: {
             type: 'bar'
         },
@@ -84,4 +85,24 @@ $(function () {
             data: [3, 4, 10, 4, 2]
         }]
     });
+    $.ajax({
+ 	    async: true,
+ 	    type: "post",        
+ 	    dataType: "json",    
+ 	    url: "analyze_distribution.action",
+ 	    success: function (msg) {
+ 	        var obj = eval(msg);
+ 	        var group_in = obj["group_in"];
+ 	        var times_in = obj["times_in"];
+ 	        for(var j=0;j<times_in.length;j++){
+ 	        	sum_in+=times_in[j];
+ 	        }
+ 	       chart1.series[0].update({
+ 	    	   data: times_in,
+ 	       });
+ 	      chart1.xAxis[0].update({
+ 	    	 categories: group_in,
+ 	 	  });
+ 	    }
+ 	});
 });
