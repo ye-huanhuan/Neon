@@ -2,11 +2,12 @@
  *  每个产品的年售出量
  */
 
- var chart1;
- var productName;
- var productValue;
- var options;
+
  $(function () {
+	 var chart1;
+	 var productName;
+	 var productValue;
+	 var options;
    options = {
      chart: {
        renderTo: 'container_second',
@@ -85,65 +86,67 @@
   	    	var obj = eval(msg);
   	    	productName = obj["productName"];
   	    	productValue = obj["productVlaue"];
-  	    	
 	        reset();
   	    }
    });
    
+   
+ //使rangevalue之下的值消失
+   function disappear(){
+  		var aa = $("#second_rangeValue").val();
+  		var subaa = aa.split(",");
+  		var min = subaa[0];
+  		var max = subaa[1];
+  		var newProductValue = new Array();  //为了不覆盖掉原本的值
+  		for(var n=0;n<productName.length;n++){      
+  			newProductValue[n] = new Array();
+  		}
+  		for(var i=0;i<productName.length;i++){
+  	        options.series[i] = new Object();
+  	        for(var j=0;j<productValue[i].length;j++){
+  	        	if(productValue[i][j]<min || productValue[i][j]>max){
+  	        		newProductValue[i][j] = null;
+  	        	}else{
+  	        		newProductValue[i][j] = productValue[i][j];
+  	        	}
+  	        }
+  	        options.series[i].name = productName[i];
+          	options.series[i].data = newProductValue[i];
+          	
+    	    	}
+  		
+          chart1 = new Highcharts.Chart(options);
+  	}
+   
+   //重置
+   function reset(){
+  	 for(var i=0;i<productName.length;i++){
+  		 options.series[i] = new Object();
+  		 options.series[i].name = productName[i];
+  		 transfer(productValue[i]);
+  		 options.series[i].data = productValue[i];
+  	 }
+      chart1 = new Highcharts.Chart(options);
+   }
+   
+ //使用jrange
+   $('#second_rangeValue').jRange({
+       from: 0,
+       to: 500,
+       step: 20,
+       scale: [0,100,200,300,400,500],
+       format: '%s',
+       width: 300,
+       showLabels: true,
+       isRange : true,
+       ondragend : disappear
+   });
+   
+   $("#second_button").click(function () {
+   	reset();
+   });
 });
-//使用jrange
- $('#second_rangeValue').jRange({
-     from: 0,
-     to: 500,
-     step: 20,
-     scale: [0,100,200,300,400,500],
-     format: '%s',
-     width: 300,
-     showLabels: true,
-     isRange : true,
-     ondragend : disappear
- });
+
  
-//使rangevalue之下的值消失
- function disappear(){
-		var aa = $("#second_rangeValue").val();
-		var subaa = aa.split(",");
-		var min = subaa[0];
-		var max = subaa[1];
-		var newProductValue = new Array();  //为了不覆盖掉原本的值
-		for(var n=0;n<productName.length;n++){      
-			newProductValue[n] = new Array();
-		}
-		for(var i=0;i<productName.length;i++){
-	        options.series[i] = new Object();
-	        for(var j=0;j<productValue[i].length;j++){
-	        	if(productValue[i][j]<min || productValue[i][j]>max){
-	        		newProductValue[i][j] = null;
-	        	}else{
-	        		newProductValue[i][j] = productValue[i][j];
-	        	}
-	        }
-	        options.series[i].name = productName[i];
-        	options.series[i].data = newProductValue[i];
-  	    	}
-        chart1 = new Highcharts.Chart(options);
-	}
- 
- //重置
- function reset(){
-	 for(var i=0;i<productName.length;i++){
-		 options.series[i] = new Object();
-		 options.series[i].name = productName[i];
-		 transfer(productValue[i]);
-		 options.series[i].data = productValue[i];
-	 }
-    chart1 = new Highcharts.Chart(options);
- }
- 
- 
- $(function () {
-	    $("#second_button").click(function () {
-	    	reset();
-	    });
-	});	    	
+ 	
 	    
