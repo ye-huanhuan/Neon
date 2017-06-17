@@ -87,9 +87,8 @@
 <script src= "js/indexIn.js"></script>
 <script src="js/highcharts.js"></script>
 <script src="js/indexOut.js"></script>
-<script src="js/target_month.js"></script>
-<script src="js/target_quarter.js"></script>
-<script src="js/target_year.js"></script>
+<script src="js/target.js"></script>
+
 
 </body>
 </html>

@@ -20,7 +20,6 @@ public class HomeAction extends ActionBase<User>{
 	}
 	
 	public String detail(){
-		System.out.println("次数");
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
 		//准备数据

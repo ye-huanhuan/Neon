@@ -1,9 +1,10 @@
 /**
  * 销项税分布情况
  */
-var sum_out = 21;
+var sum_out = 0;
+var chart2;
 $(function () {
-    $('#container_second_1').highcharts({
+	chart2 = new Highcharts.Chart('container_second_1', {
         chart: {
             type: 'bar'
         },
@@ -83,4 +84,24 @@ $(function () {
             data: [3, 4, 10, 2, 2]
         }]
     });
+    $.ajax({
+ 	    async: true,
+ 	    type: "post",        
+ 	    dataType: "json",    
+ 	    url: "analyze_distribution.action",
+ 	    success: function (msg) {
+ 	        var obj = eval(msg);
+ 	        var group_out = obj["group_out"];
+ 	        var times_out = obj["times_out"];
+ 	        for(var j=0;j<times_out.length;j++){
+ 	        	sum_out+=times_out[j];
+ 	        }
+ 	       chart2.series[0].update({
+ 	    	   data: times_out,
+ 	       });
+ 	      chart2.xAxis[0].update({
+ 	    	 categories: group_out,
+ 	 	  });
+ 	    }
+ 	});
 });

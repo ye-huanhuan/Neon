@@ -34,6 +34,7 @@ public class AnalyzeAction extends ActionBase<Input>{
 	private Map<String,Object> result1 = new HashMap<String,Object>(); 
 	private Map<String,Object> result2 = new HashMap<String,Object>();
 	private Map<String,Object> result3 = new HashMap<String,Object>();
+	private Map<String,Object> result4 = new HashMap<String,Object>();
 	//获取当前日期
 	Calendar cal = Calendar.getInstance();
 	int current_year = cal.get(Calendar.YEAR);
@@ -856,7 +857,11 @@ public class AnalyzeAction extends ActionBase<Input>{
 		for(int i = 0 ; i < 10 ; i++){
 			System.out.println(group_in[i] +"  "+times_in[i]);
 		}
-		return "success";
+		result4.put("group_out", group_out);
+		result4.put("times_out", times_out);
+		result4.put("group_in",group_in);
+		result4.put("times_in", times_in);
+		return "success_distribution";
 	}
 	
 	//同比分析
@@ -982,6 +987,14 @@ public class AnalyzeAction extends ActionBase<Input>{
 
 	public void setResult3(Map<String,Object> result3) {
 		this.result3 = result3;
+	}
+
+	public Map<String, Object> getResult4() {
+		return result4;
+	}
+
+	public void setResult4(Map<String, Object> result4) {
+		this.result4 = result4;
 	}
 
 	
