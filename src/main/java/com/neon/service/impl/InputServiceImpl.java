@@ -19,6 +19,7 @@ import com.neon.util.Arith;
 import com.neon.util.Constant;
 import com.neon.util.ListToArray;
 import com.neon.util.Sort;
+import com.zyujie.dm.LinearRegression;
 
 @Service
 public class InputServiceImpl extends DaoSupportImpl<Input> implements InputService{
@@ -26,15 +27,26 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 	@Override
 	public List<Double> getInputTotleMoneyWithMonth(int year) {
 		List<Double> list = new ArrayList<>();
-		for(int month = 1 ; month <= Constant.MONTH ; month++ ){
-			List<Input> inputs = getInputDataByMonth(month,year);
-
-			double d = 0.0;
-			for(Input inp : inputs){
-				d = Arith.add(d, inp.getMoney());
+		if(year == Constant.YEAR){
+			for(int month = 1 ; month <= Constant.CURRENTMONTH - 1 ; month++ ){
+				List<Input> outputs = getInputsWithMonthAndYear(month,year);
+				Double money = 0.0;
+				for(Input out : outputs){
+					money += out.getMoney();
+				}
+				list.add(money);
 			}
-			list.add(d);
+		}else{
+			for(int month = 1 ; month <= Constant.MONTH ; month++ ){
+				List<Input> outputs = getInputsWithMonthAndYear(month,year);
+				Double money = 0.0;
+				for(Input out : outputs){
+					money += out.getMoney();
+				}
+				list.add(money);
+			}
 		}
+		
 		return list;
 	}
 	

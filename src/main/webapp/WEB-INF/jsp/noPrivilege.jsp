@@ -37,7 +37,7 @@
           <section class="scrollable padder">
             <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
               <li><a href="home_index.action"><i class="fa fa-home"></i> Home</a></li>
-              <li class="active">设置</li>
+              <li class="active">错误页面</li>
             </ul>
             <!-- 
          <form action="invoice_toSetDvalue.action" method="get">
@@ -73,70 +73,15 @@
        	 </form>
        	  -->
        	  
-       	  <form action="invoice_toSetDvalue.action" method="post">
+       	  <form action="home_index.action" method="post">
        	  
        	   <section class="content bgcolor-5" style="background-color:rgb(240,240,240)">
-    		<center><h2 style="color: rgb(106,121,137);opacity: 1.0">利润合理区间设置</h2>
-    		<span class="input input--minoru" style="font-size: 150%;">
-					<input class="input__field input__field--yoko" type="text" id="input-1" value=<s:property value="#application.dvalue.pdvalue_month"/> name="pdvalue_month"/>
-					<label class="input__label input__label--yoko" for="input-1">
-						<span class="input__label-content input__label-content--yoko">月利润</span>
-					</label>
-				</span>
-    		<span class="input input--minoru" style="font-size: 150%;">
-					<input class="input__field input__field--yoko" type="text" id="input-2" value=<s:property value="#application.dvalue.pdvalue_quarter"/> name="pdvalue_quarter"/>
-					<label class="input__label input__label--yoko" for="input-2">
-						<span class="input__label-content input__label-content--yoko">季度利润</span>
-					</label>
-				</span>
-    		<span class="input input--minoru" style="font-size: 150%;">
-					<input class="input__field input__field--yoko" type="text" id="input-3" value=<s:property value="#application.dvalue.pdvalue_year"/> name="pdvalue_year"/>
-					<label class="input__label input__label--yoko" for="input-3">
-						<span class="input__label-content input__label-content--yoko">年利润</span>
-					</label>
-				</span>
-    		<span class="input input--minoru" style="font-size: 150%;">
-					<input class="input__field input__field--yoko" type="text" id="input-4" value=<s:property value="#application.dvalue.ndvalue_month"/> name="ndvalue_month"/>
-					<label class="input__label input__label--yoko" for="input-4">
-						<span class="input__label-content input__label-content--yoko">月亏损</span>
-					</label>
-				</span>
-    		<span class="input input--minoru" style="font-size: 150%;">
-					<input class="input__field input__field--yoko" type="text" id="input-5" value=<s:property value="#application.dvalue.ndvalue_quarter"/> name="ndvalue_quarter"/>
-					<label class="input__label input__label--yoko" for="input-5">
-						<span class="input__label-content input__label-content--yoko">季度亏损</span>
-					</label>
-				</span>
-    		<span class="input input--minoru" style="font-size: 150%;">
-					<input class="input__field input__field--yoko" type="text" id="input-6" value=<s:property value="#application.dvalue.ndvalue_year"/> name="ndvalue_year"/>
-					<label class="input__label input__label--yoko" for="input-6">
-						<span class="input__label-content input__label-content--yoko">年亏损</span>
-					</label>
-				</span>
-				
-				<span class="input input--minoru" style="font-size: 150%;">
-					<input class="input__field input__field--yoko" type="text" id="input-4" value=<s:property value="#application.dvalue.target_month"/> name="target_month"/>
-					<label class="input__label input__label--yoko" for="input-4">
-						<span class="input__label-content input__label-content--yoko">月目标</span>
-					</label>
-				</span>
-    		<span class="input input--minoru" style="font-size: 150%;">
-					<input class="input__field input__field--yoko" type="text" id="input-5" value=<s:property value="#application.dvalue.target_quarter"/> name="target_quarter"/>
-					<label class="input__label input__label--yoko" for="input-5">
-						<span class="input__label-content input__label-content--yoko">季度目标</span>
-					</label>
-				</span>
-    		<span class="input input--minoru" style="font-size: 150%;">
-					<input class="input__field input__field--yoko" type="text" id="input-6" value=<s:property value="#application.dvalue.target_year"/> name="target_year"/>
-					<label class="input__label input__label--yoko" for="input-6">
-						<span class="input__label-content input__label-content--yoko">年目标</span>
-					</label>
-				</span>
-
+    		<center><h2 style="color: rgb(106,121,137);opacity: 1.0">错误，您没有该权限</h2>
+    		
     </center>
 </section>
 <center>
-<input class="button button-raised button-pill button-inverse" type="submit" name="保存" value="保存"/>
+<input class="button button-raised button-pill button-inverse" type="submit" name="保存" value="返回"/>
 </center>
 </form>
        	  

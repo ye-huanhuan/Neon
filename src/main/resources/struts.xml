@@ -15,10 +15,29 @@
 	
 	<package name="default" namespace="/" extends="struts-default">
 	
+	
 	<!-- 定义一个json类型 -->
 	<result-types>
     <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
     </result-types>
+    
+    
+    <interceptors>
+	<!-- 声明一个拦截器 -->
+		<interceptor name="checkprivilege" class="com.neon.util.CheckPrivilegeInterceptor"></interceptor>
+		
+		<!-- 重新定义默认的拦截器栈 -->
+		<interceptor-stack name="defaultStack">
+			<interceptor-ref name="checkprivilege"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</interceptor-stack>
+	</interceptors>
+	
+	<!-- 配置全局的result属性 -->
+	<global-results>
+		<result name="login">/WEB-INF/jsp/signin.jsp</result>
+		<result name="noPrivilege">WEB-INF/jsp/noPrivilege.jsp</result>
+	</global-results>
 
 	<action name="test_*" class="testAction" method="{1}">
 		<result name="hello">hello.jsp</result>
@@ -74,7 +93,7 @@
 	<!-- ==============登录部分======================================= -->
 	<action name="log_*" class="loginAction" method="{1}">
 		<result>/WEB-INF/jsp/index.jsp</result>
-		<result name="login">/WEB-INF/jsp/signin.jsp</result>
+		<!-- <result name="login">/WEB-INF/jsp/signin.jsp</result> -->
 		<result name="signUp">/WEB-INF/jsp/signup.jsp</result>
 		<result name="passwordBack">/WEB-INF/jsp/passwordBack.jsp</result>
 		<result name="sendSuccess">/WEB-INF/jsp/passwordBack.jsp</result>

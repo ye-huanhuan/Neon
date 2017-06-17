@@ -18,7 +18,7 @@ public class DvalueAction extends ActionBase<Dvalue>{
 		//准备回显数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dvalue = dvalueService.getById(id);
-		ActionContext.getContext().getValueStack().push(dvalue);
+		ActionContext.getContext().getApplication().put("dvalue", dvalue);
 		return "setDvalue";
 	}
 	

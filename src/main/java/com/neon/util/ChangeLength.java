@@ -15,6 +15,11 @@ public class ChangeLength {
 		return after;
 	}
 	
+	public static double[] deleteTheLast(double[] d){
+		d[d.length-1] = 0.0;
+		return d;
+	}
+	
 	public static void main(String[] args) {
 		double[] a = {1,2,3,4,0,5,6,0,0,0,0};
 		double[] c = ChangeLength.changeLength(a);

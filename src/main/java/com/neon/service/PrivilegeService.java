@@ -1,5 +1,6 @@
 package com.neon.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.neon.base.DaoSupport;
@@ -12,5 +13,7 @@ public interface PrivilegeService extends DaoSupport<Privilege>{
 	List<Privilege> findTopList();
 
 	List<Privilege> getTop2List(Privilege p);
+
+	Collection<String> getAllPrivilegeUrls();
 
 }

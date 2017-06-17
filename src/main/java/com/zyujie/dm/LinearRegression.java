@@ -80,14 +80,11 @@ public class LinearRegression {
      */
     public static double predict(List<double[][]> list , int month){
     	RegressionLine line = new RegressionLine();
-    	System.out.println(list.size() + "11111111111111");
     	for(double[][] l : list){
     		line.addDataPoint(new DataPoint((int)l[0][0], (float)l[0][1]));
     	}
          printSums(line);
-         System.out.println("444444444444");
          printLine(line);
-         System.out.println("22222222222222");
     	return Double.parseDouble(new DecimalFormat("#.00").format(((line.getA1()*month)+line.getA0())));
     }
   

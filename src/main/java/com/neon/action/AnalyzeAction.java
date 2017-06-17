@@ -59,6 +59,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 		if(y == current_year){
 			input_totlemoney_month_array = ChangeLength.changeLength(input_totlemoney_month_array);
 			output_totlemoney_month_array = ChangeLength.changeLength(output_totlemoney_month_array);
+			dvalue_array = ChangeLength.deleteTheLast(dvalue_array);
+			range = ChangeLength.deleteTheLast(range);
 		}
 		result.put("data_difference",dvalue_array);
  		result.put("data_input", input_totlemoney_month_array);
@@ -84,6 +86,11 @@ public class AnalyzeAction extends ActionBase<Input>{
 		double[] output_totlemoney_month_array = ListToArray.getDoubleArray(output_totlemoney_month);
 		double[] dvalue_array = ListToArray.getDoubleArray(dvalue);
 		List<Double> input_totlemoney_month_2 = inputService.getInputTotleMoneyWithMonth(year);
+		System.out.println("_________________"+input_totlemoney_month_2.size());
+		for(double d : input_totlemoney_month_2){
+			System.out.println(d+" " +"==");
+		}
+		System.out.println();
 		List<Double> output_totlemoney_month_2 = outputService.getOutputTotleMoneyWithMonth(year);
 		List<Double> dvalue_2 = outputService.getDvalue(input_totlemoney_month_2,output_totlemoney_month_2);
 		double[] input_totlemoney_month_array_2 = ListToArray.getDoubleArray(input_totlemoney_month_2);
@@ -145,7 +152,10 @@ public class AnalyzeAction extends ActionBase<Input>{
 		}
 		//将零值去除
 		input_totlemoney_month_array = ChangeLength.changeLength(input_totlemoney_month_array);
+		System.out.println("_________________"+input_totlemoney_month_array.length);
 		output_totlemoney_month_array = ChangeLength.changeLength(output_totlemoney_month_array);
+		System.out.println("_________________"+output_totlemoney_month_array.length);
+		dvalue_array = ChangeLength.deleteTheLast(dvalue_array);
 		result.put("data_difference",dvalue_array);
  		result.put("data_input", input_totlemoney_month_array);
  		result.put("data_output", output_totlemoney_month_array);
@@ -807,11 +817,14 @@ public class AnalyzeAction extends ActionBase<Input>{
 		List<Output> outputs = outputService.findAll();
 		//销项数组
 		String[] items = outputService.getAllItems();
+		System.out.println("111");
 		
 		String[] inputItems = inoutService.getInputItemByOutputItem(items);
 		//三维
+		System.out.println("222");
 		double[][][] item_in_out = outputService.getInputAndOutputByItems(outputs , items , inputItems);
 		//测试
+		System.out.println("333");
 		/*for(int i = 0 ; i < items.length ; i++){
 			System.out.println(inputItems[i] + "  " + items[i]);
 			for(int j = 0 ; j < 10 ; j++){
@@ -844,6 +857,16 @@ public class AnalyzeAction extends ActionBase<Input>{
 			System.out.println(group_in[i] +"  "+times_in[i]);
 		}
 		return "success";
+	}
+	
+	//同比分析
+	public String theSame(){
+		return "theSame";
+	}
+	
+	//产品分析
+	public String product(){
+		return "product";
 	}
 
 

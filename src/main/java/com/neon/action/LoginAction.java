@@ -59,6 +59,7 @@ public class LoginAction extends ActionBase<User> {
 			return "login";
 		}
 		if(captchaPassed && userService.login(model.getUsername(),model.getPassword())){
+			System.out.println("ggg");
 			User user = userService.findUserByUsername(model.getUsername());
 			ActionContext.getContext().getSession().put("user", user);
 			return "success";
