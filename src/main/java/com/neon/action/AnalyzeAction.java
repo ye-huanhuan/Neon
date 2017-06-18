@@ -81,6 +81,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 		double[] range = dvalueService.getPdvalueAndNdvalue_month(dva);
 		
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year-1);
+		for(double d : input_totlemoney_month){
+			System.out.println(d+" " +"==");
+		}
 		List<Double> output_totlemoney_month = outputService.getOutputTotleMoneyWithMonth(year-1);
 		List<Double> dvalue = outputService.getDvalue(input_totlemoney_month,output_totlemoney_month);
 		double[] input_totlemoney_month_array = ListToArray.getDoubleArray(input_totlemoney_month);
@@ -95,6 +98,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 		List<Double> output_totlemoney_month_2 = outputService.getOutputTotleMoneyWithMonth(year);
 		List<Double> dvalue_2 = outputService.getDvalue(input_totlemoney_month_2,output_totlemoney_month_2);
 		double[] input_totlemoney_month_array_2 = ListToArray.getDoubleArray(input_totlemoney_month_2);
+		for(int i = 0 ; i < input_totlemoney_month_array_2.length ; i++){
+			System.out.println(input_totlemoney_month_array_2[i] + "-----------");
+		}
 		double[] output_totlemoney_month_array_2 = ListToArray.getDoubleArray(output_totlemoney_month_2);
 		double[] dvalue_array_2 = ListToArray.getDoubleArray(dvalue_2);
 		String[] months = {"第一月","第二月","第三月","第四月","第五月","第六月","第七月","第八月","第九月","第十月","第十一月","第十二月"};
@@ -151,11 +157,15 @@ public class AnalyzeAction extends ActionBase<Input>{
 				j++;
 			}
 		}
+		for(int i = 0 ; i < input_totlemoney_month_array.length ; i++){
+			System.out.println(input_totlemoney_month_array[i] + "%%%%%%%%");
+		}
 		//将零值去除
 		input_totlemoney_month_array = ChangeLength.changeLength(input_totlemoney_month_array);
-		System.out.println("_________________"+input_totlemoney_month_array.length);
+		for(int i = 0 ; i < input_totlemoney_month_array.length ; i++){
+			System.out.println(input_totlemoney_month_array[i] + "-----------");
+		}
 		output_totlemoney_month_array = ChangeLength.changeLength(output_totlemoney_month_array);
-		System.out.println("_________________"+output_totlemoney_month_array.length);
 		dvalue_array = ChangeLength.deleteTheLast(dvalue_array);
 		result.put("data_difference",dvalue_array);
  		result.put("data_input", input_totlemoney_month_array);

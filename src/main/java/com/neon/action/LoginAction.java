@@ -58,14 +58,17 @@ public class LoginAction extends ActionBase<User> {
 			addFieldError("lognameEorror", "该用户不存在");
 			return "login";
 		}
+		
 		if(captchaPassed && userService.login(model.getUsername(),model.getPassword())){
-			System.out.println("ggg");
 			User user = userService.findUserByUsername(model.getUsername());
 			ActionContext.getContext().getSession().put("user", user);
 			return "success";
 		}else{
-			addFieldError("loginerror", "密码或验证码错误");
-			System.out.println("gg");
+			if(!captchaPassed){
+				addFieldError("loginerror", "验证码错误");
+			}else{
+				addFieldError("loginerror", "密码错误");
+			}
 			return "login";
 		}
 	}
