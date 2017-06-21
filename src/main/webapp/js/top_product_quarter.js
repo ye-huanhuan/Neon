@@ -15,10 +15,10 @@ $(function () {
             type: 'bar'
         },
         title: {
-            text: '第一季度产品销售情况'
+            text: '第一季度产品税额排名图'
         },
         subtitle: {
-            text: '数据来源: 财务部'
+            text: null
         },
         xAxis: {
             categories: ['鱼肉罐头', '猪肉罐头', '鸡肉罐头'],
@@ -35,7 +35,7 @@ $(function () {
         yAxis: {
             min: 0,
             title: {
-                text: '税收额/万元',
+                text: '税额额/万元',
                 align: 'high'
             },
             labels: {
@@ -147,7 +147,7 @@ $(function () {
             		data: productValue[2],
                 });
             	chart3.title.update({
-                	text: "第一季度产品销售情况",
+                	text: "第一季度产品税额排名图",
                 });
             }
         });
@@ -188,7 +188,7 @@ $(function () {
             		data: productValue[2],
                 });
                 chart3.title.update({
-                	text: "第二季度产品销售情况",
+                	text: "第二季度产品税额排名图",
                 });
             }
         });
@@ -229,7 +229,7 @@ $(function () {
             		data: productValue[2],
                 });
                 chart3.title.update({
-                	text: "第三季度产品销售情况",
+                	text: "第三季度产品税额排名图",
                 });
             }
         });
@@ -270,7 +270,7 @@ $(function () {
             		data: productValue[2],
                 });
                 chart3.title.update({
-                	text: "第四季度产品销售情况",
+                	text: "第四季度产品税额排名图",
                 });
             }
         });

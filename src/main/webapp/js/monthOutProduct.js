@@ -13,11 +13,11 @@ chart2 = new Highcharts.Chart('container_third',{
             plotShadow: false
         },
         title: {
-            text: '五月销项产品',
+            text: '五月产品税额占比图',
             x: -20,
         },
         subtitle: {
-            text: '数据来源: 财务部',
+            text: null,
             x: -20,
         },
         tooltip: {
@@ -80,7 +80,7 @@ $.ajax({
            }
         chart2.series[0].setData(a);
         chart2.title.update({
-     		text: '五月产品销售情况',
+     		text: '五月产品税额占比图',
      });
     }
 });
@@ -108,7 +108,7 @@ $(function () {
                     }
                  chart2.series[0].setData(a);
                  chart2.title.update({
-              		text: '四月产品销售情况',
+              		text: '四月产品税额占比图',
               });
             }
         });
@@ -137,7 +137,7 @@ $(function () {
                     }
                  chart2.series[0].setData(a);
                  chart2.title.update({
-             		text: '三月产品销售情况',
+             		text: '三月产品税额占比图',
              	
              });
             }
@@ -167,7 +167,7 @@ $(function () {
                     }
                  chart2.series[0].setData(a);
                  chart2.title.update({
-             		text: '五月产品销售情况',
+             		text: '五月产品税额占比图',
              	
              });
             }
@@ -197,7 +197,7 @@ $(function () {
                     }
                  chart2.series[0].setData(a);
                  chart2.title.update({
-             		text: '二月产品销售情况',
+             		text: '二月产品税额占比图',
              	
              });
             }
@@ -227,7 +227,7 @@ $(function () {
                     }
                  chart2.series[0].setData(a);
                  chart2.title.update({
-             		text: '一月产品销售情况',
+             		text: '一月产品税额占比图',
              	
              });
             }
@@ -257,7 +257,7 @@ $(function () {
                     }
                  chart2.series[0].setData(a);
                  chart2.title.update({
-             		text: '十二月产品销售情况',
+             		text: '十二月产品税额占比图',
              	
              });
             }

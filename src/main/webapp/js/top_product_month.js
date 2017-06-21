@@ -11,10 +11,10 @@ $(function () {
             type: 'bar'
         },
         title: {
-            text: '五月产品销售情况'
+            text: '五月产品税额排名图'
         },
         subtitle: {
-            text: '数据来源: 财务部'
+            text: null
         },
         xAxis: {
             title: {
@@ -30,7 +30,7 @@ $(function () {
         yAxis: {
             min: 0,
             title: {
-                text: '税收额/万元',
+                text: '税额额/万元',
                 align: 'high'
             },
             labels: {
@@ -110,7 +110,7 @@ $(function () {
                 	categories: productName_top,
                 });
                 chart3.title.update({
-                	text: "五月产品销售情况",
+                	text: "五月产品税额排名图",
                 });
             }
         });
@@ -138,7 +138,7 @@ $(function () {
                 	categories: productName_top,
                 });
                 chart3.title.update({
-                	text: "四月产品销售情况",
+                	text: "四月产品税额排名图",
                 });
             }
         });
@@ -165,7 +165,7 @@ $(function () {
                 	categories: productName_top,
                 });
                 chart3.title.update({
-                	text: "三月产品销售情况",
+                	text: "三月产品税额排名图",
                 });
             }
         });
@@ -192,7 +192,7 @@ $(function () {
                 	categories: productName_top,
                 });
                 chart3.title.update({
-                	text: "二月产品销售情况",
+                	text: "二月产品税额排名图",
                 });
             }
         });
@@ -219,7 +219,7 @@ $(function () {
                 	categories: productName_top,
                 });
                 chart3.title.update({
-                	text: "一月产品销售情况",
+                	text: "一月产品税额排名图",
                 });
             }
         });
@@ -246,7 +246,7 @@ $(function () {
                 	categories: productName_top,
                 });
                 chart3.title.update({
-                	text: "十二月产品销售情况",
+                	text: "十二月产品税额排名图",
                 });
             }
         });

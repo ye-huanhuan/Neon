@@ -13,10 +13,10 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: '产品较去年同比分析'
+            text: null
         },
         subtitle: {
-            text: '数据来源: 财务部'
+            text: null
         },
         //去除右下角水印
         credits: {

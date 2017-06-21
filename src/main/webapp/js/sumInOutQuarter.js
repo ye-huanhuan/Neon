@@ -55,13 +55,13 @@ $(function () {
              enabled:false
 		},
         title: {
-            text: '季度分析表',
+            text: null,
             x: -20
         },
 
         subtitle: {
 
-            text: '数据来源: 财务部',
+            text: null,
 
             x: -20
         },

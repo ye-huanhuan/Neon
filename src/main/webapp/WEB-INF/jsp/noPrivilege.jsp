@@ -75,13 +75,13 @@
        	  
        	  <form action="home_index.action" method="post">
        	  
-       	   <section class="content bgcolor-5" style="background-color:rgb(240,240,240)">
+       	   <section class="content bgcolor-5" style="margin-top:150px">
     		<center><h2 style="color: rgb(106,121,137);opacity: 1.0">错误，您没有该权限</h2>
     		
     </center>
 </section>
 <center>
-<input class="button button-raised button-pill button-inverse" type="submit" name="保存" value="返回"/>
+<input style="margin-top:120px" class="button button-raised button-pill button-inverse" type="submit" name="返回" value="返回"/>
 </center>
 </form>
        	  
