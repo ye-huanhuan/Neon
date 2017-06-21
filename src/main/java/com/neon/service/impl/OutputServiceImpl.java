@@ -311,14 +311,14 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 			for(int index = 0 ; index < input_totlemoney_month.size() ; index++){
 				dvalue.add(Arith.sub(output_totlemoney_month.get(index), input_totlemoney_month.get(index)));
 			}
-			for(int index = input_totlemoney_month.size() - 1 ; index < output_totlemoney_month.size() ; index++){
+			for(int index = input_totlemoney_month.size() ; index < output_totlemoney_month.size() ; index++){
 				dvalue.add(Arith.sub(output_totlemoney_month.get(index), 0));
 			}
 		}else if(output_totlemoney_month.size() < input_totlemoney_month.size()){
 			for(int index = 0 ; index < output_totlemoney_month.size() ; index++){
 				dvalue.add(Arith.sub(output_totlemoney_month.get(index), input_totlemoney_month.get(index)));
 			}
-			for(int index = output_totlemoney_month.size() - 1 ; index < input_totlemoney_month.size() ; index++){
+			for(int index = output_totlemoney_month.size() ; index < input_totlemoney_month.size() ; index++){
 				dvalue.add(Arith.sub(0, input_totlemoney_month.get(index)));
 			}
 		}else if(output_totlemoney_month.size() == input_totlemoney_month.size()){

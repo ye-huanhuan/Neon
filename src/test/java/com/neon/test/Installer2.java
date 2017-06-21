@@ -40,8 +40,8 @@ public class Installer2 extends AbstractJUnit4SpringContextTests{
 	
 	@Test
 	public void test(){
-		String[] privilegeItems_1 = {"首页","分析","月份分析","季度分析","年度分析","税收分析"};
-		String[] privilegeItems_2 = {"首页","分析","月份分析","季度分析","年度分析","税收分析","设置","设置数据"};
+		String[] privilegeItems_1 = {"首页","分析","报表","明细分析","同比分析","产品分析","月份分析","季度分析","年度分析","税收分析"};
+		String[] privilegeItems_2 = {"首页","分析","报表","明细分析","同比分析","产品分析","月份分析","季度分析","年度分析","税收分析","设置","设置数据"};
 		
 		Long[] ids_1 = privilegeService.getIdsByItems(privilegeItems_1);
 		Long[] ids_2 = privilegeService.getIdsByItems(privilegeItems_2);
@@ -89,6 +89,11 @@ public class Installer2 extends AbstractJUnit4SpringContextTests{
 		inout_1.setInput("鸡肉");
 		inout_1.setOutput("鸡肉罐头");
 		inoutService.save(inout_3);
+		
+		Inout inout_4 = new Inout();
+		inout_1.setInput("牛肉");
+		inout_1.setOutput("牛肉罐头");
+		inoutService.save(inout_4);
 		
 	}
 }

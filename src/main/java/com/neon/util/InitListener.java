@@ -1,5 +1,6 @@
 package com.neon.util;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -26,11 +27,12 @@ public class InitListener implements ServletContextListener {
 		PrivilegeService privilegeService = (PrivilegeService) ap.getBean("privilegeServiceImpl");
 		List<Privilege> topPrivileges = privilegeService.findTopList();
 		List<Privilege> topPrivilege_2 = privilegeService.getTop2List(topPrivileges.get(0));
-		for(Privilege p : topPrivilege_2){
-			System.out.println(p.getLimiteName());
-		}
+		List<Privilege> topPrivilege_3 = privilegeService.getTop2List(topPrivileges.get(1));
+		Collection<String> allPrivilegeUrls = privilegeService.getAllPrivilegeUrls();
 		sce.getServletContext().setAttribute("topPrivileges", topPrivileges);
 		sce.getServletContext().setAttribute("topPrivilege_2", topPrivilege_2);
+		sce.getServletContext().setAttribute("topPrivilege_3", topPrivilege_3);
+		sce.getServletContext().setAttribute("allPrivilegeUrls", allPrivilegeUrls);
 		System.out.println("------>已准备权限数据<------");
 
 	}

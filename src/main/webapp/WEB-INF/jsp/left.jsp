@@ -44,10 +44,19 @@
 	                    	
 	                    	</s:elseif>
 	                    	
+	                    	<s:if test="#session.user.isPrivilege_2(LimiteName)"> 
+	                    	<s:iterator value="#application.topPrivilege_3">
+	                    	<li > <a href=${actionName } > <i class="fa fa-angle-right"></i> <span>${limiteName }</span> </a> </li>
+	                    	</s:iterator>
+	                    	
+	                    	</s:if>  
 	                      		
 	                    	</ul>
                     		</li>
                    </s:if>
+                   
+                   
+                   
                   </s:iterator>
        </ul>
 </body>

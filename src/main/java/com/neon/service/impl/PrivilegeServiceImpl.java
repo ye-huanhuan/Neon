@@ -1,5 +1,6 @@
 package com.neon.service.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -38,6 +39,13 @@ public class PrivilegeServiceImpl extends DaoSupportImpl<Privilege> implements P
 		return getSession().createQuery(//
 				"FROM Privilege p WHERE p.parent=?")
 				.setParameter(0, p)
+				.list();
+	}
+
+	@Override
+	public Collection<String> getAllPrivilegeUrls() {
+		return getSession().createQuery(//
+				"SELECT DISTINCT actionName FROM Privilege p")
 				.list();
 	}
 
