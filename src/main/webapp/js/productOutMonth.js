@@ -151,7 +151,6 @@
 	      	    	var obj = eval(msg);
 	      	    	productName = obj["productName"];
 	      	    	productValue = obj["productVlaue"];
-	      	    	alert(productValue[0]);
 	      	    	months = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
 //	      	    	disappear();
 	      	    	zone = productValue[0].length - 1;
@@ -173,7 +172,6 @@
 	      	    	var obj = eval(msg);
 	      	    	productName = obj["productName"];
 	      	    	productValue = obj["productVlaue"];
-	      	    	alert(productValue[0]);
 	      	    	months = ['第一月', '第二月', '第三月', '第四月', '第五月', '第六月', '第七月', '第八月', '第九月', '第十月', '第十一月', '第十二月'];
 //	      	    	disappear();
 	      	    	zone = productValue[0].length - 1;
