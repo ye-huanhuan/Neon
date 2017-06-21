@@ -191,8 +191,8 @@ public class RegressionLine // implements Evaluatable
         xy[0] = (int) dataPoint.x + "";  
         xy[1] = (int) dataPoint.y + "";  
         if (dataPoint.x != 0 && dataPoint.y != 0) {  
-            System.out.print(xy[0] + ",");  
-            System.out.println(xy[1]);  
+            //System.out.print(xy[0] + ",");  
+            //System.out.println(xy[1]);  
   
             try {  
                 // System.out.println("n:"+n);  

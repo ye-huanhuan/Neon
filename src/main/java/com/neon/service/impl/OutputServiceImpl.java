@@ -33,6 +33,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				}
 				list.add(money);
 			}
+			//添加本月的预测值
 			list.add(LinearRegression.predict(getAllMonthAndMoney(), Constant.CURRENTMONTH));
 		}else{
 			for(int month = 1 ; month <= Constant.MONTH ; month++ ){
@@ -74,7 +75,6 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		if(year == Constant.YEAR){
 		List<String> items = getEveryGoodsItem(year);
 		for(String item : items){
-			System.out.println(item);
 			List<Double> moneys = new ArrayList<>();
 				for(int month = 1 ; month <= Constant.CURRENTMONTH - 1 ; month++){
 					try{
@@ -93,9 +93,6 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				
 		}else{
 				List<String> items = getEveryGoodsItem(year);
-				for(String item : items){
-					System.out.println(item);
-				}
 				for(String item : items){
 					List<Double> moneys = new ArrayList<>();
 				for(int month = 1 ; month <= Constant.MONTH ; month++){
@@ -951,7 +948,6 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 		List<double[][]> list = new ArrayList<>();
 		int[] years = ListToArray.getIntArray(getOutputYear());
 		for(int year : years){
-			System.out.println(year);
 			if(year == Constant.YEAR){
 				for(int month = 1 ; month <= Constant.CURRENTMONTH - 1; month++ ){
 					try{
@@ -1151,7 +1147,6 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 	}
 
 	private Output getOutputsWithMonthAndYearAndItem_test(int month, int year, String item) {
-		System.out.println(month+" " + year + " " +item + "|||||" );
 		return (Output) getSession().createQuery(//
 				"FROM Output output WHERE output.month=? AND output.year=? AND output.item=?")
 				.setParameter(0, month)

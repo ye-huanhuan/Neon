@@ -95,12 +95,12 @@ public class LinearRegression {
      *            the regression line 
      */  
     private static void printSums(RegressionLine line) {  
-        System.out.println("\n数据点个数 n = " + line.getDataPointCount());  
+       /* System.out.println("\n数据点个数 n = " + line.getDataPointCount());  
         System.out.println("\nSum x  = " + line.getSumX());  
         System.out.println("Sum y  = " + line.getSumY());  
         System.out.println("Sum xx = " + line.getSumXX());  
         System.out.println("Sum xy = " + line.getSumXY());  
-        System.out.println("Sum yy = " + line.getSumYY());  
+        System.out.println("Sum yy = " + line.getSumYY()); */ 
   
     }  
   
@@ -111,9 +111,9 @@ public class LinearRegression {
      *            the regression line 
      */  
     private static void printLine(RegressionLine line) {  
-        System.out.println("\n回归公式:  y = " + line.getA1() + "x + "  
+        /*System.out.println("\n回归公式:  y = " + line.getA1() + "x + "  
                 + line.getA0());  
-        System.out.println("误差     R^2 = " + line.getR());  
+        System.out.println("误差     R^2 = " + line.getR());  */
     }  
       
     //y = 2.1x + 133.7   2.1 * 6 + 133.7 = 12.6 + 133.7 = 146.3  
