@@ -46,7 +46,7 @@
                 <div class="row m-t-sm">
 
                     <div class="btn-group">
-                    <form action="detailAnalyze_detail.action" style="display: inline-block">
+                    <form action="#" style="display: inline-block">
                     <button id="refresh" type="submit" class="btn btn-sm btn-default" title="Refresh" style="height:30px;width:42.4px;margin-left:0px" ><i class="fa fa-refresh"></i></button>
                     </form>
                       <button type="button" class="btn btn-sm btn-default" title="Remove" style="height:30px;width:42.4px" onclick="remove()"><i class="fa fa-trash-o"></i></button>
@@ -55,12 +55,12 @@
                        <button id="btnExport" class="button">下载</button>
                        
                       <ul class="dropdown-menu">
-                        <li><a href="detailAnalyze_sortByTime.action">时间</a></li>
-                        <li><a href="detailAnalyze_sortByMoney.action">金额</a></li>
+                        <li><a href="#">时间</a></li>
+                        <li><a href="#">金额</a></li>
                       </ul>
                     </div>
                   <div class="col-sm-4 m-b-xs">
-                    <form action="detailAnalyze_search.action" method="post">
+                    <form action="#" method="post">
                       <div class="input-group">
                         <input type="text" class="input-sm form-control" placeholder="Search" name="search">
                         <span class="input-group-btn">
@@ -95,85 +95,85 @@
                           <th>10</th>
                           <th>170%</th>
                           <th>150%</th>
-                          <th>20%</th>
+                          <th>7.5%</th>
                         </tr>
                         <tr>
                           <th>2</th>
-                          <th>20</th>
+                          <th>13</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>11%</th>
                         </tr>
                         <tr>
                           <th>3</th>
-                          <th>20</th>
+                          <th>15</th>
                           <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
+                          <th>120%</th>
+                          <th>13%</th>
                         </tr>
                         <tr>
                           <th>4</th>
-                          <th>20</th>
+                          <th>12</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>10%</th>
                         </tr>
                         <tr>
                           <th>5</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
+                          <th>18</th>
+                          <th>140%</th>
+                          <th>200%</th>
+                          <th>16%</th>
                         </tr>
                         <tr>
                           <th>6</th>
-                          <th>20</th>
+                          <th>16</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>12%</th>
                         </tr>
                         <tr>
                           <th>7</th>
                           <th>20</th>
-                          <th>150%</th>
+                          <th>125%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>17%</th>
                         </tr>
                         <tr>
                           <th>8</th>
-                          <th>20</th>
+                          <th>14</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>12%</th>
                         </tr>
                         
                         <tr>
                           <th>9</th>
-                          <th>20</th>
-                          <th>150%</th>
+                          <th>15</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>130%</th>
+                          <th>13%</th>
                         </tr>
                         <tr>
                           <th>10</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
+                          <th>14</th>
+                          <th>160%</th>
+                          <th>90%</th>
+                          <th>12%</th>
                         </tr>
                         <tr>
                           <th>11</th>
                           <th>20</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>9.0%</th>
                         </tr>
                         <tr>
                           <th>12</th>
-                          <th>20</th>
+                          <th>15</th>
                           <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
+                          <th>160%</th>
+                          <th>13%</th>
                         </tr>
                         <tr>
                           <th style="vertical-align: middle;text-align:center" width="20" rowspan="12"><input name="all" type="checkbox"></th>
@@ -182,85 +182,85 @@
                           <th>10</th>
                           <th>170%</th>
                           <th>150%</th>
-                          <th>20%</th>
+                          <th>7.5%</th>
                         </tr>
                         <tr>
                           <th>2</th>
-                          <th>20</th>
+                          <th>13</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>11%</th>
                         </tr>
                         <tr>
                           <th>3</th>
-                          <th>20</th>
+                          <th>15</th>
                           <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
+                          <th>120%</th>
+                          <th>13%</th>
                         </tr>
                         <tr>
                           <th>4</th>
-                          <th>20</th>
+                          <th>12</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>10%</th>
                         </tr>
                         <tr>
                           <th>5</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
+                          <th>18</th>
+                          <th>140%</th>
+                          <th>200%</th>
+                          <th>16%</th>
                         </tr>
                         <tr>
                           <th>6</th>
-                          <th>20</th>
+                          <th>16</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>12%</th>
                         </tr>
                         <tr>
                           <th>7</th>
                           <th>20</th>
-                          <th>150%</th>
+                          <th>125%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>17%</th>
                         </tr>
                         <tr>
                           <th>8</th>
-                          <th>20</th>
+                          <th>14</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>12%</th>
                         </tr>
                         
                         <tr>
                           <th>9</th>
-                          <th>20</th>
-                          <th>150%</th>
+                          <th>15</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>130%</th>
+                          <th>13%</th>
                         </tr>
                         <tr>
                           <th>10</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
+                          <th>14</th>
+                          <th>160%</th>
+                          <th>90%</th>
+                          <th>12%</th>
                         </tr>
                         <tr>
                           <th>11</th>
                           <th>20</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>30%</th>
+                          <th>9.0%</th>
                         </tr>
                         <tr>
                           <th>12</th>
-                          <th>20</th>
+                          <th>15</th>
                           <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
+                          <th>160%</th>
+                          <th>13%</th>
                         </tr>
 		              </tbody>
                     </table>

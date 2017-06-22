@@ -46,7 +46,7 @@
                 <div class="row m-t-sm">
 
                     <div class="btn-group">
-                    <form action="detailAnalyze_detail.action" style="display: inline-block">
+                    <form action="#" style="display: inline-block">
                     <button id="refresh" type="submit" class="btn btn-sm btn-default" title="Refresh" style="height:30px;width:42.4px;margin-left:0px" ><i class="fa fa-refresh"></i></button>
                     </form>
                       <button type="button" class="btn btn-sm btn-default" title="Remove" style="height:30px;width:42.4px" onclick="remove()"><i class="fa fa-trash-o"></i></button>
@@ -55,12 +55,12 @@
                        <button id="btnExport" class="button">下载</button>
                        
                       <ul class="dropdown-menu">
-                        <li><a href="detailAnalyze_sortByTime.action">时间</a></li>
-                        <li><a href="detailAnalyze_sortByMoney.action">金额</a></li>
+                        <li><a href="#">时间</a></li>
+                        <li><a href="#">金额</a></li>
                       </ul>
                     </div>
                   <div class="col-sm-4 m-b-xs">
-                    <form action="detailAnalyze_search.action" method="post">
+                    <form action="#" method="post">
                       <div class="input-group">
                         <input type="text" class="input-sm form-control" placeholder="Search" name="search">
                         <span class="input-group-btn">
@@ -247,14 +247,11 @@
 		            if(s[i].checked&&$(s[i]).attr('class') != "all"){
 		            	var childs = s[i].parentNode.parentNode.children;
 		            	var len = (s[i].parentNode.parentNode.parentNode.children).length;
-		            	alert(i);
-		            	alert(len);
 		            	var product_group = $(s[i]).attr("class");
 		            	if(i != len){
 		            		var childs_inner = s[i+1].parentNode.parentNode.children;
 		            		var importantChild = childs[1];
 			            	if(childs.length === 7||childs_inner.length === 8){
-			            		alert("hello");
 			            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
 			            	}else{
 			            		s[i+1].parentNode.parentNode.insertBefore(importantChild,childs_inner[1]);

@@ -10,7 +10,6 @@ $("#preview").click(function(){
     	 selectedNumber = [];
      }
  var trs = document.getElementById("Tax_detail").rows;
- alert(trs.length);
  for(var i = 0, len = trs.length; i < len; i++){
 	 if(i<=1||trs[i].cells.length ===8){
 		 var cell0 = trs[i].cells[0];
