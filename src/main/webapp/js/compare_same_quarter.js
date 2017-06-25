@@ -226,7 +226,7 @@ function reduce(){
             drilldown[item_2].data[t] = [];
             drilldown[item_2].data[t][0] = month[t];
             drilldown[item_2].data[t][1] = data_now_month[n][t];
-
+            
         }
     }
 }
@@ -236,7 +236,7 @@ function reduce(){
 	    	//配置返回按钮
 	    	Highcharts.setOptions({
 	            lang: {
-	                drillUpText: '<< 返回季度'
+	                drillUpText: '<<返回季度'
 	            }
 	        });
 	        // Create the chart
@@ -244,6 +244,8 @@ function reduce(){
 	        	credits: {
 	                enabled: false
 	            },
+	            
+	                
 	        	chart: {
 	                type: 'column',
 	                
@@ -271,7 +273,7 @@ function reduce(){
 	                }
 	            },
 	            title: {
-	                text: '产品同比图'
+	                text: null
 	            },
 	            xAxis: {
 	                type: 'category',
@@ -288,10 +290,6 @@ function reduce(){
 	            },
 	            
 	            tooltip: {
-//	                headerFormat: '<span style="font-size:14px">{point.key}</span><table>',
-//	                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-//	                '<td style="padding:0"><b>{point.y:.1f} 万元</b></td></tr>',
-//	                footerFormat: '</table>',
 	            	formatter: function() {
 	                    var points = this.points,
 	                        str = '';
@@ -333,8 +331,15 @@ function reduce(){
 	                    textDecoration: 'none',
 	                    fontSize:'14px',
 	                    fontFamily:'微软雅黑'
-	                }
+	                },
+	                drillUpButton: {
+	                    position: {
+	                        y: 40,
+	                        x: -20
+	                    },
+	                },
 	            }
+	            
 	        });
 		 }
 	

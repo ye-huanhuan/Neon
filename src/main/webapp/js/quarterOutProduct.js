@@ -14,7 +14,7 @@
 			enabled:false
 		},
         title: {
-            text: '第一季度产品销售情况',
+            text: '第一季度产品税额占比图',
             x: -20,
         },
         tooltip: {
@@ -28,7 +28,7 @@
             }
         },
         subtitle: {
-            text: '数据来源: 财务部',
+            text: null,
             x: -20,
         },
         plotOptions: {
@@ -80,7 +80,7 @@ $.ajax({
            }
         chart2.series[0].setData(a);
         chart2.title.update({
-     		text: '第一季度产品销售情况',
+     		text: '第一季度产品税额占比图',
      });
     }
 });
@@ -108,7 +108,7 @@ $.ajax({
                      }
                   chart2.series[0].setData(a);
                   chart2.title.update({
-               		text: '第一季度产品销售情况',
+               		text: '第一季度产品税额占比图',
                });
              }
          });
@@ -138,7 +138,7 @@ $.ajax({
                      }
                   chart2.series[0].setData(a);
                   chart2.title.update({
-               		text: '第二季度产品销售情况',
+               		text: '第二季度产品税额占比图',
                });
              }
          });
@@ -167,7 +167,7 @@ $.ajax({
                      }
                   chart2.series[0].setData(a);
                   chart2.title.update({
-               		text: '第三季度产品销售情况',
+               		text: '第三季度产品税额占比图',
                });
              }
          });
@@ -197,7 +197,7 @@ $.ajax({
                      }
                   chart2.series[0].setData(a);
                   chart2.title.update({
-               		text: '第四季度产品销售情况',
+               		text: '第四季度产品税额占比图',
                });
              }
          });

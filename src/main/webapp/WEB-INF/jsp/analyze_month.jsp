@@ -80,7 +80,7 @@
             	<!-- 按月进销总和统计 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">进销项分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 20px;text-align:center">税收总额分析图</header>
                   <!-- 滑动条 -->
 				  <div id="wrap-range">
 				  <font>进销项差值合理的范围:<font id="demo"></font></font>
@@ -113,7 +113,7 @@
               <!-- 按月同一产品统计 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 20px;text-align:center">产品税额分析图</header>
                   <div id="wrap-product">
                   <!-- range2 -->
                   <font>查看的范围:</font>
@@ -139,7 +139,7 @@
               <!-- 同比图 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 20px;text-align:center">产品税额同比图</header>
                   <div id="wrap_inOut">
 				  <div id="inOut">
 				  <font>进销:</font>
@@ -155,7 +155,7 @@
               <!-- 同一时间产品销项 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">销项产品分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 20px;text-align:center">产品税额联动图</header>
 				  <div id="wrap_month">
 				  <div id="month">
 				  <font>月份:</font>

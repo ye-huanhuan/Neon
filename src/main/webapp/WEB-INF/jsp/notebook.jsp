@@ -76,7 +76,7 @@
        	  <form action="invoice_toSetDvalue.action" method="post">
        	  
        	   <section class="content bgcolor-5" style="background-color:rgb(240,240,240)">
-    		<center><h2 style="color: rgb(106,121,137);opacity: 1.0">利润合理区间设置</h2>
+    		<center><h2 style="color: rgb(106,121,137);opacity: 1.0">利润合理区间与目标值设置</h2>
     		<span class="input input--minoru" style="font-size: 150%;">
 					<input class="input__field input__field--yoko" type="text" id="input-1" value=<s:property value="#application.dvalue.pdvalue_month"/> name="pdvalue_month"/>
 					<label class="input__label input__label--yoko" for="input-1">

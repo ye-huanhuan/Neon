@@ -1,5 +1,6 @@
 package com.neon.action;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.w3c.dom.ls.LSInput;
 
 import com.neon.base.ActionBase;
 import com.neon.domain.Dvalue;
@@ -17,6 +19,7 @@ import com.neon.domain.Output;
 import com.neon.util.ChangeLength;
 import com.neon.util.Constant;
 import com.neon.util.ListToArray;
+import com.opensymphony.xwork2.ActionContext;
 import com.zyujie.dm.LinearRegression;
 
 @Controller
@@ -29,6 +32,8 @@ public class AnalyzeAction extends ActionBase<Input>{
 	private int y2;
 	private int quarter_quarter_3;
 	private int year_year_3;
+	private String search_1;
+	private String search_2;
 	private String outputItem;
 	private Map<String,Object> result = new HashMap<String,Object>(); 
 	private Map<String,Object> result1 = new HashMap<String,Object>(); 
@@ -741,11 +746,33 @@ public class AnalyzeAction extends ActionBase<Input>{
 	
 	//同比分析
 	public String theSame(){
+		List<Map<String, List<List<String>>>> year = detailService.getDataToTheSame();
+		ActionContext.getContext().getApplication().put("map", year);
+		return "theSame";
+	}
+	
+	public String theSame_search(){
+		String[] strs = search_2.split("\\|");
+		int[] years = new int[strs.length];
+		for(int i = 0 ; i < strs.length ; i++){
+			years[i] = Integer.parseInt(strs[i].trim());
+		}
+		List<Map<String, List<List<String>>>> year = detailService.getDataToTheSame(years);
+		ActionContext.getContext().getApplication().put("map", year);
 		return "theSame";
 	}
 	
 	//产品分析
-	public String product(){
+	public String product(){ 
+		List<Map<String, List<List<String>>>> prodect = detailService.getDataToProdect();
+		ActionContext.getContext().getApplication().put("map", prodect);
+		return "product";
+	}
+	
+	public String product_search(){
+		String[] products = search_1.split("\\|");
+		List<Map<String, List<List<String>>>> prodect = detailService.getDataToProdect(products);
+		ActionContext.getContext().getApplication().put("map", prodect);
 		return "product";
 	}
 
@@ -872,6 +899,20 @@ public class AnalyzeAction extends ActionBase<Input>{
 		this.result4 = result4;
 	}
 
-	
-	
+	public String getSearch_1() {
+		return search_1;
+	}
+
+	public String getSearch_2() {
+		return search_2;
+	}
+
+	public void setSearch_1(String search_1) {
+		this.search_1 = search_1;
+	}
+
+	public void setSearch_2(String search_2) {
+		this.search_2 = search_2;
+	}
+
 }

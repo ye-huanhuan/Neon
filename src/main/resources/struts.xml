@@ -56,6 +56,8 @@
 	<!-- ==============分析部分======================================= -->
 	<action name="analyze_*" class="analyzeAction" method="{1}">
 		<result name="{1}">WEB-INF/jsp/analyze_{1}.jsp</result>
+		<result name="product">WEB-INF/jsp/analyze_product.jsp</result>
+		<result name="theSame">WEB-INF/jsp/analyze_theSame.jsp</result>
 		 <result type="json">
 		 <param name="root">result</param>
 		 </result> 

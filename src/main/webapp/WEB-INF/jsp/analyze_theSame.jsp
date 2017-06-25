@@ -60,9 +60,9 @@
                       </ul>
                     </div>
                   <div class="col-sm-4 m-b-xs">
-                    <form action="#" method="post">
+                    <form action="analyze_theSame_search.action" method="post">
                       <div class="input-group">
-                        <input type="text" class="input-sm form-control" placeholder="Search" name="search">
+                        <input type="text" class="input-sm form-control" placeholder="Search" name="search_2">
                         <span class="input-group-btn">
                       <input class="btn btn-sm btn-default" type="submit" value="搜索" />
                       </span>
@@ -88,180 +88,28 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                          <th width="20" style="vertical-align: middle;text-align:center" rowspan="12"><input name="all" type="checkbox"></th>
-                          <th style="vertical-align: middle;text-align:center" rowspan="12">2016  </th>
-                          <th>1</th>
-                          <th>10</th>
-                          <th>170%</th>
-                          <th>150%</th>
-                          <th>7.5%</th>
-                        </tr>
-                        <tr>
-                          <th>2</th>
-                          <th>13</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>11%</th>
-                        </tr>
-                        <tr>
-                          <th>3</th>
-                          <th>15</th>
-                          <th>150%</th>
-                          <th>120%</th>
-                          <th>13%</th>
-                        </tr>
-                        <tr>
-                          <th>4</th>
-                          <th>12</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>10%</th>
-                        </tr>
-                        <tr>
-                          <th>5</th>
-                          <th>18</th>
-                          <th>140%</th>
-                          <th>200%</th>
-                          <th>16%</th>
-                        </tr>
-                        <tr>
-                          <th>6</th>
-                          <th>16</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>12%</th>
-                        </tr>
-                        <tr>
-                          <th>7</th>
-                          <th>20</th>
-                          <th>125%</th>
-                          <th>130%</th>
-                          <th>17%</th>
-                        </tr>
-                        <tr>
-                          <th>8</th>
-                          <th>14</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>12%</th>
-                        </tr>
-                        
-                        <tr>
-                          <th>9</th>
-                          <th>15</th>
-                          <th>130%</th>
-                          <th>130%</th>
-                          <th>13%</th>
-                        </tr>
-                        <tr>
-                          <th>10</th>
-                          <th>14</th>
-                          <th>160%</th>
-                          <th>90%</th>
-                          <th>12%</th>
-                        </tr>
-                        <tr>
-                          <th>11</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>9.0%</th>
-                        </tr>
-                        <tr>
-                          <th>12</th>
-                          <th>15</th>
-                          <th>150%</th>
-                          <th>160%</th>
-                          <th>13%</th>
-                        </tr>
-                        <tr>
-                          <th style="vertical-align: middle;text-align:center" width="20" rowspan="12"><input name="all" type="checkbox"></th>
-                          <th style="vertical-align: middle;text-align:center" rowspan="12">2015  </th>
-                          <th>1</th>
-                          <th>10</th>
-                          <th>170%</th>
-                          <th>150%</th>
-                          <th>7.5%</th>
-                        </tr>
-                        <tr>
-                          <th>2</th>
-                          <th>13</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>11%</th>
-                        </tr>
-                        <tr>
-                          <th>3</th>
-                          <th>15</th>
-                          <th>150%</th>
-                          <th>120%</th>
-                          <th>13%</th>
-                        </tr>
-                        <tr>
-                          <th>4</th>
-                          <th>12</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>10%</th>
-                        </tr>
-                        <tr>
-                          <th>5</th>
-                          <th>18</th>
-                          <th>140%</th>
-                          <th>200%</th>
-                          <th>16%</th>
-                        </tr>
-                        <tr>
-                          <th>6</th>
-                          <th>16</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>12%</th>
-                        </tr>
-                        <tr>
-                          <th>7</th>
-                          <th>20</th>
-                          <th>125%</th>
-                          <th>130%</th>
-                          <th>17%</th>
-                        </tr>
-                        <tr>
-                          <th>8</th>
-                          <th>14</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>12%</th>
-                        </tr>
-                        
-                        <tr>
-                          <th>9</th>
-                          <th>15</th>
-                          <th>130%</th>
-                          <th>130%</th>
-                          <th>13%</th>
-                        </tr>
-                        <tr>
-                          <th>10</th>
-                          <th>14</th>
-                          <th>160%</th>
-                          <th>90%</th>
-                          <th>12%</th>
-                        </tr>
-                        <tr>
-                          <th>11</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>9.0%</th>
-                        </tr>
-                        <tr>
-                          <th>12</th>
-                          <th>15</th>
-                          <th>150%</th>
-                          <th>160%</th>
-                          <th>13%</th>
-                        </tr>
+                      <s:iterator value="#application.map" id="id">
+                       	   
+                       <s:iterator value="id" status="status">
+                      
+                       	   <s:iterator value='value' status="st">
+                       	   <tr>
+                          		<s:if test="#st.First">
+                          			<th width="20" style="vertical-align: middle;text-align:center" rowspan="12"><input name="all" type="checkbox"></th>
+                          			<th style="vertical-align: middle;text-align:center" rowspan="12"><s:property value='key'/>  </th>
+                          		<s:iterator value='value[#st.index]' status="sta">
+                          			<th><s:property value="value[#st.index][#sta.index]"/></th>
+                          		</s:iterator>
+                          		</s:if><s:else>
+	                          	<s:iterator value='value[#st.index]' status="sta">
+                          			<th><s:property value="value[#st.index][#sta.index]"/></th>
+                          		</s:iterator>
+                          		</s:else>
+                          	</tr>
+                          </s:iterator>
+
+                     </s:iterator>
+                      </s:iterator>
 		              </tbody>
                     </table>
                   </div>

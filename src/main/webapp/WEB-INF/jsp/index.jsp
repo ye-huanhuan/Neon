@@ -45,7 +45,7 @@
             <!-- 目标数据 -->
             <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">目标分析图</header>
+                  <header class="panel-heading font-bold" style="font-size: 20px;text-align:center">目标分析图</header>
                   <div class="panel-body">
                     <div style="width: 100%; height: 200px; margin: 0 auto">
     				<div id="container-month" style="width: 33.3%; height: 200px; float: left"></div>
@@ -59,7 +59,7 @@
             <!-- 近年销项数据 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">实时分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 20px;text-align:center">2015年1月1日至今每日进项税额图</header>
                   <div class="panel-body">
                     <div id="container_top" style="min-width:400px;height:500px"></div>
                   </div>
@@ -68,7 +68,7 @@
               <!-- 近年进项数据 -->
               <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 16px">实时分析表</header>
+                  <header class="panel-heading font-bold" style="font-size: 20px;text-align:center">2015年1月1日至今每日销项税额图</header>
                   <div class="panel-body">
                     <div id="container_second" style="min-width:400px;height:500px"></div>
                   </div>

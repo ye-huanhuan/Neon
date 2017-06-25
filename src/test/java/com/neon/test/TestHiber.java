@@ -119,6 +119,35 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		l.add(0.5);
 		System.out.println(Arith.max(l) + " " + Arith.min(l));*/
 		
-	}
-	
+		
+			/*String[] strs = {"a","b","c"};
+			Integer[] a = {3,1,2};
+			int temp = 0;
+			String str = "";
+			for(int i=0;i<a.length-1;i++){  
+		        for(int j=0;j<a.length-1-i;j++){  
+		        if(a[j]>a[j+1]){  
+		            temp=a[j];  
+		            a[j]=a[j+1];  
+		            a[j+1]=temp;
+		            
+		            str = strs[j];
+		            strs[j] = strs[j+1];
+		            strs[j+1] = str;
+		        }  
+		        }  
+		    }  
+			
+			for(String s : strs){
+				System.out.println(s);
+			}
+			*/
+		
+			String str = "asd";
+			String[] strs = str.split("\\|");
+			for(String s : strs){
+				System.out.println(s);
+			}
+		
+		}
 }

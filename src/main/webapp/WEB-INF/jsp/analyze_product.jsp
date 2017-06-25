@@ -60,9 +60,9 @@
                       </ul>
                     </div>
                   <div class="col-sm-4 m-b-xs">
-                    <form action="#" method="post">
+                    <form action="analyze_product_search.action" method="post">
                       <div class="input-group">
-                        <input type="text" class="input-sm form-control" placeholder="Search" name="search">
+                        <input type="text" class="input-sm form-control" placeholder="Search" name="search_1">
                         <span class="input-group-btn">
                       <input class="btn btn-sm btn-default" type="submit" value="搜索" />
                       </span>
@@ -89,117 +89,31 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                          <th width="20"><input name="all" class="product_one_other" type="checkbox"></th>
-                          <th rowspan="6" id="one" style="vertical-align: middle;text-align:center">鱼肉罐头  </th>
-                          <th>1</th>
-                          <th>10</th>
-                          <th>170%</th>
-                          <th>150%</th>
-                          <th>20%</th>
-                          <th>2</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input class="product_one" name="all" type="checkbox"></th>
-                          <th>2</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
-                          <th>1</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input class="product_one" name="all" type="checkbox"></th>
-                          <th>3</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
-                          <th>1</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input class="product_one" name="all" type="checkbox"></th>
-                          <th>4</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
-                          <th>1</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input class="product_one" name="all" type="checkbox"></th>
-                          <th>5</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
-                          <th>1</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input class="product_one" name="all" type="checkbox"></th>
-                          <th>6</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
-                          <th>1</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input name="all" class="product_two_other" type="checkbox"></th>
-                          <th rowspan="6" id="two" style="vertical-align: middle;text-align:center">鱼肉罐头  </th>
-                          <th>1</th>
-                          <th>10</th>
-                          <th>170%</th>
-                          <th>150%</th>
-                          <th>20%</th>
-                          <th>2</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
-                          <th>2</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
-                          <th>1</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
-                          <th>3</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
-                          <th>1</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
-                          <th>4</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
-                          <th>1</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
-                          <th>5</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
-                          <th>1</th>
-                        </tr>
-                        <tr>
-                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
-                          <th>6</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>30%</th>
-                          <th>1</th>
-                        </tr>
-                        
+                      <s:iterator value="#application.map" id="id">
+                       	   
+                       <s:iterator value="id" status="status">
+                      
+                       	   <s:iterator value='value' status="st">
+                       	   <tr>
+                          		<s:if test="#st.First">
+                         			 
+                          			<th width="20"><input class="product_one" name="all" type="checkbox"></th>
+                          			<th rowspan="12" id="two" style="vertical-align: middle;text-align:center"><s:property value='key'/>  </th>
+                          		<s:iterator value='value[#st.index]' status="sta">
+                          			<th><s:property value="value[#st.index][#sta.index]"/></th>
+                          		</s:iterator>
+                          		</s:if><s:else>
+                          		<th width="20"><input class="product_one" name="all" type="checkbox"></th>
+	                          	<s:iterator value='value[#st.index]' status="sta">
+                          			<th><s:property value="value[#st.index][#sta.index]"/></th>
+                          		</s:iterator>
+                          		</s:else>
+                          	</tr>
+                          </s:iterator>
+
+                     </s:iterator>
+                      </s:iterator>
+                     
 		              </tbody>
                     </table>
                   </div>

@@ -9,10 +9,14 @@ $(document).ready(function() {
             enabled:false
 		};
         var title = {
-            text: '2015年1月1日至今每日的进项总额'
+            text: null
         };
         var subtitle = {
-            text: '拖动x轴能缩放图表'
+            text: '拖动x轴能缩放图表',
+            floating: true,
+            align: 'left',
+            x: 615,
+            y: 475
         };
         var xAxis = {
         	title: {

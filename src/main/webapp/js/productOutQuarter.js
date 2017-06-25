@@ -17,11 +17,11 @@
        marginRight: 130,
      },
      title: {
-       text: '产品分析表',
+       text: null,
        x: -20 //center
      },
      subtitle: {
-         text: '数据来源: 财务部',
+         text: null,
          x: -20
      },
      xAxis: {
