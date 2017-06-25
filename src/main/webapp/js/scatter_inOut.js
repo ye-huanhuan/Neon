@@ -11,10 +11,14 @@ $(function () {
      		enabled:false
      	};
         var title = {
-            text: '今年进销项分布图'
+            text: null
         };
         var subtitle = {
-            text: '数据来源: 财务部'
+            text: "通过进销项坐标散点，可以使用预测的销项来指导进项",
+            floating: true,
+            align: 'left',
+            x: 490,
+            y: 475
         };
         var xAxis =  {
             title: {

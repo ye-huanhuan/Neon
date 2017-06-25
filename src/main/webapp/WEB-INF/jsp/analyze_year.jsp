@@ -164,6 +164,10 @@
 <script src="js/yearOutProduct.js"></script>
 <script src="js/top_product_year.js"></script>
 <script src="js/dynamic_year.js"></script>
+
+<script>
+document.getElementById("test0").setAttribute("class","active");
+</script>
   <!-- 
 <script type="text/javascript">
 /**

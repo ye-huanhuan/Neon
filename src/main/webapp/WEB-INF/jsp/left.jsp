@@ -25,10 +25,10 @@
 <body>
 <ul class="nav">
                  
-                  <li> <a href="home_index.action" class="active"> <i class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>首页</span> </a> </li>
-                  <s:iterator value="#application.topPrivileges">
-                   <s:if test="#session.user.hasPrivilegeByName(LimiteName)">
-	                    	<li > <a href=${actionName } > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>${limiteName }</span> </a>
+                  <li > <a href="home_index.action"> <i class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>首页</span> </a> </li>
+                  <s:iterator value="#application.topPrivileges" status="s">
+                   <s:if test="#session.user.hasPrivilegeByName(LimiteName)" >
+	                    	<li id="test<s:property value="#s.index"/>"> <a href=${actionName } > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>${limiteName }</span> </a>
 	                    	<ul class="nav lt">
 	                    	
 	                    	<s:if test="#session.user.isPrivilege(LimiteName)"> 
@@ -54,10 +54,8 @@
 	                    	</ul>
                     		</li>
                    </s:if>
-                   
-                   
-                   
                   </s:iterator>
        </ul>
+       
 </body>
 </html>

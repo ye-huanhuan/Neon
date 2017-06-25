@@ -197,7 +197,9 @@
 <script src="js/quarterOutProduct.js"></script>
 <script src="js/top_product_quarter.js"></script>
 <script src="js/compare_same_quarter.js"></script>
-
+<script>
+document.getElementById("test0").setAttribute("class","active");
+</script>
 
 <!--  
 <script>

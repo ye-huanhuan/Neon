@@ -275,6 +275,14 @@ function reduce(){
 	            title: {
 	                text: null
 	            },
+	            subtitle: {
+	            	 text: "点击柱状图，可下钻查看详细信息",
+	                 floating: true,
+	                 align: 'left',
+	                 x: 570,
+	                 y: 385,
+	                 useHTML: true
+	            },
 	            xAxis: {
 	                type: 'category',
 	                labels: {

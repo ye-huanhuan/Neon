@@ -127,6 +127,12 @@
   </section>
 </section>
 <script src="js/app.v2.js"></script> <!-- Bootstrap --> <!-- App -->
+
+<!-- 解决导航栏自动收回 -->
+<script>
+document.getElementById("test1").setAttribute("class","active");
+</script>
+
 <!--  table2excel所需要的包 -->
  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
  <script>

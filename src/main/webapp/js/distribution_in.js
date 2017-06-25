@@ -9,10 +9,10 @@ $(function () {
             type: 'bar'
         },
         title: {
-            text: '产品进项税额分布情况'
+            text: '进项税收总额分布情况'
         },
         subtitle: {
-            text: '数据来源: 财务部'
+            text: null
         },
         xAxis: {
             categories: ['0-4','4-8', '8-12' , '12-16', '16+'],

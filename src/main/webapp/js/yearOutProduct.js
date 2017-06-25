@@ -14,11 +14,11 @@
 		},
         title: {
             text: '2017产品税额占比图',
-            x: -20,
         },
         subtitle: {
-            text: null,
-            x: -20,
+        	text: '<span style="font-size: 14px; color: #666; color:white">点击隐藏产品</span>',
+            x: 0,
+            y: 382
         },
         tooltip: {
             headerFormat: '{series.name}<br>',
@@ -40,6 +40,7 @@
                 showInLegend: true
             }
         },
+        
         series: [{
             type: 'pie',
             name: '产品销量',

@@ -82,8 +82,12 @@ $(function () {
         },
 
         subtitle: {
-            text: null,
-            x: -20
+        	 text: "红色数据点表示在税收额平均值之下的年份",
+             floating: true,
+             align: 'left',
+             x: 530,
+             y: 370,
+             useHTML: true
         },
         xAxis: {
             categories: ['2012', '2013', '2014', '2015', '2016', '2017'],
@@ -130,7 +134,10 @@ $(function () {
             layout: 'vertical',
             align: 'right',
             verticalAlign: 'middle',
-            borderWidth: 0
+            borderWidth: 0,
+            title: {
+                text: '<span style="font-size: 14px; color: #666; color:white">点击隐藏</span>',
+            },
         },
         
         series: [

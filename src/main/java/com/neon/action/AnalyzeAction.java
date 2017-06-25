@@ -160,6 +160,9 @@ public class AnalyzeAction extends ActionBase<Input>{
 		for(int i = 0 ; i < input_totlemoney_month_array.length ; i++){
 			System.out.println(input_totlemoney_month_array[i] + "%%%%%%%%");
 		}
+		//进项数据最后一个月不预测
+		input_totlemoney_month_array[input_totlemoney_month_array.length-1] = 0;
+		
 		//将零值去除
 		input_totlemoney_month_array = ChangeLength.changeLength(input_totlemoney_month_array);
 		for(int i = 0 ; i < input_totlemoney_month_array.length ; i++){

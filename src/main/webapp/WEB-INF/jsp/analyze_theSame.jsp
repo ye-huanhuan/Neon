@@ -92,7 +92,7 @@
                           <th width="20" style="vertical-align: middle;text-align:center" rowspan="12"><input name="all" type="checkbox"></th>
                           <th style="vertical-align: middle;text-align:center" rowspan="12">2016  </th>
                           <th>1</th>
-                          <th>10</th>
+                          <th>14</th>
                           <th>170%</th>
                           <th>150%</th>
                           <th>7.5%</th>
@@ -293,6 +293,11 @@
   </section>
 </section>
 <script src="js/app.v2.js"></script> <!-- Bootstrap --> <!-- App -->
+<!-- 解决导航栏自动收回 -->
+<script>
+document.getElementById("test1").setAttribute("class","active");
+</script>
+
 <!--  table2excel所需要的包 -->
  
  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
