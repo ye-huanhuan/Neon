@@ -21,8 +21,7 @@
        x: -20 //center
      },
      subtitle: {
-         text: null,
-         x: -20
+    	text: null,
      },
      xAxis: {
        categories: ['第一季度', '第二季度', '第三季度', '第四季度'],
@@ -71,7 +70,10 @@
        verticalAlign: 'top',
        x: -10,
        y: 100,
-       borderWidth: 0
+       borderWidth: 0,
+       title: {
+           text: '<span style="font-size: 14px; color: #666; color:white">点击隐藏产品</span>',
+       },
      },
      series: []
    }

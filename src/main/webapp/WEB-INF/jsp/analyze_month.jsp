@@ -1,7 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html lang="en" class="app">
 <head>
 <meta charset="utf-8" />
@@ -194,6 +194,11 @@
 <script src="js/monthOutProduct.js"></script>
 <script src="js/top_product_month.js"></script>
 <script src="js/compare_same_month.js"></script>
+
+
+<script>
+		document.getElementById("test0").setAttribute("class","active");
+</script>
 
 
 <!--  

@@ -3,7 +3,13 @@
  */
 $(document).ready(function() {
         var chart = {
-            zoomType: 'x'
+            zoomType: 'x',
+            resetZoomButton: {
+                position: {
+                    x: -25,
+                    y: 40
+                }
+            }
         };
         var credits =  {
             enabled:false

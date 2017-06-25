@@ -28,8 +28,9 @@
             }
         },
         subtitle: {
-            text: null,
-            x: -20,
+        	text: '<span style="font-size: 14px; color: #666; color:white">点击隐藏产品</span>',
+            x: 0,
+            y: 382
         },
         plotOptions: {
             pie: {

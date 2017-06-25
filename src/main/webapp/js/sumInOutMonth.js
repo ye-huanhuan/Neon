@@ -61,8 +61,12 @@ $(function () {
             x: -20
         },
         subtitle: {
-            text: null,
-            x: -20
+            text: "红色数据点表示在税收额平均值之下的月份</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp虚线后的点表示下月的预测税收额",
+            floating: true,
+            align: 'left',
+            x: 530,
+            y: 370,
+            useHTML: true
         },
         xAxis: {
             title: {
@@ -109,7 +113,10 @@ $(function () {
             layout: 'vertical',
             align: 'right',
             verticalAlign: 'middle',
-            borderWidth: 0
+            borderWidth: 0,
+            title: {
+                text: '<span style="font-size: 14px; color: #666; color:white">点击隐藏</span>',
+            },
         },
         
         series: [
