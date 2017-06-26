@@ -47,10 +47,10 @@
 
                     <div class="btn-group">
                     <form action="#" style="display: inline-block">
-                    <button id="refresh" type="submit" class="btn btn-sm btn-default" title="Refresh" style="height:30px;width:42.4px;margin-left:0px" ><i class="fa fa-refresh"></i></button>
+                    <button id="refresh" type="submit" class="btn btn-sm btn-default" title="刷新" style="height:30px;width:42.4px;margin-left:0px" ><i class="fa fa-refresh"></i></button>
                     </form>
-                      <button type="button" class="btn btn-sm btn-default" title="Remove" style="height:30px;width:42.4px" onclick="remove()"><i class="fa fa-trash-o"></i></button>
-                      <button type="button" class="btn btn-sm btn-default" title="Filter" data-toggle="dropdown"><i class="fa fa-filter"></i> <span class="caret"></span></button>
+                      <button type="button" class="btn btn-sm btn-default" title="移除" style="height:30px;width:42.4px" onclick="remove()"><i class="fa fa-trash-o"></i></button>
+                      <button type="button" class="btn btn-sm btn-default" title="排序" data-toggle="dropdown"><i class="fa fa-filter"></i> <span class="caret"></span></button>
                        <button id="preview" class="button">预览</button>
                        <button id="btnExport" class="button">下载</button>
                        

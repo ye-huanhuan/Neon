@@ -60,9 +60,9 @@
                       </ul>
                     </div>
                   <div class="col-sm-4 m-b-xs">
-                    <form action="analyze_theSame_search.action" method="post">
+                    <form action="#" method="post">
                       <div class="input-group">
-                        <input type="text" class="input-sm form-control" placeholder="Search" name="search_2">
+                        <input type="text" class="input-sm form-control" placeholder="Search" name="search">
                         <span class="input-group-btn">
                       <input class="btn btn-sm btn-default" type="submit" value="搜索" />
                       </span>
@@ -75,218 +75,131 @@
               <section class="scrollable wrapper w-f">
                 <section class="panel panel-default">
                   <div class="table-responsive">
-                     <table class="table table-striped m-b-none" id="Tax_detail">
+                     <table class="table table-striped m-b-none" id="Tax_detail" align="center">
                       <thead>
                         <tr>
                           <th width="20"><input name="all" class="all" type="checkbox"></th>
-                          <th>年份  <input type="checkbox" name="select" style="margin-left:20px" id="1"></th>
+                          <th>产品  <input type="checkbox" name="select" style="margin-left:20px" id="1"></th>
                           <th>月份<input type="checkbox" name="select" style="margin-left:20px" id="2"></th>
                           <th>税收额<input type="checkbox" name="select" style="margin-left:20px" id="3"></th>
                           <th>月份环比<input type="checkbox" name="select" style="margin-left:20px" id="4"></th>
                           <th>年份同比<input type="checkbox" name="select" style="margin-left:20px" id="5"></th>
-                          <th>年内占比<input type="checkbox" name="select" style="margin-left:20px" id="6"></th>
+                          <th>月内占比<input type="checkbox" name="select" style="margin-left:20px" id="6"></th>
+                          <th>月内排名<input type="checkbox" name="select" style="margin-left:20px" id="7"></th>
                         </tr>
                       </thead>
                       <tbody>
-<<<<<<< HEAD
-                      <s:iterator value="#application.map" id="id">
-                       	   
-                       <s:iterator value="id" status="status">
-                      
-                       	   <s:iterator value='value' status="st">
-                       	   <tr>
-                          		<s:if test="#st.First">
-                          			<th width="20" style="vertical-align: middle;text-align:center" rowspan="12"><input name="all" type="checkbox"></th>
-                          			<th style="vertical-align: middle;text-align:center" rowspan="12"><s:property value='key'/>  </th>
-                          		<s:iterator value='value[#st.index]' status="sta">
-                          			<th><s:property value="value[#st.index][#sta.index]"/></th>
-                          		</s:iterator>
-                          		</s:if><s:else>
-	                          	<s:iterator value='value[#st.index]' status="sta">
-                          			<th><s:property value="value[#st.index][#sta.index]"/></th>
-                          		</s:iterator>
-                          		</s:else>
-                          	</tr>
-                          </s:iterator>
-
-                     </s:iterator>
-                      </s:iterator>
-=======
                       <tr>
-                          <th width="20" style="vertical-align: middle;text-align:center" rowspan="12"><input name="all" type="checkbox"></th>
-                          <th style="vertical-align: middle;text-align:center" rowspan="12">2016  </th>
-                          <th>1</th>
-                          <th>14</th>
-                          <th>170%</th>
-                          <th>150%</th>
-                          <th>7.5%</th>
-                        </tr>
-                        <tr>
-                          <th>2</th>
-                          <th>13</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>11%</th>
-                        </tr>
-                        <tr>
-                          <th>3</th>
-                          <th>15</th>
-                          <th>150%</th>
-                          <th>120%</th>
-                          <th>13%</th>
-                        </tr>
-                        <tr>
-                          <th>4</th>
-                          <th>12</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>10%</th>
-                        </tr>
-                        <tr>
-                          <th>5</th>
-                          <th>18</th>
-                          <th>140%</th>
-                          <th>200%</th>
-                          <th>16%</th>
-                        </tr>
-                        <tr>
-                          <th>6</th>
-                          <th>16</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>12%</th>
-                        </tr>
-                        <tr>
-                          <th>7</th>
-                          <th>20</th>
-                          <th>125%</th>
-                          <th>130%</th>
-                          <th>17%</th>
-                        </tr>
-                        <tr>
-                          <th>8</th>
-                          <th>14</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>12%</th>
-                        </tr>
-                        
-                        <tr>
-                          <th>9</th>
-                          <th>15</th>
-                          <th>130%</th>
-                          <th>130%</th>
-                          <th>13%</th>
-                        </tr>
-                        <tr>
-                          <th>10</th>
-                          <th>14</th>
-                          <th>160%</th>
-                          <th>90%</th>
-                          <th>12%</th>
-                        </tr>
-                        <tr>
-                          <th>11</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>9.0%</th>
-                        </tr>
-                        <tr>
-                          <th>12</th>
-                          <th>15</th>
-                          <th>150%</th>
-                          <th>160%</th>
-                          <th>13%</th>
-                        </tr>
-                        <tr>
-                          <th style="vertical-align: middle;text-align:center" width="20" rowspan="12"><input name="all" type="checkbox"></th>
-                          <th style="vertical-align: middle;text-align:center" rowspan="12">2015  </th>
+                          <th width="20"><input name="all" class="product_one_other" type="checkbox"></th>
+                          <th rowspan="6" id="one" style="vertical-align: middle;text-align:center">鱼肉罐头  </th>
                           <th>1</th>
                           <th>10</th>
                           <th>170%</th>
                           <th>150%</th>
-                          <th>7.5%</th>
-                        </tr>
-                        <tr>
+                          <th>20%</th>
                           <th>2</th>
-                          <th>13</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>11%</th>
                         </tr>
                         <tr>
-                          <th>3</th>
-                          <th>15</th>
-                          <th>150%</th>
-                          <th>120%</th>
-                          <th>13%</th>
-                        </tr>
-                        <tr>
-                          <th>4</th>
-                          <th>12</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>10%</th>
-                        </tr>
-                        <tr>
-                          <th>5</th>
-                          <th>18</th>
-                          <th>140%</th>
-                          <th>200%</th>
-                          <th>16%</th>
-                        </tr>
-                        <tr>
-                          <th>6</th>
-                          <th>16</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>12%</th>
-                        </tr>
-                        <tr>
-                          <th>7</th>
+                          <th width="20"><input class="product_one" name="all" type="checkbox"></th>
+                          <th>2</th>
                           <th>20</th>
-                          <th>125%</th>
-                          <th>130%</th>
-                          <th>17%</th>
-                        </tr>
-                        <tr>
-                          <th>8</th>
-                          <th>14</th>
                           <th>150%</th>
                           <th>130%</th>
-                          <th>12%</th>
+                          <th>30%</th>
+                          <th>1</th>
+                        </tr>
+                        <tr>
+                          <th width="20"><input class="product_one" name="all" type="checkbox"></th>
+                          <th>3</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                          <th>1</th>
+                        </tr>
+                        <tr>
+                          <th width="20"><input class="product_one" name="all" type="checkbox"></th>
+                          <th>4</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                          <th>1</th>
+                        </tr>
+                        <tr>
+                          <th width="20"><input class="product_one" name="all" type="checkbox"></th>
+                          <th>5</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                          <th>1</th>
+                        </tr>
+                        <tr>
+                          <th width="20"><input class="product_one" name="all" type="checkbox"></th>
+                          <th>6</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                          <th>1</th>
+                        </tr>
+                        <tr>
+                          <th width="20"><input name="all" class="product_two_other" type="checkbox"></th>
+                          <th rowspan="6" id="two" style="vertical-align: middle;text-align:center">鱼肉罐头  </th>
+                          <th>1</th>
+                          <th>10</th>
+                          <th>170%</th>
+                          <th>150%</th>
+                          <th>20%</th>
+                          <th>2</th>
+                        </tr>
+                        <tr>
+                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
+                          <th>2</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                          <th>1</th>
+                        </tr>
+                        <tr>
+                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
+                          <th>3</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                          <th>1</th>
+                        </tr>
+                        <tr>
+                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
+                          <th>4</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                          <th>1</th>
+                        </tr>
+                        <tr>
+                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
+                          <th>5</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                          <th>1</th>
+                        </tr>
+                        <tr>
+                          <th width="20"><input class="product_two" name="all" type="checkbox"></th>
+                          <th>6</th>
+                          <th>20</th>
+                          <th>150%</th>
+                          <th>130%</th>
+                          <th>30%</th>
+                          <th>1</th>
                         </tr>
                         
-                        <tr>
-                          <th>9</th>
-                          <th>15</th>
-                          <th>130%</th>
-                          <th>130%</th>
-                          <th>13%</th>
-                        </tr>
-                        <tr>
-                          <th>10</th>
-                          <th>14</th>
-                          <th>160%</th>
-                          <th>90%</th>
-                          <th>12%</th>
-                        </tr>
-                        <tr>
-                          <th>11</th>
-                          <th>20</th>
-                          <th>150%</th>
-                          <th>130%</th>
-                          <th>9.0%</th>
-                        </tr>
-                        <tr>
-                          <th>12</th>
-                          <th>15</th>
-                          <th>150%</th>
-                          <th>160%</th>
-                          <th>13%</th>
-                        </tr>
->>>>>>> 09e25f160014fa0b808a027626881be32604b59f
 		              </tbody>
                     </table>
                   </div>
@@ -318,15 +231,15 @@
   </section>
 </section>
 <script src="js/app.v2.js"></script> <!-- Bootstrap --> <!-- App -->
+
 <!-- 解决导航栏自动收回 -->
 <script>
 document.getElementById("test1").setAttribute("class","active");
 </script>
-
 <!--  table2excel所需要的包 -->
  
  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
- <script src="js/preview_compare_same.js"></script>
+ <script src="js/preview_product_detail.js"></script>
  <script src="plugin/jquery.table2excel.js"></script>
  <script src="js/Export_Tax_detail.js"></script>
 
@@ -336,12 +249,44 @@ document.getElementById("test1").setAttribute("class","active");
 		 function remove(){
 		        var s = document.getElementsByName("all");
 		        for(var i=0;i<s.length;i++){
-		        	
 		            if(s[i].checked&&$(s[i]).attr('class') != "all"){
-		            	var childs = s[i].parentNode.parentNode.parentNode.children;
-		            	for(var j=(i-1)*12+1;j<(i-1)*12+1+12;j++){
-		                	childs[(i-1)*12].parentNode.removeChild(childs[(i-1)*12]);
-		                }
+		            	var childs = s[i].parentNode.parentNode.children;
+		            	var len = (s[i].parentNode.parentNode.parentNode.children).length;
+		            	var product_group = $(s[i]).attr("class");
+		            	if(i != len){
+		            		var childs_inner = s[i+1].parentNode.parentNode.children;
+		            		var importantChild = childs[1];
+			            	if(childs.length === 7||childs_inner.length === 8){
+			            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
+			            	}else{
+			            		s[i+1].parentNode.parentNode.insertBefore(importantChild,childs_inner[1]);
+			            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
+			            	}
+		            	}else{
+		            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
+		            	}
+		            	
+		            	
+		            	/*if(childs.length === 7){
+		            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
+		            	}else{
+		            		for(var t=0;t<8;t++){
+		            			alert(t);
+		            			if(t<2){
+		            				alert("hello");
+		            				childs[t].parentNode.removeChild(childs[t]);
+		            			}
+		            			if(t>=2){
+		            				alert("hi");
+		            				childs[1].parentNode.removeChild(childs[1]);
+		            			}
+		            			
+		            		}
+		            	}
+		                */
+		                var modify_rowspan = product_group.split("_")[1];
+		                var rowspan_number = document.getElementById(modify_rowspan).getAttribute('rowspan');
+		                document.getElementById(modify_rowspan).setAttribute('rowspan',""+(rowspan_number-1)); 
 		                i--;
 		            }
 		        }

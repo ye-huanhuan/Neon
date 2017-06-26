@@ -60,9 +60,9 @@
                       </ul>
                     </div>
                   <div class="col-sm-4 m-b-xs">
-                    <form action="analyze_theSame_search.action" method="post">
+                    <form action="#" method="post">
                       <div class="input-group">
-                        <input type="text" class="input-sm form-control" placeholder="Search" name="search_2">
+                        <input type="text" class="input-sm form-control" placeholder="Search" name="search">
                         <span class="input-group-btn">
                       <input class="btn btn-sm btn-default" type="submit" value="搜索" />
                       </span>
@@ -88,30 +88,6 @@
                         </tr>
                       </thead>
                       <tbody>
-<<<<<<< HEAD
-                      <s:iterator value="#application.map" id="id">
-                       	   
-                       <s:iterator value="id" status="status">
-                      
-                       	   <s:iterator value='value' status="st">
-                       	   <tr>
-                          		<s:if test="#st.First">
-                          			<th width="20" style="vertical-align: middle;text-align:center" rowspan="12"><input name="all" type="checkbox"></th>
-                          			<th style="vertical-align: middle;text-align:center" rowspan="12"><s:property value='key'/>  </th>
-                          		<s:iterator value='value[#st.index]' status="sta">
-                          			<th><s:property value="value[#st.index][#sta.index]"/></th>
-                          		</s:iterator>
-                          		</s:if><s:else>
-	                          	<s:iterator value='value[#st.index]' status="sta">
-                          			<th><s:property value="value[#st.index][#sta.index]"/></th>
-                          		</s:iterator>
-                          		</s:else>
-                          	</tr>
-                          </s:iterator>
-
-                     </s:iterator>
-                      </s:iterator>
-=======
                       <tr>
                           <th width="20" style="vertical-align: middle;text-align:center" rowspan="12"><input name="all" type="checkbox"></th>
                           <th style="vertical-align: middle;text-align:center" rowspan="12">2016  </th>
@@ -286,7 +262,6 @@
                           <th>160%</th>
                           <th>13%</th>
                         </tr>
->>>>>>> 09e25f160014fa0b808a027626881be32604b59f
 		              </tbody>
                     </table>
                   </div>
