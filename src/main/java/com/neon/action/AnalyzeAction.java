@@ -740,12 +740,14 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//销项数据
 		String[] group_out = outputService.group();
 		int[] times_out = outputService.getTimesByGroup(group_out);
+		String[] group_out_2 = outputService.group_2();
 		//进项数据
 		String[] group_in = inputService.group();
 		int[] times_in = inputService.getTimesByGroup(group_in);
-		result4.put("group_out", group_out);
+		String[] group_in_2 = inputService.group_2();
+		result4.put("group_out", group_out_2);
 		result4.put("times_out", times_out);
-		result4.put("group_in",group_in);
+		result4.put("group_in",group_in_2);
 		result4.put("times_in", times_in);
 		return "success_distribution";
 	}

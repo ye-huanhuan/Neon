@@ -29,5 +29,7 @@ public interface InputService extends DaoSupport<Input>{
 	String[] group();
 
 	int[] getTimesByGroup(String[] group_out);
+
+	String[] group_2();
 	
 }

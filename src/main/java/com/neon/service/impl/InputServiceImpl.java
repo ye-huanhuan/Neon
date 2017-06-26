@@ -276,6 +276,28 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 	}
 	
 	@Override
+	public String[] group_2() {
+		String[] str = new String[10];
+		List<Double> list = getAllMonthAndMoney_2();
+		int sub = (int) ((Arith.max(list) - Arith.min(list))/10);
+		double temp = Arith.max(list);
+		double index = 0;
+		for(int i = 0 ; i < 10 ; i++){
+			index = temp;
+			temp = temp - sub;
+			temp = Math.floor(temp);
+			if(i == 0){
+				str[i] = temp + "以上";
+			}else if(i == 9){
+				str[i] = temp + "以下";
+			}else{
+				str[i] = index + "-" +temp;
+			}
+		}
+		return str;
+	}
+	
+	@Override
 	public int[] getTimesByGroup(String[] group) {
 		List<Integer> list = new ArrayList<>();
 		List<Double> month = getAllMonthAndMoney_2();
@@ -425,7 +447,6 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 		}
 		return d;
 	}
-
 
 }
 
