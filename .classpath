@@ -36,5 +36,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jcaptcha-2.0-alpha-1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jcaptcha-api-1.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/jcaptcha-integration-simple-servlet-2.0-alpha-1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/Dm7JdbcDriver-1.7.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
