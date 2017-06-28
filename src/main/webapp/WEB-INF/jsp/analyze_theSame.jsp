@@ -62,7 +62,7 @@
                   <div class="col-sm-4 m-b-xs">
                     <form action="analyze_theSame_search.action" method="post">
                       <div class="input-group">
-                        <input type="text" class="input-sm form-control" placeholder="Search" name="search_2">
+                        <input type="text" class="input-sm form-control" placeholder="例：2016 或  2016|2017..." name="search_2">
                         <span class="input-group-btn">
                       <input class="btn btn-sm btn-default" type="submit" value="搜索" />
                       </span>
@@ -111,7 +111,6 @@
 
                      </s:iterator>
                       </s:iterator>
-
 		              </tbody>
                     </table>
                   </div>

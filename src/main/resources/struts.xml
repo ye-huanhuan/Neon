@@ -49,7 +49,8 @@
 	
 	<!-- ==============发票部分======================================= -->
 	<action name="invoice_*" class="dvalueAction" method="{1}">
-		 <result name="setDvalue">WEB-INF/jsp/notebook.jsp</result> 
+		 <result name="dvalue">WEB-INF/jsp/notebook.jsp</result>
+		 <result name="setDvalue" type="redirect">invoice_setDvalue.action</result> 
 
 	</action>
 	

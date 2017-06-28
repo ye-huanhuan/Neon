@@ -12,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.neon.domain.Inout;
+import com.neon.domain.Inout_;
 import com.neon.domain.Privilege;
 import com.neon.domain.Role;
 import com.neon.domain.User;
@@ -74,22 +74,22 @@ public class Installer2 extends AbstractJUnit4SpringContextTests{
 		user_2.setRole(role_2);
 		userService.save(user_2);
 		
-		Inout inout_1 = new Inout();
+		Inout_ inout_1 = new Inout_();
 		inout_1.setInput("猪肉");
 		inout_1.setOutput("猪肉罐头");
 		inoutService.save(inout_1);
 		
-		Inout inout_2 = new Inout();
+		Inout_ inout_2 = new Inout_();
 		inout_2.setInput("鱼肉");
 		inout_2.setOutput("鱼肉罐头");
 		inoutService.save(inout_2);
 		
-		Inout inout_3 = new Inout();
+		Inout_ inout_3 = new Inout_();
 		inout_3.setInput("鸡肉");
 		inout_3.setOutput("鸡肉罐头");
 		inoutService.save(inout_3);
 		
-		Inout inout_4 = new Inout();
+		Inout_ inout_4 = new Inout_();
 		inout_4.setInput("牛肉");
 		inout_4.setOutput("牛肉罐头");
 		inoutService.save(inout_4);

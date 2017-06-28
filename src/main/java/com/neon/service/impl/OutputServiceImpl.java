@@ -29,7 +29,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				List<Output> outputs = getOutputsWithMonthAndYear(month,year);
 				Double money = 0.0;
 				for(Output out : outputs){
-					money += out.getMoney();
+					money = Arith.add(out.getMoney(),money);
 				}
 				list.add(money);
 			}
@@ -40,7 +40,7 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				List<Output> outputs = getOutputsWithMonthAndYear(month,year);
 				Double money = 0.0;
 				for(Output out : outputs){
-					money += out.getMoney();
+					money = Arith.add(out.getMoney(),money);
 				}
 				list.add(money);
 			}

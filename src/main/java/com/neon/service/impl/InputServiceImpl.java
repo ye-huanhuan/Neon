@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.neon.base.DaoSupportImpl;
-import com.neon.domain.Inout;
+import com.neon.domain.Inout_;
 import com.neon.domain.Input;
 import com.neon.domain.Output;
 import com.neon.service.InoutService;
@@ -32,7 +32,7 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 				List<Input> outputs = getInputsWithMonthAndYear(month,year);
 				Double money = 0.0;
 				for(Input out : outputs){
-					money += out.getMoney();
+					money = Arith.add(out.getMoney(),money);
 				}
 				list.add(money);
 			}
@@ -41,7 +41,7 @@ public class InputServiceImpl extends DaoSupportImpl<Input> implements InputServ
 				List<Input> outputs = getInputsWithMonthAndYear(month,year);
 				Double money = 0.0;
 				for(Input out : outputs){
-					money += out.getMoney();
+					money = Arith.add(out.getMoney(),money);
 				}
 				list.add(money);
 			}
