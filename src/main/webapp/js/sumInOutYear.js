@@ -14,7 +14,7 @@ $('#rangeValue').jRange({
     from: 0,
     to: 800,
     step: 50,
-    scale: [0,100,200,300,400,500,600,700],
+    scale: [0,100,200,300,400,500,600,700,800],
     format: '%s',
     width: 300,
     showLabels: true,

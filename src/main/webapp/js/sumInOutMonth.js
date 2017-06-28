@@ -372,7 +372,7 @@ $('#rangeValue').jRange({
     from: -20,
     to: 100,
     step: 5,
-    scale: [-20,0,20,40,60],
+    scale: [-20,0,20,40,60,80,100],
     format: '%s',
     width: 300,
     showLabels: true,

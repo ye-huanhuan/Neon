@@ -22,6 +22,14 @@ $(function () {
         var tooltip = {
             enabled: false
         };
+        var subtitle = {
+       	 text: "仪表右侧为目标，中间为当前税额进度",
+            floating: true,
+            align: 'left',
+            x: 108,
+            y: 180,
+            useHTML: true
+       };
         var yAxis = {
             stops: [
                 [0.3, '#DF5353'], // red
@@ -258,6 +266,7 @@ $(function () {
                         json.series = series;
                         json.plotOptions = plotOptions;
                         json.exporting = exporting;
+                        json.subtitle = subtitle;
                         $('#container-month').highcharts(json);
                         //季度目标数据
                         var data_target1 = obj["data_target"];
@@ -272,6 +281,7 @@ $(function () {
                         json1.series = series1;
                         json1.plotOptions = plotOptions1;
                         json1.exporting = exporting1;
+                        json1.subtitle = subtitle;
                         $('#container-quarter').highcharts(json1);
                         //年份目标数据
                         var data_target2 = obj["data_target"];
@@ -286,6 +296,7 @@ $(function () {
                         json2.series = series2;
                         json2.plotOptions = plotOptions2;
                         json2.exporting = exporting2;
+                        json2.subtitle = subtitle;
                         $('#container-year').highcharts(json2);
                     }
                 });
