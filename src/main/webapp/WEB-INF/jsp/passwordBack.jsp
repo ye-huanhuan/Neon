@@ -27,7 +27,11 @@
         </div>
         
         <button type="submit" class="btn btn-primary">重置密码</button>
+        <a href="log_login.action" style="color:green;margin-left:50%">返回登录</a>
       </form>
+      <div class="checkbox">
+      <span style="color:red;margin-left:10%">测试邮箱:neon_test@163.com&nbsp;&nbsp;&nbsp;&nbsp;密码:neontest</span>
+      </div>
     </section>
   </div>
 </section>

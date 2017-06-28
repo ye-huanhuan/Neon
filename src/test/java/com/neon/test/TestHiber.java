@@ -17,11 +17,13 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.neon.domain.Privilege;
+import com.neon.domain.User;
 import com.neon.service.PrivilegeService;
 import com.neon.service.UserService;
 import com.neon.util.Arith;
 import com.neon.util.Constant;
 import com.neon.util.ListToArray;
+import com.neon.util.Md5;
 import com.neon.util.Sort;
 import com.zyujie.dm.LinearRegression;
 
@@ -70,11 +72,17 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		dvalueService.save(dvalue);*/
 		
 
-		/*User user2 = new User();
-		user2.setUsername("yhh");
-		user2.setPassword(Md5.getMD5("yhh"));
-		user2.setEmail("13244237736@163.com");
-		userService.save(user2);*/
+//		User user2 = new User();
+//		user2.setUsername("admin");
+//		user2.setPassword(Md5.getMD5("admin"));
+//		user2.setEmail("neon@163.com");
+//		userService.save(user2);
+//		
+//		User user3 = new User();
+//		user3.setUsername("user");
+//		user3.setPassword(Md5.getMD5("user"));
+//		user3.setEmail("neon_test@163.com");
+//		userService.save(user3);
 		
 		
 		/*Privilege pri = new Privilege();
@@ -143,11 +151,7 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 			}
 			*/
 		
-			String str = "asd";
-			String[] strs = str.split("\\|");
-			for(String s : strs){
-				System.out.println(s);
-			}
+			
 		
 		}
 }

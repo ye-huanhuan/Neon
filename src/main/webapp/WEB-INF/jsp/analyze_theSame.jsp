@@ -54,10 +54,6 @@
                        <button id="preview" class="button">预览</button>
                        <button id="btnExport" class="button">下载</button>
                        
-                      <ul class="dropdown-menu">
-                        <li><a href="#">时间</a></li>
-                        <li><a href="#">金额</a></li>
-                      </ul>
                     </div>
                   <div class="col-sm-4 m-b-xs">
                     <form action="analyze_theSame_search.action" method="post">

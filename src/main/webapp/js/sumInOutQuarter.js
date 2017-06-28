@@ -321,9 +321,9 @@ function change_aver_color(){
 //使用jrange
 $('#rangeValue').jRange({
     from: -20,
-    to: 120,
-    step: 5,
-    scale: [-20,0,20,40,60,80,100,120],
+    to: 250,
+    step: 20,
+    scale: [-20,20,60,100,140,180,220,250],
     format: '%s',
     width: 300,
     showLabels: true,

@@ -99,26 +99,30 @@ public class LoginAction extends ActionBase<User> {
 			sb.append(base.charAt(number));
 		}
 		// 重置密码
-		User user = userService.findUserByEmail(model.getEmail()+"@163.com");
-		System.out.println(user);
-		user.setPassword(Md5.getMD5(sb.toString()));
-		userService.update(user);
-		// 发送邮件
-		Map<String, Object> session = ActionContext.getContext().getSession();
-		HttpServletRequest request = ServletActionContext.getRequest();
-		String email = request.getParameter("email") + "@163.com";
-		MailInfo info;
-		String hostName = "smtp.163.com";
-		info = new MailInfo(hostName, "13244237736@163.com", "ye7536830875");
-		MailUtil.getMailFromList().add(info);
-		boolean r = MailUtil.send("重置密码", MailInfo.MailType.HTML,
-				"<h3>新密码为:" + sb.toString() + "</h3>" + "<a href='http://localhost:8080/Neon/'>返回登录</a>", email, "",
-				"");
-		MailUtil.getLogger().info(r);
-		if (r) {
-			addFieldError("sendMessage", "发送成功请及时查收！");
-			return "sendSuccess";
-		} else {
+		try{
+			User user = userService.findUserByEmail(model.getEmail()+"@163.com");
+			user.setPassword(Md5.getMD5(sb.toString()));
+			userService.update(user);
+			// 发送邮件
+			Map<String, Object> session = ActionContext.getContext().getSession();
+			HttpServletRequest request = ServletActionContext.getRequest();
+			String email = request.getParameter("email") + "@163.com";
+			MailInfo info;
+			String hostName = "smtp.163.com";
+			info = new MailInfo(hostName, "13244237736@163.com", "ye7536830875");
+			MailUtil.getMailFromList().add(info);
+			boolean r = MailUtil.send("重置密码", MailInfo.MailType.HTML,
+					"<h3>新密码为:" + sb.toString() + "</h3>" + "<a href='http://localhost:8080/Neon/'>返回登录</a>", email, "",
+					"");
+			MailUtil.getLogger().info(r);
+			if (r) {
+				addFieldError("sendMessage", "发送成功请及时查收！");
+				return "sendSuccess";
+			} else {
+				addFieldError("sendMessage", "发送失败请输入正确的邮箱！");
+				return "sendFail";
+			}
+		}catch (Exception e) {
 			addFieldError("sendMessage", "发送失败请输入正确的邮箱！");
 			return "sendFail";
 		}

@@ -12,9 +12,9 @@ var columnColor = ['#058DC7', '#058DC7', '#058DC7', '#058DC7','#058DC7','#058DC7
 //使用jrange
 $('#rangeValue').jRange({
     from: 0,
-    to: 700,
+    to: 1000,
     step: 50,
-    scale: [0,100,200,300,400,500,600,700],
+    scale: [0,200,400,600,800,1000],
     format: '%s',
     width: 300,
     showLabels: true,
