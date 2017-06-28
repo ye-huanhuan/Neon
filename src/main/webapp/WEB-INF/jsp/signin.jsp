@@ -55,6 +55,10 @@
         <a href="log_passwordBack.action" class="pull-right m-t-xs"><small>忘记密码?</small></a>
         <button type="submit" class="btn btn-primary">登录</button>
       </form>
+      <div class="checkbox">
+      <span style="color:red;margin-left:28%">测试用户:user&nbsp;&nbsp;&nbsp;&nbsp;密码:user</span>
+      </div>
+      
     </section>
   </div>
 </section>

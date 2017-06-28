@@ -25,9 +25,12 @@
           <label class="control-label" style="font-size: 16px">邮箱</label><br>
           <input type="text" name="email" placeholder="Email"  class="form-control input-lg" style="width: 70%;display: inline-block;">&nbsp;<font size="4">@163.com</font>
         </div>
-        
         <button type="submit" class="btn btn-primary">重置密码</button>
+        <a href="log_login.action" style="color:green;margin-left:50%">返回登录</a>
       </form>
+      <div class="checkbox">
+      	<span style="margin-left:10%;color:red">测试邮箱:neon_test@163.com&nbsp;&nbsp;&nbsp;&nbsp;密码:neontest</span>
+      </div>
     </section>
   </div>
 </section>

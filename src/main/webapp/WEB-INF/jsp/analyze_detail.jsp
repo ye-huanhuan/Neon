@@ -61,7 +61,7 @@
                   <div class="col-sm-4 m-b-xs">
                     <form action="detailAnalyze_search.action" method="post">
                       <div class="input-group">
-                        <input type="text" class="input-sm form-control" placeholder="Search" name="search">
+                        <input type="text" class="input-sm form-control" placeholder="税号/收款单位/付款单位" name="search">
                         <span class="input-group-btn">
                       <input class="btn btn-sm btn-default" type="submit" value="搜索" />
                       </span>

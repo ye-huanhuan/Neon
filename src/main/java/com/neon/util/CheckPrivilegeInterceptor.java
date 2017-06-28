@@ -29,7 +29,7 @@ public class CheckPrivilegeInterceptor implements Interceptor {
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		String privil_url = invocation.getProxy().getActionName()+".action";
 		if(user == null){
-			if(privil_url.equals("log_toLogin.action")){
+			if(privil_url.equals("log_toLogin.action") || privil_url.equals("log_passwordBack.action") || privil_url.equals("log_toPasswordBack.action")){
 				return invocation.invoke();
 			}else{
 				return "login";

@@ -370,7 +370,7 @@ function change_aver_color(){
 //使用jrange
 $('#rangeValue').jRange({
     from: -20,
-    to: 60,
+    to: 100,
     step: 5,
     scale: [-20,0,20,40,60],
     format: '%s',
