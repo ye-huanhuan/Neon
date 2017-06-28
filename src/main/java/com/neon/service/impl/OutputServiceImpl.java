@@ -110,7 +110,6 @@ public class OutputServiceImpl extends DaoSupportImpl<Output> implements OutputS
 				}
 				maps.put(item, moneys);
 			}
-			
 		}
 		return maps;
 	}

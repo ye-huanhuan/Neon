@@ -119,6 +119,12 @@
   		<version>1.7</version>
   	</dependency>
   	
+  	<!-- mysql驱动 -->
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>5.1.21</version>
+  	</dependency>
   <!-- c3p0 -->
 	<dependency>
 	    <groupId>com.mchange</groupId>

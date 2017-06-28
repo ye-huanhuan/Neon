@@ -612,11 +612,19 @@ public class AnalyzeAction extends ActionBase<Input>{
 			query_quarter = 5;
 			query_year -= 1;
 		}
+		System.out.println("1");
 		Map<String, Double> map_thisQuarter = outputService.getThisQuarterOutputGoodsTotleMoney(query_quarter - 1, query_year);
+		System.out.println("2");
 		Map<String, Double> map_lastQuarter = outputService.getThisQuarterOutputGoodsTotleMoney(query_quarter - 1, query_year - 1);
+		System.out.println("3");
 		String[] item = ListToArray.getItemsArray(map_thisQuarter , map_lastQuarter);
+		System.out.println("4");
+		System.out.println(item[0]);
 		//销项名称
 		String[] items = inoutService.getInputItemByOutputItem(item);
+		for(String str : items){
+			System.out.println(str);
+		}
 		//准备数据  今年这个季度的总和
 		double[] thisYear_Quarter = inputService.getThisQuarterInputGoodsTotleMoney(query_quarter - 1, query_year , items);
 		//准备数据  去年这个季度的总和
