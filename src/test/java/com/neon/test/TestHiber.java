@@ -72,21 +72,21 @@ public class TestHiber extends AbstractJUnit4SpringContextTests{
 		dvalueService.save(dvalue);*/
 		
 
-		User user2 = new User();
-		user2.setUsername("admin");
-		user2.setPassword(Md5.getMD5("admin"));
-		user2.setEmail("neon_test@163.com");
-		userService.save(user2);
-		
-		User user3 = new User();
-		
-		
-		
-		
-		user3.setUsername("user");
-		user3.setPassword(Md5.getMD5("user"));
-		user3.setEmail("neon_test@163.com");
-		userService.save(user3);
+//		User user2 = new User();
+//		user2.setUsername("admin");
+//		user2.setPassword(Md5.getMD5("admin"));
+//		user2.setEmail("neon_test@163.com");
+//		userService.save(user2);
+//		
+//		User user3 = new User();
+//		
+//		
+//		
+//		
+//		user3.setUsername("user");
+//		user3.setPassword(Md5.getMD5("user"));
+//		user3.setEmail("neon_test@163.com");
+//		userService.save(user3);
 		
 		
 		/*Privilege pri = new Privilege();
