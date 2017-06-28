@@ -19,7 +19,7 @@ public class DvalueAction extends ActionBase<Dvalue>{
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dvalue = dvalueService.getById(id);
 		ActionContext.getContext().getApplication().put("dvalue", dvalue);
-		return "setDvalue";
+		return "dvalue";
 	}
 	
 	public String toSetDvalue(){
@@ -36,7 +36,6 @@ public class DvalueAction extends ActionBase<Dvalue>{
 		Date date = new Date();
 		dvalue.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date).toString());
 		dvalueService.save(dvalue);
-		System.out.println("存入成功");
 		return "setDvalue";
 	}
 }

@@ -62,7 +62,7 @@
                   <div class="col-sm-4 m-b-xs">
                     <form action="analyze_product_search.action" method="post">
                       <div class="input-group">
-                        <input type="text" class="input-sm form-control" placeholder="Search" name="search_1">
+                        <input type="text" class="input-sm form-control" placeholder="例：鸡肉罐头 或 鸡肉罐头|牛肉罐头..." name="search_1">
                         <span class="input-group-btn">
                       <input class="btn btn-sm btn-default" type="submit" value="搜索" />
                       </span>

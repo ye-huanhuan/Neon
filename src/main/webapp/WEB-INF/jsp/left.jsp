@@ -28,7 +28,16 @@
                   <li > <a href="home_index.action"> <i class="fa fa-dashboard icon"> <b class="bg-danger"></b> </i> <span>首页</span> </a> </li>
                   <s:iterator value="#application.topPrivileges" status="s">
                    <s:if test="#session.user.hasPrivilegeByName(LimiteName)" >
-	                    	<li id="test<s:property value="#s.index"/>"> <a href=${actionName } > <i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> <span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>${limiteName }</span> </a>
+	                    	<li id="test<s:property value="#s.index"/>"> <a href=${actionName } > 
+	                    	<s:if test="#s.index == 0">
+		                    	<i class="fa fa-columns icon"> <b class="bg-warning"></b> </i> 
+	                    	</s:if><s:elseif test="#s.index == 1">
+	                    		<i class="fa fa-file-text icon"> <b class="bg-primary"></b> </i>
+	                    	</s:elseif><s:elseif test="#s.index">
+	                    		<i class="fa fa-pencil icon"> <b class="bg-info"></b> </i>
+	                    	</s:elseif>
+	                    	
+	                    	<span class="pull-right"> <i class="fa fa-angle-down text"></i> <i class="fa fa-angle-up text-active"></i> </span> <span>${limiteName }</span> </a>
 	                    	<ul class="nav lt">
 	                    	
 	                    	<s:if test="#session.user.isPrivilege(LimiteName)"> 

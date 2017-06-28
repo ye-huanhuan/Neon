@@ -82,7 +82,6 @@ public class AnalyzeAction extends ActionBase<Input>{
 		//准备dvalue_double数据
 		Long id = dvalueService.getMaxIdInDvalues();
 		Dvalue dva = dvalueService.getById(id);
-		System.out.println("dva:"+dva);
 		double[] range = dvalueService.getPdvalueAndNdvalue_month(dva);
 		
 		List<Double> input_totlemoney_month = inputService.getInputTotleMoneyWithMonth(year-1);
