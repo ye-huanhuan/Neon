@@ -3,11 +3,11 @@ package com.neon.service.impl;
 import org.springframework.stereotype.Service;
 
 import com.neon.base.DaoSupportImpl;
-import com.neon.domain.Inout;
+import com.neon.domain.Inout_;
 import com.neon.service.InoutService;
 
 @Service
-public class InoutServiceImpl extends DaoSupportImpl<Inout> implements InoutService{
+public class InoutServiceImpl extends DaoSupportImpl<Inout_> implements InoutService{
 
 	@Override
 	public String[] getInputItemByOutputItem(String[] item) {
@@ -20,7 +20,7 @@ public class InoutServiceImpl extends DaoSupportImpl<Inout> implements InoutServ
 
 	private String getInoutByOutput(String string) {
 		return (String) getSession().createQuery(//
-				"SELECT input FROM Inout inout WHERE inout.output=?")
+				"SELECT input FROM Inout_ i WHERE i.output=?")
 				.setParameter(0, string)
 				.uniqueResult();
 	}

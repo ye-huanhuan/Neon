@@ -88,6 +88,7 @@
                         </tr>
                       </thead>
                       <tbody>
+
                       <s:iterator value="#application.map" id="id">
                        	   
                        <s:iterator value="id" status="status">

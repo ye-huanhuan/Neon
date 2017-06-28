@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.neon.base.DaoSupportImpl;
-import com.neon.domain.Inout;
+import com.neon.domain.Inout_;
 import com.neon.domain.Input;
 import com.neon.domain.Output;
 import com.neon.service.InoutService;

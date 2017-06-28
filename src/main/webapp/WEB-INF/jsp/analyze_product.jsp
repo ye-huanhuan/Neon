@@ -180,24 +180,6 @@ document.getElementById("test1").setAttribute("class","active");
 		            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
 		            	}
 		            	
-		            	
-		            	/*if(childs.length === 7){
-		            		s[i].parentNode.parentNode.parentNode.removeChild(s[i].parentNode.parentNode);
-		            	}else{
-		            		for(var t=0;t<8;t++){
-		            			alert(t);
-		            			if(t<2){
-		            				alert("hello");
-		            				childs[t].parentNode.removeChild(childs[t]);
-		            			}
-		            			if(t>=2){
-		            				alert("hi");
-		            				childs[1].parentNode.removeChild(childs[1]);
-		            			}
-		            			
-		            		}
-		            	}
-		                */
 		                var modify_rowspan = product_group.split("_")[1];
 		                var rowspan_number = document.getElementById(modify_rowspan).getAttribute('rowspan');
 		                document.getElementById(modify_rowspan).setAttribute('rowspan',""+(rowspan_number-1)); 

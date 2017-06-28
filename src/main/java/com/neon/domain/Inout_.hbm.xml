@@ -3,7 +3,7 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
  
 <hibernate-mapping package="com.neon.domain">
-		<class name="Inout" table="Inout">
+		<class name="Inout_" table="Inout_">
 			<id name="id">
 				<generator class="native"></generator>
 			</id>

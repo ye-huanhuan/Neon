@@ -1,7 +1,6 @@
 package com.neon.domain;
 
-public class Inout {
-
+public class InAndOut {
 	private Long id;
 	private String input;
 	private String output;
@@ -23,6 +22,5 @@ public class Inout {
 	public void setOutput(String output) {
 		this.output = output;
 	}
-	
 	
 }

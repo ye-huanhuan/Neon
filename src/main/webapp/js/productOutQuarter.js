@@ -26,7 +26,7 @@
      xAxis: {
        categories: ['第一季度', '第二季度', '第三季度', '第四季度'],
        title: {
-           text: '年份/年',
+           text: '季度/季度',
            align: 'high',
        },
        labels: {

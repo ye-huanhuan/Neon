@@ -45,7 +45,7 @@
             <!-- 目标数据 -->
             <div class="col-md-8" style="width: 100%">
                 <section class="panel panel-default">
-                  <header class="panel-heading font-bold" style="font-size: 20px;text-align:center">目标分析图</header>
+                  <header class="panel-heading font-bold" style="font-size: 20px;text-align:center">目标进度图</header>
                   <div class="panel-body">
                     <div style="width: 100%; height: 200px; margin: 0 auto">
     				<div id="container-month" style="width: 33.3%; height: 200px; float: left"></div>
