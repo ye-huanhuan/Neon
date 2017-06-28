@@ -48,14 +48,16 @@ Neon
 ====
 
 >   1：用户需要将项目clone至本地电脑上。<br>
->   2：将resource目录下的Neon.war文件复制到本地tomcat容器的`webapps`目录中。<br>
->3：在本地达梦数据库中新建一个用户（用户名：`TEST`，密码：`123456789`），并且将DBA角色分发给用户TEST。<br>
+> 2：将resource目录下的Neon.war文件复制到本地tomcat容器的`webapps`目录中。<br>
+>3：在本地达梦数据库中新建一个用户（用户名：`TEST`，密码：`123456789`），并且将`DBA角色`分发给用户TEST。<br>
 >4：切换连接用户，使用`TEST用户`连接到数据库。<br>
->  5：将resource目录下的NEON_DM数据库导入。<br>
+>  5：在该用户下导入NEON_DM文件中的数据库。<br>
 >   6：`启动tomcat`，打开浏览器访问http://localhost:8080/Neon (如果tomcat端口修改，按照修改的端口访问)。<br>
     
 演示地址
 ====
 
-    [欢迎查看](http://www.baidu.com)
+    [欢迎查看](http://47.94.220.5:8080/Neon)
+    
+
     
