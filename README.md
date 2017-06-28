@@ -48,7 +48,7 @@ Neon
 ====
 
 >   1：用户需要将项目clone至本地电脑上。<br>
->   2：将resource目录下的Neon.war文件复制到本地tomcat容器的`webapps`目录中。<br>
+> 2：将resource目录下的Neon.war文件复制到本地tomcat容器的`webapps`目录中。<br>
 >3：在本地达梦数据库中新建一个用户（用户名：`TEST`，密码：`123456789`），并且将`DBA角色`分发给用户TEST。<br>
 >4：切换连接用户，使用`TEST用户`连接到数据库。<br>
 >  5：在该用户下导入NEON_DM文件中的数据库。<br>
