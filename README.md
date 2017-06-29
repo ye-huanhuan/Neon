@@ -63,7 +63,7 @@ Neon
 备注
 ====
 
-* [备份数据库](/resource/NEON_DM)
-* [项目视频介绍](/resource/Video)
-* [项目文档](/resource/Documents)
-* [项目war包](/resource)
+* [备份数据库](/resource/NEON_DM) (resource目录下的NEON_DM文件夹)
+* [项目视频介绍](/resource/Video) (resource目录下的Video文件夹)
+* [项目文档](/resource/documents) (resource目录下的documents文件夹)
+* [项目war包](/resource) (resource目录下)
