@@ -63,7 +63,7 @@ Neon
 备注
 ====
 
-    [备份数据库](/resource/  NEON_DM)
-* resource目录下的Video为项目视频介绍
-* resource目录下的Documents为项目文档
-* resource目录下的Neon.war为项目的war包文件
+* [备份数据库](/resource/NEON_DM)
+* [项目视频介绍](/resource/Video)
+* [项目文档](/resource/Documents)
+* [项目war包](/resource)
